@@ -1,0 +1,88 @@
+/* Base reset for consistency across browsers */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body and general styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #121212; /* Dark background */
+    color: #e0e0e0; /* Light gray text */
+    line-height: 1.6;
+    padding: 0;
+    margin: 0;
+}
+
+/* Header section */
+#header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1a1a1a; /* Darker background for header */
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Logo on the left */
+#logo img {
+    height: 60px;
+    width: auto;
+}
+
+/* General navigation button styles */
+nav {
+    flex-grow: 1; /* Allow nav to take remaining space */
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    display: inline-flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15%;
+}
+
+nav li {
+    display: inline-block;
+}
+
+nav a {
+    color: #e0e0e0; /* Default color */
+    font-size: 18px;
+    padding: 10px;
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #ff6347;
+}
+
+/* Active button styles */
+nav a.active {
+    background-color: #ff6347;  /* Highlighted background */
+    color: #fff; /* White text for active link */
+    border-radius: 5px; /* Rounded corners */
+}
+
+/* Main content */
+h1 {
+    text-align: center;
+    color: #ffffff;
+    margin-top: 50px;
+}
+
+/* Footer styling */
+footer {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
