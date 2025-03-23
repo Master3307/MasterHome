@@ -54,14 +54,6 @@ MasterTechService/
     └── style.css
 ```
 
-## Kontakt
-
-Für weitere Informationen oder Anfragen kontaktieren Sie uns bitte:
-
-- **Telefon:** +49 123 456 789
-- **Email:** info@mastertechservice.de
-- **Adresse:** Musterstraße 1, 12345 Musterstadt
-
 ## Lizenz
 
 Dieses Projekt ist unter der MIT-Lizenz lizenziert. Weitere Informationen finden Sie in der [LICENSE](LICENSE)-Datei.
