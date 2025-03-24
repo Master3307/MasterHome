@@ -1,15 +1,11 @@
 # Master Tech Service
 
-Willkommen bei Master Tech Service! Dies ist das Repository für unsere Webseite.
+Willkommen bei Master Tech Service! Dies ist das Repository für meine Webseite.
 
 ## Inhaltsverzeichnis
 
 - [Über uns](#über-uns)
 - [Installation](#installation)
-- [Verwendung](#verwendung)
-- [Ordnerstruktur](#ordnerstruktur)
-- [Kontakt](#kontakt)
-- [Lizenz](#lizenz)
 
 ## Über uns
 
@@ -27,41 +23,3 @@ Um die Webseite lokal zu installieren, führen Sie die folgenden Schritte aus:
     ```sh
     cd MasterTechService
     ```
-
-## Verwendung
-
-Öffnen Sie die `index.html`-Datei in Ihrem bevorzugten Webbrowser, um die Webseite lokal anzuzeigen. Sie können zwischen Licht- und Dunkelmodus umschalten, indem Sie auf das Symbol oben rechts klicken.
-
-## Ordnerstruktur
-
-```plaintext
-MasterTechService/
-├── .gitattributes
-├── index.html
-├── MasterTech.png
-├── README.md
-├── script.js
-├── style.css
-├── contact/
-│   ├── index.html
-│   ├── MasterTech.png
-│   ├── script.js
-│   └── style.css
-└── shop/
-    ├── index.html
-    ├── MasterTech.png
-    ├── script.js
-    └── style.css
-```
-
-## Kontakt
-
-Für weitere Informationen oder Anfragen kontaktieren Sie uns bitte:
-
-- **Telefon:** +49 123 456 789
-- **Email:** info@mastertechservice.de
-- **Adresse:** Musterstraße 1, 12345 Musterstadt
-
-## Lizenz
-
-Dieses Projekt ist unter der MIT-Lizenz lizenziert. Weitere Informationen finden Sie in der [LICENSE](LICENSE)-Datei.
