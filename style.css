@@ -15,17 +15,37 @@ body {
     margin: 0;
 }
 
-/* Header section */
+/* Light mode styles */
+body.light-mode {
+    background-color: #ffffff; /* Light background */
+    color: #000000; /* Dark text */
+}
+
+/* Sidebar styling */
 #header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    background-color: #1E1E1E; /* Darker background for sidebar */
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    background-color: #1a1a1a; /* Darker background for header */
-    padding: 10px 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+}
+
+#header.light-mode {
+    background-color: #f0f0f0; /* Light background for sidebar */
 }
 
 /* Logo on the left */
+#logo {
+    margin-bottom: 30px;
+}
+
 #logo img {
     height: 60px;
     width: auto;
@@ -33,33 +53,35 @@ body {
 
 /* General navigation button styles */
 nav {
-    flex-grow: 1; /* Allow nav to take remaining space */
-    text-align: center;
+    flex-grow: 1;
+    width: 100%;
 }
 
 nav ul {
     list-style-type: none;
-    display: inline-flex;
-    gap: 30px;
-    justify-content: center;
-    align-items: center;
-    margin-right: 15%;
+    padding: 0;
+    width: 100%;
 }
 
 nav li {
-    display: inline-block;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 nav a {
+    display: block;
+    width: 100%;
+    padding: 10px;
     color: #e0e0e0; /* Default color */
     font-size: 18px;
-    padding: 10px;
-    transition: color 0.3s ease;
     text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 nav a:hover {
-    color: #ff6347;
+    background-color: #ff6347;
+    color: #fff;
 }
 
 /* Active button styles */
@@ -70,6 +92,11 @@ nav a.active {
 }
 
 /* Main content */
+main {
+    margin-left: 270px; /* Adjust for sidebar width */
+    padding: 20px;
+}
+
 h1 {
     text-align: center;
     color: #ffffff;
@@ -85,6 +112,11 @@ h1 {
     border-radius: 10px;
     max-width: 800px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+#panel.light-mode {
+    background-color: #f0f0f0; /* Light background for panel */
+    color: #000000; /* Dark text */
 }
 
 #panel h2 {
@@ -112,6 +144,11 @@ footer {
     width: 100%;
 }
 
+footer.light-mode {
+    background-color: #f0f0f0; /* Light background for footer */
+    color: #000000; /* Dark text */
+}
+
 /* Shop Styling */
 #shop {
     display: flex;
@@ -129,6 +166,11 @@ footer {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     max-width: 200px;
     text-align: center;
+}
+
+.product.light-mode {
+    background-color: #f0f0f0; /* Light background for product */
+    color: #000000; /* Dark text */
 }
 
 .product img {
@@ -157,4 +199,45 @@ footer {
 
 .product button:hover {
     background-color: #e5533d;
+}
+
+/* Toggle button styles */
+#theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #ff6347;
+}
+
+/* Settings page styling */
+#settings {
+    padding: 20px;
+}
+
+#settings h2 {
+    text-align: center;
+    color: #ff6347;
+}
+
+#settings .option {
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#settings .option label {
+    font-size: 18px;
+}
+
+#settings .option button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #ff6347;
 }

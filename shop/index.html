@@ -6,8 +6,8 @@
     <link rel="stylesheet" type="text/css" href="../style.css" />
     <script src="../script.js"></script>
 </head>
-<body>
-    <div id="header">
+<body class="dark-mode">
+    <div id="header" class="dark-mode">
         <div id="logo">
             <a href="/">
                 <img src="MasterTech.png" alt="Master Tech Service Logo"/>
@@ -15,33 +15,39 @@
         </div>
         <nav>
             <ul>
-                <!-- Home button -->
                 <li><a href="/" class="nav-link" id="home">Home</a></li>
                 <li><a href="/contact/index.html" class="nav-link" id="contact">Kontakt</a></li>
                 <li><a href="/shop/index.html" class="nav-link" id="shop">Shop</a></li>
+                <li><a href="/settings/index.html" class="nav-link" id="settings">Einstellungen</a></li>
             </ul>
         </nav>
+        <button id="theme-toggle" class="dark-mode">🌙</button>
     </div>
-    <div id="shop">
-        <div class="product">
-            <img src="product1.jpg" alt="Product 1">
-            <h3>Product 1</h3>
-            <p>Beschreibung des Produkts 1.</p>
-            <button>In den Warenkorb</button>
+    <main>
+        <div id="shop">
+            <div class="product">
+                <img src="product1.jpg" alt="Product 1">
+                <h3>Product 1</h3>
+                <p>Beschreibung des Produkts 1.</p>
+                <button>In den Warenkorb</button>
+            </div>
+            <div class="product">
+                <img src="product2.jpg" alt="Product 2">
+                <h3>Product 2</h3>
+                <p>Beschreibung des Produkts 2.</p>
+                <button>In den Warenkorb</button>
+            </div>
+            <div class="product">
+                <img src="product3.jpg" alt="Product 3">
+                <h3>Product 3</h3>
+                <p>Beschreibung des Produkts 3.</p>
+                <button>In den Warenkorb</button>
+            </div>
         </div>
-        <div class="product">
-            <img src="product2.jpg" alt="Product 2">
-            <h3>Product 2</h3>
-            <p>Beschreibung des Produkts 2.</p>
-            <button>In den Warenkorb</button>
-        </div>
-        <div class="product">
-            <img src="product3.jpg" alt="Product 3">
-            <h3>Product 3</h3>
-            <p>Beschreibung des Produkts 3.</p>
-            <button>In den Warenkorb</button>
-        </div>
-    </div>
+        <footer class="dark-mode">
+            <p>Footer content goes here</p>
+        </footer>
+    </main>
     <script src="../script.js"></script>
 </body>
 </html>

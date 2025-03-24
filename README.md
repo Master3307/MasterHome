@@ -30,7 +30,7 @@ Um die Webseite lokal zu installieren, führen Sie die folgenden Schritte aus:
 
 ## Verwendung
 
-Öffnen Sie die `index.html`-Datei in Ihrem bevorzugten Webbrowser, um die Webseite lokal anzuzeigen.
+Öffnen Sie die `index.html`-Datei in Ihrem bevorzugten Webbrowser, um die Webseite lokal anzuzeigen. Sie können zwischen Licht- und Dunkelmodus umschalten, indem Sie auf das Symbol oben rechts klicken.
 
 ## Ordnerstruktur
 
@@ -53,3 +53,15 @@ MasterTechService/
     ├── script.js
     └── style.css
 ```
+
+## Kontakt
+
+Für weitere Informationen oder Anfragen kontaktieren Sie uns bitte:
+
+- **Telefon:** +49 123 456 789
+- **Email:** info@mastertechservice.de
+- **Adresse:** Musterstraße 1, 12345 Musterstadt
+
+## Lizenz
+
+Dieses Projekt ist unter der MIT-Lizenz lizenziert. Weitere Informationen finden Sie in der [LICENSE](LICENSE)-Datei.
