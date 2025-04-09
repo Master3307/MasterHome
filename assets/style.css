@@ -5,6 +5,15 @@
     box-sizing: border-box;
 }
 
+/* Include Phosphor Icons */
+@import url('./phosphor.css');
+
+/* Include Font Awesome */
+@import url('./fontawesome.css');
+
+/* Include Bootstrap */
+@import url('./bootstrap.css');
+
 /* Body and general styling */
 body {
     font-family: 'Arial', sans-serif;

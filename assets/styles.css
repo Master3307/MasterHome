@@ -1,3 +1,12 @@
+/* Include Phosphor Icons */
+@import url('./phosphor.css');
+
+/* Include Font Awesome */
+@import url('./fontawesome.css');
+
+/* Include Bootstrap */
+@import url('./bootstrap.css');
+
 /* General Styles */
 body {
     font-family: 'Inter', sans-serif;
@@ -46,10 +55,11 @@ footer {
     display: flex;
     justify-content: center;
     align-items: flex-end; /* Align text at the bottom */
-    width: 450px;
-    height: 200px;
+    width: 100%; /* Make the button take the full width of its container */
+    max-width: 450px; /* Set a maximum width */
+    aspect-ratio: 3 / 2; /* Maintain a consistent aspect ratio */
     padding: 0; /* Remove padding to fit the image */
-    margin: 20px 0;
+    margin: 20px auto; /* Center the button and add spacing */
     background: #1E1E1E; /* Match sidebar color */
     border: none;
     border-radius: 20px;
@@ -90,6 +100,19 @@ footer {
 .button:hover .button-text {
     opacity: 1; /* Fade-in effect */
     transform: translateY(0); /* Slide up effect */
+}
+
+/* Ensure buttons adjust dynamically for smaller screens */
+@media (max-width: 768px) {
+    .button {
+        max-width: 90%; /* Allow buttons to take up most of the screen width */
+    }
+}
+
+@media (max-width: 480px) {
+    .button {
+        max-width: 100%; /* Allow buttons to take the full screen width */
+    }
 }
 
 /* List Styles */
@@ -151,10 +174,12 @@ a:hover {
     background: linear-gradient(135deg, #2a2a2a, #3a3a3a);
     border: 1px solid #4a4a4a;
     border-radius: 12px;
-    padding: 20px;
+    padding: 10px; /* Reduced padding */
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
+    max-width: fit-content; /* Adjust width to fit content */
+    margin: 10px auto; /* Center the tiles and add spacing */
 }
 
 .tile:hover {
@@ -251,4 +276,77 @@ a:hover {
     .button-item {
         flex: 1 1 100%; /* 1 item per row */
     }
+}
+
+.linktree-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Center content vertically */
+    text-align: center;
+}
+
+.profile-picture {
+    border-radius: 50%; /* Make the image round */
+    border: 4px solid #e4e4e7; /* Add a border around the image */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
+    width: 110px; /* Ensure consistent size */
+    height: 110px; /* Ensure consistent size */
+    object-fit: cover; /* Ensure the image fits within the circle */
+    margin-bottom: 20px; /* Add spacing below the image */
+}
+
+.link-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 24px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #ffffff;
+    background: linear-gradient(135deg, #3a3a3a, #2a2a2a); /* Gray gradient */
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    letter-spacing: 0.5px; /* Keep slight spacing for readability */
+    /* Removed text-transform: uppercase */
+}
+
+.link-button i {
+    font-size: 20px;
+}
+
+.link-button:hover {
+    background: linear-gradient(135deg, #2a2a2a, #1a1a1a); /* Slightly darker gray on hover */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+.link-button:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+.link-button:focus {
+    outline: 2px solid #1a1a1a;
+    outline-offset: 2px;
+}
+
+.banner-header {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.banner-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* Crop the image to fit the header */
+    max-height: 200px; /* Limit the height of the banner */
 }

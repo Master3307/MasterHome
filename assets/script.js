@@ -283,3 +283,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+// Include Bootstrap JS
+import './bootstrap.js';
+import React from "react";
+import ReactDOM from "react-dom";
+import "@phosphor-icons/web/light";
+import "@phosphor-icons/web/bold";
