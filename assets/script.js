@@ -108,7 +108,7 @@ function handleLogin() {
         message.textContent = `Welcome back, ${username}!`;
         localStorage.setItem('user', username);
         setTimeout(() => {
-            window.location.href = "../index.html"; // Redirect to home
+            window.location.href = "index.html"; // Redirect to home
         }, 1000);
     } else {
         message.textContent = "Invalid username or password.";
@@ -130,7 +130,7 @@ function handleRegister() {
         message.textContent = `Registration successful! Welcome, ${username}!`;
         localStorage.setItem('user', username);
         setTimeout(() => {
-            window.location.href = "../index.html"; // Redirect to home
+            window.location.href = "index.html"; // Redirect to home
         }, 1000);
     }
 }
@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', updateAuthButtons);
 
 // Function to handle login button click
 function redirectToLogin() {
-    window.location.href = "/auth/index.html";
+    window.location.href = "auth/index.html";
 }
 
 // Add event listeners for login and register buttons
