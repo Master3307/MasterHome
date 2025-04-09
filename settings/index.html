@@ -6,11 +6,11 @@
     <link rel="stylesheet" type="text/css" href="../style.css" />
     <script src="../script.js"></script>
 </head>
-<body class="dark-mode">
-    <div id="header" class="dark-mode">
+<body>
+    <div id="header">
         <div id="logo">
             <a href="/">
-                <img src="MasterTech.png" alt="Master Tech Service Logo"/>
+                <img src="../MasterTech.png" alt="Master Tech Service Logo"/>
             </a>
         </div>
         <nav>
@@ -22,16 +22,23 @@
             </ul>
         </nav>
     </div>
-    <main>
+    <main class="dark-mode">
+        <h1 data-lang="settingsTitle">Einstellungen</h1>
         <div id="settings">
-            <h2>Einstellungen</h2>
             <div class="option">
-                <label for="theme-toggle">Licht/Dunkel Modus</label>
-                <button id="theme-toggle" class="dark-mode">🌙</button>
+                <label for="theme-toggle" data-lang="themeLabel">Licht/Dunkel Modus</label>
+                <div id="theme-toggle"></div>
+            </div>
+            <div class="option">
+                <label for="language-select" data-lang="languageLabel">Sprache</label>
+                <select id="language-select">
+                    <option value="de">Deutsch</option>
+                    <option value="en">English</option>
+                </select>
             </div>
         </div>
         <footer class="dark-mode">
-            <p>Footer content goes here</p>
+            <p data-lang="footerText">Footer-Inhalt hier</p>
         </footer>
     </main>
     <script src="../script.js"></script>

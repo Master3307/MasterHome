@@ -44,6 +44,9 @@ body.light-mode {
 /* Logo on the left */
 #logo {
     margin-bottom: 30px;
+    background-color: #1E1E1E; /* Always dark background */
+    padding: 10px;
+    border-radius: 10px;
 }
 
 #logo img {
@@ -213,6 +216,37 @@ footer.light-mode {
     color: #ff6347;
 }
 
+/* Toggle slider styling */
+#theme-toggle {
+    position: relative;
+    width: 50px;
+    height: 25px;
+    background-color: #ccc;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#theme-toggle:before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 21px;
+    height: 21px;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+#theme-toggle.active {
+    background-color: #ff6347;
+}
+
+#theme-toggle.active:before {
+    transform: translateX(25px);
+}
+
 /* Settings page styling */
 #settings {
     padding: 20px;
@@ -239,5 +273,85 @@ footer.light-mode {
     border: none;
     cursor: pointer;
     font-size: 24px;
+    color: #ff6347;
+}
+
+/* Login and Register buttons */
+#auth-buttons {
+    position: fixed; /* Fixed position to stay at the top right */
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 1001; /* Ensure it appears above other elements */
+}
+
+#auth-buttons button {
+    background-color: #ff6347;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+#auth-buttons button:hover {
+    background-color: #e5533d;
+}
+
+/* Auth container styling */
+#auth-container {
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+#auth-container h1 {
+    color: #ff6347;
+    margin-bottom: 20px;
+}
+
+#auth-container .form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+#auth-container label {
+    display: block;
+    margin-bottom: 5px;
+    color: #e0e0e0;
+}
+
+#auth-container input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+#auth-container button {
+    background-color: #ff6347;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+#auth-container button:hover {
+    background-color: #e5533d;
+}
+
+#auth-message {
+    margin-top: 15px;
     color: #ff6347;
 }

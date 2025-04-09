@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Login/Register - Master Tech Service</title>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <script src="../script.js"></script>
+</head>
+<body class="dark-mode">
+    <div id="auth-container">
+        <h1>Login/Register</h1>
+        <form id="auth-form">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required />
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required />
+            </div>
+            <div class="form-group">
+                <button type="button" id="login-submit">Login</button>
+                <button type="button" id="register-submit">Register</button>
+            </div>
+        </form>
+        <p id="auth-message"></p>
+    </div>
+    <script src="../script.js"></script>
+</body>
+</html>

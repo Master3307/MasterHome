@@ -7,10 +7,14 @@
     <script src="../script.js"></script>
 </head>
 <body class="dark-mode">
+    <div id="auth-buttons">
+        <button id="login-button">Login</button>
+        <button id="register-button">Register</button>
+    </div>
     <div id="header" class="dark-mode">
         <div id="logo">
             <a href="/">
-                <img src="MasterTech.png" alt="Master Tech Service Logo"/>
+                <img src="../MasterTech.png" alt="Master Tech Service Logo"/>
             </a>
         </div>
         <nav>
@@ -21,31 +25,34 @@
                 <li><a href="/settings/index.html" class="nav-link" id="settings">Einstellungen</a></li>
             </ul>
         </nav>
-        <button id="theme-toggle" class="dark-mode">🌙</button>
     </div>
     <main>
+        <h1 data-lang="shopTitle">Shop</h1>
         <div id="shop">
             <div class="product">
                 <img src="product1.jpg" alt="Product 1">
-                <h3>Product 1</h3>
+                <h3 data-lang="product1Title">Product 1</h3>
                 <p>Beschreibung des Produkts 1.</p>
                 <button>In den Warenkorb</button>
+                <button class="add-to-wishlist" data-item="Product 1">Add to Wishlist</button>
             </div>
             <div class="product">
                 <img src="product2.jpg" alt="Product 2">
-                <h3>Product 2</h3>
+                <h3 data-lang="product2Title">Product 2</h3>
                 <p>Beschreibung des Produkts 2.</p>
                 <button>In den Warenkorb</button>
+                <button class="add-to-wishlist" data-item="Product 2">Add to Wishlist</button>
             </div>
             <div class="product">
                 <img src="product3.jpg" alt="Product 3">
-                <h3>Product 3</h3>
+                <h3 data-lang="product3Title">Product 3</h3>
                 <p>Beschreibung des Produkts 3.</p>
                 <button>In den Warenkorb</button>
+                <button class="add-to-wishlist" data-item="Product 3">Add to Wishlist</button>
             </div>
         </div>
         <footer class="dark-mode">
-            <p>Footer content goes here</p>
+            <p data-lang="footerText">Footer-Inhalt hier</p>
         </footer>
     </main>
     <script src="../script.js"></script>
