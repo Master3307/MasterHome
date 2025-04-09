@@ -43,24 +43,53 @@ footer {
 
 /* Button Styles */
 .button {
-    display: inline-block;
-    padding: 30px 40px; /* Increase padding for a thicker tile look */
-    margin: 20px 0; /* Add more spacing */
-    background: linear-gradient(90deg, #2a2a2a, #3a3a3a);
-    color: white;
-    text-decoration: none;
-    border-radius: 16px; /* Slightly rounder corners */
-    text-align: center;
-    font-size: 20px; /* Larger font size */
-    font-weight: bold;
-    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 0, 0, 0.2); /* Slightly larger shadow */
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* Align text at the bottom */
+    width: 450px;
+    height: 200px;
+    padding: 0; /* Remove padding to fit the image */
+    margin: 20px 0;
+    background: #1E1E1E; /* Match sidebar color */
+    border: none;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3), 0 0 25px rgba(255, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .button:hover {
-    background: linear-gradient(90deg, #3a3a3a, #4a4a4a);
-    transform: translateY(-5px); /* More pronounced hover effect */
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4), 0 0 30px rgba(255, 0, 0, 0.4); /* Stronger glow */
+    transform: translateY(-10px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4), 0 0 35px rgba(255, 0, 0, 0.4);
+}
+
+.button-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 110%; /* Slightly larger than the button */
+    height: auto;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    pointer-events: none; /* Prevent interaction with the image */
+}
+
+.button-text {
+    position: relative;
+    z-index: 2;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.button:hover .button-text {
+    opacity: 1; /* Fade-in effect */
+    transform: translateY(0); /* Slide up effect */
 }
 
 /* List Styles */
@@ -184,4 +213,42 @@ a:hover {
     transform: none;
     box-shadow: none;
     background: linear-gradient(135deg, #2a2a2a, #3a3a3a); /* Ensure consistent background */
+}
+
+/* Button Container Styles */
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5rem; /* Increase gap to prevent overlap */
+    justify-content: center;
+    align-items: flex-start; /* Align items to the top */
+    margin: 3rem 0; /* Add more margin for spacing */
+}
+
+.button-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1 1 450px; /* Ensure each button item takes up enough space */
+    max-width: 450px; /* Match the button width */
+    gap: 1rem; /* Add spacing between the header and button */
+}
+
+@media (max-width: 1200px) {
+    .button-item {
+        flex: 1 1 calc(50% - 2.5rem); /* 2 items per row */
+    }
+}
+
+@media (max-width: 768px) {
+    .button-item {
+        flex: 1 1 calc(100% - 2.5rem); /* 1 item per row */
+    }
+}
+
+@media (max-width: 480px) {
+    .button-item {
+        flex: 1 1 100%; /* 1 item per row */
+    }
 }

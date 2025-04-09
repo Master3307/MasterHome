@@ -67,10 +67,13 @@ function setLanguage(language) {
     localStorage.setItem('language', language);
 }
 
-// Load saved settings
+// Load saved settings and set default language based on browser's language
 document.addEventListener('DOMContentLoaded', () => {
     const theme = localStorage.getItem('theme') || 'dark';
-    const language = localStorage.getItem('language') || 'de';
+    const savedLanguage = localStorage.getItem('language');
+    const browserLanguage = navigator.language.slice(0, 2); // Get the first two characters of the browser's language
+    const defaultLanguage = translations[browserLanguage] ? browserLanguage : 'en'; // Default to English if unsupported
+    const language = savedLanguage || defaultLanguage;
 
     // Apply theme
     if (theme === 'light') {
