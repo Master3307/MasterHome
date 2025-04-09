@@ -49,7 +49,18 @@ function setLanguage(language) {
     const elements = document.querySelectorAll('[data-lang]');
     elements.forEach(el => {
         const key = el.getAttribute('data-lang');
-        el.textContent = translations[language][key];
+        if (translations[language] && translations[language][key]) {
+            el.textContent = translations[language][key];
+        }
+    });
+
+    // Update placeholders for input fields
+    const placeholders = document.querySelectorAll('[data-placeholder-lang]');
+    placeholders.forEach(el => {
+        const key = el.getAttribute('data-placeholder-lang');
+        if (translations[language] && translations[language][key]) {
+            el.setAttribute('placeholder', translations[language][key]);
+        }
     });
 
     // Save language preference
@@ -189,6 +200,10 @@ const translations = {
         themeLabel: 'Licht/Dunkel Modus',
         languageLabel: 'Sprache',
         footerText: 'Footer-Inhalt hier',
+        aboutTitle: 'Über uns',
+        sourcesTitle: 'Quellen',
+        usernamePlaceholder: 'Benutzername',
+        passwordPlaceholder: 'Passwort'
     },
     en: {
         homeTitle: 'Welcome to MasterTech Services!',
@@ -202,6 +217,10 @@ const translations = {
         themeLabel: 'Light/Dark Mode',
         languageLabel: 'Language',
         footerText: 'Footer content goes here',
+        aboutTitle: 'About Us',
+        sourcesTitle: 'Sources',
+        usernamePlaceholder: 'Username',
+        passwordPlaceholder: 'Password'
     }
 };
 

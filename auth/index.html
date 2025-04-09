@@ -7,16 +7,21 @@
     <script src="../script.js"></script>
 </head>
 <body class="dark-mode">
+    <nav>
+        <ul>
+            <li><a href="/about/index.html" class="nav-link" id="about">About</a></li>
+        </ul>
+    </nav>
     <div id="auth-container">
         <h1>Login/Register</h1>
         <form id="auth-form">
             <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" required />
+                <label for="username" data-lang="usernamePlaceholder">Username</label>
+                <input type="text" id="username" name="username" data-placeholder-lang="usernamePlaceholder" required />
             </div>
             <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required />
+                <label for="password" data-lang="passwordPlaceholder">Password</label>
+                <input type="password" id="password" name="password" data-placeholder-lang="passwordPlaceholder" required />
             </div>
             <div class="form-group">
                 <button type="button" id="login-submit">Login</button>

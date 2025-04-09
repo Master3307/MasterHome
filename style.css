@@ -17,8 +17,8 @@ body {
 
 /* Light mode styles */
 body.light-mode {
-    background-color: #ffffff; /* Light background */
-    color: #000000; /* Dark text */
+    background-color: #e6e6e6; /* Softer gray background */
+    color: #000000; /* Black text for maximum readability */
 }
 
 /* Sidebar styling */
@@ -38,7 +38,8 @@ body.light-mode {
 }
 
 #header.light-mode {
-    background-color: #f0f0f0; /* Light background for sidebar */
+    background-color: #cccccc; /* Medium gray for sidebar */
+    color: #000000; /* Black text */
 }
 
 /* Logo on the left */
@@ -52,6 +53,11 @@ body.light-mode {
 #logo img {
     height: 60px;
     width: auto;
+}
+
+#logo.light-mode {
+    background-color: #bfbfbf; /* Slightly darker gray for logo background */
+    color: #000000; /* Black text */
 }
 
 /* General navigation button styles */
@@ -87,11 +93,19 @@ nav a:hover {
     color: #fff;
 }
 
-/* Active button styles */
 nav a.active {
     background-color: #ff6347;  /* Highlighted background */
     color: #fff; /* White text for active link */
     border-radius: 5px; /* Rounded corners */
+}
+
+nav a.light-mode {
+    color: #000000; /* Black text for links */
+}
+
+nav a.light-mode:hover {
+    background-color: #a6a6a6; /* Highlighted gray background */
+    color: #000000; /* Black text on hover */
 }
 
 /* Main content */
@@ -118,8 +132,9 @@ h1 {
 }
 
 #panel.light-mode {
-    background-color: #f0f0f0; /* Light background for panel */
-    color: #000000; /* Dark text */
+    background-color: #f2f2f2; /* Light gray background for panel */
+    color: #000000; /* Black text */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Softer shadow */
 }
 
 #panel h2 {
@@ -148,8 +163,8 @@ footer {
 }
 
 footer.light-mode {
-    background-color: #f0f0f0; /* Light background for footer */
-    color: #000000; /* Dark text */
+    background-color: #cccccc; /* Medium gray background for footer */
+    color: #000000; /* Black text */
 }
 
 /* Shop Styling */
@@ -172,8 +187,9 @@ footer.light-mode {
 }
 
 .product.light-mode {
-    background-color: #f0f0f0; /* Light background for product */
-    color: #000000; /* Dark text */
+    background-color: #f2f2f2; /* Light gray background for product */
+    color: #000000; /* Black text */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Softer shadow */
 }
 
 .product img {
@@ -184,6 +200,10 @@ footer.light-mode {
 .product h3 {
     margin: 10px 0;
     color: #ff6347;
+}
+
+.product.light-mode h3 {
+    color: #000000; /* Black text for product titles */
 }
 
 .product p {
@@ -202,6 +222,15 @@ footer.light-mode {
 
 .product button:hover {
     background-color: #e5533d;
+}
+
+.product.light-mode button {
+    background-color: #a6a6a6; /* Medium gray button background */
+    color: #000000; /* Black text */
+}
+
+.product.light-mode button:hover {
+    background-color: #8c8c8c; /* Slightly darker gray on hover */
 }
 
 /* Toggle button styles */
