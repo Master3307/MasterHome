@@ -115,6 +115,26 @@ footer {
     }
 }
 
+/* Adjust button size specifically for the home page */
+.button-container .button {
+    max-width: 400px; /* Reduce the maximum width */
+    aspect-ratio: 3 / 2; /* Maintain the aspect ratio */
+    margin: 15px auto; /* Slightly reduce the margin */
+}
+
+/* Adjust button size for smaller screens */
+@media (max-width: 768px) {
+    .button-container .button {
+        max-width: 80%; /* Slightly smaller width for medium screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .button-container .button {
+        max-width: 90%; /* Slightly smaller width for small screens */
+    }
+}
+
 /* List Styles */
 ul {
     list-style: none;
