@@ -1,372 +1,381 @@
 /* Include Phosphor Icons */
-@import url('./phosphor.css');
+@import url("./phosphor.css");
 
 /* Include Font Awesome */
-@import url('./fontawesome.css');
+@import url("./fontawesome.css");
 
 /* Include Bootstrap */
-@import url('./bootstrap.css');
+@import url("./bootstrap.css");
 
 /* General Styles */
 body {
-    font-family: 'Inter', sans-serif;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
-    color: #e4e4e7;
-    transition: background 0.3s ease, color 0.3s ease;
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+  color: #e4e4e7;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 header {
-    background: linear-gradient(90deg, #3a3a3a, #4a4a4a);
-    color: white;
-    padding: 20px 0;
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    transition: background 0.3s ease;
+  background: linear-gradient(90deg, #3a3a3a, #4a4a4a);
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: background 0.3s ease;
 }
 
-h1, h2 {
-    margin: 0;
-    color: #e4e4e7;
+h1,
+h2 {
+  margin: 0;
+  color: #e4e4e7;
 }
 
 main {
-    padding: 20px;
-    margin: 0 auto;
-    max-width: 1200px; /* Center content with a max width */
-    border-left: 20px solid transparent; /* Invisible border */
-    border-right: 20px solid transparent; /* Invisible border */
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 1200px; /* Center content with a max width */
+  border-left: 20px solid transparent; /* Invisible border */
+  border-right: 20px solid transparent; /* Invisible border */
 }
 
 footer {
-    background: linear-gradient(90deg, #3a3a3a, #4a4a4a);
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-    transition: background 0.3s ease;
+  background: linear-gradient(90deg, #3a3a3a, #4a4a4a);
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  transition: background 0.3s ease;
 }
 
 /* Button Styles */
 .button {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end; /* Align text at the bottom */
-    width: 100%; /* Make the button take the full width of its container */
-    max-width: 450px; /* Set a maximum width */
-    aspect-ratio: 3 / 2; /* Maintain a consistent aspect ratio */
-    padding: 0; /* Remove padding to fit the image */
-    margin: 20px auto; /* Center the button and add spacing */
-    background: #1E1E1E; /* Match sidebar color */
-    border: none;
-    border-radius: 20px;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3), 0 0 25px rgba(255, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end; /* Align text at the bottom */
+  width: 100%; /* Make the button take the full width of its container */
+  max-width: 450px; /* Set a maximum width */
+  aspect-ratio: 3 / 2; /* Maintain a consistent aspect ratio */
+  padding: 0; /* Remove padding to fit the image */
+  margin: 20px auto; /* Center the button and add spacing */
+  background: #1e1e1e; /* Match sidebar color */
+  border: none;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3), 0 0 25px rgba(255, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .button:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4), 0 0 35px rgba(255, 0, 0, 0.4);
+  transform: translateY(-10px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4), 0 0 35px rgba(255, 0, 0, 0.4);
 }
 
 .button-image {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 110%; /* Slightly larger than the button */
-    height: auto;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-    pointer-events: none; /* Prevent interaction with the image */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 110%; /* Slightly larger than the button */
+  height: auto;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  pointer-events: none; /* Prevent interaction with the image */
 }
 
 .button-text {
-    position: relative;
-    z-index: 2;
-    color: white;
-    font-size: 1.5rem;
-    font-weight: bold;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
+  position: relative;
+  z-index: 2;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .button:hover .button-text {
-    opacity: 1; /* Fade-in effect */
-    transform: translateY(0); /* Slide up effect */
+  opacity: 1; /* Fade-in effect */
+  transform: translateY(0); /* Slide up effect */
 }
 
 /* Ensure buttons adjust dynamically for smaller screens */
 @media (max-width: 768px) {
-    .button {
-        max-width: 90%; /* Allow buttons to take up most of the screen width */
-    }
+  .button {
+    max-width: 90%; /* Allow buttons to take up most of the screen width */
+  }
 }
 
 @media (max-width: 480px) {
-    .button {
-        max-width: 100%; /* Allow buttons to take the full screen width */
-    }
+  .button {
+    max-width: 100%; /* Allow buttons to take the full screen width */
+  }
 }
 
 /* Adjust button size specifically for the home page */
 .button-container .button {
-    max-width: 400px; /* Reduce the maximum width */
-    aspect-ratio: 3 / 2; /* Maintain the aspect ratio */
-    margin: 15px auto; /* Slightly reduce the margin */
+  max-width: 400px; /* Reduce the maximum width */
+  aspect-ratio: 3 / 2; /* Maintain the aspect ratio */
+  margin: 15px auto; /* Slightly reduce the margin */
 }
 
 /* Adjust button size for smaller screens */
 @media (max-width: 768px) {
-    .button-container .button {
-        max-width: 80%; /* Slightly smaller width for medium screens */
-    }
+  .button-container .button {
+    max-width: 80%; /* Slightly smaller width for medium screens */
+  }
 }
 
 @media (max-width: 480px) {
-    .button-container .button {
-        max-width: 90%; /* Slightly smaller width for small screens */
-    }
+  .button-container .button {
+    max-width: 90%; /* Slightly smaller width for small screens */
+  }
 }
 
 /* List Styles */
 ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 ul li {
-    margin: 10px 0;
-    padding: 15px 20px;
-    background: linear-gradient(135deg, #2a2a2a, #3a3a3a);
-    border-radius: 8px;
-    color: #e4e4e7;
-    font-size: 18px;
-    font-weight: bold;
-    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  margin: 10px 0;
+  padding: 15px 20px;
+  background: linear-gradient(135deg, #2a2a2a, #3a3a3a);
+  border-radius: 8px;
+  color: #e4e4e7;
+  font-size: 18px;
+  font-weight: bold;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 ul li:hover {
-    background: linear-gradient(135deg, #3a3a3a, #4a4a4a);
-    transform: translateY(-3px);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(135deg, #3a3a3a, #4a4a4a);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
 }
 
 ul li a {
-    color: #e4e4e7;
-    text-decoration: none;
-    transition: color 0.3s ease;
+  color: #e4e4e7;
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 ul li a:hover {
-    color: #ff4d4d;
-    text-decoration: underline;
+  color: #ff4d4d;
+  text-decoration: underline;
 }
 
 a {
-    color: #e4e4e7;
-    text-decoration: none;
-    transition: color 0.3s ease;
+  color: #e4e4e7;
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 a:hover {
-    color: #ff4d4d;
-    text-decoration: underline;
+  color: #ff4d4d;
+  text-decoration: underline;
 }
 
 /* Grid System */
 .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
 }
 
 .tile {
-    background: linear-gradient(135deg, #2a2a2a, #3a3a3a);
-    border: 1px solid #4a4a4a;
-    border-radius: 12px;
-    padding: 10px; /* Reduced padding */
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
-    max-width: fit-content; /* Adjust width to fit content */
-    margin: 10px auto; /* Center the tiles and add spacing */
+  background: linear-gradient(135deg, #2a2a2a, #3a3a3a);
+  border: 1px solid #4a4a4a;
+  border-radius: 12px;
+  padding: 10px; /* Reduced padding */
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
+  max-width: fit-content; /* Adjust width to fit content */
+  margin: 10px auto; /* Center the tiles and add spacing */
 }
 
 .tile:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
-    background: linear-gradient(135deg, #3a3a3a, #4a4a4a);
+  transform: translateY(-5px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(135deg, #3a3a3a, #4a4a4a);
 }
 
 .tile a {
-    text-decoration: none;
-    color: #e4e4e7;
-    font-weight: bold;
-    transition: color 0.3s ease;
+  text-decoration: none;
+  color: #e4e4e7;
+  font-weight: bold;
+  transition: color 0.3s ease;
 }
 
 .tile a:hover {
-    color: #ff4d4d;
+  color: #ff4d4d;
 }
 
 /* Header Styles */
 .header {
-    position: relative;
-    padding: 20px 60px; /* Increase padding for a wider header */
-    text-align: center;
+  position: relative;
+  padding: 20px 60px; /* Increase padding for a wider header */
+  text-align: center;
 }
 
 .header .close-button {
-    position: absolute;
-    top: 50%;
-    left: 20px;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    color: #ff4d4d;
-    font-size: 48px; /* Make the "X" larger */
-    text-decoration: none;
-    box-shadow: none; /* Remove bloom effect */
-    transition: color 0.3s ease;
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #ff4d4d;
+  font-size: 48px; /* Make the "X" larger */
+  text-decoration: none;
+  box-shadow: none; /* Remove bloom effect */
+  transition: color 0.3s ease;
 }
 
 .header .close-button:hover {
-    color: #ff1a1a; /* Slightly darker red on hover */
+  color: #ff1a1a; /* Slightly darker red on hover */
 }
 
 #sources {
-    min-height: 150vh; /* Extend the height */
-    background: linear-gradient(135deg, #2a2a2a, #3a3a3a);
-    padding: 20px;
-    transform: none; /* Remove any transform effects */
-    box-shadow: none; /* Remove any shadow effects */
-    transition: none; /* Remove all transitions */
+  min-height: 150vh; /* Extend the height */
+  background: linear-gradient(135deg, #2a2a2a, #3a3a3a);
+  padding: 20px;
+  transform: none; /* Remove any transform effects */
+  box-shadow: none; /* Remove any shadow effects */
+  transition: none; /* Remove all transitions */
 }
 
 /* Remove hover effect */
 #sources:hover {
-    transform: none;
-    box-shadow: none;
-    background: linear-gradient(135deg, #2a2a2a, #3a3a3a); /* Ensure consistent background */
+  transform: none;
+  box-shadow: none;
+  background: linear-gradient(
+    135deg,
+    #2a2a2a,
+    #3a3a3a
+  ); /* Ensure consistent background */
 }
 
 /* Button Container Styles */
 .button-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2.5rem; /* Increase gap to prevent overlap */
-    justify-content: center;
-    align-items: flex-start; /* Align items to the top */
-    margin: 3rem 0; /* Add more margin for spacing */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem; /* Increase gap to prevent overlap */
+  justify-content: center;
+  align-items: flex-start; /* Align items to the top */
+  margin: 3rem 0; /* Add more margin for spacing */
 }
 
 .button-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    flex: 1 1 450px; /* Ensure each button item takes up enough space */
-    max-width: 450px; /* Match the button width */
-    gap: 1rem; /* Add spacing between the header and button */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1 1 450px; /* Ensure each button item takes up enough space */
+  max-width: 450px; /* Match the button width */
+  gap: 1rem; /* Add spacing between the header and button */
 }
 
 @media (max-width: 1200px) {
-    .button-item {
-        flex: 1 1 calc(50% - 2.5rem); /* 2 items per row */
-    }
+  .button-item {
+    flex: 1 1 calc(50% - 2.5rem); /* 2 items per row */
+  }
 }
 
 @media (max-width: 768px) {
-    .button-item {
-        flex: 1 1 calc(100% - 2.5rem); /* 1 item per row */
-    }
+  .button-item {
+    flex: 1 1 calc(100% - 2.5rem); /* 1 item per row */
+  }
 }
 
 @media (max-width: 480px) {
-    .button-item {
-        flex: 1 1 100%; /* 1 item per row */
-    }
+  .button-item {
+    flex: 1 1 100%; /* 1 item per row */
+  }
 }
 
 .linktree-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh; /* Center content vertically */
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* Center content vertically */
+  text-align: center;
 }
 
 .profile-picture {
-    border-radius: 50%; /* Make the image round */
-    border: 4px solid #e4e4e7; /* Add a border around the image */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
-    width: 110px; /* Ensure consistent size */
-    height: 110px; /* Ensure consistent size */
-    object-fit: cover; /* Ensure the image fits within the circle */
-    margin-bottom: 20px; /* Add spacing below the image */
+  border-radius: 50%; /* Make the image round */
+  border: 4px solid #e4e4e7; /* Add a border around the image */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
+  width: 110px; /* Ensure consistent size */
+  height: 110px; /* Ensure consistent size */
+  object-fit: cover; /* Ensure the image fits within the circle */
+  margin-bottom: 20px; /* Add spacing below the image */
 }
 
 .link-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 12px 24px;
-    font-family: 'Inter', sans-serif;
-    font-size: 16px;
-    font-weight: 500;
-    color: #ffffff;
-    background: linear-gradient(135deg, #3a3a3a, #2a2a2a); /* Gray gradient */
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    letter-spacing: 0.5px; /* Keep slight spacing for readability */
-    /* Removed text-transform: uppercase */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 24px;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #ffffff;
+  background: linear-gradient(135deg, #3a3a3a, #2a2a2a); /* Gray gradient */
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.5px; /* Keep slight spacing for readability */
+  /* Removed text-transform: uppercase */
 }
 
 .link-button i {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 .link-button:hover {
-    background: linear-gradient(135deg, #2a2a2a, #1a1a1a); /* Slightly darker gray on hover */
-    transform: translateY(-3px);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(
+    135deg,
+    #2a2a2a,
+    #1a1a1a
+  ); /* Slightly darker gray on hover */
+  transform: translateY(-3px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
 }
 
 .link-button:active {
-    transform: translateY(0);
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+  transform: translateY(0);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
 }
 
 .link-button:focus {
-    outline: 2px solid #1a1a1a;
-    outline-offset: 2px;
+  outline: 2px solid #1a1a1a;
+  outline-offset: 2px;
 }
 
 .banner-header {
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-    margin-bottom: 20px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 20px;
 }
 
 .banner-image {
-    width: 100%;
-    height: auto;
-    object-fit: cover; /* Crop the image to fit the header */
-    max-height: 200px; /* Limit the height of the banner */
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* Crop the image to fit the header */
+  max-height: 200px; /* Limit the height of the banner */
 }

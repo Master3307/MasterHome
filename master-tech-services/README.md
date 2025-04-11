@@ -16,10 +16,10 @@ Master Tech Service bietet eine breite Palette von technischen Dienstleistungen 
 Um die Webseite lokal zu installieren, führen Sie die folgenden Schritte aus:
 
 1. Klonen Sie das Repository:
-    ```sh
-    git clone https://github.com/IhrBenutzername/MasterTechService.git
-    ```
+   ```sh
+   git clone https://github.com/IhrBenutzername/MasterTechService.git
+   ```
 2. Navigieren Sie in das Projektverzeichnis:
-    ```sh
-    cd MasterTechService
-    ```
+   ```sh
+   cd MasterTechService
+   ```
