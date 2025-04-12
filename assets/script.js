@@ -201,6 +201,38 @@ document.addEventListener("DOMContentLoaded", () => {
   if (registerButton) registerButton.addEventListener("click", redirectToLogin);
 });
 
+// Ensure middle mouse clicks and left clicks work for links and buttons
+document.addEventListener("DOMContentLoaded", () => {
+  const linksAndButtons = document.querySelectorAll("a, button[data-href]");
+
+  linksAndButtons.forEach((element) => {
+    // Handle middle mouse clicks
+    element.addEventListener("auxclick", (event) => {
+      if (event.button === 1) {
+        // Middle mouse button
+        event.preventDefault();
+        const href =
+          element.tagName === "A"
+            ? element.href
+            : element.getAttribute("data-href");
+        if (href) {
+          window.open(href, "_blank");
+        }
+      }
+    });
+
+    // Handle left clicks for buttons
+    if (element.tagName === "BUTTON" && element.hasAttribute("data-href")) {
+      element.addEventListener("click", () => {
+        const href = element.getAttribute("data-href");
+        if (href) {
+          window.location.href = href;
+        }
+      });
+    }
+  });
+});
+
 // Translations
 const translations = {
   de: {

@@ -1,0 +1,67 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-image: url('city.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: crosshair;
+    transition: transform 0.5s ease-in-out;
+    font-family: Arial, sans-serif;
+}
+
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+button {
+    font-size: 80px;
+    width: 500px;
+    height: 150px;
+    border-radius: 10px;
+    margin-right: 70px;
+    margin-bottom: 70px;
+    background-color: #2a00ffb7;
+    color: #ffffff;
+    border: none;
+    box-shadow: 0 0 50px #000000cc;
+    cursor: pointer;
+    transition: transform 0.1s ease-in-out, box-shadow 0.5s ease-in-out;
+}
+
+    button:hover {
+        background-color: #1a00ffb7;
+        transform: translateY(10px);
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+    }
+
+    button:active {
+        background-color: #33333359;
+    }
+
+.edit-button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: #2a00ffb2;
+    color: #ffffff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+    .edit-button img {
+        width: 40px;
+        height: 30px;
+    }
+
+    .edit-button:hover {
+        transform: translateY(5px);
+    }

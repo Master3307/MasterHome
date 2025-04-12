@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 10px; /* Added margin for a cleaner look */
+            background-image: url('city.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            cursor: crosshair;
+            transition: transform 0.5s ease-in-out;
+            font-family: Arial, sans-serif; /* General font style */
+            color: white; /* Changed font color to white */
+        }
+
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        button, input, select, textarea {
+            font-size: 18px;
+            margin: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: transform 0.1s ease-in-out, box-shadow 0.5s ease-in-out;
+            color: white; /* Changed font color to white */
+        }
+
+        button {
+            width: 150px;
+            height: 40px;
+            background-color: #2a00ffb7;
+            border: none;
+            box-shadow: 0 0 20px #000000cc;
+        }
+
+            button:hover {
+                background-color: #1a00ffb7;
+                transform: translateY(5px);
+                box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            }
+
+            button:active {
+                background-color: #33333359;
+            }
+
+        .edit-button {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: #2a00ffb2;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out, background-color 0.3s ease-in-out;
+        }
+
+            .edit-button img {
+                width: 20px;
+                height: 15px;
+            }
+
+            .edit-button:hover {
+                transform: translateY(3px);
+            }
+
+        input, select, textarea {
+            padding: 8px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        select {
+            width: 150px;
+        }
+
+        textarea {
+            width: 300px;
+            height: 100px;
+            margin: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h2>Edit Buttons</h2>
+
+    <label for="buttonId">Button ID (1-16): </label>
+    <input type="number" id="buttonId" min="1" max="16" required>
+
+    <label for="newText">New Text: </label>
+    <input type="text" id="newText" required>
+
+    <button onclick="updateButton()">Update Button</button>
+
+    <script>
+
+            function updateButton() {
+                const buttonId = document.getElementById('buttonId').value;
+                const newText = document.getElementById('newText').value;
+
+                // Check if the buttonId is within the valid range
+                if (buttonId >= 1 && buttonId <= 16) {
+                    // Check if window.opener is available
+                    if (window.opener) {
+                        // Send a message to shrug.html to update the corresponding button
+                        window.opener.postMessage({
+                            type: 'updateButton',
+                            buttonId: buttonId,
+                            newText: newText
+                        }, window.location.origin);
+
+                        alert(`Button ${buttonId} updated with text: ${newText}`);
+                    } else {
+                        alert('Error: Unable to access the parent window. Please open edit.html after opening shrug.html.');
+                    }
+                } else {
+                    alert('Invalid Button ID. Please enter a number between 1 and 16.');
+                }
+            }
+
+    </script>
+
+</body>
+</html>
