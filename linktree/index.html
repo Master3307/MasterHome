@@ -23,6 +23,11 @@
     <script src="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2"></script>
     <script src="../assets/script.js"></script>
     <link rel="icon" href="../assets/MT.png" type="image/png" />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; img-src 'self' data:; script-src 'self'; style-src 'self'; frame-ancestors 'none';"
+    />
   </head>
   <header class="header">
     <a href="..\" class="close-button">
@@ -94,6 +99,14 @@
             <i class="fab fa-spotify"></i> Spotify - My favorite Music
           </button>
         </li>
+        <li class="tile">
+          <button
+            class="link-button"
+            onclick="window.open('https://www.github.com/master3307/', '_blank')"
+          >
+            <i class="fab fa-github"></i> GitHub - My GitHub Profile
+          </button>
+        </li>
       </ul>
       <br />
       <br />
@@ -121,6 +134,14 @@
             onclick="window.open('https://laby.net/@Master3307', '_blank')"
           >
             <i class="fas fa-user"></i> LabyMod - My LabyMod Profile
+          </button>
+        </li>
+        <li class="tile">
+          <button
+            class="link-button"
+            onclick="window.open('https://www.linktr.ee/master3307/', '_blank')"
+          >
+            <i class=""></i> Linktree - My old Linktree
           </button>
         </li>
       </ul>
