@@ -69,6 +69,7 @@ footer {
   cursor: pointer;
   box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3), 0 0 25px rgba(255, 0, 0, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  user-select: none; /* Prevent text selection */
 }
 
 .button:hover {
@@ -288,6 +289,7 @@ a:hover {
   width: 250px; /* Fixed button width */
   aspect-ratio: 3 / 2; /* Maintain aspect ratio */
   margin: 0 auto; /* Center buttons */
+  user-select: none; /* Prevent text selection */
 }
 
 /* Remove unnecessary adjustments for smaller screens */
@@ -338,6 +340,7 @@ a:hover {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   letter-spacing: 0.5px; /* Keep slight spacing for readability */
   /* Removed text-transform: uppercase */
+  user-select: none; /* Prevent text selection */
 }
 
 .link-button i {

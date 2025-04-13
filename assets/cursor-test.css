@@ -46,6 +46,7 @@ h2 {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: inherit; /* Inherit the cursor style from the parent */
+  user-select: none; /* Prevent text selection */
 }
 
 .hover-area:hover {
@@ -436,6 +437,7 @@ h2 {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   cursor: inherit; /* Ensure the cursor style is inherited and not overridden */
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  user-select: none; /* Prevent text selection */
 }
 
 .color-box:hover {
@@ -453,6 +455,7 @@ h2 {
   background: linear-gradient(to right, #ffffff, #ffffff 10%, #000000 90%, #000000); /* Add solid white and black */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   cursor: inherit; /* Ensure the cursor style is inherited and not overridden */
+  user-select: none; /* Prevent text selection */
 }
 
 .gradient-box:hover {
@@ -496,6 +499,7 @@ h2 {
   text-decoration: none;
   cursor: pointer;
   transition: color 0.3s ease;
+  user-select: none; /* Prevent text selection */
 }
 
 .close-button:hover {
