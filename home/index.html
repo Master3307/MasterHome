@@ -9,8 +9,8 @@
     <style>
       .button-container {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 1rem;
+        grid-template-columns: repeat(auto-fit, minmax(275px, 1fr)); /* Slightly increased min width */
+        gap: 1.5rem; /* Keep the gap consistent */
         justify-items: center;
       }
       .button-item {
@@ -19,7 +19,9 @@
       }
       .button {
         width: 100%;
-        max-width: 150px;
+        max-width: 275px; /* Keep max width consistent */
+        padding: 0.5rem; /* Further increased padding for taller buttons */
+        font-size: 1.1rem; /* Keep font size consistent */
       }
       .button-image {
         width: 100%;
