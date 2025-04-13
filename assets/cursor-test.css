@@ -1,0 +1,503 @@
+/* General Styles */
+body {
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+  color: #e4e4e7;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+h1 {
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 2rem;
+}
+
+h2 {
+  margin: 0;
+  font-size: 1rem;
+  color: #ffffff;
+}
+
+/* Cursor Container */
+.cursor-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Hoverable Area Styles */
+.hover-area {
+  width: 300px; /* Wider button */
+  height: 60px; /* Fat button height */
+  margin: 10px;
+  display: flex;
+  justify-content: space-between; /* Space between label and cursor preview */
+  align-items: center;
+  padding: 0 20px; /* Add padding for spacing */
+  border-radius: 10px;
+  background: linear-gradient(135deg, #3a3a3a, #4a4a4a);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: inherit; /* Inherit the cursor style from the parent */
+}
+
+.hover-area:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(135deg, #4a4a4a, #5a5a5a);
+}
+
+.hover-area h2 {
+  margin: 0;
+  font-size: 1rem;
+  color: #ffffff;
+}
+
+.cursor-preview {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  color: #ffffff;
+  pointer-events: none; /* Prevent interaction with the cursor preview */
+  cursor: inherit; /* Ensure the cursor style is inherited and not overridden */
+}
+
+.hover-area.active {
+  border: 2px solid #ff4d4d; /* Add a red border to highlight the active area */
+  box-shadow: 0 0 10px rgba(255, 77, 77, 0.8); /* Add a glowing effect */
+  transform: scale(1.05); /* Slightly enlarge the active area */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth transition */
+}
+
+/* Cursor Types */
+#auto {
+  cursor: auto;
+}
+
+#auto .cursor-preview {
+  cursor: auto;
+}
+
+#none {
+  cursor: none;
+}
+
+#none .cursor-preview {
+  cursor: none;
+}
+
+#pointer {
+  cursor: pointer;
+}
+
+#pointer .cursor-preview {
+  cursor: pointer;
+}
+
+#hand {
+  cursor: pointer;
+}
+
+#hand .cursor-preview {
+  cursor: pointer;
+}
+
+#crosshair {
+  cursor: crosshair;
+}
+
+#crosshair .cursor-preview {
+  cursor: crosshair;
+}
+
+#move {
+  cursor: move;
+}
+
+#move .cursor-preview {
+  cursor: move;
+}
+
+#wait {
+  cursor: wait;
+}
+
+#wait .cursor-preview {
+  cursor: wait;
+}
+
+#help {
+  cursor: help;
+}
+
+#help .cursor-preview {
+  cursor: help;
+}
+
+#text {
+  cursor: text;
+}
+
+#text .cursor-preview {
+  cursor: text;
+}
+
+#e-resize {
+  cursor: e-resize;
+}
+
+#e-resize .cursor-preview {
+  cursor: e-resize;
+}
+
+#ne-resize {
+  cursor: ne-resize;
+}
+
+#ne-resize .cursor-preview {
+  cursor: ne-resize;
+}
+
+#nw-resize {
+  cursor: nw-resize;
+}
+
+#nw-resize .cursor-preview {
+  cursor: nw-resize;
+}
+
+#n-resize {
+  cursor: n-resize;
+}
+
+#n-resize .cursor-preview {
+  cursor: n-resize;
+}
+
+#se-resize {
+  cursor: se-resize;
+}
+
+#se-resize .cursor-preview {
+  cursor: se-resize;
+}
+
+#sw-resize {
+  cursor: sw-resize;
+}
+
+#sw-resize .cursor-preview {
+  cursor: sw-resize;
+}
+
+#s-resize {
+  cursor: s-resize;
+}
+
+#s-resize .cursor-preview {
+  cursor: s-resize;
+}
+
+#w-resize {
+  cursor: w-resize;
+}
+
+#w-resize .cursor-preview {
+  cursor: w-resize;
+}
+
+#ew-resize {
+  cursor: ew-resize;
+}
+
+#ew-resize .cursor-preview {
+  cursor: ew-resize;
+}
+
+#ns-resize {
+  cursor: ns-resize;
+}
+
+#ns-resize .cursor-preview {
+  cursor: ns-resize;
+}
+
+#nesw-resize {
+  cursor: nesw-resize;
+}
+
+#nesw-resize .cursor-preview {
+  cursor: nesw-resize;
+}
+
+#nwse-resize {
+  cursor: nwse-resize;
+}
+
+#nwse-resize .cursor-preview {
+  cursor: nwse-resize;
+}
+
+#default {
+  cursor: default;
+}
+
+#default .cursor-preview {
+  cursor: default;
+}
+
+#url {
+  cursor: url("Cursor.ico"), auto;
+}
+
+#url .cursor-preview {
+  cursor: url("Cursor.ico"), auto;
+}
+
+#copy {
+  cursor: copy;
+}
+
+#copy .cursor-preview {
+  cursor: copy;
+}
+
+#alias {
+  cursor: alias;
+}
+
+#alias .cursor-preview {
+  cursor: alias;
+}
+
+#context-menu {
+  cursor: context-menu;
+}
+
+#context-menu .cursor-preview {
+  cursor: context-menu;
+}
+
+#cell {
+  cursor: cell;
+}
+
+#cell .cursor-preview {
+  cursor: cell;
+}
+
+#grab {
+  cursor: grab;
+}
+
+#grab .cursor-preview {
+  cursor: grab;
+}
+
+#grabbing {
+  cursor: grabbing;
+}
+
+#grabbing .cursor-preview {
+  cursor: grabbing;
+}
+
+#progress {
+  cursor: progress;
+}
+
+#progress .cursor-preview {
+  cursor: progress;
+}
+
+#vertical-text {
+  cursor: vertical-text;
+}
+
+#vertical-text .cursor-preview {
+  cursor: vertical-text;
+}
+
+#no-drop {
+  cursor: no-drop;
+}
+
+#no-drop .cursor-preview {
+  cursor: no-drop;
+}
+
+#not-allowed {
+  cursor: not-allowed;
+}
+
+#not-allowed .cursor-preview {
+  cursor: not-allowed;
+}
+
+#col-resize {
+  cursor: col-resize;
+}
+
+#col-resize .cursor-preview {
+  cursor: col-resize;
+}
+
+#row-resize {
+  cursor: row-resize;
+}
+
+#row-resize .cursor-preview {
+  cursor: row-resize;
+}
+
+#all-scroll {
+  cursor: all-scroll;
+}
+
+#all-scroll .cursor-preview {
+  cursor: all-scroll;
+}
+
+#zoom-in {
+  cursor: zoom-in;
+}
+
+#zoom-in .cursor-preview {
+  cursor: zoom-in;
+}
+
+#zoom-out {
+  cursor: zoom-out;
+}
+
+#zoom-out .cursor-preview {
+  cursor: zoom-out;
+}
+
+/* Test Surfaces */
+.test-surfaces {
+  display: flex;
+  gap: 15px; /* Increase gap for better spacing */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  margin-top: 0; /* Remove extra margin */
+}
+
+.white-surface,
+.black-surface {
+  width: 50px; /* Larger size for better visibility */
+  height: 50px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.white-surface {
+  background: #ffffff;
+  border: 1px solid #cccccc;
+}
+
+.black-surface {
+  background: #000000;
+  border: 1px solid #333333;
+}
+
+/* Lock Icon Styles */
+.locked-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #ff4d4d;
+  font-size: 1.2rem;
+  z-index: 10;
+}
+
+/* Color Palette */
+.color-palette {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.color-box {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  cursor: inherit; /* Ensure the cursor style is inherited and not overridden */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.color-box:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Gradient Box */
+.gradient-box {
+  width: 100%;
+  max-width: 500px; /* Extend the width */
+  height: 50px; /* Same height as color boxes */
+  margin: 20px auto; /* Center and add spacing */
+  border-radius: 5px;
+  background: linear-gradient(to right, #ffffff, #ffffff 10%, #000000 90%, #000000); /* Add solid white and black */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  cursor: inherit; /* Ensure the cursor style is inherited and not overridden */
+}
+
+.gradient-box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Merged Color Palette */
+.merged-color-palette {
+  display: flex;
+  width: 100%;
+  max-width: 400px; /* Limit the width */
+  height: 50px; /* Same height as individual color boxes */
+  margin: 20px auto; /* Center and add spacing */
+  border-radius: 5px; /* Match the gradient box's rounded corners */
+  overflow: hidden; /* Ensure sections stay within rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.color-section {
+  flex: 1; /* Ensure all sections are equal width */
+  height: 100%;
+  cursor: inherit; /* Ensure the cursor style is not affected */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.color-section:hover {
+  transform: scale(1.05); /* Slightly enlarge on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Close Button Styles */
+.close-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: none;
+  border: none;
+  color: #ff4d4d; /* Red color for the button */
+  font-size: 48px; /* Large size for visibility */
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-button:hover {
+  color: #ff1a1a; /* Darker red on hover */
+}

@@ -293,7 +293,10 @@ a:hover {
 /* Remove unnecessary adjustments for smaller screens */
 @media (max-width: 480px) {
   .button-container {
-    grid-template-columns: repeat(auto-fill, 250px); /* Keep fixed button size */
+    grid-template-columns: repeat(
+      auto-fill,
+      250px
+    ); /* Keep fixed button size */
     justify-content: center; /* Center the grid */
   }
 }
