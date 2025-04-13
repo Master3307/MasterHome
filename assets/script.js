@@ -332,9 +332,109 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// Function to fetch and display assets
+async function fetchAssets() {
+  try {
+    // Simulate fetching assets (replace with actual backend API if available)
+    const assets = [
+      "image1.jpg",
+      "image2.png",
+      "image3.gif",
+      "document.pdf",
+      "video.mp4",
+    ];
+    const images = assets.filter((file) =>
+      /\.(jpg|jpeg|png|gif|svg)$/i.test(file)
+    );
+    initializeViewer(images);
+  } catch (error) {
+    console.error("Error fetching assets:", error);
+  }
+}
+
+// Function to initialize the image viewer
+function initializeViewer(images) {
+  let currentIndex = 0;
+
+  function updateImage() {
+    const imgElement = document.getElementById("current-image");
+    if (images.length > 0) {
+      imgElement.src = images[currentIndex];
+      imgElement.alt = `Asset ${currentIndex + 1}`;
+    } else {
+      imgElement.src = "";
+      imgElement.alt = "No assets available";
+    }
+  }
+
+  function prevImage() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    updateImage();
+  }
+
+  function nextImage() {
+    currentIndex = (currentIndex + 1) % images.length;
+    updateImage();
+  }
+
+  function populateAssetList() {
+    const listElement = document.getElementById("asset-list");
+    listElement.innerHTML = ""; // Clear existing list
+    images.forEach((image, index) => {
+      const listItem = document.createElement("li");
+      listItem.textContent = image;
+      listItem.addEventListener("click", () => {
+        currentIndex = index;
+        updateImage();
+      });
+      listElement.appendChild(listItem);
+    });
+  }
+
+  document.querySelector(".prev").addEventListener("click", prevImage);
+  document.querySelector(".next").addEventListener("click", nextImage);
+
+  populateAssetList();
+  updateImage();
+}
+
+// Fetch assets on page load
+document.addEventListener("DOMContentLoaded", fetchAssets);
+
 // Include Bootstrap JS
 import "./bootstrap.js";
 import React from "react";
 import ReactDOM from "react-dom";
 import "@phosphor-icons/web/light";
 import "@phosphor-icons/web/bold";
+
+const images = [
+  "image1.jpg",
+  "image2.png",
+  "image3.gif",
+  // Add all image filenames here
+];
+
+let currentIndex = 0;
+
+function updateImage() {
+  const imgElement = document.getElementById("current-image");
+  imgElement.src = images[currentIndex];
+  imgElement.alt = `Asset ${currentIndex + 1}`;
+}
+
+function prevImage() {
+  currentIndex = (currentIndex - 1 + images.length) % images.length;
+  updateImage();
+}
+
+function nextImage() {
+  currentIndex = (currentIndex + 1) % images.length;
+  updateImage();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("prev-button").addEventListener("click", prevImage);
+  document.getElementById("next-button").addEventListener("click", nextImage);
+  updateImage();
+});

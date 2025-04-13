@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Assets Viewer</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+    <link rel="icon" href="../assets/MT.png" type="image/png" />
+  </head>
+  <body>
+    <header class="header">
+      <a href=".." class="close-button">
+        <i class="fas fa-times"></i>
+      </a>
+      <h1>Assets Viewer</h1>
+    </header>
+    <main class="viewer-container">
+      <div class="image-viewer">
+        <button id="prev-arrow" class="nav-arrow">&#9664;</button>
+        <div class="image-container">
+          <img id="current-image" src="" alt="Asset" />
+        </div>
+        <button id="next-arrow" class="nav-arrow">&#9654;</button>
+      </div>
+      <div class="button-container" id="button-container">
+        <!-- Buttons will be dynamically populated -->
+      </div>
+    </main>
+    <script>
+      const images = [
+        "MasterTech.png",
+        "MasterTechLightTrans.png",
+        "MT.png",
+        "MT-Trans.png",
+        "MT-Light-Trans.png",
+        "MT-Light.png",
+        "Master_pfp.png",
+        "M437.png",
+        "channels4_banner.jpg",
+        "cool-cat.png",
+        "city.png",
+        "twitch-bg.png",
+        "giphy.gif",
+        "quellen.png",
+        "Linktree.png",
+        "Shrug.png",
+        "CursorTest.png",
+        "Assets.png",
+      ];
+      let currentIndex = 0;
+
+      function populateButtons() {
+        const buttonContainer = document.getElementById("button-container");
+        buttonContainer.innerHTML = ""; // Clear existing buttons
+        images.forEach((image) => {
+          const button = document.createElement("button");
+          button.className = "nav-button";
+          button.onclick = () => showImage(image);
+
+          const imgPreview = document.createElement("img");
+          imgPreview.src = image;
+          imgPreview.alt = `Preview of ${image}`;
+          imgPreview.className = "button-preview";
+
+          const span = document.createElement("span");
+          span.textContent = image;
+
+          button.appendChild(imgPreview);
+          button.appendChild(span);
+          buttonContainer.appendChild(button);
+        });
+      }
+
+      function showImage(imageSrc) {
+        const imgElement = document.getElementById("current-image");
+        imgElement.src = imageSrc;
+        imgElement.alt = `Asset: ${imageSrc}`;
+      }
+
+      function updateImage(index) {
+        currentIndex = (index + images.length) % images.length;
+        showImage(images[currentIndex]);
+      }
+
+      document.getElementById("prev-arrow").addEventListener("click", () => {
+        updateImage(currentIndex - 1);
+      });
+
+      document.getElementById("next-arrow").addEventListener("click", () => {
+        updateImage(currentIndex + 1);
+      });
+
+      // Add swipe functionality for mobile
+      const imageViewer = document.querySelector(".image-viewer");
+      const hammer = new Hammer(imageViewer);
+      hammer.on("swipeleft", () => updateImage(currentIndex + 1));
+      hammer.on("swiperight", () => updateImage(currentIndex - 1));
+
+      // Add keyboard navigation
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowLeft") {
+          updateImage(currentIndex - 1);
+        } else if (event.key === "ArrowRight") {
+          updateImage(currentIndex + 1);
+        }
+      });
+
+      function toggleZoom() {
+        const imgElement = document.getElementById("current-image");
+        if (imgElement.style.transform === "scale(2)") {
+          imgElement.style.transform = "scale(1)";
+          imgElement.style.cursor = "zoom-in";
+        } else {
+          imgElement.style.transform = "scale(2)";
+          imgElement.style.cursor = "zoom-out";
+        }
+      }
+
+      document
+        .getElementById("current-image")
+        .addEventListener("click", toggleZoom);
+
+      // Populate buttons on page load
+      document.addEventListener("DOMContentLoaded", () => {
+        populateButtons();
+        if (images.length > 0) {
+          showImage(images[0]);
+        }
+      });
+    </script>
+  </body>
+</html>
