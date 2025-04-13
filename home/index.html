@@ -6,6 +6,26 @@
     <title>Home - Master3307</title>
     <link rel="stylesheet" href="../assets/styles.css" />
     <link rel="icon" href="../assets/MT.png" type="image/png" />
+    <style>
+      .button-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+        justify-items: center;
+      }
+      .button-item {
+        width: 100%;
+        text-align: center;
+      }
+      .button {
+        width: 100%;
+        max-width: 150px;
+      }
+      .button-image {
+        width: 100%;
+        height: auto;
+      }
+    </style>
   </head>
 
   <body>
@@ -28,7 +48,6 @@
         <br />
       </section>
       <section class="button-container">
-        <br />
         <div class="button-item">
           <button
             class="button"
@@ -42,7 +61,6 @@
             <span class="button-text">Master-Tech-Services</span>
           </button>
         </div>
-        <br />
         <div class="button-item">
           <button class="button" onclick="location.href='../quellen/'">
             <img
@@ -53,7 +71,6 @@
             <span class="button-text">Sources</span>
           </button>
         </div>
-        <br />
         <div class="button-item">
           <button class="button" onclick="location.href='../linktree/'">
             <img
@@ -64,14 +81,12 @@
             <span class="button-text">Linktree</span>
           </button>
         </div>
-        <br />
         <div class="button-item">
           <button class="button" onclick="location.href='../shrug/shrug.html'">
             <img src="../assets/Shrug.png" alt="Shrug" class="button-image" />
             <span class="button-text">Shrug (Old Project)</span>
           </button>
         </div>
-        <br />
         <div class="button-item">
           <button class="button" onclick="location.href='../cursor-test/'">
             <img
@@ -82,7 +97,6 @@
             <span class="button-text">Cursor Test</span>
           </button>
         </div>
-        <br />
         <div class="button-item">
           <button class="button" onclick="location.href='../assets/'">
             <img
