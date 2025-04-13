@@ -267,12 +267,12 @@ a:hover {
 
 /* Button Container Styles */
 .button-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2.5rem; /* Increase gap to prevent overlap */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 250px); /* Fixed button size */
+  gap: 2rem; /* Maintain consistent gap between buttons */
   justify-content: center;
-  align-items: flex-start; /* Align items to the top */
-  margin: 3rem 0; /* Add more margin for spacing */
+  align-items: flex-start;
+  margin: 3rem 0;
 }
 
 .button-item {
@@ -280,26 +280,21 @@ a:hover {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  flex: 1 1 450px; /* Ensure each button item takes up enough space */
-  max-width: 450px; /* Match the button width */
-  gap: 1rem; /* Add spacing between the header and button */
+  max-width: 100%; /* Ensure buttons fit within their container */
+  gap: 1rem;
 }
 
-@media (max-width: 1200px) {
-  .button-item {
-    flex: 1 1 calc(50% - 2.5rem); /* 2 items per row */
-  }
+.button {
+  width: 250px; /* Fixed button width */
+  aspect-ratio: 3 / 2; /* Maintain aspect ratio */
+  margin: 0 auto; /* Center buttons */
 }
 
-@media (max-width: 768px) {
-  .button-item {
-    flex: 1 1 calc(100% - 2.5rem); /* 1 item per row */
-  }
-}
-
+/* Remove unnecessary adjustments for smaller screens */
 @media (max-width: 480px) {
-  .button-item {
-    flex: 1 1 100%; /* 1 item per row */
+  .button-container {
+    grid-template-columns: repeat(auto-fill, 250px); /* Keep fixed button size */
+    justify-content: center; /* Center the grid */
   }
 }
 
