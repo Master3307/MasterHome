@@ -193,21 +193,16 @@ a:hover {
 }
 
 .tile {
-  background: linear-gradient(135deg, #2a2a2a, #3a3a3a);
-  border: 1px solid #4a4a4a;
-  border-radius: 12px;
-  padding: 10px; /* Reduced padding */
-  text-align: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
-  max-width: fit-content; /* Adjust width to fit content */
+  display: flex;
+  justify-content: center; /* Center the button inside the tile */
+  align-items: center; /* Vertically center the button */
+  padding: 0; /* Remove padding */
   margin: 10px auto; /* Center the tiles and add spacing */
-}
-
-.tile:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
-  background: linear-gradient(135deg, #3a3a3a, #4a4a4a);
+  width: 100%; /* Ensure tiles take the full width of the collapsible */
+  max-width: 400px; /* Set a maximum width for consistency */
+  background: none; /* Remove background */
+  border: none; /* Remove border */
+  box-shadow: none; /* Remove shadow */
 }
 
 .tile a {
@@ -307,9 +302,10 @@ a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  min-height: 100vh; /* Center content vertically */
+  justify-content: flex-start; /* Align content closer to the top */
+  min-height: 80vh; /* Reduce vertical height to move content up */
   text-align: center;
+  margin-top: 40px; /* Move the entire container up */
 }
 
 .profile-picture {
@@ -322,10 +318,15 @@ a:hover {
   margin-bottom: 20px; /* Add spacing below the image */
 }
 
+.profile {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
 .link-button {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start; /* Align content to the left */
   gap: 10px;
   padding: 12px 24px;
   font-family: "Inter", sans-serif;
@@ -339,12 +340,15 @@ a:hover {
   transition: all 0.3s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   letter-spacing: 0.5px; /* Keep slight spacing for readability */
-  /* Removed text-transform: uppercase */
   user-select: none; /* Prevent text selection */
+  width: 600px; /* Ensure all buttons take the full width of their container */
+  max-width: 400px; /* Set a maximum width for consistency */
+  box-sizing: border-box; /* Include padding in width calculation */
 }
 
 .link-button i {
-  font-size: 20px;
+  font-size: 25px; /* Increased by 5% from 20px */
+  flex-shrink: 0; /* Prevent the icon from shrinking */
 }
 
 .link-button:hover {
@@ -367,11 +371,170 @@ a:hover {
   outline-offset: 2px;
 }
 
-.banner-header {
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-  margin-bottom: 20px;
+/* Twitch Button */
+.link-button.twitch {
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.link-button.twitch:hover {
+  background: none;
+}
+
+/* Discord Button */
+.link-button.discord {
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.link-button.discord:hover {
+  background: none;
+}
+
+/* Steam Button */
+.link-button.steam {
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.link-button.steam:hover {
+  background: none;
+}
+
+/* YouTube Button */
+.link-button.youtube {
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.link-button.youtube:hover {
+  background: none;
+}
+
+/* Spotify Button */
+.link-button.spotify {
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.link-button.spotify:hover {
+  background: none;
+}
+
+/* GitHub Button */
+.link-button.github {
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.link-button.github:hover {
+  background: none;
+}
+
+/* Reddit Button */
+.link-button.reddit {
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.link-button.reddit:hover {
+  background: none;
+}
+
+/* BlockTanks Button */
+.link-button.blocktanks {
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.link-button.blocktanks:hover {
+  background: none;
+}
+
+/* Icon Colors */
+.link-button.twitch i {
+  color: #9146ff; /* Twitch purple */
+}
+
+.link-button.discord i {
+  color: #5865f2; /* Discord blue */
+}
+
+.link-button.steam i {
+  color: #111111; /* Steam dark gray */
+}
+
+.link-button.youtube i {
+  color: #ff0000; /* YouTube red */
+}
+
+.link-button.spotify i {
+  color: #1db954; /* Spotify green */
+}
+
+.link-button.github i {
+  color: #111111; /* GitHub dark gray */
+}
+
+.link-button.reddit i {
+  color: #ff4500; /* Reddit orange */
+}
+
+.link-button.blocktanks i {
+  color: #6e6e6e; /* Neutral gray for BlockTanks */
+}
+
+.link-button.epicgames i {
+  color: #6b6b6b; /* Epic Games dark gray */
+}
+
+.link-button.labymod i {
+  color: #ffcc00; /* LabyMod yellow */
+}
+
+.link-button.linktree i {
+  color: #39e09b; /* Linktree green */
+}
+
+.link-button.wakatime i {
+  color: #563d7c; /* WakaTime purple */
+}
+
+.link-button.aniworld i {
+  color: #ff6f61; /* AniWorld coral */
+}
+
+.link-button.lastfm i {
+  color: #d51007; /* Last.fm red */
+}
+
+.link-button.nexusmods i {
+  color: #f88c00; /* Nexus Mods orange */
+}
+
+.link-button.duolingo i {
+  color: #58cc02; /* Duolingo green */
+}
+
+.link-button.crazygames i {
+  color: #7c19b6; /* CrazyGames blue */
+}
+
+.link-button.epicgames i {
+  color: #6b6b6b;
+}
+
+/* Newgrounds Button */
+.link-button.newgrounds i {
+  color: #ffae00; /* Newgrounds yellow */
 }
 
 .banner-image {
@@ -539,4 +702,142 @@ a:hover {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+/* Collapsible Section Styles */
+.collapsible-container {
+  display: flex; /* Ensure collapsibles are in a single line */
+  flex-wrap: wrap; /* Allow wrapping if the screen is too small */
+  gap: 20px; /* Maintain spacing between collapsibles */
+  justify-content: center; /* Center the collapsibles */
+  align-items: flex-start; /* Align collapsibles at the top */
+  position: relative; /* Allow dynamic height adjustment */
+}
+
+.collapsible {
+  width: 400px; /* Fixed width for headers and links */
+  position: relative; /* Ensure the header stays in place */
+}
+
+@media (max-width: 768px) {
+  .collapsible-container {
+    /* Remove the flex-direction change that stacks collapsibles */
+    /* flex-direction: column; */
+  }
+}
+
+.collapsible {
+  margin-bottom: 20px;
+}
+
+.collapsible-header {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, #2a2a2a, #3a3a3a);
+  padding: 15px 20px;
+  border-radius: 8px;
+  color: #e4e4e7;
+  font-size: 18px;
+  font-weight: bold;
+  transition: background 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  user-select: none; /* Prevent text selection */
+}
+
+.collapsible-header:hover {
+  background: linear-gradient(135deg, #3a3a3a, #4a4a4a);
+}
+
+.arrow {
+  margin-left: 10px;
+  font-size: 16px;
+  transition: transform 0.3s ease;
+}
+
+.collapsible-content {
+  max-height: 0; /* Start with no height */
+  overflow: hidden; /* Hide content when collapsed */
+  transition: max-height 0.3s ease-out; /* Smooth transition for height */
+  width: auto; /* Adjust width dynamically to fit content */
+  position: relative; /* Ensure content expansion affects container height */
+  padding: 0; /* Remove padding when collapsed */
+  background: none; /* Remove background */
+  box-shadow: none; /* Remove shadow */
+}
+
+.collapsible-content.open {
+  max-height: 1000px; /* Large enough to fit all content */
+  padding: 10px 0; /* Add padding when expanded */
+  width: 100%; /* Ensure content width matches the container */
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+  .linktree-container {
+    padding: 0 15px; /* Add consistent padding on left and right */
+  }
+
+  .collapsible {
+    width: calc(100% - 30px); /* Account for padding */
+    margin: 0 auto; /* Center collapsibles */
+  }
+
+  .link-button {
+    width: calc(100% - 30px); /* Ensure buttons fit within the container */
+    max-width: none; /* Remove max-width restriction */
+    font-size: 14px; /* Adjust font size for smaller screens */
+    padding: 10px 15px; /* Adjust padding for better fit */
+    margin: 0 auto; /* Center buttons */
+  }
+
+  .profile-picture {
+    width: 90px; /* Reduce size for smaller screens */
+    height: 90px;
+  }
+
+  .profile-name {
+    font-size: 1.5rem; /* Adjust font size */
+  }
+
+  .profile-bio {
+    font-size: 1rem; /* Adjust font size */
+  }
+
+  .collapsible-header {
+    font-size: 16px; /* Adjust header font size */
+    padding: 10px 15px; /* Adjust padding */
+  }
+}
+
+@media (max-width: 480px) {
+  .linktree-container {
+    padding: 0 10px; /* Reduce padding for very small screens */
+  }
+
+  .link-button {
+    width: calc(100% - 20px); /* Ensure buttons fit within the container */
+    font-size: 12px; /* Further reduce font size */
+    padding: 8px 12px; /* Adjust padding */
+    margin: 0 auto; /* Center buttons */
+  }
+
+  .profile-picture {
+    width: 75px; /* Further reduce size */
+    height: 75px;
+  }
+
+  .profile-name {
+    font-size: 1.2rem; /* Further adjust font size */
+  }
+
+  .profile-bio {
+    font-size: 0.9rem; /* Further adjust font size */
+  }
+
+  .collapsible-header {
+    font-size: 14px; /* Further adjust header font size */
+    padding: 8px 10px; /* Further adjust padding */
+  }
 }

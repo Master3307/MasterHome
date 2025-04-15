@@ -233,6 +233,24 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// Add functionality to allow middle mouse clicks on links to open them in a new tab
+document.addEventListener("DOMContentLoaded", () => {
+  const links = document.querySelectorAll("a");
+
+  links.forEach((link) => {
+    link.addEventListener("auxclick", (event) => {
+      if (event.button === 1) {
+        // Middle mouse button
+        event.preventDefault();
+        const href = link.getAttribute("href");
+        if (href) {
+          window.open(href, "_blank");
+        }
+      }
+    });
+  });
+});
+
 // Translations
 const translations = {
   de: {
@@ -438,3 +456,68 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("next-button").addEventListener("click", nextImage);
   updateImage();
 });
+
+document
+  .getElementById("upload-cursor")
+  .addEventListener("change", function () {
+    const file = this.files[0];
+    const fileName = file ? file.name : "No file chosen";
+    document.getElementById("file-name").textContent = fileName;
+
+    if (file) {
+      const fileURL = URL.createObjectURL(file);
+      const validExtensions = [".cur", ".ani", ".png", ".gif"];
+      const fileExtension = fileName
+        .slice(fileName.lastIndexOf("."))
+        .toLowerCase();
+
+      if (validExtensions.includes(fileExtension)) {
+        if (fileExtension === ".cur" || fileExtension === ".ani") {
+          // Apply .cur and .ani files directly
+          document.body.style.cursor = `url(${fileURL}), auto`;
+        } else {
+          // Handle .png and .gif files with proper scaling
+          const img = new Image();
+          img.onload = () => {
+            const hotspotX = Math.min(img.width / 2, 32); // Limit hotspot to 32px
+            const hotspotY = Math.min(img.height / 2, 32); // Limit hotspot to 32px
+            document.body.style.cursor = `url(${fileURL}) ${hotspotX} ${hotspotY}, auto`;
+          };
+          img.src = fileURL;
+        }
+      } else {
+        alert(
+          "Unsupported file type. Please upload a .cur, .ani, .png, or .gif file."
+        );
+        document.body.style.cursor = "default";
+      }
+    }
+  });
+
+// Function to toggle collapsible sections
+function toggleCollapsible(header) {
+  const content = header.nextElementSibling;
+  const arrow = header.querySelector(".arrow");
+  const container = header.closest(".collapsible-container");
+
+  if (content.style.maxHeight) {
+    // If already open, collapse it
+    content.style.maxHeight = null;
+    content.classList.remove("open");
+    arrow.classList.remove("fa-chevron-down");
+    arrow.classList.add("fa-chevron-right");
+  } else {
+    // If closed, expand it
+    content.style.maxHeight = content.scrollHeight + "px";
+    content.classList.add("open");
+    arrow.classList.remove("fa-chevron-right");
+    arrow.classList.add("fa-chevron-down");
+  }
+
+  // Dynamically adjust the height of the container
+  const totalHeight = Array.from(container.children).reduce((height, child) => {
+    const childContent = child.querySelector(".collapsible-content");
+    return height + (childContent && childContent.style.maxHeight ? childContent.scrollHeight : 0);
+  }, 0);
+  container.style.height = `${totalHeight}px`;
+}
