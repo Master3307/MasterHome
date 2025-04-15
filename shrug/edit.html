@@ -111,6 +111,12 @@
                 const buttonId = document.getElementById('buttonId').value;
                 const newText = document.getElementById('newText').value;
 
+                // Validate input fields
+                if (!buttonId || !newText.trim()) {
+                    alert('Please fill in both fields.');
+                    return;
+                }
+
                 // Check if the buttonId is within the valid range
                 if (buttonId >= 1 && buttonId <= 16) {
                     // Check if window.opener is available
@@ -122,7 +128,7 @@
                             newText: newText
                         }, window.location.origin);
 
-                        alert(`Button ${buttonId} updated with text: ${newText}`);
+                        alert(`Button ${buttonId} updated successfully!`);
                     } else {
                         alert('Error: Unable to access the parent window. Please open edit.html after opening shrug.html.');
                     }

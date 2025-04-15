@@ -7,10 +7,10 @@
         body {
             background-color: black;
             color: aliceblue;
+            font-family: Arial, sans-serif;
         }
         .header {
             background-color: blueviolet;
-            color: blueviolet;
             text-align: center;
             padding: 10px;
             margin-bottom: 10px;
@@ -20,38 +20,43 @@
             background-color: rgb(64, 60, 68);
             color: rgb(255, 255, 255);
             text-align: center;
-            padding: 10px;
-            box-shadow: 1cm;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             border-radius: 10px;
         }
-        .pfp {
+        .pfp img {
             box-shadow: 0 0 50px #000000cc;
+            border-radius: 50%;
         }
         button {
             background-color: rgb(111, 0, 255);
             color: aliceblue;
             font-size: larger;
-
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
-      
+        button:hover {
+            background-color: rgb(90, 0, 200);
+        }
     </style>
   </head>
   <body>
     <div class="header">
         <div class="pfp">
-            <img src="Master3307_PFP.ico" width="60" height="60"/>
+            <img src="Master3307_PFP.ico" alt="Master3307 Profile Picture" width="60" height="60" />
         </div>
     </div>
     <div class="content">
-    <h1>This is Master3307</h1>
-    <p>
-      <h2>This is a Test.</h2> <br>I am a Professional
-      Web Developer. <br>I am a Web Developer. <br>
-      <b>This is Bold</b> <br>
-      <u>This is underlined</u> <br>
-      <i>This is italic</i> <br>
-    </p>
-    <button onclick=href="https://www.youtube.com/@master3307">Hello Master!</button>
+        <h1>This is Master3307</h1>
+        <h2>This is a Test</h2>
+        <p>I am a Professional Web Developer.</p>
+        <p><b>This is Bold</b></p>
+        <p><u>This is Underlined</u></p>
+        <p><i>This is Italic</i></p>
+        <button onclick="window.location.href='https://www.youtube.com/@master3307'">Hello Master!</button>
     </div>
   </body>
 </html>
