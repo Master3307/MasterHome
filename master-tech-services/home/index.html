@@ -1,88 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Home - Master Tech Service</title>
-    <link rel="stylesheet" type="text/css" href="../../assets/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    />
-    <script src="../../assets/script.js"></script>
-    <link rel="icon" href="../../assets/MT.png" type="image/png" />
-  </head>
-  <body class="dark-mode">
-    <div id="auth-buttons"></div>
-    <div id="header" class="dark-mode">
-      <div id="logo">
-        <a href="/master-tech-services/home/">
-          <img
-            src="../../assets/MasterTech.png"
-            alt="Master Tech Service Logo"
-          />
-        </a>
-      </div>
-      <nav>
-        <ul>
-          <li>
-            <a href="../home/" class="nav-link" id="home" data-lang="homeLink"
-              >Home</a
-            >
-          </li>
-          <li>
-            <a
-              href="../contact/"
-              class="nav-link"
-              id="contact"
-              data-lang="contactLink"
-              >Kontakt</a
-            >
-          </li>
-          <li>
-            <a href="../shop/" class="nav-link" id="shop" data-lang="shopLink"
-              >Shop</a
-            >
-          </li>
-          <li>
-            <a
-              href="../settings/"
-              class="nav-link"
-              id="settings"
-              data-lang="settingsLink"
-              >Einstellungen</a
-            >
-          </li>
-          <li>
-            <a
-              href="../about/"
-              class="nav-link"
-              id="about"
-              data-lang="aboutLink"
-              >About</a
-            >
-          </li>
-        </ul>
-      </nav>
-    </div>
-    <main>
-      <h1 data-lang="homeTitle">Willkommen bei MasterTech Services!</h1>
-      <div id="panel" class="panel dark-mode">
-        <h2 data-lang="servicesTitle">Unsere Dienstleistungen</h2>
-        <p data-lang="servicesDescription">
-          Wir bieten eine breite Palette von technischen Dienstleistungen an,
-          darunter:
-        </p>
-        <ul>
-          <li data-lang="service1">Computerreparatur</li>
-          <li data-lang="service2">Netzwerkeinrichtung</li>
-          <li data-lang="service3">Softwareinstallation</li>
-          <li data-lang="service4">Technischer Support</li>
-        </ul>
-      </div>
-      <footer class="footer">
-        <p>Made with <i class="fas fa-heart"></i> by Master3307</p>
-      </footer>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MasterTech Services</title>
+  <link rel="stylesheet" href="../../assets/styles.css">
+</head>
+<body class="master-tech-services">
+  <header>
+    <h1>Welcome to MasterTech Services</h1>
+    <p>Your one-stop shop for all tech solutions!</p>
+  </header>
+
+  <div style="display: flex;">
+    <aside style="width: 250px; background: #2a2a2a; padding: 20px; box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);">
+      <img src="../../assets/MasterTech.png" alt="MasterTech Services Banner" style="width: 100%; border-radius: 8px;">
+    </aside>
+    <main style="flex: 1; padding-left: 20px;">
+      <section>
+        <h2>Our Services</h2>
+        <div class="button-container">
+          <div class="button-item">
+            <button class="button">
+              <span class="button-text">Computer Repairs</span>
+              <img src="../../assets/computer-repair.jpg" alt="Computer Repairs" class="button-image">
+            </button>
+          </div>
+          <div class="button-item">
+            <button class="button">
+              <span class="button-text">Networking Solutions</span>
+              <img src="../../assets/networking.jpg" alt="Networking Solutions" class="button-image">
+            </button>
+          </div>
+          <div class="button-item">
+            <button class="button">
+              <span class="button-text">Custom Builds</span>
+              <img src="../../assets/custom-builds.jpg" alt="Custom Builds" class="button-image">
+            </button>
+          </div>
+        </div>
+      </section>
     </main>
-    <script src="script.js"></script>
-  </body>
+  </div>
+
+  <footer>
+    <p>&copy; 2023 MasterTech Services. All rights reserved.</p>
+  </footer>
+</body>
 </html>
