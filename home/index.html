@@ -13,7 +13,10 @@
     <style>
       .button-container {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(275px, 1fr)); /* Slightly increased min width */
+        grid-template-columns: repeat(
+          auto-fit,
+          minmax(275px, 1fr)
+        ); /* Slightly increased min width */
         gap: 1.5rem; /* Keep the gap consistent */
         justify-items: center;
       }
@@ -35,22 +38,30 @@
   </head>
 
   <body>
-    <header>
+    <header class="header">
       <h1>
         Welcome to MasterHome,<br />
         a place to be!
       </h1>
     </header>
     <main>
-      <section>
+      <section class="what">
+        <img src="../assets/M437.png" alt="Master-Tech-Logo" />
         <br />
         <br />
-        <h2>What is this?</h2>
-        <p>
-          What you see here is a collection of my projects all in one website or
-          just a link. <br />
-          Maybe I am going to put something else here too...
-        </p>
+        <div class="what-text">
+          <h2>
+            What is this? 
+          </h2>
+
+          <p>
+            Here, I present to you my little project ideas and prototypes. <br />
+            Also old Ideas and stuff. It is kind of like an archive. <br />
+            As you can see, there are already a few projects here! <br />
+            More coming soon! <br />
+            <br />
+          </p>
+        </div>
         <br />
       </section>
       <section class="button-container">

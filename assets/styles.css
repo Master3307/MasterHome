@@ -12,7 +12,7 @@ body {
   font-family: "Inter", sans-serif;
   margin: 0;
   padding: 0;
-  background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+  background: #272727;
   color: #e4e4e7;
   transition: background 0.3s ease, color 0.3s ease;
 }
@@ -69,6 +69,7 @@ footer {
   cursor: pointer;
   box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3), 0 0 25px rgba(255, 0, 0, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  -webkit-user-select: none; /* Prevent text selection for Safari */
   user-select: none; /* Prevent text selection */
 }
 
@@ -284,6 +285,7 @@ a:hover {
   width: 250px; /* Fixed button width */
   aspect-ratio: 3 / 2; /* Maintain aspect ratio */
   margin: 0 auto; /* Center buttons */
+  -webkit-user-select: none; /* Prevent text selection for Safari */
   user-select: none; /* Prevent text selection */
 }
 
@@ -340,6 +342,7 @@ a:hover {
   transition: all 0.3s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   letter-spacing: 0.5px; /* Keep slight spacing for readability */
+  -webkit-user-select: none; /* Prevent text selection for Safari */
   user-select: none; /* Prevent text selection */
   width: 600px; /* Ensure all buttons take the full width of their container */
   max-width: 400px; /* Set a maximum width for consistency */
@@ -719,12 +722,11 @@ a:hover {
   position: relative; /* Ensure the header stays in place */
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .collapsible-container {
-    /* Remove the flex-direction change that stacks collapsibles */
-    /* flex-direction: column; */
+    flex-direction: column;
   }
-}
+} */
 
 .collapsible {
   margin-bottom: 20px;
@@ -743,6 +745,7 @@ a:hover {
   font-weight: bold;
   transition: background 0.3s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  -webkit-user-select: none; /* Prevent text selection for Safari */
   user-select: none; /* Prevent text selection */
 }
 
@@ -840,4 +843,72 @@ a:hover {
     font-size: 14px; /* Further adjust header font size */
     padding: 8px 10px; /* Further adjust padding */
   }
+}
+
+/* MasterTech Services-specific rules */
+body.master-tech-services footer {
+  background: none; /* Make the footer background invisible */
+}
+
+body.master-tech-services .tile {
+  display: none; /* Hide tiles on the home tab */
+}
+br {
+  -webkit-user-select: none; /* Safari, iOS Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Modern browsers */
+}
+
+.what {
+  display: flex;
+  align-items: flex-start; /* aligns top of image and text */
+  gap: 20px; /* space between image and text */
+  margin-top: 145px; /* corrected margin-top */
+  margin-bottom: 100px; /* space between image and text */
+}
+
+.what img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin: 0; /* remove the margin that was pushing it to the center */
+}
+h3, h2, h1 {
+  color: #db3e00; /* White color for the title */
+}
+.what h2 {
+  margin: 0; /* remove the margin that was pushing it to the center */
+  font-size: 1.5rem;
+  text-align: left; /* Align text to the left */
+  max-width: 600px; /* Limit width of text */
+}
+.what-text
+{
+  flex: 1; /* Allow text to take up remaining space */
+}
+
+.footer
+{
+  background: linear-gradient(135deg, #3a3a3a, #4a4a4a);
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  transition: background 0.3s ease;
+  position: fixed;
+}
+.header
+{
+  position: fixed;
+  width: flex;
+  border-radius: 10px;
+  height: flex;
+  margin: .5%;
+}
+.banner-image {
+  margin-top: 3.5%;
 }
