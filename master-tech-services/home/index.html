@@ -1,42 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MasterTech Services</title>
   <link rel="stylesheet" href="../../assets/styles.css">
 </head>
+
 <body class="master-tech-services">
   <header>
     <h1>Welcome to MasterTech Services</h1>
     <p>Your one-stop shop for all tech solutions!</p>
   </header>
 
-  <div style="display: flex;">
-    <aside style="width: 250px; background: #2a2a2a; padding: 20px; box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);">
-      <img src="../../assets/MasterTech.png" alt="MasterTech Services Banner" style="width: 100%; border-radius: 8px;">
+  <div class="layout">
+    <aside class="sidebar">
+      <img src="../../assets/MasterTech.png" alt="MasterTech Services Banner" class="sidebar-logo">
+      <nav class="sidebar-nav">
+        <ul>
+          <li><a href="/master-tech-services/home/">Home</a></li>
+          <li><a href="/master-tech-services/shop/">Shop</a></li>
+          <li><a href="/master-tech-services/repairs/">Repairs</a></li>
+          <li><a href="/master-tech-services/builds/">Builds</a></li>
+          <li><a href="/master-tech-services/about/">About</a></li>
+        </ul>
+      </nav>
     </aside>
-    <main style="flex: 1; padding-left: 20px;">
+    <main class="main-content">
       <section>
-        <h2>Our Services</h2>
+        <h2 class="services-title">Our Services</h2>
         <div class="button-container">
           <div class="button-item">
-            <button class="button">
-              <span class="button-text">Computer Repairs</span>
-              <img src="../../assets/computer-repair.jpg" alt="Computer Repairs" class="button-image">
-            </button>
+            <a href="/master-tech-services/shop/">
+              <button class="button">
+                <span class="button-text">Shop</span>
+                <img src="../../assets/shop.png" alt="Shop" class="button-image">
+              </button>
+            </a>
           </div>
           <div class="button-item">
-            <button class="button">
-              <span class="button-text">Networking Solutions</span>
-              <img src="../../assets/networking.jpg" alt="Networking Solutions" class="button-image">
-            </button>
+            <a href="/master-tech-services/repairs/">
+              <button class="button">
+                <span class="button-text">Computer Repairs</span>
+                <img src="../../assets/repairs.png" alt="Computer Repairs" class="button-image">
+              </button>
+            </a>
           </div>
           <div class="button-item">
-            <button class="button">
-              <span class="button-text">Custom Builds</span>
-              <img src="../../assets/custom-builds.jpg" alt="Custom Builds" class="button-image">
-            </button>
+            <a href="/master-tech-services/builds/">
+              <button class="button">
+                <span class="button-text">Custom Builds</span>
+                <img src="../../assets/Builds.png" alt="Custom Builds" class="button-image">
+              </button>
+            </a>
           </div>
         </div>
       </section>
@@ -44,7 +61,8 @@
   </div>
 
   <footer>
-    <p>&copy; 2023 MasterTech Services. All rights reserved.</p>
+    <p>&copy; 2025 MasterTech Services. All rights reserved.</p>
   </footer>
 </body>
+
 </html>

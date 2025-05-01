@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Repairs - MasterTech Services</title>
+  <link rel="stylesheet" href="../../assets/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    .icon-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%; /* Ensure the icon container takes full button height */
+    }
+
+    .button i {
+      font-size: 3rem; /* Scale the icon */
+      margin: 0; /* Remove any default margins */
+    }
+
+    .button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column; /* Stack icon and text vertically */
+    }
+
+    .flashy-label {
+      color: gold;
+      font-weight: bold;
+      font-size: 1.2rem;
+      text-shadow: 0 0 5px gold, 0 0 10px gold, 0 0 15px orange;
+      animation: shine 1.5s infinite, grow-shrink 1.5s infinite;
+    }
+
+    @keyframes shine {
+      0%, 100% {
+        text-shadow: 0 0 5px gold, 0 0 10px gold, 0 0 15px orange;
+      }
+      50% {
+        text-shadow: 0 0 10px gold, 0 0 20px gold, 0 0 30px orange;
+      }
+    }
+
+    @keyframes grow-shrink {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Repairs</h1>
+    <p>Choose the repair service that suits your needs!</p>
+  </header>
+
+  <main>
+    <section class="services">
+      <h2 class="services-title">Our Repair Services</h2>
+      <div class="button-container">
+        <div class="button-item">
+          <div class="label-container"></div>
+          <a href="/master-tech-services/repairs/basic/">
+            <button class="button">
+              <div class="button-content">
+                <div class="icon-container">
+                  <i class="fas fa-wrench bronze-icon"></i>
+                </div>
+                <span class="button-text">Basic Repair</span>
+              </div>
+            </button>
+          </a>
+        </div>
+        <div class="button-item">
+          <div class="label-container">
+            <div class="flashy-label">Popular Offer</div>
+          </div>
+          <a href="/master-tech-services/repairs/advanced/">
+            <button class="button">
+              <div class="icon-container">
+                <i class="fas fa-screwdriver silver-icon"></i>
+              </div>
+              <span class="button-text">Advanced Repair</span>
+            </button>
+          </a>
+        </div>
+        <div class="button-item">
+          <div class="label-container">
+          </div>
+          <a href="/master-tech-services/repairs/professional/">
+            <button class="button">
+              <div class="icon-container">
+                <i class="fas fa-hammer diamond-icon"></i>
+              </div>
+              <span class="button-text">Professional Repair</span>
+            </button>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 MasterTech Services. All rights reserved.</p>
+  </footer>
+</body>
+
+</html>

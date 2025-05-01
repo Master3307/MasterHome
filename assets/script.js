@@ -22,27 +22,128 @@ function setActivePage() {
 // Call setActivePage when the page loads
 document.addEventListener("DOMContentLoaded", setActivePage);
 
-// Function to toggle between light and dark mode
-function toggleTheme() {
+// Initialize darkmode-js
+const darkmode = new Darkmode({
+  bottom: '32px', // default: '32px'
+  right: '32px', // default: '32px'
+  left: 'unset', // default: 'unset'
+  time: '0.5s', // default: '0.3s'
+  mixColor: '#fff', // default: '#fff'
+  backgroundColor: '#000', // default: '#fff'
+  buttonColorDark: '#100f2c', // default: '#100f2c'
+  buttonColorLight: '#fff', // default: '#fff'
+  saveInCookies: true, // default: true
+  label: '🌓', // default: ''
+  autoMatchOsTheme: true // default: true
+});
+
+// Object to store temporary settings
+const tempSettings = {
+  theme: localStorage.getItem("theme") || "dark",
+  language: localStorage.getItem("language") || "en",
+  username: localStorage.getItem("userName") || "Guest",
+  profilePicture: localStorage.getItem("profilePicture") || "",
+};
+
+// Function to apply temporary settings
+function applyTempSettings() {
+  // Apply theme
   const body = document.body;
-  const header = document.getElementById("header");
-  const panel = document.getElementById("panel");
-  const footer = document.querySelector("footer");
-  const products = document.querySelectorAll(".product");
-  const themeToggle = document.getElementById("theme-toggle");
+  const themeSlider = document.getElementById("theme-slider");
+  const isLightMode = tempSettings.theme === "light";
+  body.classList.toggle("light-mode", isLightMode);
+  if (themeSlider) themeSlider.checked = isLightMode;
 
-  body.classList.toggle("light-mode");
-  header.classList.toggle("light-mode");
-  if (panel) panel.classList.toggle("light-mode");
-  footer.classList.toggle("light-mode");
-  products.forEach((product) => product.classList.toggle("light-mode"));
+  // Apply language
+  const languageSelect = document.getElementById("language-select");
+  if (languageSelect) {
+    languageSelect.value = tempSettings.language;
+  }
 
-  themeToggle.classList.toggle("active");
+  // Apply username
+  const usernameInput = document.getElementById("username-input");
+  if (usernameInput) {
+    usernameInput.value = tempSettings.username;
+  }
 
-  // Save theme preference
-  const isLightMode = body.classList.contains("light-mode");
-  localStorage.setItem("theme", isLightMode ? "light" : "dark");
+  // Apply profile picture
+  const profilePicturePreview = document.getElementById("profile-picture-preview");
+  if (profilePicturePreview && tempSettings.profilePicture) {
+    profilePicturePreview.src = tempSettings.profilePicture;
+  }
 }
+
+// Function to save settings to localStorage
+function saveSettings() {
+  localStorage.setItem("theme", tempSettings.theme);
+  localStorage.setItem("language", tempSettings.language);
+  localStorage.setItem("userName", tempSettings.username);
+  localStorage.setItem("profilePicture", tempSettings.profilePicture);
+  alert("Settings saved!");
+}
+
+// Function to handle theme slider change
+function handleThemeChange() {
+  const themeSlider = document.getElementById("theme-slider");
+  tempSettings.theme = themeSlider.checked ? "light" : "dark";
+}
+
+// Function to handle language selection change
+function handleLanguageChange(event) {
+  tempSettings.language = event.target.value;
+}
+
+// Function to handle username input change
+function handleUsernameChange(event) {
+  tempSettings.username = event.target.value.trim();
+}
+
+// Function to handle profile picture upload
+function handleProfilePictureUpload(event) {
+  const file = event.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = () => {
+      tempSettings.profilePicture = reader.result;
+      const profilePicturePreview = document.getElementById("profile-picture-preview");
+      if (profilePicturePreview) {
+        profilePicturePreview.src = reader.result;
+      }
+    };
+    reader.readAsDataURL(file);
+  }
+}
+
+// Initialize settings on page load
+document.addEventListener("DOMContentLoaded", () => {
+  applyTempSettings();
+
+  // Add event listeners
+  const themeSlider = document.getElementById("theme-slider");
+  if (themeSlider) {
+    themeSlider.addEventListener("change", handleThemeChange);
+  }
+
+  const languageSelect = document.getElementById("language-select");
+  if (languageSelect) {
+    languageSelect.addEventListener("change", handleLanguageChange);
+  }
+
+  const usernameInput = document.getElementById("username-input");
+  if (usernameInput) {
+    usernameInput.addEventListener("input", handleUsernameChange);
+  }
+
+  const profilePictureUpload = document.getElementById("profile-picture-upload");
+  if (profilePictureUpload) {
+    profilePictureUpload.addEventListener("change", handleProfilePictureUpload);
+  }
+
+  const saveSettingsButton = document.getElementById("save-settings");
+  if (saveSettingsButton) {
+    saveSettingsButton.addEventListener("click", saveSettings);
+  }
+});
 
 // Function to set the language
 function setLanguage(language) {
@@ -69,8 +170,7 @@ function setLanguage(language) {
 
 // Load saved settings and set default language based on browser's language
 document.addEventListener("DOMContentLoaded", () => {
-  const theme = localStorage.getItem("theme") || "dark";
-  const savedLanguage = localStorage.getItem("language");
+  const savedLanguage = localStorage.getItem("language") || "en";
   const browserLanguage = navigator.language.slice(0, 2); // Get the first two characters of the browser's language
   const defaultLanguage = translations[browserLanguage]
     ? browserLanguage
@@ -78,8 +178,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const language = savedLanguage || defaultLanguage;
 
   // Apply theme
-  if (theme === "light") {
-    toggleTheme();
+  if (darkmode.isActivated()) {
+    document.body.classList.add("light-mode");
   }
 
   // Apply language
@@ -289,235 +389,47 @@ const translations = {
   },
 };
 
-// Function to set the user's name
-function setUserName() {
-  const userName = prompt("Please enter your name:");
-  if (userName) {
-    localStorage.setItem("userName", userName);
-    updateUserNameDisplay();
+// Function to handle unavailable services
+function handleUnavailableService(serviceId, isUnavailable) {
+  const priceElement = document.querySelector(`#${serviceId} #price`);
+  const paymentOptions = document.querySelector(`#${serviceId} #payment-options`);
+
+  if (isUnavailable) {
+    if (priceElement) {
+      priceElement.innerHTML = `<s>${priceElement.textContent}</s>`;
+      priceElement.style.color = "red";
+    }
+    if (paymentOptions) {
+      paymentOptions.style.display = "none";
+    }
   }
 }
 
-// Function to update the displayed user name
-function updateUserNameDisplay() {
-  const userName = localStorage.getItem("userName") || "Guest";
-  const authButtons = document.getElementById("auth-buttons");
-  authButtons.innerHTML = `
-        <span>Welcome, ${userName}</span>
-        <button id="change-name-button">Change Name</button>
-        <button id="wishlist-button">Wishlist</button>
-    `;
-  document
-    .getElementById("change-name-button")
-    .addEventListener("click", setUserName);
-  document
-    .getElementById("wishlist-button")
-    .addEventListener("click", showWishlist);
-}
-
-// Wishlist system
-function addToWishlist(item) {
-  const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-  if (!wishlist.includes(item)) {
-    wishlist.push(item);
-    localStorage.setItem("wishlist", JSON.stringify(wishlist));
-    alert(`${item} has been added to your wishlist!`);
-  } else {
-    alert(`${item} is already in your wishlist.`);
-  }
-}
-
-function showWishlist() {
-  const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-  if (wishlist.length > 0) {
-    alert(`Your Wishlist:\n- ${wishlist.join("\n- ")}`);
-  } else {
-    alert("Your wishlist is empty.");
-  }
-}
-
-// Initialize user name and wishlist on page load
+// Example usage
 document.addEventListener("DOMContentLoaded", () => {
-  updateUserNameDisplay();
+  // Mark the Professional Repair service as unavailable
+  handleUnavailableService("professional", true);
+});
 
-  // Add event listeners for "Add to Wishlist" buttons
-  const wishlistButtons = document.querySelectorAll(".add-to-wishlist");
-  wishlistButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const itemName = button.getAttribute("data-item");
-      addToWishlist(itemName);
+document.addEventListener("DOMContentLoaded", () => {
+  const buttons = document.querySelectorAll(".button");
+
+  buttons.forEach((button) => {
+    button.addEventListener("mousemove", (e) => {
+      const rect = button.getBoundingClientRect();
+      const x = e.clientX - rect.left; // Mouse X position relative to button
+      const y = e.clientY - rect.top; // Mouse Y position relative to button
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      const rotateX = ((y - centerY) / centerY) * 10; // Tilt based on Y-axis
+      const rotateY = ((x - centerX) / centerX) * -10; // Tilt based on X-axis
+
+      button.style.transform = `perspective(500px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+
+    button.addEventListener("mouseleave", () => {
+      button.style.transform = "perspective(500px) rotateX(0deg) rotateY(0deg)";
     });
   });
 });
-
-// Function to fetch and display assets
-async function fetchAssets() {
-  try {
-    // Simulate fetching assets (replace with actual backend API if available)
-    const assets = [
-      "image1.jpg",
-      "image2.png",
-      "image3.gif",
-      "document.pdf",
-      "video.mp4",
-    ];
-    const images = assets.filter((file) =>
-      /\.(jpg|jpeg|png|gif|svg)$/i.test(file)
-    );
-    initializeViewer(images);
-  } catch (error) {
-    console.error("Error fetching assets:", error);
-  }
-}
-
-// Function to initialize the image viewer
-function initializeViewer(images) {
-  let currentIndex = 0;
-
-  function updateImage() {
-    const imgElement = document.getElementById("current-image");
-    if (images.length > 0) {
-      imgElement.src = images[currentIndex];
-      imgElement.alt = `Asset ${currentIndex + 1}`;
-    } else {
-      imgElement.src = "";
-      imgElement.alt = "No assets available";
-    }
-  }
-
-  function prevImage() {
-    currentIndex = (currentIndex - 1 + images.length) % images.length;
-    updateImage();
-  }
-
-  function nextImage() {
-    currentIndex = (currentIndex + 1) % images.length;
-    updateImage();
-  }
-
-  function populateAssetList() {
-    const listElement = document.getElementById("asset-list");
-    listElement.innerHTML = ""; // Clear existing list
-    images.forEach((image, index) => {
-      const listItem = document.createElement("li");
-      listItem.textContent = image;
-      listItem.addEventListener("click", () => {
-        currentIndex = index;
-        updateImage();
-      });
-      listElement.appendChild(listItem);
-    });
-  }
-
-  document.querySelector(".prev").addEventListener("click", prevImage);
-  document.querySelector(".next").addEventListener("click", nextImage);
-
-  populateAssetList();
-  updateImage();
-}
-
-// Fetch assets on page load
-document.addEventListener("DOMContentLoaded", fetchAssets);
-
-// Include Bootstrap JS
-import "./bootstrap.js";
-import React from "react";
-import ReactDOM from "react-dom";
-import "@phosphor-icons/web/light";
-import "@phosphor-icons/web/bold";
-
-const images = [
-  "image1.jpg",
-  "image2.png",
-  "image3.gif",
-  // Add all image filenames here
-];
-
-let currentIndex = 0;
-
-function updateImage() {
-  const imgElement = document.getElementById("current-image");
-  imgElement.src = images[currentIndex];
-  imgElement.alt = `Asset ${currentIndex + 1}`;
-}
-
-function prevImage() {
-  currentIndex = (currentIndex - 1 + images.length) % images.length;
-  updateImage();
-}
-
-function nextImage() {
-  currentIndex = (currentIndex + 1) % images.length;
-  updateImage();
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("prev-button").addEventListener("click", prevImage);
-  document.getElementById("next-button").addEventListener("click", nextImage);
-  updateImage();
-});
-
-document
-  .getElementById("upload-cursor")
-  .addEventListener("change", function () {
-    const file = this.files[0];
-    const fileName = file ? file.name : "No file chosen";
-    document.getElementById("file-name").textContent = fileName;
-
-    if (file) {
-      const fileURL = URL.createObjectURL(file);
-      const validExtensions = [".cur", ".ani", ".png", ".gif"];
-      const fileExtension = fileName
-        .slice(fileName.lastIndexOf("."))
-        .toLowerCase();
-
-      if (validExtensions.includes(fileExtension)) {
-        if (fileExtension === ".cur" || fileExtension === ".ani") {
-          // Apply .cur and .ani files directly
-          document.body.style.cursor = `url(${fileURL}), auto`;
-        } else {
-          // Handle .png and .gif files with proper scaling
-          const img = new Image();
-          img.onload = () => {
-            const hotspotX = Math.min(img.width / 2, 32); // Limit hotspot to 32px
-            const hotspotY = Math.min(img.height / 2, 32); // Limit hotspot to 32px
-            document.body.style.cursor = `url(${fileURL}) ${hotspotX} ${hotspotY}, auto`;
-          };
-          img.src = fileURL;
-        }
-      } else {
-        alert(
-          "Unsupported file type. Please upload a .cur, .ani, .png, or .gif file."
-        );
-        document.body.style.cursor = "default";
-      }
-    }
-  });
-
-// Function to toggle collapsible sections
-function toggleCollapsible(header) {
-  const content = header.nextElementSibling;
-  const arrow = header.querySelector(".arrow");
-  const container = header.closest(".collapsible-container");
-
-  if (content.style.maxHeight) {
-    // If already open, collapse it
-    content.style.maxHeight = null;
-    content.classList.remove("open");
-    arrow.classList.remove("fa-chevron-down");
-    arrow.classList.add("fa-chevron-right");
-  } else {
-    // If closed, expand it
-    content.style.maxHeight = content.scrollHeight + "px";
-    content.classList.add("open");
-    arrow.classList.remove("fa-chevron-right");
-    arrow.classList.add("fa-chevron-down");
-  }
-
-  // Dynamically adjust the height of the container
-  const totalHeight = Array.from(container.children).reduce((height, child) => {
-    const childContent = child.querySelector(".collapsible-content");
-    return height + (childContent && childContent.style.maxHeight ? childContent.scrollHeight : 0);
-  }, 0);
-  container.style.height = `${totalHeight}px`;
-}

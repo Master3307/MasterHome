@@ -67,15 +67,31 @@ footer {
   position: relative;
   overflow: hidden;
   cursor: pointer;
-  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3), 0 0 25px rgba(255, 0, 0, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  -webkit-user-select: none; /* Prevent text selection for Safari */
-  user-select: none; /* Prevent text selection */
+  box-shadow: 0 0 10px orangered;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
 
 .button:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4), 0 0 35px rgba(255, 0, 0, 0.4);
+  transform: translate3d(10px, -10px, 10px); /* Lift the button on hover */
+  box-shadow: 0 0 15px orangered;
+  background: linear-gradient(135deg, #3a3a3a, #4a4a4a); /* Slightly brighter background */
+  border: 2px solid orangered;
+  animation: pulse-orange 2s infinite alternate ease-in-out; /* Add pulse animation */
+  box-shadow: 0 0 15px orange, 0 0 15px orangered; /* Add pulsing shadow */
+  border: 2px solid orange; /* Add pulsing border */
+}
+
+@keyframes pulse-orange {
+  0% {
+    color: orange;
+    box-shadow: 0 0 10px orange, 0 0 14px orangered;
+    border-color: orange;
+  }
+  100% {
+    color: orangered;
+    box-shadow: 0 0 15px orangered, 0 0 14px orange;
+    border-color: orangered;
+  }
 }
 
 .button-image {
@@ -98,6 +114,16 @@ footer {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.3s ease, transform 0.3s ease;
+  animation: pulse 2s infinite alternate ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    color: orange;
+  }
+  100% {
+    color: orangered;
+  }
 }
 
 .button:hover .button-text {
@@ -264,11 +290,9 @@ a:hover {
 
 /* Button Container Styles */
 .button-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 250px); /* Fixed button size */
-  gap: 2rem; /* Maintain consistent gap between buttons */
-  justify-content: center;
-  align-items: flex-start;
+  display: flex; /* Change to flexbox for row layout */
+  justify-content: center; /* Center buttons horizontally */
+  gap: 20px; /* Add spacing between buttons */
   margin: 3rem 0;
 }
 
@@ -876,7 +900,7 @@ br {
   margin: 0; /* remove the margin that was pushing it to the center */
 }
 h3, h2, h1 {
-  color: #db3e00; /* White color for the title */
+  color: orangered; /* White color for the title */
 }
 .what h2 {
   margin: 0; /* remove the margin that was pushing it to the center */
@@ -899,16 +923,223 @@ h3, h2, h1 {
   bottom: 0;
   width: 100%;
   transition: background 0.3s ease;
-  position: fixed;
+  margin-top: 20px; /* Add space above the footer */
+  padding: 20px; /* Add padding for better spacing */
 }
-.header
-{
-  position: fixed;
-  width: flex;
-  border-radius: 10px;
-  height: flex;
-  margin: .5%;
+.header {
+  display: flex; /* Use flexbox for alignment */
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  text-align: center; /* Ensure text is centered */
+  height: 100%; /* Ensure it takes full height if needed */
 }
 .banner-image {
   margin-top: 3.5%;
+}
+.title-with-icon {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* space between icon and text */
+  font-size: 2rem;
+}
+
+.settings-icon i {
+  font-size: 3rem;
+  color: rgb(128, 128, 128); /* or whatever color you want */
+  cursor: pointer;
+  margin-right: 10px; /* space between icon and text */
+}
+
+.title-text {
+  display: inline-block;
+  line-height: 1.2;
+}
+
+.theme-slider {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.theme-slider input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Save Settings Button */
+.save-settings-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.save-settings-button:hover {
+  background-color: #1976d2;
+  transform: translateY(-3px);
+}
+
+.save-settings-button:active {
+  transform: translateY(0);
+}
+
+/* Styled Input */
+.styled-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #4a4a4a;
+  border-radius: 8px;
+  background-color: #2a2a2a;
+  color: #e4e4e7;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.styled-input:focus {
+  border-color: #2196f3;
+  outline: none;
+}
+
+/* Styled Select */
+.styled-select {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #4a4a4a;
+  border-radius: 8px;
+  background-color: #2a2a2a;
+  color: #e4e4e7;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.styled-select:focus {
+  border-color: #2196f3;
+  outline: none;
+}
+
+/* Profile Picture */
+.profile-picture img {
+  display: block;
+  margin-top: 10px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #4a4a4a;
+}
+
+/* Sidebar styles */
+.sidebar {
+  background: #1e1e1e; /* Updated background color */
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+  min-height: calc(100vh);
+}
+
+.sidebar-logo {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.sidebar-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-nav ul li {
+  margin: 10px 0;
+}
+
+.sidebar-nav ul li a {
+  color: #e4e4e7;
+  text-decoration: none;
+  display: block;
+  padding: 10px 0;
+  transition: color 0.3s ease;
+}
+
+.sidebar-nav ul li a:hover {
+  color: #ff4d4d;
+}
+
+/* Layout styles */
+.layout {
+  display: flex;
+}
+
+.main-content {
+  flex: 1;
+  padding-left: 20px;
+}
+
+/* Center the "Our Services" heading */
+.services-title {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  color: #e4e4e7;
+}
+
+/* Icon styles for repair services */
+.bronze-icon {
+  color: #cd7f32; /* Bronze color */
+  margin-right: 8px;
+}
+
+.silver-icon {
+  color: #c0c0c0; /* Silver color */
+  margin-right: 8px;
+}
+
+.diamond-icon {
+  color: #b9f2ff; /* Diamond color */
+  margin-right: 8px;
 }
