@@ -1,238 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cursor Test</title>
-    <link rel="icon" type="image/ico" href="Cursor.ico" />
-    <link rel="stylesheet" href="../assets/cursor-test.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    />
-    <link rel="icon" href="../assets/MT.png" type="image/png" />
-  </head>
-  <header>
-    <a href="..\" class="close-button">
-      <i class="fas fa-times"></i>
-    </a>
-  </header>
-  <body>
-    <div>
-      <h1>Cursor Test</h1>
-      <p style="text-align: center">
-        Hover over the boxes to see the cursor effect!
-      </p>
-      <p style="text-align: center">
-        Click on the Area of the button you want to preview it!
-      </p>
-      <br />
-      <div class="merged-color-palette" title="Color Palette">
-        <div
-          class="color-section"
-          style="background: #ffffff"
-          title="White"
-        ></div>
-        <div
-          class="color-section"
-          style="background: #000000"
-          title="Black"
-        ></div>
-        <div
-          class="color-section"
-          style="background: #ff0000"
-          title="Red"
-        ></div>
-        <div
-          class="color-section"
-          style="background: #00ff00"
-          title="Green"
-        ></div>
-        <div
-          class="color-section"
-          style="background: #0000ff"
-          title="Blue"
-        ></div>
-        <div
-          class="color-section"
-          style="background: #ffff00"
-          title="Yellow"
-        ></div>
-        <div
-          class="color-section"
-          style="background: #ff00ff"
-          title="Magenta"
-        ></div>
-        <div
-          class="color-section"
-          style="background: #00ffff"
-          title="Cyan"
-        ></div>
-      </div>
-      <div
-        class="gradient-box"
-        style="background: linear-gradient(to right, #ffffff, #000000)"
-        title="White to Black Gradient"
-      ></div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cursor Test</title>
+  <link rel="icon" type="image/ico" href="Cursor.ico" />
+  <link rel="stylesheet" href="../assets/cursor-test.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="icon" href="../assets/MT.png" type="image/png" />
+  <!-- Discord Embed meta tags -->
+  <meta property="og:title" content="MasterHome" />
+  <meta property="og:description" content="Explore projects, tools, and ideas by me, Master3307." />
+  <meta property="og:url" content="https://master3307.netlify.app/" />
+  <meta property="og:image" content="https://master3307.netlify.app/assets/M437.png" />
+  <meta property="og:image:alt" content="Main Logo" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Additional image for embeds -->
+  <meta property="og:image" content="https://master3307.netlify.app/assets/MT.png" />
+  <meta property="og:image:alt" content="Secondary Logo" />
+  <meta property="og:image:width" content="512" />
+  <meta property="og:image:height" content="512" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter card meta tags (optional) -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="MasterHome" />
+  <meta name="twitter:description" content="Explore projects, tools, and ideas by me, Master3307." />
+  <meta name="twitter:image" content="https://master3307.netlify.app/assets/M437.png" />
+  <meta name="twitter:image:alt" content="Main Logo" />
+</head>
+<header>
+  <a href="..\" class="close-button">
+    <i class="fas fa-times"></i>
+  </a>
+</header>
+
+<body>
+  <div>
+    <h1>Cursor Test</h1>
+    <p style="text-align: center">
+      Hover over the boxes to see the cursor effect!
+    </p>
+    <p style="text-align: center">
+      Click on the Area of the button you want to preview it!
+    </p>
+    <br />
+    <div class="merged-color-palette" title="Color Palette">
+      <div class="color-section" style="background: #ffffff" title="White"></div>
+      <div class="color-section" style="background: #000000" title="Black"></div>
+      <div class="color-section" style="background: #ff0000" title="Red"></div>
+      <div class="color-section" style="background: #00ff00" title="Green"></div>
+      <div class="color-section" style="background: #0000ff" title="Blue"></div>
+      <div class="color-section" style="background: #ffff00" title="Yellow"></div>
+      <div class="color-section" style="background: #ff00ff" title="Magenta"></div>
+      <div class="color-section" style="background: #00ffff" title="Cyan"></div>
     </div>
-    <div class="cursor-container">
-      <div id="auto" class="hover-area">
-        <h2>auto</h2>
-        <div class="cursor-preview"><i class="fas fa-mouse-pointer"></i></div>
+    <div class="gradient-box" style="background: linear-gradient(to right, #ffffff, #000000)"
+      title="White to Black Gradient"></div>
+  </div>
+  <div class="cursor-container">
+    <div id="auto" class="hover-area">
+      <h2>auto</h2>
+      <div class="cursor-preview"><i class="fas fa-mouse-pointer"></i></div>
+    </div>
+    <div id="none" class="hover-area">
+      <h2>none</h2>
+      <div class="cursor-preview"><i class="fas fa-ban"></i></div>
+    </div>
+    <div id="pointer" class="hover-area">
+      <h2>pointer</h2>
+      <div class="cursor-preview"><i class="fas fa-hand-pointer"></i></div>
+    </div>
+    <div id="crosshair" class="hover-area">
+      <h2>crosshair</h2>
+      <div class="cursor-preview"><i class="fas fa-crosshairs"></i></div>
+    </div>
+    <div id="move" class="hover-area">
+      <h2>move</h2>
+      <div class="cursor-preview"><i class="fas fa-arrows-alt"></i></div>
+    </div>
+    <div id="wait" class="hover-area">
+      <h2>wait</h2>
+      <div class="cursor-preview"><i class="fas fa-hourglass-half"></i></div>
+    </div>
+    <div id="help" class="hover-area">
+      <h2>help</h2>
+      <div class="cursor-preview"><i class="fas fa-question-circle"></i></div>
+    </div>
+    <div id="text" class="hover-area">
+      <h2>text</h2>
+      <div class="cursor-preview"><i class="fas fa-i-cursor"></i></div>
+    </div>
+    <div id="e-resize" class="hover-area">
+      <h2>e-resize</h2>
+      <div class="cursor-preview"><i class="fas fa-arrows-alt-h"></i></div>
+    </div>
+    <div id="ne-resize" class="hover-area">
+      <h2>ne-resize</h2>
+      <div class="cursor-preview">
+        <i class="fas fa-expand-arrows-alt"></i>
       </div>
-      <div id="none" class="hover-area">
-        <h2>none</h2>
-        <div class="cursor-preview"><i class="fas fa-ban"></i></div>
+    </div>
+    <div id="nw-resize" class="hover-area">
+      <h2>nw-resize</h2>
+      <div class="cursor-preview">
+        <i class="fas fa-expand-arrows-alt"></i>
       </div>
-      <div id="pointer" class="hover-area">
-        <h2>pointer</h2>
-        <div class="cursor-preview"><i class="fas fa-hand-pointer"></i></div>
+    </div>
+    <div id="n-resize" class="hover-area">
+      <h2>n-resize</h2>
+      <div class="cursor-preview"><i class="fas fa-arrows-alt-v"></i></div>
+    </div>
+    <div id="se-resize" class="hover-area">
+      <h2>se-resize</h2>
+      <div class="cursor-preview">
+        <i class="fas fa-expand-arrows-alt"></i>
       </div>
-      <div id="crosshair" class="hover-area">
-        <h2>crosshair</h2>
-        <div class="cursor-preview"><i class="fas fa-crosshairs"></i></div>
+    </div>
+    <div id="sw-resize" class="hover-area">
+      <h2>sw-resize</h2>
+      <div class="cursor-preview">
+        <i class="fas fa-expand-arrows-alt"></i>
       </div>
-      <div id="move" class="hover-area">
-        <h2>move</h2>
-        <div class="cursor-preview"><i class="fas fa-arrows-alt"></i></div>
+    </div>
+    <div id="s-resize" class="hover-area">
+      <h2>s-resize</h2>
+      <div class="cursor-preview"><i class="fas fa-arrows-alt-v"></i></div>
+    </div>
+    <div id="w-resize" class="hover-area">
+      <h2>w-resize</h2>
+      <div class="cursor-preview"><i class="fas fa-arrows-alt-h"></i></div>
+    </div>
+    <div id="ew-resize" class="hover-area">
+      <h2>ew-resize</h2>
+      <div class="cursor-preview"><i class="fas fa-arrows-alt-h"></i></div>
+    </div>
+    <div id="ns-resize" class="hover-area">
+      <h2>ns-resize</h2>
+      <div class="cursor-preview"><i class="fas fa-arrows-alt-v"></i></div>
+    </div>
+    <div id="nesw-resize" class="hover-area">
+      <h2>nesw-resize</h2>
+      <div class="cursor-preview">
+        <i class="fas fa-expand-arrows-alt"></i>
       </div>
-      <div id="wait" class="hover-area">
-        <h2>wait</h2>
-        <div class="cursor-preview"><i class="fas fa-hourglass-half"></i></div>
+    </div>
+    <div id="nwse-resize" class="hover-area">
+      <h2>nwse-resize</h2>
+      <div class="cursor-preview">
+        <i class="fas fa-expand-arrows-alt"></i>
       </div>
-      <div id="help" class="hover-area">
-        <h2>help</h2>
-        <div class="cursor-preview"><i class="fas fa-question-circle"></i></div>
-      </div>
-      <div id="text" class="hover-area">
-        <h2>text</h2>
-        <div class="cursor-preview"><i class="fas fa-i-cursor"></i></div>
-      </div>
-      <div id="e-resize" class="hover-area">
-        <h2>e-resize</h2>
-        <div class="cursor-preview"><i class="fas fa-arrows-alt-h"></i></div>
-      </div>
-      <div id="ne-resize" class="hover-area">
-        <h2>ne-resize</h2>
-        <div class="cursor-preview">
-          <i class="fas fa-expand-arrows-alt"></i>
-        </div>
-      </div>
-      <div id="nw-resize" class="hover-area">
-        <h2>nw-resize</h2>
-        <div class="cursor-preview">
-          <i class="fas fa-expand-arrows-alt"></i>
-        </div>
-      </div>
-      <div id="n-resize" class="hover-area">
-        <h2>n-resize</h2>
-        <div class="cursor-preview"><i class="fas fa-arrows-alt-v"></i></div>
-      </div>
-      <div id="se-resize" class="hover-area">
-        <h2>se-resize</h2>
-        <div class="cursor-preview">
-          <i class="fas fa-expand-arrows-alt"></i>
-        </div>
-      </div>
-      <div id="sw-resize" class="hover-area">
-        <h2>sw-resize</h2>
-        <div class="cursor-preview">
-          <i class="fas fa-expand-arrows-alt"></i>
-        </div>
-      </div>
-      <div id="s-resize" class="hover-area">
-        <h2>s-resize</h2>
-        <div class="cursor-preview"><i class="fas fa-arrows-alt-v"></i></div>
-      </div>
-      <div id="w-resize" class="hover-area">
-        <h2>w-resize</h2>
-        <div class="cursor-preview"><i class="fas fa-arrows-alt-h"></i></div>
-      </div>
-      <div id="ew-resize" class="hover-area">
-        <h2>ew-resize</h2>
-        <div class="cursor-preview"><i class="fas fa-arrows-alt-h"></i></div>
-      </div>
-      <div id="ns-resize" class="hover-area">
-        <h2>ns-resize</h2>
-        <div class="cursor-preview"><i class="fas fa-arrows-alt-v"></i></div>
-      </div>
-      <div id="nesw-resize" class="hover-area">
-        <h2>nesw-resize</h2>
-        <div class="cursor-preview">
-          <i class="fas fa-expand-arrows-alt"></i>
-        </div>
-      </div>
-      <div id="nwse-resize" class="hover-area">
-        <h2>nwse-resize</h2>
-        <div class="cursor-preview">
-          <i class="fas fa-expand-arrows-alt"></i>
-        </div>
-      </div>
-      <div id="default" class="hover-area">
-        <h2>default</h2>
-        <div class="cursor-preview"><i class="fas fa-mouse-pointer"></i></div>
-      </div>
-      <div id="copy" class="hover-area">
-        <h2>copy</h2>
-        <div class="cursor-preview"><i class="fas fa-copy"></i></div>
-      </div>
-      <div id="alias" class="hover-area">
-        <h2>alias</h2>
-        <div class="cursor-preview"><i class="fas fa-link"></i></div>
-      </div>
-      <div id="context-menu" class="hover-area">
-        <h2>context-menu</h2>
-        <div class="cursor-preview"><i class="fas fa-ellipsis-v"></i></div>
-      </div>
-      <div id="cell" class="hover-area">
-        <h2>cell</h2>
-        <div class="cursor-preview"><i class="fas fa-th"></i></div>
-      </div>
-      <div id="grab" class="hover-area">
-        <h2>grab</h2>
-        <div class="cursor-preview"><i class="fas fa-hand-rock"></i></div>
-      </div>
-      <div id="grabbing" class="hover-area">
-        <h2>grabbing</h2>
-        <div class="cursor-preview"><i class="fas fa-hand-paper"></i></div>
-      </div>
-      <div id="progress" class="hover-area">
-        <h2>progress</h2>
-        <div class="cursor-preview"><i class="fas fa-spinner"></i></div>
-      </div>
-      <div id="vertical-text" class="hover-area">
-        <h2>vertical-text</h2>
-        <div class="cursor-preview"><i class="fas fa-text-height"></i></div>
-      </div>
-      <div id="no-drop" class="hover-area">
-        <h2>no-drop</h2>
-        <div class="cursor-preview"><i class="fas fa-ban"></i></div>
-      </div>
-      <div id="not-allowed" class="hover-area">
-        <h2>not-allowed</h2>
-        <div class="cursor-preview"><i class="fas fa-times-circle"></i></div>
-      </div>
-      <div id="col-resize" class="hover-area">
-        <h2>col-resize</h2>
-        <div class="cursor-preview"><i class="fas fa-arrows-alt-h"></i></div>
-      </div>
-      <div id="row-resize" class="hover-area">
-        <h2>row-resize</h2>
-        <div class="cursor-preview"><i class="fas fa-arrows-alt-v"></i></div>
-      </div>
-      <div id="all-scroll" class="hover-area">
-        <h2>all-scroll</h2>
-        <div class="cursor-preview"><i class="fas fa-arrows-alt"></i></div>
-      </div>
-      <div id="zoom-in" class="hover-area">
-        <h2>zoom-in</h2>
-        <div class="cursor-preview"><i class="fas fa-search-plus"></i></div>
-      </div>
-      <div id="zoom-out" class="hover-area">
-        <h2>zoom-out</h2>
-        <div class="cursor-preview"><i class="fas fa-search-minus"></i></div>
-      </div>
-      <!-- <div id="custom-cursors" class="hover-area">
+    </div>
+    <div id="default" class="hover-area">
+      <h2>default</h2>
+      <div class="cursor-preview"><i class="fas fa-mouse-pointer"></i></div>
+    </div>
+    <div id="copy" class="hover-area">
+      <h2>copy</h2>
+      <div class="cursor-preview"><i class="fas fa-copy"></i></div>
+    </div>
+    <div id="alias" class="hover-area">
+      <h2>alias</h2>
+      <div class="cursor-preview"><i class="fas fa-link"></i></div>
+    </div>
+    <div id="context-menu" class="hover-area">
+      <h2>context-menu</h2>
+      <div class="cursor-preview"><i class="fas fa-ellipsis-v"></i></div>
+    </div>
+    <div id="cell" class="hover-area">
+      <h2>cell</h2>
+      <div class="cursor-preview"><i class="fas fa-th"></i></div>
+    </div>
+    <div id="grab" class="hover-area">
+      <h2>grab</h2>
+      <div class="cursor-preview"><i class="fas fa-hand-rock"></i></div>
+    </div>
+    <div id="grabbing" class="hover-area">
+      <h2>grabbing</h2>
+      <div class="cursor-preview"><i class="fas fa-hand-paper"></i></div>
+    </div>
+    <div id="progress" class="hover-area">
+      <h2>progress</h2>
+      <div class="cursor-preview"><i class="fas fa-spinner"></i></div>
+    </div>
+    <div id="vertical-text" class="hover-area">
+      <h2>vertical-text</h2>
+      <div class="cursor-preview"><i class="fas fa-text-height"></i></div>
+    </div>
+    <div id="no-drop" class="hover-area">
+      <h2>no-drop</h2>
+      <div class="cursor-preview"><i class="fas fa-ban"></i></div>
+    </div>
+    <div id="not-allowed" class="hover-area">
+      <h2>not-allowed</h2>
+      <div class="cursor-preview"><i class="fas fa-times-circle"></i></div>
+    </div>
+    <div id="col-resize" class="hover-area">
+      <h2>col-resize</h2>
+      <div class="cursor-preview"><i class="fas fa-arrows-alt-h"></i></div>
+    </div>
+    <div id="row-resize" class="hover-area">
+      <h2>row-resize</h2>
+      <div class="cursor-preview"><i class="fas fa-arrows-alt-v"></i></div>
+    </div>
+    <div id="all-scroll" class="hover-area">
+      <h2>all-scroll</h2>
+      <div class="cursor-preview"><i class="fas fa-arrows-alt"></i></div>
+    </div>
+    <div id="zoom-in" class="hover-area">
+      <h2>zoom-in</h2>
+      <div class="cursor-preview"><i class="fas fa-search-plus"></i></div>
+    </div>
+    <div id="zoom-out" class="hover-area">
+      <h2>zoom-out</h2>
+      <div class="cursor-preview"><i class="fas fa-search-minus"></i></div>
+    </div>
+    <!-- <div id="custom-cursors" class="hover-area">
         <h2>Custom Cursors</h2>
         <div class="cursor-upload" style="display: flex; align-items: center; gap: 10px;">
           <input type="file" id="upload-cursor" accept=".cur,.ani,.png,.gif" style="display: none;" />
@@ -244,11 +230,12 @@
           <span id="file-name" style="font-style: italic; color: #949494;">No file chosen</span>
         </div>
       </div> -->
-    </div>
-    <script></script>
-    <script src="../assets/cursor-lock.js"></script>
-    <footer class="footer">
-      <p>Made with <i class="fas fa-heart"></i> by Master3307</p>
-    </footer>
-  </body>
+  </div>
+  <script></script>
+  <script src="../assets/cursor-lock.js"></script>
+  <footer class="footer">
+    <p>Made with <i class="fas fa-heart"></i> by Master3307</p>
+  </footer>
+</body>
+
 </html>

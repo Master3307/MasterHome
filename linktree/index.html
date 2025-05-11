@@ -1,286 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Linktree</title>
-    <link rel="stylesheet" href="../assets/styles.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    />
-    <script src="https://unpkg.com/phosphor-icons"></script>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/duotone/style.css"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2"></script>
-    <script src="../assets/script.js"></script>
-    <link rel="icon" href="../assets/MT.png" type="image/png" />
-  </head>
-  <header class="header">
-    <a href="..\" class="close-button"
-       alt="Close"
-       title="Close"
-       aria-label="Close">
-      <i class="fas fa-times"></i>
-    </a>
-    <h1>Linktree</h1>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Linktree</title>
+  <link rel="stylesheet" href="../assets/styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <script src="https://unpkg.com/phosphor-icons"></script>
+  <link rel="stylesheet" type="text/css"
+    href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+  <link rel="stylesheet" type="text/css"
+    href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/duotone/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2"></script>
+  <script src="../assets/script.js"></script>
+  <link rel="icon" href="../assets/MT.png" type="image/png" />
+  <!-- Discord Embed meta tags -->
+  <meta property="og:title" content="MasterHome" />
+  <meta property="og:description" content="Explore projects, tools, and ideas by me, Master3307." />
+  <meta property="og:url" content="https://master3307.netlify.app/" />
+  <meta property="og:image" content="https://master3307.netlify.app/assets/M437.png" />
+  <meta property="og:image:alt" content="Main Logo" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Additional image for embeds -->
+  <meta property="og:image" content="https://master3307.netlify.app/assets/MT.png" />
+  <meta property="og:image:alt" content="Secondary Logo" />
+  <meta property="og:image:width" content="512" />
+  <meta property="og:image:height" content="512" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter card meta tags (optional) -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="MasterHome" />
+  <meta name="twitter:description" content="Explore projects, tools, and ideas by me, Master3307." />
+  <meta name="twitter:image" content="https://master3307.netlify.app/assets/M437.png" />
+  <meta name="twitter:image:alt" content="Main Logo" />
+</head>
+<header class="header">
+  <a href="..\" class="close-button" alt="Close" title="Close" aria-label="Close">
+    <i class="fas fa-times"></i>
+  </a>
+  <h1>Linktree</h1>
+</header>
+
+<body>
+  <header class="banner-header">
+    <img src="../assets/channels4_banner.jpg" alt="Banner" class="banner-image" />
   </header>
-  <body>
-    <header class="banner-header">
-      <img
-        src="../assets/channels4_banner.jpg"
-        alt="Banner"
-        class="banner-image"
-      />
-    </header>
-    <div class="linktree-container">
-      <div class="profile">
-        <img
-          src="../assets/Master_pfp.png"
-          height="125"
-          width="125"
-          alt="Profile Picture"
-          class="profile-picture"
-        />
-        <h1 class="profile-name">⁘ Master3307 ⁘</h1>
-        <p class="profile-bio">Hello :D Check out some of my Links</p>
+  <div class="linktree-container">
+    <div class="profile">
+      <img src="../assets/Master_pfp.png" height="125" width="125" alt="Profile Picture" class="profile-picture" />
+      <h1 class="profile-name">⁘ Master3307 ⁘</h1>
+      <p class="profile-bio">Hello :D Check out some of my Links</p>
+    </div>
+    <div class="collapsible-container">
+      <div class="collapsible">
+        <h2 class="collapsible-header" onclick="toggleCollapsible(this)">
+          • Main Links • <i class="fas fa-chevron-right arrow"></i>
+        </h2>
+        <ul class="links collapsible-content">
+          <li class="tile">
+            <a class="link-button twitch" href="https://twitch.tv/master3307" target="_blank" rel="noopener">
+              <i class="fab fa-twitch"></i> Twitch - Look at my streams :D
+            </a>
+          </li>
+          <li class="tile">
+            <a class="link-button discord" href="https://discord.gg/2mAQKUJDUu" target="_blank" rel="noopener">
+              <i class="fab fa-discord"></i> Discord - Master's Paradise
+            </a>
+          </li>
+          <li class="tile">
+            <a class="link-button steam" href="https://steamcommunity.com/id/master3307/" target="_blank"
+              rel="noopener">
+              <i class="fab fa-steam"></i> Steam - My Steam Profile
+            </a>
+          </li>
+          <li class="tile">
+            <a class="link-button youtube" href="https://www.youtube.com/@master3307" target="_blank" rel="noopener">
+              <i class="fab fa-youtube"></i> YouTube - Watch my Videos
+            </a>
+          </li>
+          <li class="tile">
+            <a class="link-button spotify"
+              href="https://open.spotify.com/playlist/1Arh1kSxAN78wKxb3Xe8wS?si=ded27a9e1f42490c" target="_blank"
+              rel="noopener">
+              <i class="fab fa-spotify"></i> Spotify - My favorite Music
+            </a>
+          </li>
+          <li class="tile">
+            <a class="link-button github" href="https://www.github.com/master3307/" target="_blank" rel="noopener">
+              <i class="fab fa-github"></i> GitHub - My GitHub Profile
+            </a>
+          </li>
+          <li class="tile">
+            <a class="link-button reddit" href="https://www.reddit.com/user/Master3307/" target="_blank" rel="noopener">
+              <i class="fab fa-reddit"></i> Reddit - My Reddit Profile
+            </a>
+          </li>
+          <li class="tile">
+            <a class="link-button newgrounds" href="https://master3307.newgrounds.com/" target="_blank" rel="noopener">
+              <i class="fas fa-star"></i> Newgrounds - My Newgrounds Profile
+            </a>
+          </li>
+        </ul>
       </div>
-      <div class="collapsible-container">
-        <div class="collapsible">
-          <h2 class="collapsible-header" onclick="toggleCollapsible(this)">
-            • Main Links • <i class="fas fa-chevron-right arrow"></i>
-          </h2>
-          <ul class="links collapsible-content">
-            <li class="tile">
-              <a
-                class="link-button twitch"
-                href="https://twitch.tv/master3307"
-                target="_blank"
-                rel="noopener"
-              >
-                <i class="fab fa-twitch"></i> Twitch - Look at my streams :D
-              </a>
-            </li>
-            <li class="tile">
-              <a
-                class="link-button discord"
-                href="https://discord.gg/2mAQKUJDUu"
-                target="_blank"
-                rel="noopener"
-              >
-                <i class="fab fa-discord"></i> Discord - Master's Paradise
-              </a>
-            </li>
-            <li class="tile">
-              <a
-                class="link-button steam"
-                href="https://steamcommunity.com/id/master3307/"
-                target="_blank"
-                rel="noopener"
-              >
-                <i class="fab fa-steam"></i> Steam - My Steam Profile
-              </a>
-            </li>
-            <li class="tile">
-              <a
-                class="link-button youtube"
-                href="https://www.youtube.com/@master3307"
-                target="_blank"
-                rel="noopener"
-              >
-                <i class="fab fa-youtube"></i> YouTube - Watch my Videos
-              </a>
-            </li>
-            <li class="tile">
-              <a
-                class="link-button spotify"
-                href="https://open.spotify.com/playlist/1Arh1kSxAN78wKxb3Xe8wS?si=ded27a9e1f42490c"
-                target="_blank"
-                rel="noopener"
-              >
-                <i class="fab fa-spotify"></i> Spotify - My favorite Music
-              </a>
-            </li>
-            <li class="tile">
-              <a
-                class="link-button github"
-                href="https://www.github.com/master3307/"
-                target="_blank"
-                rel="noopener"
-              >
-                <i class="fab fa-github"></i> GitHub - My GitHub Profile
-              </a>
-            </li>
-            <li class="tile">
-              <a
-                class="link-button reddit"
-                href="https://www.reddit.com/user/Master3307/"
-                target="_blank"
-                rel="noopener"
-              >
-                <i class="fab fa-reddit"></i> Reddit - My Reddit Profile
-              </a>
-            </li>
-            <li class="tile">
-              <a
-                class="link-button newgrounds"
-                href="https://master3307.newgrounds.com/"
-                target="_blank"
-                rel="noopener"
-              >
-                <i class="fas fa-star"></i> Newgrounds - My Newgrounds Profile
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div class="collapsible">
-          <h2 class="collapsible-header" onclick="toggleCollapsible(this)">
-            • Other Links • <i class="fas fa-chevron-right arrow"></i>
-          </h2>
-          <ul class="other-links collapsible-content">
-            <li class="tile">
-              <a
-                class="link-button blocktanks"
-                href="https://blocktanks.net/user/master3307"
-                target="_blank"
-                rel="noopener"
-              >
-                <i class="fas fa-cube"></i> BlockTanks - My unused Account
-              </a>
-            </li>
-            <li class="tile">
-              <a
-                class="link-button epicgames"
-                href="https://store.epicgames.com/en-US/u/03ea44ac90c04f918d373c649a0d8f08"
-                target="_blank"
-                rel="noopener"
-              >
-                <i class="ph ph-sword"></i> Epic Games - My Epic Games Profile
-              </a>
-            </li>
-            <li class="tile">
-              <a
-                class="link-button labymod"
-                href="https://laby.net/@Master3307"
-                target="_blank"
-                rel="noopener"
-              >
-                <i class="fas fa-user"></i> LabyMod - My LabyMod Profile
-              </a>
-            </li>
-            <li class="tile">
-              <a
-                class="link-button linktree"
-                href="https://www.linktr.ee/master3307/"
-                target="_blank"
-                rel="noopener"
-              >
-                <i class="fas fa-tree"></i> Linktree - My old Linktree
-              </a>
-            </li>
-            <li class="tile">
-              <a
-                class="link-button wakatime"
-                href="https://wakatime.com/@Master3307"
-                target="_blank"
-                rel="noopener"
-              >
-                <i class="fas fa-clock"></i> WakaTime - My Coding Stats
-              </a>
-            </li>
-            <li class="tile">
-              <a
-                class="link-button aniworld"
-                href="https://aniworld.to/user/profil/master3307"
-                target="_blank"
-                rel="noopener"
-              >
-                <i class="fas fa-film"></i> AniWorld - My Anime Profile
-              </a>
-            </li>
-            <li class="tile">
-              <a
-                class="link-button lastfm"
-                href="https://www.last.fm/user/Master3307"
-                target="_blank"
-                rel="noopener"
-              >
-                <i class="fas fa-music"></i> Last.fm - My Music Profile
-              </a>
-            </li>
-            <li class="tile">
-              <a
-                class="link-button nexusmods"
-                href="https://next.nexusmods.com/profile/Master3307"
-                target="_blank"
-                rel="noopener"
-              >
-                <i class="fas fa-tools"></i> Nexus Mods - My Mods Profile
-              </a>
-            </li>
-            <li class="tile">
-              <a
-                class="link-button duolingo"
-                href="https://www.duolingo.com/profile/Master3307real"
-                target="_blank"
-                rel="noopener"
-              >
-                <i class="fas fa-language"></i> Duolingo - My Duolingo Profile
-              </a>
-            </li>
-            <li class="tile">
-              <a
-                class="link-button crazygames"
-                href="https://www.crazygames.com/user/master3307"
-                target="_blank"
-                rel="noopener"
-              >
-                <i class="fas fa-gamepad"></i> CrazyGames - My CrazyGames
-                Profile
-              </a>
-            </li>
-          </ul>
-        </div>
+      <div class="collapsible">
+        <h2 class="collapsible-header" onclick="toggleCollapsible(this)">
+          • Other Links • <i class="fas fa-chevron-right arrow"></i>
+        </h2>
+        <ul class="other-links collapsible-content">
+          <li class="tile">
+            <a class="link-button blocktanks" href="https://blocktanks.net/user/master3307" target="_blank"
+              rel="noopener">
+              <i class="fas fa-cube"></i> BlockTanks - My unused Account
+            </a>
+          </li>
+          <li class="tile">
+            <a class="link-button epicgames" href="https://store.epicgames.com/en-US/u/03ea44ac90c04f918d373c649a0d8f08"
+              target="_blank" rel="noopener">
+              <i class="ph ph-sword"></i> Epic Games - My Epic Games Profile
+            </a>
+          </li>
+          <li class="tile">
+            <a class="link-button labymod" href="https://laby.net/@Master3307" target="_blank" rel="noopener">
+              <i class="fas fa-user"></i> LabyMod - My LabyMod Profile
+            </a>
+          </li>
+          <li class="tile">
+            <a class="link-button linktree" href="https://www.linktr.ee/master3307/" target="_blank" rel="noopener">
+              <i class="fas fa-tree"></i> Linktree - My old Linktree
+            </a>
+          </li>
+          <li class="tile">
+            <a class="link-button wakatime" href="https://wakatime.com/@Master3307" target="_blank" rel="noopener">
+              <i class="fas fa-clock"></i> WakaTime - My Coding Stats
+            </a>
+          </li>
+          <li class="tile">
+            <a class="link-button aniworld" href="https://aniworld.to/user/profil/master3307" target="_blank"
+              rel="noopener">
+              <i class="fas fa-film"></i> AniWorld - My Anime Profile
+            </a>
+          </li>
+          <li class="tile">
+            <a class="link-button lastfm" href="https://www.last.fm/user/Master3307" target="_blank" rel="noopener">
+              <i class="fas fa-music"></i> Last.fm - My Music Profile
+            </a>
+          </li>
+          <li class="tile">
+            <a class="link-button nexusmods" href="https://next.nexusmods.com/profile/Master3307" target="_blank"
+              rel="noopener">
+              <i class="fas fa-tools"></i> Nexus Mods - My Mods Profile
+            </a>
+          </li>
+          <li class="tile">
+            <a class="link-button duolingo" href="https://www.duolingo.com/profile/Master3307real" target="_blank"
+              rel="noopener">
+              <i class="fas fa-language"></i> Duolingo - My Duolingo Profile
+            </a>
+          </li>
+          <li class="tile">
+            <a class="link-button crazygames" href="https://www.crazygames.com/user/master3307" target="_blank"
+              rel="noopener">
+              <i class="fas fa-gamepad"></i> CrazyGames - My CrazyGames
+              Profile
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <footer class="footer">
-      <p>Made with <i class="fas fa-heart"></i> by Master3307</p>
-    </footer>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="../assets/script.js"></script>
-    <script>
-      function toggleCollapsible(header) {
-        const content = header.nextElementSibling;
-        const arrow = header.querySelector(".arrow");
+  </div>
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <footer class="footer">
+    <p>Made with <i class="fas fa-heart"></i> by Master3307</p>
+  </footer>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="../assets/script.js"></script>
+  <script>
+    function toggleCollapsible(header) {
+      const content = header.nextElementSibling;
+      const arrow = header.querySelector(".arrow");
 
-        if (content.style.maxHeight) {
-          // If already open, collapse it
-          content.style.maxHeight = null;
-          content.classList.remove("open");
-          arrow.classList.remove("fa-chevron-down");
-          arrow.classList.add("fa-chevron-right");
-        } else {
-          // If closed, expand it
-          content.style.maxHeight = content.scrollHeight + "px";
-          content.classList.add("open");
-          arrow.classList.remove("fa-chevron-right");
-          arrow.classList.add("fa-chevron-down");
-        }
+      if (content.style.maxHeight) {
+        // If already open, collapse it
+        content.style.maxHeight = null;
+        content.classList.remove("open");
+        arrow.classList.remove("fa-chevron-down");
+        arrow.classList.add("fa-chevron-right");
+      } else {
+        // If closed, expand it
+        content.style.maxHeight = content.scrollHeight + "px";
+        content.classList.add("open");
+        arrow.classList.remove("fa-chevron-right");
+        arrow.classList.add("fa-chevron-down");
       }
-    </script>
-  </body>
+    }
+  </script>
+</body>
+
 </html>
