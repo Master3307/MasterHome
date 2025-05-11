@@ -20,7 +20,7 @@ MasterHome is a collection of web development projects, including "Master Tech S
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/your-username/MasterHome.git
+   git clone https://github.com/master3307/MasterHome.git
    ```
 2. Navigate to the project directory:
    ```sh
