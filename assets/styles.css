@@ -913,19 +913,22 @@ h3, h2, h1 {
   flex: 1; /* Allow text to take up remaining space */
 }
 
-.footer
-{
+.footer {
   background: linear-gradient(135deg, #3a3a3a, #4a4a4a);
   color: white;
   text-align: center;
   padding: 10px 0;
-  position: relative;
+  position: fixed; /* Fix the footer to the bottom of the viewport */
   bottom: 0;
-  width: 100%;
+  left: 0; /* Ensure it starts from the left edge */
+  width: 100%; /* Ensure it spans the full width of the viewport */
+  margin: 0; /* Remove any unintended spacing */
   transition: background 0.3s ease;
-  margin-top: 20px; /* Add space above the footer */
   padding: 20px; /* Add padding for better spacing */
+  box-sizing: border-box; /* Include padding in width calculation */
+  z-index: 1000; /* Ensure it is above all other elements */
 }
+
 .header {
   display: flex; /* Use flexbox for alignment */
   align-items: center; /* Center vertically */
