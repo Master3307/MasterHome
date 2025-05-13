@@ -1,12 +1,3 @@
-/* Include Phosphor Icons */
-@import url("./phosphor.css");
-
-/* Include Font Awesome */
-@import url("./fontawesome.css");
-
-/* Include Bootstrap */
-@import url("./bootstrap.css");
-
 /* General Styles */
 body {
   font-family: "Inter", sans-serif;
@@ -74,7 +65,11 @@ footer {
 .button:hover {
   transform: translate3d(10px, -10px, 10px); /* Lift the button on hover */
   box-shadow: 0 0 15px orangered;
-  background: linear-gradient(135deg, #3a3a3a, #4a4a4a); /* Slightly brighter background */
+  background: linear-gradient(
+    135deg,
+    #3a3a3a,
+    #4a4a4a
+  ); /* Slightly brighter background */
   border: 2px solid orangered;
   animation: pulse-orange 2s infinite alternate ease-in-out; /* Add pulse animation */
   box-shadow: 0 0 15px orange, 0 0 15px orangered; /* Add pulsing shadow */
@@ -899,7 +894,9 @@ br {
   border-radius: 10px;
   margin: 0; /* remove the margin that was pushing it to the center */
 }
-h3, h2, h1 {
+h3,
+h2,
+h1 {
   color: orangered; /* White color for the title */
 }
 .what h2 {
@@ -908,8 +905,7 @@ h3, h2, h1 {
   text-align: left; /* Align text to the left */
   max-width: 600px; /* Limit width of text */
 }
-.what-text
-{
+.what-text {
   flex: 1; /* Allow text to take up remaining space */
 }
 
@@ -1145,4 +1141,10 @@ input:checked + .slider:before {
 .diamond-icon {
   color: #b9f2ff; /* Diamond color */
   margin-right: 8px;
+}
+
+/* Freunde class styles */
+.freunde {
+  font-size: 0.4rem; /* Make the font slightly smaller */
+  color: #ffcc00; /* Change the color to a golden yellow */
 }
