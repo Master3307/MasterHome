@@ -53,7 +53,7 @@ footer {
   padding: 0; /* Remove padding to fit the image */
   margin: 20px auto; /* Center the button and add spacing */
   background: #1e1e1e; /* Match sidebar color */
-  border: none;
+  border: 2px solid transparent; /* Match sidebar border color */
   border-radius: 20px;
   position: relative;
   overflow: hidden;
@@ -65,15 +65,10 @@ footer {
 .button:hover {
   transform: translate3d(10px, -10px, 10px); /* Lift the button on hover */
   box-shadow: 0 0 15px orangered;
-  background: linear-gradient(
-    135deg,
-    #3a3a3a,
-    #4a4a4a
-  ); /* Slightly brighter background */
-  border: 2px solid orangered;
+  border: orangered;
   animation: pulse-orange 2s infinite alternate ease-in-out; /* Add pulse animation */
   box-shadow: 0 0 15px orange, 0 0 15px orangered; /* Add pulsing shadow */
-  border: 2px solid orange; /* Add pulsing border */
+  border: orange; /* Add pulsing border */
 }
 
 @keyframes pulse-orange {
@@ -914,16 +909,18 @@ h1 {
   color: white;
   text-align: center;
   padding: 10px 0;
-  position: fixed; /* Fix the footer to the bottom of the viewport */
+  position: relative;
   bottom: 0;
-  left: 0; /* Ensure it starts from the left edge */
-  width: 100%; /* Ensure it spans the full width of the viewport */
-  margin: 0; /* Remove any unintended spacing */
+  left: 0;
+  width: 100%;
+  margin: 0;
   transition: background 0.3s ease;
-  padding: 20px; /* Add padding for better spacing */
-  box-sizing: border-box; /* Include padding in width calculation */
-  z-index: 1000; /* Ensure it is above all other elements */
+  padding: 20px;
+  box-sizing: border-box;
+  z-index: 1000;
+  min-height: 100px; /* Ensure a minimum height */
 }
+
 
 .header {
   display: flex; /* Use flexbox for alignment */
