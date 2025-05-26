@@ -56,6 +56,7 @@
 </head>
 <body>
   <div class="dating-container">
+    <img src="janka.jpg" alt="Jankerin Profilbild" style="width:120px;height:120px;object-fit:cover;border-radius:50%;margin-bottom:1em;border:3px solid #ff4081;box-shadow:0 2px 8px #0004;">
     <h1>Jankerin sucht Traummann</h1>
     <p>
       Gesucht wird ein echter Traummann mit folgenden Eigenschaften:
@@ -63,7 +64,12 @@
     <ul class="dating-list">
       <li><span class="icon"><i class="fas fa-birthday-cake"></i></span>Alter: <b>über 50 Jahre</b></li>
       <li><span class="icon"><i class="fas fa-euro-sign"></i></span><b>Viel Geld</b> (finanziell unabhängig)</li>
-      <li><span class="icon"><i class="fas fa-car-side"></i></span><b>Audi-Fahrer</b> (am besten A4, A6 oder RS6)</li>
+      <li>
+        <span class="icon"><i class="fas fa-car-side"></i></span>
+        <b>Audi-Fahrer</b> (am besten A4, A6 oder RS6)
+        <span class="icon" style="margin-left:1em;"><i class="fas fa-motorcycle"></i></span>
+        <b>Simson-Fahrer</b>
+      </li>
       <li><span class="icon"><i class="fas fa-map-marker-alt"></i></span>Bevorzugte Region: <b>Landkreis Cham, Straubing oder Regensburg</b></li>
       <li><span class="icon"><i class="fas fa-dumbbell"></i></span><b>Trainierter Körper</b></li>
       <li><span class="icon"><i class="fas fa-cut"></i></span><b>Buzzcut</b> (kurzer Haarschnitt)</li>
@@ -78,6 +84,9 @@
     </div>
     <button id="anmelden-btn" style="margin-top:2em;padding:0.7em 2em;font-size:1.1em;background:#ff4081;color:#fff;border:none;border-radius:8px;cursor:pointer;">
       Anmelden
+    </button>
+    <button id="chatten-btn" style="margin-top:2em;margin-left:1em;padding:0.7em 2em;font-size:1.1em;background:#4caf50;color:#fff;border:none;border-radius:8px;cursor:pointer;display:none;">
+      Jetzt Chatten
     </button>
     <form id="anmelden-form" style="display:none; margin-top:1.5em; text-align:left;">
       <label for="name" style="display:block;margin-bottom:0.5em;">Name:</label>
@@ -96,6 +105,7 @@
       const anmeldenForm = document.getElementById('anmelden-form');
       const anmeldenSuccess = document.getElementById('anmelden-success');
       const anmeldenUser = document.getElementById('anmelden-user');
+      const chattenBtn = document.getElementById('chatten-btn');
 
       // Load from localStorage if exists
       window.addEventListener('DOMContentLoaded', () => {
@@ -104,12 +114,23 @@
           anmeldenUser.textContent = savedName;
           anmeldenSuccess.style.display = 'block';
           anmeldenForm.style.display = 'none';
+          anmeldenBtn.textContent = 'Abmelden';
+          chattenBtn.style.display = 'inline-block';
         }
       });
 
       anmeldenBtn.addEventListener('click', function() {
-        anmeldenForm.style.display = 'block';
-        anmeldenSuccess.style.display = 'none';
+        if (anmeldenBtn.textContent === 'Abmelden') {
+          // Log out
+          localStorage.removeItem('dating_name');
+          anmeldenUser.textContent = '';
+          anmeldenSuccess.style.display = 'none';
+          anmeldenBtn.textContent = 'Anmelden';
+          chattenBtn.style.display = 'none';
+        } else {
+          anmeldenForm.style.display = 'block';
+          anmeldenSuccess.style.display = 'none';
+        }
       });
 
       anmeldenForm.addEventListener('submit', function(e) {
@@ -119,7 +140,50 @@
         anmeldenUser.textContent = name;
         anmeldenSuccess.style.display = 'block';
         localStorage.setItem('dating_name', name);
+        anmeldenBtn.textContent = 'Abmelden';
+        chattenBtn.style.display = 'inline-block';
         anmeldenForm.reset();
+      });
+
+      chattenBtn.addEventListener('click', function() {
+        // Overlay the entire page with a scary black screen and message + emojis
+        const overlay = document.createElement('div');
+        overlay.style.position = 'fixed';
+        overlay.style.left = 0;
+        overlay.style.top = 0;
+        overlay.style.width = '100vw';
+        overlay.style.height = '100vh';
+        overlay.style.background = '#000';
+        overlay.style.zIndex = 9999;
+        overlay.style.display = 'flex';
+        overlay.style.flexDirection = 'column';
+        overlay.style.alignItems = 'center';
+        overlay.style.justifyContent = 'center';
+        overlay.style.transition = 'background 0.5s';
+        overlay.innerHTML = `
+          <div style="text-align:center;">
+            <div style="font-size:4em; margin-bottom:0.3em; animation: shake 0.7s infinite alternate;">
+              😱💀👹👻
+            </div>
+            <span style="color:#ff2222;font-size:2.2em;font-weight:bold;text-shadow:0 0 16px #ff2222,0 0 32px #fff;">
+              Sie wurden Verarscht,<br>Hier gibts nix zum chattn
+            </span>
+            <div style="font-size:3em; margin-top:0.5em; animation: blink 1.2s infinite;">
+              👺🕷️👾😈🖕
+            </div>
+          </div>
+          <style>
+            @keyframes shake {
+              0% { transform: translateX(-10px) rotate(-2deg);}
+              100% { transform: translateX(10px) rotate(2deg);}
+            }
+            @keyframes blink {
+              0%, 100% { opacity: 1; }
+              50% { opacity: 0.3; }
+            }
+          </style>
+        `;
+        document.body.appendChild(overlay);
       });
     </script>
   </div>
