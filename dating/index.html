@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jankerin sucht Traummann</title>
+  <link rel="stylesheet" href="../assets/style.css" />
+  <style>
+    .dating-container {
+      max-width: 500px;
+      margin: 40px auto;
+      background: #232323cc;
+      border-radius: 16px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.15);
+      padding: 2em 2em 1.5em 2em;
+      color: #fff;
+      text-align: center;
+    }
+    .dating-container h1 {
+      margin-bottom: 0.5em;
+      font-size: 2em;
+      color: #ff4081;
+    }
+    .dating-list {
+      text-align: left;
+      margin: 1.5em 0;
+      font-size: 1.1em;
+      line-height: 1.7;
+      list-style: none;
+      padding: 0;
+    }
+    .dating-list li {
+      margin-bottom: 0.7em;
+      background: #292929;
+      border-radius: 8px;
+      padding: 0.7em 1em;
+      display: flex;
+      align-items: center;
+      gap: 0.7em;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+      font-size: 1.08em;
+    }
+    .dating-list li .icon {
+      font-size: 1.2em;
+      color: #ff4081;
+      min-width: 1.5em;
+      text-align: center;
+    }
+    .dating-footer {
+      margin-top: 2em;
+      color: #aaa;
+      font-size: 0.95em;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+</head>
+<body>
+  <div class="dating-container">
+    <h1>Jankerin sucht Traummann</h1>
+    <p>
+      Gesucht wird ein echter Traummann mit folgenden Eigenschaften:
+    </p>
+    <ul class="dating-list">
+      <li><span class="icon"><i class="fas fa-birthday-cake"></i></span>Alter: <b>über 50 Jahre</b></li>
+      <li><span class="icon"><i class="fas fa-euro-sign"></i></span><b>Viel Geld</b> (finanziell unabhängig)</li>
+      <li><span class="icon"><i class="fas fa-car-side"></i></span><b>Audi-Fahrer</b> (am besten A4, A6 oder RS6)</li>
+      <li><span class="icon"><i class="fas fa-map-marker-alt"></i></span>Bevorzugte Region: <b>Landkreis Cham, Straubing oder Regensburg</b></li>
+      <li><span class="icon"><i class="fas fa-dumbbell"></i></span><b>Trainierter Körper</b></li>
+      <li><span class="icon"><i class="fas fa-cut"></i></span><b>Buzzcut</b> (kurzer Haarschnitt)</li>
+      <li><span class="icon"><i class="fas fa-user"></i></span><b>Dunkle Haare</b></li>
+      <li><span class="icon"><i class="fas fa-eye"></i></span><b>Dunkle Augen</b></li>
+    </ul>
+    <p>
+      Wenn du dich angesprochen fühlst, melde dich!
+    </p>
+    <div class="dating-footer">
+      <i>Kontaktaufnahme über das Formular auf der Startseite.</i>
+    </div>
+    <button id="anmelden-btn" style="margin-top:2em;padding:0.7em 2em;font-size:1.1em;background:#ff4081;color:#fff;border:none;border-radius:8px;cursor:pointer;">
+      Anmelden
+    </button>
+    <form id="anmelden-form" style="display:none; margin-top:1.5em; text-align:left;">
+      <label for="name" style="display:block;margin-bottom:0.5em;">Name:</label>
+      <input type="text" id="name" name="name" required style="width:100%;padding:0.5em;margin-bottom:1em;border-radius:5px;border:1px solid #444;background:#222;color:#fff;">
+      <label for="email" style="display:block;margin-bottom:0.5em;">E-Mail:</label>
+      <input type="email" id="email" name="email" required style="width:100%;padding:0.5em;margin-bottom:1em;border-radius:5px;border:1px solid #444;background:#222;color:#fff;">
+      <label for="passwort" style="display:block;margin-bottom:0.5em;">Passwort:</label>
+      <input type="password" id="passwort" name="passwort" required style="width:100%;padding:0.5em;margin-bottom:1em;border-radius:5px;border:1px solid #444;background:#222;color:#fff;">
+      <button type="submit" style="padding:0.6em 2em;background:#ff4081;color:#fff;border:none;border-radius:8px;cursor:pointer;">Jetzt anmelden</button>
+    </form>
+    <div id="anmelden-success" style="display:none; margin-top:1.5em; color:#4caf50; font-weight:bold; font-size:1.1em; text-align:center;">
+      Anmeldung erfolgreich! Willkommen, <span id="anmelden-user"></span>!
+    </div>
+    <script>
+      const anmeldenBtn = document.getElementById('anmelden-btn');
+      const anmeldenForm = document.getElementById('anmelden-form');
+      const anmeldenSuccess = document.getElementById('anmelden-success');
+      const anmeldenUser = document.getElementById('anmelden-user');
+
+      // Load from localStorage if exists
+      window.addEventListener('DOMContentLoaded', () => {
+        const savedName = localStorage.getItem('dating_name');
+        if (savedName) {
+          anmeldenUser.textContent = savedName;
+          anmeldenSuccess.style.display = 'block';
+          anmeldenForm.style.display = 'none';
+        }
+      });
+
+      anmeldenBtn.addEventListener('click', function() {
+        anmeldenForm.style.display = 'block';
+        anmeldenSuccess.style.display = 'none';
+      });
+
+      anmeldenForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = document.getElementById('name').value;
+        anmeldenForm.style.display = 'none';
+        anmeldenUser.textContent = name;
+        anmeldenSuccess.style.display = 'block';
+        localStorage.setItem('dating_name', name);
+        anmeldenForm.reset();
+      });
+    </script>
+  </div>
+</body>
+</html>
