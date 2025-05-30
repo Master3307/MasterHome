@@ -102,6 +102,59 @@
     .chat-input-row button:hover {
       background: #e91e63;
     }
+    .chat-input-row input[type="file"] {
+      display: none;
+    }
+    .attach-label {
+      display: flex;
+      align-items: center;
+      background: #444;
+      color: #fff;
+      border-radius: 8px;
+      padding: 0.7em 1em;
+      margin-right: 0.5em;
+      cursor: pointer;
+      font-size: 1em;
+      border: none;
+      transition: background 0.2s;
+    }
+    .attach-label:hover {
+      background: #666;
+    }
+    .attach-label i {
+      margin-right: 0.4em;
+    }
+    .chat-attachment-preview {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 1em;
+      margin-bottom: 0.7em;
+      margin-top: 0.2em;
+      /* Neu: über dem Eingabefeld */
+    }
+    .chat-attachment-preview img {
+      max-width: 120px;
+      max-height: 120px;
+      border-radius: 10px;
+      border: 2px solid #ff4081;
+      background: #181818;
+      box-shadow: 0 1px 8px #0003;
+    }
+    .remove-attachment-btn {
+      background: #ff4081;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 0.4em 1em;
+      font-size: 1em;
+      cursor: pointer;
+      margin-left: 0.5em;
+      transition: background 0.2s;
+    }
+    .remove-attachment-btn:hover {
+      background: #e91e63;
+    }
   </style>
   <script src="https://js.puter.com/v2/"></script>
 </head>
@@ -111,21 +164,36 @@
       <img src="../janka.jpg" alt="Jankerin Profilbild" />
       <span class="name">Jankerin</span>
     </div>
+    <div style="text-align:right; margin-bottom:0.5em;">
+      <button id="new-chat-btn" style="padding:0.4em 1.2em; background:#444; color:#fff; border:none; border-radius:7px; font-size:1em; cursor:pointer;">
+        Neuer Chat
+      </button>
+    </div>
     <div class="chat-messages" id="chat-messages">
       <div class="msg jankerin">Hallo! 😊 Ich bin Jankerin. Worüber möchtest du reden?</div>
     </div>
-    <form class="chat-input-row" id="chat-form" autocomplete="off">
+    <!-- Attachment preview is now directly above the input row -->
+    <div id="attachment-preview" class="chat-attachment-preview" style="display:none;"></div>
+    <form class="chat-input-row" id="chat-form" autocomplete="off" enctype="multipart/form-data">
+      <label for="chat-attach" class="attach-label" title="Bild anhängen">
+        <i class="fas fa-paperclip"></i> Bild
+        <input type="file" id="chat-attach" accept="image/*">
+      </label>
       <input type="text" id="chat-input" placeholder="Nachricht schreiben..." autocomplete="off" required />
       <button type="submit">Senden</button>
     </form>
   </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
   <script>
     // Get username from localStorage (set on Anmeldung)
-    const userName = localStorage.getItem('dating_user_for_jankerin') || "Unbekannt";
+    const userName = localStorage.getItem('dating_name') || "Unbekannt";
 
     const chatForm = document.getElementById('chat-form');
     const chatInput = document.getElementById('chat-input');
     const chatMessages = document.getElementById('chat-messages');
+    const chatAttach = document.getElementById('chat-attach');
+    const attachmentPreview = document.getElementById('attachment-preview');
+    let pendingImage = null;
     let chatHistory = [
       { 
         role: "system", 
@@ -136,10 +204,65 @@ Du darfst im Rahmen eines Dating-Chats auch auf schärfere oder intime Themen ei
       }
     ];
 
-    function appendMsg(text, sender) {
+    chatAttach.addEventListener('change', function() {
+      const file = chatAttach.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        pendingImage = e.target.result;
+        showAttachmentPreview(pendingImage);
+      };
+      reader.readAsDataURL(file);
+      // Reset input so the same file can be sent again if wanted
+      chatAttach.value = "";
+    });
+
+    function showAttachmentPreview(imgSrc) {
+      attachmentPreview.innerHTML = '';
+      const img = document.createElement('img');
+      img.src = imgSrc;
+      img.alt = "Angehängtes Bild";
+      const removeBtn = document.createElement('button');
+      removeBtn.type = "button";
+      removeBtn.className = "remove-attachment-btn";
+      removeBtn.textContent = "Entfernen";
+      removeBtn.onclick = function() {
+        pendingImage = null;
+        attachmentPreview.style.display = "none";
+        attachmentPreview.innerHTML = "";
+      };
+      attachmentPreview.appendChild(img);
+      attachmentPreview.appendChild(removeBtn);
+      attachmentPreview.style.display = "flex";
+    }
+
+    function appendMsg(text, sender, imgSrc) {
       const div = document.createElement('div');
       div.className = 'msg ' + sender;
-      div.textContent = text;
+      if (imgSrc) {
+        const img = document.createElement('img');
+        img.src = imgSrc;
+        img.alt = "Angehängtes Bild";
+        img.style.maxWidth = "180px";
+        img.style.borderRadius = "12px";
+        img.style.margin = "0.5em 0";
+        div.appendChild(img);
+        if (text) {
+          const br = document.createElement('br');
+          div.appendChild(br);
+          div.appendChild(document.createTextNode(text));
+        }
+      } else if (text === "__JANKA_IMAGE__") {
+        const img = document.createElement('img');
+        img.src = "../janka.jpg";
+        img.alt = "Jankerin Bild";
+        img.style.maxWidth = "180px";
+        img.style.borderRadius = "12px";
+        img.style.margin = "0.5em 0";
+        div.appendChild(img);
+      } else {
+        div.textContent = text;
+      }
       chatMessages.appendChild(div);
       chatMessages.scrollTop = chatMessages.scrollHeight;
     }
@@ -147,29 +270,87 @@ Du darfst im Rahmen eines Dating-Chats auch auf schärfere oder intime Themen ei
     chatForm.addEventListener('submit', async function(e) {
       e.preventDefault();
       const userMsg = chatInput.value.trim();
-      if (!userMsg) return;
-      appendMsg(userMsg, 'user');
-      chatHistory.push({ role: "user", content: userMsg });
-      chatInput.value = '';
-      appendMsg("Jankerin tippt...", 'jankerin');
-      try {
-        // Use Puter.js for free OpenAI API access
-        const prompt = chatHistory.map(h => (h.role === "user" ? `${userName}: ` : h.role === "assistant" ? "Jankerin: " : "") + h.content).join("\n") + "\nJankerin:";
-        const response = await puter.ai.chat(prompt, { model: "gpt-4o" });
-        // Remove "tippt..." dummy
-        const lastMsg = chatMessages.querySelector('.msg.jankerin:last-child');
-        if (lastMsg && lastMsg.textContent === "Jankerin tippt...") {
-          chatMessages.removeChild(lastMsg);
+      if (!userMsg && !pendingImage) return;
+
+      // Merge image and message as one user message
+      if (pendingImage) {
+        appendMsg(userMsg, 'user', pendingImage);
+        chatHistory.push({ role: "user", content: userMsg ? `[Bild gesendet] ${userMsg}` : "[Bild gesendet]" });
+        chatInput.value = '';
+        pendingImage = null;
+        attachmentPreview.style.display = "none";
+        attachmentPreview.innerHTML = "";
+        appendMsg("Jankerin tippt...", 'jankerin');
+        // Jankerin reagiert auf Bild + Nachricht
+        try {
+          let prompt = chatHistory.map(h => (h.role === "user" ? `${userName}: ` : h.role === "assistant" ? "Jankerin: " : "") + h.content).join("\n") + "\nJankerin:";
+          prompt += "\n[Der Nutzer hat ein Bild geschickt. Reagiere darauf und auf die Nachricht.]";
+          const response = await puter.ai.chat(prompt, { model: "gpt-4o" });
+          const lastMsg = chatMessages.querySelector('.msg.jankerin:last-child');
+          if (lastMsg && lastMsg.textContent === "Jankerin tippt...") {
+            chatMessages.removeChild(lastMsg);
+          }
+          appendMsg(response, 'jankerin');
+          chatHistory.push({ role: "assistant", content: response });
+        } catch {
+          const lastMsg = chatMessages.querySelector('.msg.jankerin:last-child');
+          if (lastMsg && lastMsg.textContent === "Jankerin tippt...") {
+            chatMessages.removeChild(lastMsg);
+          }
+          appendMsg("Ich kann gerade nicht antworten. Versuch's später nochmal!", 'jankerin');
         }
-        appendMsg(response, 'jankerin');
-        chatHistory.push({ role: "assistant", content: response });
-      } catch {
-        const lastMsg = chatMessages.querySelector('.msg.jankerin:last-child');
-        if (lastMsg && lastMsg.textContent === "Jankerin tippt...") {
-          chatMessages.removeChild(lastMsg);
-        }
-        appendMsg("Ich kann gerade nicht antworten. Versuch's später nochmal!", 'jankerin');
+        return;
       }
+
+      // Nur Textnachricht
+      if (userMsg) {
+        appendMsg(userMsg, 'user');
+        chatHistory.push({ role: "user", content: userMsg });
+        chatInput.value = '';
+        appendMsg("Jankerin tippt...", 'jankerin');
+
+        // Prüfe, ob nach Bild gefragt wird
+        const lowerMsg = userMsg.toLowerCase();
+        if (
+          lowerMsg.includes("bild") ||
+          lowerMsg.includes("foto") ||
+          lowerMsg.includes("profilbild") ||
+          lowerMsg.includes("pic") ||
+          lowerMsg.includes("selfie")
+        ) {
+          setTimeout(() => {
+            // Entferne "tippt..." Dummy
+            const lastMsg = chatMessages.querySelector('.msg.jankerin:last-child');
+            if (lastMsg && lastMsg.textContent === "Jankerin tippt...") {
+              chatMessages.removeChild(lastMsg);
+            }
+            appendMsg("__JANKA_IMAGE__", 'jankerin');
+            chatHistory.push({ role: "assistant", content: "[Jankerin schickt ein Bild]" });
+          }, 900);
+          return;
+        }
+
+        try {
+          const prompt = chatHistory.map(h => (h.role === "user" ? `${userName}: ` : h.role === "assistant" ? "Jankerin: " : "") + h.content).join("\n") + "\nJankerin:";
+          const response = await puter.ai.chat(prompt, { model: "gpt-4o" });
+          const lastMsg = chatMessages.querySelector('.msg.jankerin:last-child');
+          if (lastMsg && lastMsg.textContent === "Jankerin tippt...") {
+            chatMessages.removeChild(lastMsg);
+          }
+          appendMsg(response, 'jankerin');
+          chatHistory.push({ role: "assistant", content: response });
+        } catch {
+          const lastMsg = chatMessages.querySelector('.msg.jankerin:last-child');
+          if (lastMsg && lastMsg.textContent === "Jankerin tippt...") {
+            chatMessages.removeChild(lastMsg);
+          }
+          appendMsg("Ich kann gerade nicht antworten. Versuch's später nochmal!", 'jankerin');
+        }
+      }
+    });
+
+    document.getElementById('new-chat-btn').addEventListener('click', function() {
+      location.reload();
     });
   </script>
 </body>

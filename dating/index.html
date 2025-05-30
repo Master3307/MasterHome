@@ -129,7 +129,7 @@
         if (anmeldenBtn.textContent === 'Abmelden') {
           // Log out
           localStorage.removeItem('dating_name');
-          localStorage.removeItem('dating_user_for_jankerin');
+          // localStorage.removeItem('dating_user_for_jankerin'); // entfernt
           anmeldenUser.textContent = '';
           anmeldenSuccess.style.display = 'none';
           anmeldenBtn.textContent = 'Anmelden';
@@ -147,16 +147,14 @@
         anmeldenUser.textContent = name;
         anmeldenSuccess.style.display = 'block';
         localStorage.setItem('dating_name', name);
-        localStorage.setItem('dating_user_for_jankerin', name);
+        // localStorage.setItem('dating_user_for_jankerin', name); // entfernt
         anmeldenBtn.textContent = 'Abmelden';
         chattenBtn.style.display = 'inline-block';
         anmeldenForm.reset();
       });
 
       chattenBtn.addEventListener('click', function() {
-        // Save username for chat KI
-        const name = localStorage.getItem('dating_name') || '';
-        localStorage.setItem('dating_user_for_jankerin', name);
+        // Kein dating_user_for_jankerin mehr
         window.location.href = "chat/";
       });
     </script>
