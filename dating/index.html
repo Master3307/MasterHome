@@ -82,6 +82,12 @@
     <div class="dating-footer">
       <i>Kontaktaufnahme über das Formular auf der Startseite.</i>
     </div>
+    <div style="margin-top:2em; margin-bottom:1em; background:#181818cc; border-radius:10px; padding:1.2em 1em; box-shadow:0 1px 8px #0003;">
+      <h2 style="color:#ff4081; margin-bottom:0.5em;">Warum ich?</h2>
+      <div style="font-size:1.13em; color:#fff;">
+        Ich habe viel Erfahrung und bringe jeden in Sekunden zum Stehen.
+      </div>
+    </div>
     <button id="anmelden-btn" style="margin-top:2em;padding:0.7em 2em;font-size:1.1em;background:#ff4081;color:#fff;border:none;border-radius:8px;cursor:pointer;">
       Anmelden
     </button>
@@ -123,6 +129,7 @@
         if (anmeldenBtn.textContent === 'Abmelden') {
           // Log out
           localStorage.removeItem('dating_name');
+          localStorage.removeItem('dating_user_for_jankerin');
           anmeldenUser.textContent = '';
           anmeldenSuccess.style.display = 'none';
           anmeldenBtn.textContent = 'Anmelden';
@@ -140,50 +147,17 @@
         anmeldenUser.textContent = name;
         anmeldenSuccess.style.display = 'block';
         localStorage.setItem('dating_name', name);
+        localStorage.setItem('dating_user_for_jankerin', name);
         anmeldenBtn.textContent = 'Abmelden';
         chattenBtn.style.display = 'inline-block';
         anmeldenForm.reset();
       });
 
       chattenBtn.addEventListener('click', function() {
-        // Overlay the entire page with a scary black screen and message + emojis
-        const overlay = document.createElement('div');
-        overlay.style.position = 'fixed';
-        overlay.style.left = 0;
-        overlay.style.top = 0;
-        overlay.style.width = '100vw';
-        overlay.style.height = '100vh';
-        overlay.style.background = '#000';
-        overlay.style.zIndex = 9999;
-        overlay.style.display = 'flex';
-        overlay.style.flexDirection = 'column';
-        overlay.style.alignItems = 'center';
-        overlay.style.justifyContent = 'center';
-        overlay.style.transition = 'background 0.5s';
-        overlay.innerHTML = `
-          <div style="text-align:center;">
-            <div style="font-size:4em; margin-bottom:0.3em; animation: shake 0.7s infinite alternate;">
-              😱💀👹👻
-            </div>
-            <span style="color:#ff2222;font-size:2.2em;font-weight:bold;text-shadow:0 0 16px #ff2222,0 0 32px #fff;">
-              Sie wurden Verarscht,<br>Hier gibts nix zum chattn
-            </span>
-            <div style="font-size:3em; margin-top:0.5em; animation: blink 1.2s infinite;">
-              👺🕷️👾😈🖕
-            </div>
-          </div>
-          <style>
-            @keyframes shake {
-              0% { transform: translateX(-10px) rotate(-2deg);}
-              100% { transform: translateX(10px) rotate(2deg);}
-            }
-            @keyframes blink {
-              0%, 100% { opacity: 1; }
-              50% { opacity: 0.3; }
-            }
-          </style>
-        `;
-        document.body.appendChild(overlay);
+        // Save username for chat KI
+        const name = localStorage.getItem('dating_name') || '';
+        localStorage.setItem('dating_user_for_jankerin', name);
+        window.location.href = "chat/";
       });
     </script>
   </div>

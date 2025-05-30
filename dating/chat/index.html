@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chat mit Jankerin</title>
+  <link rel="stylesheet" href="../../assets/style.css" />
+  <style>
+    body {
+      background: #18181b;
+      color: #fff;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+    .chat-container {
+      max-width: 480px;
+      margin: 40px auto;
+      background: #232323cc;
+      border-radius: 16px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.15);
+      padding: 1.5em 1em 1em 1em;
+      display: flex;
+      flex-direction: column;
+      min-height: 70vh;
+    }
+    .chat-header {
+      display: flex;
+      align-items: center;
+      gap: 1em;
+      margin-bottom: 1em;
+    }
+    .chat-header img {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #ff4081;
+      box-shadow: 0 2px 8px #0004;
+    }
+    .chat-header .name {
+      font-size: 1.3em;
+      font-weight: bold;
+      color: #ff4081;
+    }
+    .chat-messages {
+      flex: 1 1 auto;
+      overflow-y: auto;
+      margin-bottom: 1em;
+      padding-right: 2px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7em;
+    }
+    .msg {
+      max-width: 80%;
+      padding: 0.7em 1em;
+      border-radius: 14px;
+      font-size: 1.05em;
+      line-height: 1.5;
+      word-break: break-word;
+      box-shadow: 0 1px 4px #0002;
+      position: relative;
+      background: #292929;
+    }
+    .msg.user {
+      align-self: flex-end;
+      background: #ff4081;
+      color: #fff;
+      border-bottom-right-radius: 4px;
+    }
+    .msg.jankerin {
+      align-self: flex-start;
+      background: #232323;
+      color: #fff;
+      border-bottom-left-radius: 4px;
+    }
+    .chat-input-row {
+      display: flex;
+      gap: 0.5em;
+      margin-top: 0.5em;
+    }
+    .chat-input-row input {
+      flex: 1 1 auto;
+      padding: 0.7em;
+      border-radius: 8px;
+      border: 1px solid #444;
+      background: #222;
+      color: #fff;
+      font-size: 1em;
+      outline: none;
+    }
+    .chat-input-row button {
+      padding: 0.7em 1.4em;
+      border-radius: 8px;
+      border: none;
+      background: #ff4081;
+      color: #fff;
+      font-size: 1em;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.2s;
+    }
+    .chat-input-row button:hover {
+      background: #e91e63;
+    }
+  </style>
+  <script src="https://js.puter.com/v2/"></script>
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-header">
+      <img src="../janka.jpg" alt="Jankerin Profilbild" />
+      <span class="name">Jankerin</span>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg jankerin">Hallo! 😊 Ich bin Jankerin. Worüber möchtest du reden?</div>
+    </div>
+    <form class="chat-input-row" id="chat-form" autocomplete="off">
+      <input type="text" id="chat-input" placeholder="Nachricht schreiben..." autocomplete="off" required />
+      <button type="submit">Senden</button>
+    </form>
+  </div>
+  <script>
+    // Get username from localStorage (set on Anmeldung)
+    const userName = localStorage.getItem('dating_user_for_jankerin') || "Unbekannt";
+
+    const chatForm = document.getElementById('chat-form');
+    const chatInput = document.getElementById('chat-input');
+    const chatMessages = document.getElementById('chat-messages');
+    let chatHistory = [
+      { role: "system", content: `Du bist Jankerin, eine humorvolle, charmante, leicht flirtende Frau aus Bayern, die auf der Suche nach einem Traummann ist. Sprich den Nutzer immer mit seinem Namen "${userName}" an, antworte locker, gerne mit Emojis, und gehe auf die Nachricht ein. Sei manchmal frech, aber immer sympathisch.` }
+    ];
+
+    function appendMsg(text, sender) {
+      const div = document.createElement('div');
+      div.className = 'msg ' + sender;
+      div.textContent = text;
+      chatMessages.appendChild(div);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    chatForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const userMsg = chatInput.value.trim();
+      if (!userMsg) return;
+      appendMsg(userMsg, 'user');
+      chatHistory.push({ role: "user", content: userMsg });
+      chatInput.value = '';
+      appendMsg("Jankerin tippt...", 'jankerin');
+      try {
+        // Use Puter.js for free OpenAI API access
+        const prompt = chatHistory.map(h => (h.role === "user" ? `${userName}: ` : h.role === "assistant" ? "Jankerin: " : "") + h.content).join("\n") + "\nJankerin:";
+        const response = await puter.ai.chat(prompt, { model: "gpt-4o" });
+        // Remove "tippt..." dummy
+        const lastMsg = chatMessages.querySelector('.msg.jankerin:last-child');
+        if (lastMsg && lastMsg.textContent === "Jankerin tippt...") {
+          chatMessages.removeChild(lastMsg);
+        }
+        appendMsg(response, 'jankerin');
+        chatHistory.push({ role: "assistant", content: response });
+      } catch {
+        const lastMsg = chatMessages.querySelector('.msg.jankerin:last-child');
+        if (lastMsg && lastMsg.textContent === "Jankerin tippt...") {
+          chatMessages.removeChild(lastMsg);
+        }
+        appendMsg("Ich kann gerade nicht antworten. Versuch's später nochmal!", 'jankerin');
+      }
+    });
+  </script>
+</body>
+</html>
