@@ -23,6 +23,7 @@ Something human for once: The Original idea was to create a site with all my Stu
 - **Cursor Test**: Test and preview custom cursor styles interactively.
 
 ## Project Structure
+
 - **home/**: Main dashboard with navigation buttons to all features and sections.
 - **master-tech-services/**: Technical services website.
 - **quellen/**: Educational resources and references.
@@ -31,8 +32,8 @@ Something human for once: The Original idea was to create a site with all my Stu
 - **cursor-test/**: Test and preview custom cursor styles interactively.
 - **assets/**: Insights into the assets directory, which contains images, stylesheets, and scripts used across the site.
 
-
 ## Setup Instructions
+
 ~~1. Clone the repository:~~  
 ~~```sh~~  
 ~~git clone https://github.com/master3307/MasterHome.git~~  

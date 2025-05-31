@@ -1,318 +1,372 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
-    <title>Assets Viewer</title>
-    <link rel="stylesheet" href="style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
-    <link rel="icon" href="../assets/MT.webp" type="image/webp" />
-      <!-- Discord Embed meta tags -->
-    <meta property="og:title" content="MasterHome" />
-    <meta property="og:description" content="Explore projects, tools, and ideas by me, Master3307." />
-    <meta property="og:url" content="https://master3307.netlify.app/" />
-    <meta property="og:image" content="https://master3307.netlify.app/assets/M437.webp" />
-    <meta property="og:image:alt" content="Main Logo" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Assets Viewer</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+  <link rel="icon" href="../assets/media/MT.webp" type="image/webp" />
+  <!-- Discord Embed meta tags -->
+  <meta property="og:title" content="MasterHome" />
+  <meta property="og:description" content="Explore projects, tools, and ideas by me, Master3307." />
+  <meta property="og:url" content="https://master3307.netlify.app/" />
+  <meta property="og:image" content="https://master3307.netlify.app/assets/M437.webp" />
+  <meta property="og:image:alt" content="Main Logo" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
 
   <!-- Additional image for embeds -->
-    <!-- <meta property="og:image" content="https://master3307.netlify.app/assets/MT.webp" />
+  <!-- <meta property="og:image" content="https://master3307.netlify.app/assets/MT.webp" />
     <meta property="og:image:alt" content="Secondary Logo" />
     <meta property="og:image:width" content="512" />
     <meta property="og:image:height" content="512" />
     <meta property="og:type" content="website" /> -->
 
   <!-- Twitter card meta tags (optional) -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="MasterHome" />
-    <meta name="twitter:description" content="Explore projects, tools, and ideas by me, Master3307." />
-    <meta name="twitter:image" content="https://master3307.netlify.app/assets/M437.webp" />
-    <meta name="twitter:image:alt" content="Main Logo" />
-    <style>
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="MasterHome" />
+  <meta name="twitter:description" content="Explore projects, tools, and ideas by me, Master3307." />
+  <meta name="twitter:image" content="https://master3307.netlify.app/assets/M437.webp" />
+  <meta name="twitter:image:alt" content="Main Logo" />
+  <style>
+    .button-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      align-items: flex-start;
+      margin: 20px auto 0 auto;
+      max-width: 100vw;
+      overflow-x: auto;
+      padding: 10px 0;
+    }
+
+    .nav-button {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #222;
+      border: 1px solid #444;
+      border-radius: 8px;
+      padding: 6px 8px;
+      cursor: pointer;
+      transition: background 0.2s, box-shadow 0.2s;
+      min-width: 80px;
+      max-width: 120px;
+      word-break: break-all;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    }
+
+    .nav-button:hover {
+      background: #333;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .button-preview {
+      width: 96px;
+      height: 96px;
+      object-fit: contain;
+      margin-bottom: 4px;
+      border-radius: 4px;
+      background: #111;
+      border: 1px solid #333;
+    }
+
+    .nav-button span {
+      font-size: 0.75em;
+      color: #ccc;
+      text-align: center;
+      max-width: 100px;
+      overflow-wrap: break-word;
+      word-break: break-all;
+    }
+
+    .image-viewer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-width: 100vw;
+      margin: 0 auto;
+      box-sizing: border-box;
+    }
+
+    .image-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 1 1 auto;
+      width: 100%;
+      height: 70vh;
+      max-height: 80vh;
+      min-height: 200px;
+      position: relative;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+
+    #current-image {
+      max-width: 100%;
+      max-height: 100%;
+      width: 100%;
+      height: 100%;
+      display: block;
+      margin: auto;
+      object-fit: contain;
+      background: #181818;
+      border-radius: 8px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+      transition: none;
+      z-index: 1;
+      position: relative;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+    }
+
+    .slide-anim {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      pointer-events: none;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 8px;
+      background: #181818;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+      display: block;
+      margin: auto;
+    }
+
+    /* Slide out to left */
+    .slide-left-out {
+      animation: slideLeftOut 0.4s forwards cubic-bezier(.4, 0, .2, 1);
+    }
+
+    /* Slide in from right */
+    .slide-left-in {
+      animation: slideLeftIn 0.4s forwards cubic-bezier(.4, 0, .2, 1);
+    }
+
+    /* Slide out to right */
+    .slide-right-out {
+      animation: slideRightOut 0.4s forwards cubic-bezier(.4, 0, .2, 1);
+    }
+
+    /* Slide in from left */
+    .slide-right-in {
+      animation: slideRightIn 0.4s forwards cubic-bezier(.4, 0, .2, 1);
+    }
+
+    @keyframes slideLeftOut {
+      to {
+        transform: translateX(-100%);
+      }
+    }
+
+    @keyframes slideLeftIn {
+      from {
+        transform: translateX(100%);
+      }
+
+      to {
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideRightOut {
+      to {
+        transform: translateX(100%);
+      }
+    }
+
+    @keyframes slideRightIn {
+      from {
+        transform: translateX(-100%);
+      }
+
+      to {
+        transform: translateX(0);
+      }
+    }
+
+    @media (max-width: 600px) {
       .button-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        justify-content: center;
-        align-items: flex-start;
-        margin: 20px auto 0 auto;
-        max-width: 100vw;
-        overflow-x: auto;
-        padding: 10px 0;
+        gap: 6px;
       }
+
       .nav-button {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background: #222;
-        border: 1px solid #444;
-        border-radius: 8px;
-        padding: 6px 8px;
-        cursor: pointer;
-        transition: background 0.2s, box-shadow 0.2s;
-        min-width: 80px;
-        max-width: 120px;
-        word-break: break-all;
-        box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+        min-width: 60px;
+        max-width: 80px;
+        padding: 4px 4px;
       }
-      .nav-button:hover {
-        background: #333;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-      }
+
       .button-preview {
-        width: 96px;
-        height: 96px;
-        object-fit: contain;
-        margin-bottom: 4px;
-        border-radius: 4px;
-        background: #111;
-        border: 1px solid #333;
+        width: 64px;
+        height: 64px;
       }
+
       .nav-button span {
-        font-size: 0.75em;
-        color: #ccc;
-        text-align: center;
-        max-width: 100px;
-        overflow-wrap: break-word;
-        word-break: break-all;
+        font-size: 0.65em;
+        max-width: 70px;
       }
-      .image-viewer {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        max-width: 100vw;
-        margin: 0 auto;
-        box-sizing: border-box;
-      }
+
       .image-container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex: 1 1 auto;
-        width: 100%;
-        height: 70vh;
-        max-height: 80vh;
-        min-height: 200px;
-        position: relative;
-        overflow: hidden;
-        box-sizing: border-box;
+        height: 40vh;
+        max-height: 50vh;
+        min-height: 120px;
       }
-      #current-image {
-        max-width: 100%;
-        max-height: 100%;
-        width: 100%;
-        height: 100%;
-        display: block;
-        margin: auto;
-        object-fit: contain;
-        background: #181818;
-        border-radius: 8px;
-        box-shadow: 0 2px 12px rgba(0,0,0,0.12);
-        transition: none;
-        z-index: 1;
-        position: relative;
-        left: 0;
-        top: 0;
-        right: 0;
-        bottom: 0;
-      }
-      .slide-anim {
+    }
+  </style>
+  <!-- Highlight.js for code syntax highlighting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+</head>
+
+<body>
+  <header class="header">
+    <a href=".." class="close-button" title="Close viewer">
+      <i class="fas fa-times" aria-hidden="true"></i>
+      <span class="visually-hidden">Close</span>
+    </a>
+    <style>
+      .visually-hidden {
         position: absolute;
-        left: 0; top: 0; right: 0; bottom: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 2;
-        pointer-events: none;
-        max-width: 100%;
-        max-height: 100%;
-        object-fit: contain;
-        border-radius: 8px;
-        background: #181818;
-        box-shadow: 0 2px 12px rgba(0,0,0,0.12);
-        display: block;
-        margin: auto;
-      }
-      /* Slide out to left */
-      .slide-left-out {
-        animation: slideLeftOut 0.4s forwards cubic-bezier(.4,0,.2,1);
-      }
-      /* Slide in from right */
-      .slide-left-in {
-        animation: slideLeftIn 0.4s forwards cubic-bezier(.4,0,.2,1);
-      }
-      /* Slide out to right */
-      .slide-right-out {
-        animation: slideRightOut 0.4s forwards cubic-bezier(.4,0,.2,1);
-      }
-      /* Slide in from left */
-      .slide-right-in {
-        animation: slideRightIn 0.4s forwards cubic-bezier(.4,0,.2,1);
-      }
-      @keyframes slideLeftOut {
-        to { transform: translateX(-100%); }
-      }
-      @keyframes slideLeftIn {
-        from { transform: translateX(100%); }
-        to { transform: translateX(0); }
-      }
-      @keyframes slideRightOut {
-        to { transform: translateX(100%); }
-      }
-      @keyframes slideRightIn {
-        from { transform: translateX(-100%); }
-        to { transform: translateX(0); }
-      }
-      @media (max-width: 600px) {
-        .button-container {
-          gap: 6px;
-        }
-        .nav-button {
-          min-width: 60px;
-          max-width: 80px;
-          padding: 4px 4px;
-        }
-        .button-preview {
-          width: 64px;
-          height: 64px;
-        }
-        .nav-button span {
-          font-size: 0.65em;
-          max-width: 70px;
-        }
-        .image-container {
-          height: 40vh;
-          max-height: 50vh;
-          min-height: 120px;
-        }
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0,0,0,0);
+        border: 0;
       }
     </style>
-  </head>
-  <body>
-    <header class="header">
-      <a href=".." class="close-button">
-        <i class="fas fa-times"></i>
-      </a>
-      <h1>Assets Viewer</h1>
-    </header>
-    <main class="viewer-container">
-      <div class="image-viewer">
-        <button id="prev-arrow" class="nav-arrow">&#9664;</button>
-        <div class="image-container">
-          <img id="current-image" src="" alt="Asset" />
-        </div>
-        <button id="next-arrow" class="nav-arrow">&#9654;</button>
+    <h1>Assets Viewer</h1>
+  </header>
+  <main class="viewer-container">
+    <div class="image-viewer">
+      <button id="prev-arrow" class="nav-arrow">&#9664;</button>
+      <div class="image-container">
+        <img id="current-image" src="" alt="Asset" />
       </div>
-      <div class="button-container" id="button-container">
-        <!-- Buttons will be dynamically populated -->
-      </div>
-    </main>
-    <script>
-      let images = [];
-      let currentIndex = 0;
+      <button id="next-arrow" class="nav-arrow">&#9654;</button>
+    </div>
+    <div class="button-container" id="button-container">
+      <!-- Buttons will be dynamically populated -->
+    </div>
+  </main>
+  <script>
+    let images = [];
+    let currentIndex = 0;
 
-      async function fetchImages() {
-        try {
-          const res = await fetch('assets.json');
-          if (!res.ok) throw new Error('Could not fetch assets.json');
-          images = await res.json();
-          if (images.length > 0) {
-            populateButtons();
-            showImage(images[0]);
-          }
-        } catch (e) {
-          console.error('Failed to load images:', e);
-        }
-      }
+    // Helper: is image file
+    function isImageFile(filename) {
+      return /\.(png|jpe?g|gif|webp|svg)$/i.test(filename);
+    }
+    // Helper: is JS file
+    function isJsFile(filename) {
+      return /\.js$/i.test(filename);
+    }
+    // Helper: is CSS file
+    function isCssFile(filename) {
+      return /\.css$/i.test(filename);
+    }
 
-      function populateButtons() {
-        const buttonContainer = document.getElementById("button-container");
-        buttonContainer.innerHTML = ""; // Clear existing buttons
-        images.forEach((image) => {
-          const button = document.createElement("button");
-          button.className = "nav-button";
-          button.onclick = () => showImage(image);
-
-          const imgPreview = document.createElement("img");
-          imgPreview.src = image;
-          imgPreview.alt = `Preview of ${image}`;
-          imgPreview.className = "button-preview";
-
-          const span = document.createElement("span");
-          span.textContent = image;
-
-          button.appendChild(imgPreview);
-          button.appendChild(span);
-          buttonContainer.appendChild(button);
+    async function fetchImages() {
+      try {
+        const res = await fetch('assets.json');
+        if (!res.ok) throw new Error('Could not fetch assets.json');
+        const imageList = await res.json();
+        images = imageList.map(img => {
+          // If already has Media/ or is .js/.css in root, keep as is
+          return img;
         });
+        if (images.length > 0) {
+          populateButtons();
+          showAsset(images[0]);
+        }
+      } catch (e) {
+        console.error('Failed to load images:', e);
       }
+    }
 
-      // Helper to animate slide between images
-      function animateImageChange(newIndex, direction) {
-        const imgContainer = document.querySelector('.image-container');
-        const oldImg = document.getElementById("current-image");
-        // Create new image element for animation
-        const newImg = oldImg.cloneNode();
-        newImg.src = images[newIndex];
-        newImg.alt = `Asset: ${images[newIndex]}`;
-        newImg.classList.remove("slide-left-in", "slide-right-in", "slide-left-out", "slide-right-out");
-        newImg.classList.add('slide-anim');
-        newImg.style.transform = ""; // Ensure no transform
-        newImg.style.position = "absolute";
-        newImg.style.left = "0";
-        newImg.style.top = "0";
-        newImg.style.right = "0";
-        newImg.style.bottom = "0";
-        newImg.style.margin = "auto";
-        newImg.style.width = "100%";
-        newImg.style.height = "100%";
-        newImg.style.objectFit = "contain";
-        // Set animation classes
-        newImg.classList.add(direction === 1 ? "slide-left-in" : "slide-right-in");
-        imgContainer.appendChild(newImg);
+    function populateButtons() {
+      const buttonContainer = document.getElementById("button-container");
+      buttonContainer.innerHTML = ""; // Clear existing buttons
+      images.forEach((image) => {
+        const button = document.createElement("button");
+        button.className = "nav-button";
+        button.onclick = () => showAsset(image);
 
-        // Animate out the old image by sliding it (visually, but keep it in flow for zoom)
-        oldImg.style.transition = "transform 0.4s cubic-bezier(.4,0,.2,1)";
-        oldImg.style.transform = direction === 1 ? "translateX(-100%)" : "translateX(100%)";
-        oldImg.style.width = "100%";
-        oldImg.style.height = "100%";
-        oldImg.style.objectFit = "contain";
+        let previewElem;
+        if (isImageFile(image)) {
+          previewElem = document.createElement("img");
+          previewElem.src = image;
+          previewElem.alt = `Preview of ${image}`;
+          previewElem.className = "button-preview";
+        } else if (isJsFile(image)) {
+          previewElem = document.createElement("div");
+          previewElem.className = "button-preview";
+          previewElem.style.display = "flex";
+          previewElem.style.alignItems = "center";
+          previewElem.style.justifyContent = "center";
+          previewElem.style.background = "#232323";
+          previewElem.innerHTML = `<i class="fab fa-js" style="font-size:2.5em;color:#f7e018"></i>`;
+        } else if (isCssFile(image)) {
+          previewElem = document.createElement("div");
+          previewElem.className = "button-preview";
+          previewElem.style.display = "flex";
+          previewElem.style.alignItems = "center";
+          previewElem.style.justifyContent = "center";
+          previewElem.style.background = "#232323";
+          previewElem.innerHTML = `<i class="fab fa-css3-alt" style="font-size:2.5em;color:#2196f3"></i>`;
+        } else {
+          previewElem = document.createElement("div");
+          previewElem.className = "button-preview";
+          previewElem.textContent = "?";
+        }
 
-        setTimeout(() => {
-          // Reset old image's transform and update src
-          oldImg.style.transition = "none";
-          oldImg.style.transform = "none";
-          oldImg.src = images[newIndex];
-          oldImg.alt = `Asset: ${images[newIndex]}`;
-          oldImg.style.position = "relative";
-          oldImg.style.left = "0";
-          oldImg.style.top = "0";
-          oldImg.style.right = "0";
-          oldImg.style.bottom = "0";
-          oldImg.style.margin = "auto";
-          oldImg.style.width = "100%";
-          oldImg.style.height = "100%";
-          oldImg.style.objectFit = "contain";
-          currentIndex = newIndex;
-          // Remove animated newImg
-          imgContainer.removeChild(newImg);
-        }, 400);
-      }
+        const span = document.createElement("span");
+        // Remove "Media/" prefix visually for images
+        if (isImageFile(image) && image.startsWith("assets/media/Media/")) {
+          span.textContent = image.replace("assets/media/Media/", "");
+        } else if (isImageFile(image) && image.startsWith("Media/")) {
+          span.textContent = image.replace("Media/", "");
+        } else {
+          span.textContent = image;
+        }
 
-      function showImage(imageSrc) {
-        const imgElement = document.getElementById("current-image");
-        imgElement.style.transition = "none";
-        imgElement.style.transform = "none";
-        imgElement.src = imageSrc;
-        imgElement.alt = `Asset: ${imageSrc}`;
+        button.appendChild(previewElem);
+        button.appendChild(span);
+        buttonContainer.appendChild(button);
+      });
+    }
+
+    // Show asset (image, js, css)
+    async function showAsset(assetSrc) {
+      const imgElement = document.getElementById("current-image");
+      const imgContainer = imgElement.parentElement;
+
+      // Remove any previous code preview
+      let oldCode = imgContainer.querySelector('.code-preview');
+      if (oldCode) imgContainer.removeChild(oldCode);
+
+      if (isImageFile(assetSrc)) {
+        imgElement.style.display = "";
+        imgElement.src = assetSrc;
+        imgElement.alt = `Asset: ${assetSrc}`;
         imgElement.style.position = "relative";
         imgElement.style.left = "0";
         imgElement.style.top = "0";
@@ -322,55 +376,164 @@
         imgElement.style.width = "100%";
         imgElement.style.height = "100%";
         imgElement.style.objectFit = "contain";
-        currentIndex = images.indexOf(imageSrc);
+        currentIndex = images.indexOf(assetSrc);
+      } else if (isJsFile(assetSrc) || isCssFile(assetSrc)) {
+        imgElement.style.display = "none";
+        try {
+          const res = await fetch(assetSrc);
+          const code = await res.text();
+          const codeElem = document.createElement("pre");
+          codeElem.className = "code-preview";
+          codeElem.style.width = "100%";
+          codeElem.style.height = "100%";
+          codeElem.style.background = "#181818";
+          codeElem.style.color = "#fff";
+          codeElem.style.overflow = "auto";
+          codeElem.style.fontSize = "1em";
+          codeElem.style.padding = "1em";
+          codeElem.style.margin = "0";
+          codeElem.style.borderRadius = "8px";
+          codeElem.style.boxSizing = "border-box";
+          codeElem.style.position = "relative";
+          codeElem.style.left = "0";
+          codeElem.style.top = "0";
+          codeElem.style.right = "0";
+          codeElem.style.bottom = "0";
+          codeElem.style.zIndex = "1";
+          // Add code block for highlight.js
+          const codeBlock = document.createElement("code");
+          codeBlock.textContent = code;
+          codeBlock.className = isJsFile(assetSrc) ? "language-javascript" : "language-css";
+          codeElem.appendChild(codeBlock);
+          imgContainer.appendChild(codeElem);
+          // Highlight after DOM insert
+          setTimeout(() => {
+            if (window.hljs) hljs.highlightElement(codeBlock);
+          }, 0);
+          currentIndex = images.indexOf(assetSrc);
+        } catch (e) {
+          alert("Could not load file: " + assetSrc);
+        }
+      } else {
+        imgElement.style.display = "none";
+      }
+    }
+
+    // Animate only for images
+    function animateImageChange(newIndex, direction) {
+      const imgContainer = document.querySelector('.image-container');
+      const oldImg = document.getElementById("current-image");
+      // Remove any code preview
+      let oldCode = imgContainer.querySelector('.code-preview');
+      if (oldCode) imgContainer.removeChild(oldCode);
+
+      if (!isImageFile(images[newIndex])) {
+        showAsset(images[newIndex]);
+        return;
       }
 
-      function updateImage(index, direction = 1) {
-        if (images.length === 0) return;
-        const newIndex = (index + images.length) % images.length;
-        animateImageChange(newIndex, direction);
-      }
+      // Create new image element for animation
+      const newImg = oldImg.cloneNode();
+      newImg.src = images[newIndex];
+      newImg.alt = `Asset: ${images[newIndex]}`;
+      newImg.classList.remove("slide-left-in", "slide-right-in", "slide-left-out", "slide-right-out");
+      newImg.classList.add('slide-anim');
+      newImg.style.transform = ""; // Ensure no transform
+      newImg.style.position = "absolute";
+      newImg.style.left = "0";
+      newImg.style.top = "0";
+      newImg.style.right = "0";
+      newImg.style.bottom = "0";
+      newImg.style.margin = "auto";
+      newImg.style.width = "100%";
+      newImg.style.height = "100%";
+      newImg.style.objectFit = "contain";
+      // Set animation classes
+      newImg.classList.add(direction === 1 ? "slide-left-in" : "slide-right-in");
+      imgContainer.appendChild(newImg);
 
-      document.getElementById("prev-arrow").addEventListener("click", () => {
+      // Animate out the old image by sliding it (visually, but keep it in flow for zoom)
+      oldImg.style.transition = "transform 0.4s cubic-bezier(.4,0,.2,1)";
+      oldImg.style.transform = direction === 1 ? "translateX(-100%)" : "translateX(100%)";
+      oldImg.style.width = "100%";
+      oldImg.style.height = "100%";
+      oldImg.style.objectFit = "contain";
+
+      setTimeout(() => {
+        // Reset old image's transform and update src
+        oldImg.style.transition = "none";
+        oldImg.style.transform = "none";
+        oldImg.src = images[newIndex];
+        oldImg.alt = `Asset: ${images[newIndex]}`;
+        oldImg.style.position = "relative";
+        oldImg.style.left = "0";
+        oldImg.style.top = "0";
+        oldImg.style.right = "0";
+        oldImg.style.bottom = "0";
+        oldImg.style.margin = "auto";
+        oldImg.style.width = "100%";
+        oldImg.style.height = "100%";
+        oldImg.style.objectFit = "contain";
+        oldImg.style.display = "";
+        currentIndex = newIndex;
+        // Remove animated newImg
+        imgContainer.removeChild(newImg);
+      }, 400);
+    }
+
+    // Overwrite showImage to use showAsset
+    function showImage(imageSrc) {
+      showAsset(imageSrc);
+    }
+
+    function updateImage(index, direction = 1) {
+      if (images.length === 0) return;
+      const newIndex = (index + images.length) % images.length;
+      animateImageChange(newIndex, direction);
+    }
+
+    document.getElementById("prev-arrow").addEventListener("click", () => {
+      updateImage(currentIndex - 1, -1);
+    });
+
+    document.getElementById("next-arrow").addEventListener("click", () => {
+      updateImage(currentIndex + 1, 1);
+    });
+
+    // Add swipe functionality for mobile
+    const imageViewer = document.querySelector(".image-viewer");
+    const hammer = new Hammer(imageViewer);
+    hammer.on("swipeleft", () => updateImage(currentIndex + 1, 1));
+    hammer.on("swiperight", () => updateImage(currentIndex - 1, -1));
+
+    // Add keyboard navigation
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowLeft") {
         updateImage(currentIndex - 1, -1);
-      });
-
-      document.getElementById("next-arrow").addEventListener("click", () => {
+      } else if (event.key === "ArrowRight") {
         updateImage(currentIndex + 1, 1);
-      });
-
-      // Add swipe functionality for mobile
-      const imageViewer = document.querySelector(".image-viewer");
-      const hammer = new Hammer(imageViewer);
-      hammer.on("swipeleft", () => updateImage(currentIndex + 1, 1));
-      hammer.on("swiperight", () => updateImage(currentIndex - 1, -1));
-
-      // Add keyboard navigation
-      document.addEventListener("keydown", (event) => {
-        if (event.key === "ArrowLeft") {
-          updateImage(currentIndex - 1, -1);
-        } else if (event.key === "ArrowRight") {
-          updateImage(currentIndex + 1, 1);
-        }
-      });
-
-      function toggleZoom() {
-        const imgElement = document.getElementById("current-image");
-        if (imgElement.style.transform === "scale(2)") {
-          imgElement.style.transform = "scale(1)";
-          imgElement.style.cursor = "zoom-in";
-        } else {
-          imgElement.style.transform = "scale(2)";
-          imgElement.style.cursor = "zoom-out";
-        }
       }
+    });
 
-      document
-        .getElementById("current-image")
-        .addEventListener("click", toggleZoom);
+    function toggleZoom() {
+      const imgElement = document.getElementById("current-image");
+      if (imgElement.style.display === "none") return; // Only for images
+      if (imgElement.style.transform === "scale(2)") {
+        imgElement.style.transform = "scale(1)";
+        imgElement.style.cursor = "zoom-in";
+      } else {
+        imgElement.style.transform = "scale(2)";
+        imgElement.style.cursor = "zoom-out";
+      }
+    }
 
-      // Fetch images on page load
-      document.addEventListener("DOMContentLoaded", fetchImages);
-    </script>
-  </body>
+    document
+      .getElementById("current-image")
+      .addEventListener("click", toggleZoom);
+
+    // Fetch images on page load
+    document.addEventListener("DOMContentLoaded", fetchImages);
+  </script>
+</body>
+
 </html>

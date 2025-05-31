@@ -98,9 +98,25 @@
       cursor: pointer;
       font-weight: bold;
       transition: background 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .chat-input-row button:hover {
-      background: #e91e63;
+    .chat-input-row button .fa-paper-plane {
+      font-size: 1.25em;
+      margin: 0;
+      padding: 0;
+    }
+    @media (max-width: 700px) {
+      .chat-input-row button {
+        padding: 0.7em 0.9em;
+        min-width: 44px;
+        min-height: 44px;
+        font-size: 1.3em;
+      }
+      .chat-input-row button span {
+        display: none;
+      }
     }
     .chat-input-row input[type="file"] {
       display: none;
@@ -155,33 +171,142 @@
     .remove-attachment-btn:hover {
       background: #e91e63;
     }
+    .ad-banner {
+      width: 100%;
+      min-height: 90px;
+      margin: 0 auto 1em auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #181818;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: opacity 0.3s, height 0.3s;
+    }
+    .ad-banner.invisible {
+      opacity: 0;
+      height: 0 !important;
+      min-height: 0 !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      pointer-events: none;
+    }
+    .ad-side {
+      display: none;
+    }
+    @media (min-width: 1200px) {
+      .ad-side {
+        display: block;
+        position: fixed;
+        top: 0;
+        width: 160px;
+        height: 600px;
+        z-index: 100;
+        background: #181818;
+        border-radius: 0 0 12px 12px;
+        box-shadow: 0 2px 16px #0003;
+        overflow: hidden;
+        transition: opacity 0.3s, width 0.3s;
+      }
+      .ad-side.invisible {
+        opacity: 0;
+        width: 0 !important;
+        pointer-events: none;
+      }
+      .ad-side.left {
+        left: 0;
+      }
+      .ad-side.right {
+        right: 0;
+      }
+      .main-content-wrapper {
+        margin-left: 170px;
+        margin-right: 170px;
+        max-width: 800px;
+        margin-top: 0;
+        margin-bottom: 0;
+        margin-inline: auto;
+      }
+      .chat-container {
+        margin: 40px auto;
+      }
+    }
+    @media (max-width: 1199px) {
+      .main-content-wrapper {
+        margin: 0 auto;
+        max-width: 98vw;
+      }
+      .ad-side {
+        display: none !important;
+      }
+    }
+    @media (max-width: 700px) {
+      .ad-banner {
+        display: none !important;
+      }
+      .main-content-wrapper {
+        margin: 0;
+        max-width: 100vw;
+      }
+      .chat-container {
+        margin-bottom: 0;
+      }
+    }
   </style>
   <script src="https://js.puter.com/v2/"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4916225440542731" crossorigin="anonymous"></script>
 </head>
 <body>
-  <div class="chat-container">
-    <div class="chat-header">
-      <img src="../janka.jpg" alt="Jankerin Profilbild" />
-      <span class="name">Jankerin</span>
+  <!-- Top Banner Ad -->
+  <div class="ad-banner" id="ad-banner-top">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-3940256099942544"
+         data-ad-slot="6300978111"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+  </div>
+  <!-- Side Banner Ads (Desktop only) -->
+  <div class="ad-side left" id="ad-side-left">
+    <ins class="adsbygoogle"
+         style="display:block;width:160px;height:600px"
+         data-ad-client="ca-pub-3940256099942544"
+         data-ad-slot="6300978111"></ins>
+  </div>
+  <div class="ad-side right" id="ad-side-right">
+    <ins class="adsbygoogle"
+         style="display:block;width:160px;height:600px"
+         data-ad-client="ca-pub-3940256099942544"
+         data-ad-slot="6300978111"></ins>
+  </div>
+  <div class="main-content-wrapper">
+    <div class="chat-container">
+      <div class="chat-header">
+        <img src="../janka.jpg" alt="Jankerin Profilbild" />
+        <span class="name">Jankerin</span>
+      </div>
+      <div style="text-align:right; margin-bottom:0.5em;">
+        <button id="new-chat-btn" style="padding:0.4em 1.2em; background:#444; color:#fff; border:none; border-radius:7px; font-size:1em; cursor:pointer;">
+          Neuer Chat
+        </button>
+      </div>
+      <div class="chat-messages" id="chat-messages">
+        <div class="msg jankerin">Hallo! 😊 Ich bin Jankerin. Worüber möchtest du reden?</div>
+      </div>
+      <!-- Attachment preview is now directly above the input row -->
+      <div id="attachment-preview" class="chat-attachment-preview" style="display:none;"></div>
+      <form class="chat-input-row" id="chat-form" autocomplete="off" enctype="multipart/form-data">
+        <label for="chat-attach" class="attach-label" title="Bild anhängen">
+          <i class="fas fa-paperclip"></i> Bild
+          <input type="file" id="chat-attach" accept="image/*">
+        </label>
+        <input type="text" id="chat-input" placeholder="Nachricht schreiben..." autocomplete="off" required />
+        <button type="submit">
+          <span>Senden</span>
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </form>
     </div>
-    <div style="text-align:right; margin-bottom:0.5em;">
-      <button id="new-chat-btn" style="padding:0.4em 1.2em; background:#444; color:#fff; border:none; border-radius:7px; font-size:1em; cursor:pointer;">
-        Neuer Chat
-      </button>
-    </div>
-    <div class="chat-messages" id="chat-messages">
-      <div class="msg jankerin">Hallo! 😊 Ich bin Jankerin. Worüber möchtest du reden?</div>
-    </div>
-    <!-- Attachment preview is now directly above the input row -->
-    <div id="attachment-preview" class="chat-attachment-preview" style="display:none;"></div>
-    <form class="chat-input-row" id="chat-form" autocomplete="off" enctype="multipart/form-data">
-      <label for="chat-attach" class="attach-label" title="Bild anhängen">
-        <i class="fas fa-paperclip"></i> Bild
-        <input type="file" id="chat-attach" accept="image/*">
-      </label>
-      <input type="text" id="chat-input" placeholder="Nachricht schreiben..." autocomplete="off" required />
-      <button type="submit">Senden</button>
-    </form>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
   <script>
@@ -267,6 +392,84 @@ Du darfst im Rahmen eines Dating-Chats auch auf schärfere oder intime Themen ei
       chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 
+    async function generateDalleImage(prompt, chatHistory) {
+      try {
+        let dallePrompt = prompt;
+        // Blume
+        if (/blume|flower/i.test(prompt)) {
+          dallePrompt = "eine wunderschöne einzelne Blume, Nahaufnahme, weicher Hintergrund, fotorealistisch, hohe Qualität";
+        }
+        // Hund
+        else if (/hund|dog/i.test(prompt)) {
+          dallePrompt = "ein süßer Hund, freundliches Gesicht, fotorealistisch, hohe Qualität, weicher Hintergrund";
+        }
+        // Katze
+        else if (/katze|cat/i.test(prompt)) {
+          dallePrompt = "eine niedliche Katze, fotorealistisch, hohe Qualität, weicher Hintergrund";
+        }
+        // Herz
+        else if (/herz|heart/i.test(prompt)) {
+          dallePrompt = "ein rotes Herz, glänzend, auf weißem Hintergrund, 3D, hohe Qualität";
+        }
+        // Paar
+        else if (/paar|couple/i.test(prompt)) {
+          dallePrompt = "ein glückliches Paar, Händchen haltend, draußen, romantische Stimmung, hohe Qualität";
+        }
+        // Auto
+        else if (/auto|car/i.test(prompt)) {
+          dallePrompt = "ein schönes modernes Auto, fotorealistisch, hohe Qualität, draußen, sonniger Tag";
+        }
+        // Mann
+        else if (/mann\b|man\b/i.test(prompt) && !/blume|flower|hund|dog|katze|cat|herz|heart|paar|couple|auto|car/i.test(prompt)) {
+          dallePrompt = "attraktiver Mann, sympathisch, Selfie, Dating-Profil, freundliches Lächeln, hohe Qualität";
+        }
+        // Frau
+        else if (/frau\b|woman\b/i.test(prompt) && !/blume|flower|hund|dog|katze|cat|herz|heart|paar|couple|auto|car/i.test(prompt)) {
+          dallePrompt = "attraktive Frau, sympathisch, Selfie, Dating-Profil, freundliches Lächeln, hohe Qualität";
+        }
+        else {
+          dallePrompt = prompt;
+        }
+        if (Array.isArray(chatHistory)) {
+          const context = chatHistory
+            .filter(h => h.role === "user" || h.role === "assistant")
+            .map(h => (h.role === "user" ? `${userName}: ` : "Jankerin: ") + h.content)
+            .join("\n");
+          if (context) {
+            dallePrompt = context + "\nBildwunsch: " + dallePrompt;
+          }
+        }
+        console.log("DALL-E Prompt:", dallePrompt);
+
+        // --- DEBUG: Teste API-Verfügbarkeit ---
+        if (typeof puter === "undefined" || !puter.ai || !puter.ai.txt2img) {
+          console.error("puter.ai.txt2img ist nicht verfügbar. Prüfe, ob das Skript https://js.puter.com/v2/ korrekt geladen wurde.");
+          alert("Fehler: KI-Bildgenerierung ist aktuell nicht verfügbar. Prüfe die Konsole für Details.");
+          return null;
+        }
+        // --- ENDE DEBUG ---
+
+        for (let i = 0; i < 3; i++) {
+          try {
+            const imgElem = await puter.ai.txt2img(dallePrompt);
+            console.log("DALL-E Antwort Versuch", i + 1, imgElem);
+            if (imgElem && imgElem.src) {
+              return imgElem.src;
+            }
+            if (imgElem && imgElem.error) {
+              console.error("DALL-E Fehler:", imgElem.error);
+            }
+          } catch (err) {
+            console.error("Fehler bei puter.ai.txt2img Versuch", i + 1, err);
+          }
+        }
+        console.error("DALL-E konnte kein Bild generieren für Prompt:", dallePrompt);
+      } catch (e) {
+        console.error("Fehler in generateDalleImage:", e);
+      }
+      return null;
+    }
+
     chatForm.addEventListener('submit', async function(e) {
       e.preventDefault();
       const userMsg = chatInput.value.trim();
@@ -309,17 +512,22 @@ Du darfst im Rahmen eines Dating-Chats auch auf schärfere oder intime Themen ei
         chatInput.value = '';
         appendMsg("Jankerin tippt...", 'jankerin');
 
-        // Prüfe, ob nach Bild gefragt wird
         const lowerMsg = userMsg.toLowerCase();
+
+        // 1. Profilbild von Jankerin (nur wenn explizit nach "bild von dir", "bild von jankerin", "dein bild", "dein selfie" etc. gefragt wird)
         if (
-          lowerMsg.includes("bild") ||
-          lowerMsg.includes("foto") ||
-          lowerMsg.includes("profilbild") ||
-          lowerMsg.includes("pic") ||
-          lowerMsg.includes("selfie")
+          (
+            (lowerMsg.includes("bild von dir") || lowerMsg.includes("bild von jankerin") ||
+            lowerMsg.includes("dein bild") || lowerMsg.includes("dein selfie") ||
+            lowerMsg.includes("foto von dir") || lowerMsg.includes("foto von jankerin") ||
+            lowerMsg.includes("dein profilbild") || lowerMsg.includes("selfie von dir"))
+          ) ||
+          (
+            (lowerMsg.includes("bild") || lowerMsg.includes("foto") || lowerMsg.includes("profilbild") || lowerMsg.includes("pic") || lowerMsg.includes("selfie")) &&
+            (lowerMsg.includes("jankerin") || lowerMsg.includes("dir") || lowerMsg.includes("dein"))
+          )
         ) {
           setTimeout(() => {
-            // Entferne "tippt..." Dummy
             const lastMsg = chatMessages.querySelector('.msg.jankerin:last-child');
             if (lastMsg && lastMsg.textContent === "Jankerin tippt...") {
               chatMessages.removeChild(lastMsg);
@@ -330,6 +538,45 @@ Du darfst im Rahmen eines Dating-Chats auch auf schärfere oder intime Themen ei
           return;
         }
 
+        // 2. KI erkennt Bildwunsch und generiert passendes Bild mit DALL-E, aber nur wenn es kein 18+ Wunsch ist und nicht nach Jankerin gefragt wird
+        const bildWunschRegex = /(bild|foto|pic|selfie|zeichne|male|erstelle|generiere|zeige|zeig)[^.!?]*?(von|mit|wie|als|zum|für|in|auf)?[^.!?]*?(?:[a-zA-ZäöüÄÖÜß0-9\s,.'"-]{3,})/i;
+        const forbiddenWords = [
+          "nackt", "sex", "ficken", "porno", "brüste", "penis", "vagina", "arsch", "pussy", "dildo", "masturbieren", "blasen", "cum", "sperma", "anal", "orgasmus", "titten", "nippel", "erotik", "fetisch", "geschlechtsteil", "geschlechtsteile", "genital", "genitalien"
+        ];
+        const is18Plus = forbiddenWords.some(word => lowerMsg.includes(word));
+        const isJankerinRequest =
+          (
+            lowerMsg.includes("bild von dir") || lowerMsg.includes("bild von jankerin") ||
+            lowerMsg.includes("dein bild") || lowerMsg.includes("dein selfie") ||
+            lowerMsg.includes("foto von dir") || lowerMsg.includes("foto von jankerin") ||
+            lowerMsg.includes("dein profilbild") || lowerMsg.includes("selfie von dir") ||
+            (lowerMsg.includes("bild") && (lowerMsg.includes("jankerin") || lowerMsg.includes("dir") || lowerMsg.includes("dein")))
+          );
+
+        if (
+          bildWunschRegex.test(userMsg) &&
+          !isJankerinRequest &&
+          !is18Plus
+        ) {
+          let dallePrompt = userMsg;
+          try {
+            const dalleImg = await generateDalleImage(dallePrompt, chatHistory);
+            const lastMsg = chatMessages.querySelector('.msg.jankerin:last-child');
+            if (lastMsg && lastMsg.textContent === "Jankerin tippt...") {
+              chatMessages.removeChild(lastMsg);
+            }
+            if (dalleImg) {
+              appendMsg("Hier ist ein Bild, das zu deiner Anfrage passt:", 'jankerin', dalleImg);
+              chatHistory.push({ role: "assistant", content: "[Jankerin hat ein KI-Bild generiert]" });
+            }
+            // Keine Fehlermeldung mehr anzeigen, wenn kein Bild generiert werden kann
+          } catch (err) {
+            console.error("Fehler bei Bildgenerierung im Submit-Handler:", err);
+          }
+          return;
+        }
+
+        // Standard KI-Antwort
         try {
           const prompt = chatHistory.map(h => (h.role === "user" ? `${userName}: ` : h.role === "assistant" ? "Jankerin: " : "") + h.content).join("\n") + "\nJankerin:";
           const response = await puter.ai.chat(prompt, { model: "gpt-4o" });
@@ -351,6 +598,43 @@ Du darfst im Rahmen eines Dating-Chats auch auf schärfere oder intime Themen ei
 
     document.getElementById('new-chat-btn').addEventListener('click', function() {
       location.reload();
+    });
+
+    // Hide ad containers if no ad is loaded (after a short delay)
+    function hideEmptyAds() {
+      // Helper to check if an ad container is empty (no iframe or zero size)
+      function isAdEmpty(adDiv) {
+        if (!adDiv) return true;
+        const ins = adDiv.querySelector('ins.adsbygoogle');
+        if (!ins) return true;
+        // If iframe is not present or hidden, or ins is empty
+        const iframe = ins.querySelector('iframe');
+        if (!iframe) return true;
+        // Check if iframe is loaded and visible
+        const rect = iframe.getBoundingClientRect();
+        return rect.width < 10 || rect.height < 10;
+      }
+
+      // Top banner
+      const adBanner = document.getElementById('ad-banner-top');
+      if (adBanner && isAdEmpty(adBanner)) {
+        adBanner.classList.add('invisible');
+      }
+      // Left side
+      const adLeft = document.getElementById('ad-side-left');
+      if (adLeft && isAdEmpty(adLeft)) {
+        adLeft.classList.add('invisible');
+      }
+      // Right side
+      const adRight = document.getElementById('ad-side-right');
+      if (adRight && isAdEmpty(adRight)) {
+        adRight.classList.add('invisible');
+      }
+    }
+
+    // Try to hide empty ads after adsbygoogle loads
+    window.addEventListener('load', function() {
+      setTimeout(hideEmptyAds, 2000);
     });
   </script>
 </body>

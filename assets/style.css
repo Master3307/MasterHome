@@ -876,10 +876,11 @@ br {
 
 .what {
   display: flex;
-  align-items: flex-start; /* aligns top of image and text */
-  gap: 20px; /* space between image and text */
-  margin-top: 145px; /* corrected margin-top */
-  margin-bottom: 100px; /* space between image and text */
+  flex-direction: column; /* Stack image and text vertically */
+  align-items: center;    /* Center image and text horizontally */
+  gap: 20px;
+  margin-top: 145px;
+  margin-bottom: 100px;
 }
 
 .what img {
@@ -887,8 +888,9 @@ br {
   height: 200px;
   object-fit: cover;
   border-radius: 10px;
-  margin: 0; /* remove the margin that was pushing it to the center */
+  margin: 0;
 }
+
 h3,
 h2,
 h1 {

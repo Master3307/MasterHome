@@ -388,6 +388,8 @@ const translations = {
     passwordPlaceholder: "Password",
   },
 };
+// Global image path variable for the whole site
+window.imagePathVar = "../assets/media";
 
 // Function to handle unavailable services
 function handleUnavailableService(serviceId, isUnavailable) {
