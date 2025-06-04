@@ -1,4 +1,5 @@
-name: Update Changelog
+name: Run Node.js Scripts and Update Changelog
+description: This workflow runs Node.js scripts to convert images, generate thumbnails, and update the changelog when changes are pushed to the main branch.
 
 on:
   push:
@@ -26,18 +27,23 @@ jobs:
 
       - name: Install dependencies
         run: npm install # Install project dependencies, including 'sharp'
+        working-directory: . # Explicitly run npm install at the repository root
 
       - name: Run WebP Converter script
         run: node ./assets/Media/webp-converter.js # Ensure this path is correct relative to the repo root
+        working-directory: . # Run script from repository root
 
       - name: Run Thumbnail Generator script
         run: node ./assets/Media/generate-thumb.js # Ensure this path is correct relative to the repo root
+        working-directory: . # Run script from repository root
 
       - name: Run Assets JSON Generator script
         run: node ./assets/generate-assets-json.js # Ensure this path is correct relative to the repo root
+        working-directory: . # Run script from repository root
 
       - name: Run changelog generator script
         run: node ./changelog-gen.js # Ensure this path is correct relative to the repo root
+        working-directory: . # Run script from repository root
         env:
           TOKEN: ${{ secrets.TOKEN }} # Set the TOKEN environment variable from GitHub secrets
 
