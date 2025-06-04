@@ -1,0 +1,46 @@
+name: Update Changelog
+
+on:
+  push:
+    branches: [main]  # Triggers the workflow on every push to the main branch
+  workflow_dispatch:      # Allows manual triggering from the GitHub UI
+  schedule:
+    - cron: '0 3 * * *' # Runs the workflow daily at 03:00 UTC
+
+jobs:
+  changelog:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4 # Checks out your code
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20 # Adjust the Node.js version if needed
+
+      - name: Install dependencies (if any beyond node-fetch)
+        run: npm install node-fetch # Or 'npm install' if you have a package.json
+                                   # Ensure all dependencies for your script are installed.
+                                   # If your script doesn't use external npm modules other than
+                                   # Node.js built-ins, and doesn't use node-fetch,
+                                   # you can adjust/remove this step.
+
+      - name: Generate changelog
+        run: node home/changelog-gen.js # Executes your script
+        env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }} # Provides the token as an environment variable
+
+      - name: Commit and push changelog
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add home/changelog.json # Adds the generated file to staging
+                                      # Ensure this path is correct.
+          # Try to commit; if there are no changes, print a message instead of failing
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Update changelog.json [auto]"
+            git push
+          fi
