@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+ 
 <head>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-4M0JHNHS28"></script>
@@ -88,17 +88,36 @@
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WJP678CC" height="0" width="0"
       style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-  <header class="header">
-    <h1 class="title-with-icon">
-      <a href="../settings/" aria-label="Open Settings" class="settings-icon">
-        <i class="fas fa-cog"></i>
-      </a>
+  <header class="header" style="position:relative;">
+    <!-- Changelog icon (left, blue) -->
+    <a href="javascript:void(0);" id="changelog-icon" aria-label="Open Changelog"
+       style="position:absolute; left:16px; top:16px; color:#2196f3; font-size:1.7em; z-index:10;">
+      <i class="fas fa-list-alt"></i>
+    </a>
+    <!-- Settings icon (right) -->
+    <a href="../settings/" aria-label="Open Settings" class="settings-icon"
+       style="position:absolute; right:16px; top:16px; color:#fff; font-size:1.7em; z-index:10;">
+      <i class="fas fa-cog"></i>
+    </a>
+    <h1 class="title-with-icon" style="text-align:center;">
       <span class="title-text">
         Welcome to MasterHome,<br />
         a place to be!
       </span>
     </h1>
   </header>
+  <!-- Changelog Modal -->
+  <div id="changelog-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:#18181be6; z-index:1000; align-items:center; justify-content:center;">
+    <div style="background:#232323; border-radius:12px; box-shadow:0 4px 32px #000a; max-width:700px; width:96vw; margin:auto; padding:2em 1.5em 1.5em 1.5em; position:relative; text-align:center;">
+      <a href="javascript:void(0);" id="close-changelog" class="close-button" style="position:absolute; top:12px; right:16px; color:#fff; font-size:1.5em;">
+        <i class="fas fa-times"></i>
+      </a>
+      <h2 style="color:#2196f3; margin-bottom:1em;">Changelog</h2>
+      <div style="color:#ccc; min-height:80px;" id="changelog-content">
+        <p>Changelog placeholder.<br>Here you can show your latest updates.</p>
+      </div>
+    </div>
+  </div>
   <main>
     <section class="what">
       <img src="../assets/media/M437.webp" alt="Master-Tech-Logo" />
@@ -166,6 +185,69 @@
   <footer class="footer">
     <p>Made with <i class="fas fa-heart"></i> by Master3307</p>
   </footer>
+  <script>
+    // Changelog modal logic
+    document.addEventListener("DOMContentLoaded", function() {
+      var changelogIcon = document.getElementById("changelog-icon");
+      var changelogModal = document.getElementById("changelog-modal");
+      var closeChangelog = document.getElementById("close-changelog");
+      var changelogContent = document.getElementById("changelog-content");
+      if (changelogIcon && changelogModal && closeChangelog) {
+        changelogIcon.onclick = function() {
+          changelogModal.style.display = "flex";
+          // Load changelog.json and display
+          fetch('changelog.json')
+            .then(res => res.json())
+            .then(data => {
+              if (Array.isArray(data) && data.length > 0) {
+                changelogContent.innerHTML = '<ul style="text-align:left;max-height:60vh;overflow:auto;padding-left:1.2em;">' +
+                  data.map((entry) => {
+                    const shortMsg = entry.message.split('\n')[0];
+                    const desc = entry.message.split('\n').slice(1).join('\n').trim();
+                    // Format date in German, 24h
+                    const dateStr = entry.date
+                      ? new Date(entry.date).toLocaleString('de-DE', {
+                          year: 'numeric',
+                          month: '2-digit',
+                          day: '2-digit',
+                          hour: '2-digit',
+                          minute: '2-digit',
+                          second: '2-digit',
+                          hour12: false
+                        })
+                      : '';
+                    const sha = entry.sha ? entry.sha.substring(0,7) : '';
+                    const author = entry.author ? entry.author : '';
+                    return `<li style="margin-bottom:1.2em;">
+                      <div style="font-size:1em;color:#fff;font-weight:bold;">
+                        ${shortMsg}
+                      </div>
+                      <div style="font-size:0.95em;color:#aaa;">
+                        ${dateStr} &mdash; <span style="color:#6cf">${author}</span>
+                      </div>
+                      <div style="font-size:0.9em;color:#888;">${sha}</div>
+                      ${desc ? `<div style="white-space:pre-line;margin-top:0.5em;color:#b5d0ff;background:#181c24;border-radius:6px;padding:0.7em 1em;">${desc}</div>` : ''}
+                    </li>`;
+                  }).join('') +
+                  '</ul>';
+              } else {
+                changelogContent.innerHTML = "<p>No changelog entries found.</p>";
+              }
+            })
+            .catch(() => {
+              changelogContent.innerHTML = "<p>Could not load changelog.json.</p>";
+            });
+        };
+        closeChangelog.onclick = function() {
+          changelogModal.style.display = "none";
+        };
+        // Also close on background click
+        changelogModal.addEventListener("click", function(e) {
+          if (e.target === changelogModal) changelogModal.style.display = "none";
+        });
+      }
+    });
+  </script>
 </body>
 
 </html>

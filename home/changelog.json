@@ -1,0 +1,446 @@
+[
+  {
+    "sha": "477f94d2f8a3b535d6cc49a50c5f23edbc32178a",
+    "date": "2025-06-04T13:35:53Z",
+    "message": "Assets View Now has Thumbnails!",
+    "author": "Master3307"
+  },
+  {
+    "sha": "372a343c997f86b67feb1e1105c52871e98d3f21",
+    "date": "2025-05-31T02:28:14Z",
+    "message": "Google Analytics fr now.",
+    "author": "Master3307"
+  },
+  {
+    "sha": "c393f9a0a19b192592609bfe1417f7f323bd55cd",
+    "date": "2025-05-31T02:02:09Z",
+    "message": "Google Tags Test",
+    "author": "Master3307"
+  },
+  {
+    "sha": "5624fe9a07aab8ed21623a27d38e2a43122dfa36",
+    "date": "2025-05-31T01:49:42Z",
+    "message": "Analytics Test",
+    "author": "Master3307"
+  },
+  {
+    "sha": "18e7c7fc6ed6b3ebdbe867601c9be322e0c7b97b",
+    "date": "2025-05-31T01:32:54Z",
+    "message": "Major Site Update\n- All Images are WEBP\n- Added Folder just for Images\n- Updated Assets View to Support JS and CSS\n- In Home: Info Text is now under the Image\n\nPlans:\n- Do settings in the next Update\n- Add This changelog from Github to the site automatically and add a Automatically generated Version Number\n- Add more features like a game\n- Its like 3 am me writing this lol I cant i have to sleep",
+    "author": "Master3307"
+  },
+  {
+    "sha": "8eaa21f5d6b6382aa96aca5e02f0392ebb6699ed",
+    "date": "2025-05-30T14:27:56Z",
+    "message": "Testing it with a JS",
+    "author": "Master3307"
+  },
+  {
+    "sha": "e5d193669afd40a630011c1da71adf8986c20a2f",
+    "date": "2025-05-30T14:24:48Z",
+    "message": "Adsesnse for gods sake",
+    "author": "Master3307"
+  },
+  {
+    "sha": "338c9ede0137dcc850be01d232715e3134beda89",
+    "date": "2025-05-30T14:23:14Z",
+    "message": "Ads test meta tag",
+    "author": "Master3307"
+  },
+  {
+    "sha": "98f52d7347986f0998a31e4e8b1dd1aa99122f04",
+    "date": "2025-05-30T14:19:23Z",
+    "message": "Ads Test",
+    "author": "Master3307"
+  },
+  {
+    "sha": "2a96a579aa6e9aec25243ed69b9878097817c1c2",
+    "date": "2025-05-30T13:58:09Z",
+    "message": "Dating Images available",
+    "author": "Master3307"
+  },
+  {
+    "sha": "4b560be5e3df768f3cb80568000bc0a2749beb3a",
+    "date": "2025-05-30T13:41:40Z",
+    "message": "AI update",
+    "author": "Master3307"
+  },
+  {
+    "sha": "a95b441b46303f4b0858267fcb2144c091298a9a",
+    "date": "2025-05-30T13:22:08Z",
+    "message": "Dating AI update",
+    "author": "Master3307"
+  },
+  {
+    "sha": "06e40c14e34a07ecc3286980a7155fffbeff4136",
+    "date": "2025-05-26T12:28:23Z",
+    "message": "Dating Update again",
+    "author": "Master3307"
+  },
+  {
+    "sha": "e6418ac35f4332c5a7445bbcb90feb8134e68419",
+    "date": "2025-05-26T11:53:42Z",
+    "message": "Dating Update (Joke Update)",
+    "author": "Master3307"
+  },
+  {
+    "sha": "19ceb4ba388c8a69c02a3eeba7c411c65cb1a470",
+    "date": "2025-05-24T22:04:15Z",
+    "message": "Small Update\n- Updated README\n- Switched from \"styles.css\" to \"style.css\" and put the old style.css out of its misery\n- Planning to give Images their Own Folder in Assets\n- Planning NOT to give Cursor-Test its own css and js\n- Planning to optimize more Stuff in General",
+    "author": "Master3307"
+  },
+  {
+    "sha": "9397347d9a8f0c8973b4a7a66fb779dfaa8ebc01",
+    "date": "2025-05-24T21:37:18Z",
+    "message": "Performance Update\n- Added a Tool on my side to convert Images to WEBP\n- Converted all Images to WEBP\n- Coming Changes to Settings",
+    "author": "Master3307"
+  },
+  {
+    "sha": "05873fdee61aee060efd0a5f58f8a62a98b340dc",
+    "date": "2025-05-23T20:54:17Z",
+    "message": "Assets Viewer Update\n- No more Offscreen!\n- Nicer and bigger Image Previews\n- Animations\n- Semi-Automatic adding of new Images\n- Improved Support for Mobile Devices",
+    "author": "Master3307"
+  },
+  {
+    "sha": "949fd09a5c9f979d1878acfd18c4e7e71e06907a",
+    "date": "2025-05-16T23:44:12Z",
+    "message": "Very Very small Color Change to Very old css",
+    "author": "Master3307"
+  },
+  {
+    "sha": "2c9ee34453e6bca45b0e111517b690a8e9a42191",
+    "date": "2025-05-16T11:46:43Z",
+    "message": "Some Problem Fixing",
+    "author": "Master3307"
+  },
+  {
+    "sha": "c3dfb5fb79cf251e518f1535b114339f408f23bd",
+    "date": "2025-05-15T21:15:25Z",
+    "message": "Button Jitter Fix + Birthday Fix",
+    "author": "Master3307"
+  },
+  {
+    "sha": "ad104110e9b5675ca90346e38d334747cb42dee4",
+    "date": "2025-05-14T13:48:12Z",
+    "message": "No Redirects + No Select in Special",
+    "author": "Master3307"
+  },
+  {
+    "sha": "99c85508c072f6f1c143bb42b546d2c3f98e91cb",
+    "date": "2025-05-13T22:27:57Z",
+    "message": "Remove Redirects",
+    "author": "Master3307"
+  },
+  {
+    "sha": "f072e272266d5ae49c1f3abb09b30a9e13b309f2",
+    "date": "2025-05-13T22:26:01Z",
+    "message": "Fix",
+    "author": "Master3307"
+  },
+  {
+    "sha": "e84f5d8cabf37adf89c91487b45dabaf2d743f80",
+    "date": "2025-05-13T22:23:04Z",
+    "message": "Freunde Fix",
+    "author": "Master3307"
+  },
+  {
+    "sha": "aeb034ec3afba560a4369fdcf10eb475b3f82dab",
+    "date": "2025-05-13T22:22:17Z",
+    "message": "Freunde Update",
+    "author": "Master3307"
+  },
+  {
+    "sha": "066f338c9fb23390c9c236248dffa9dbae813cec",
+    "date": "2025-05-11T23:39:42Z",
+    "message": "Redirects 2",
+    "author": "Master3307"
+  },
+  {
+    "sha": "62c01a79656d39680f5bb7c3a30e457a133abbc7",
+    "date": "2025-05-11T23:36:39Z",
+    "message": "Redirects",
+    "author": "Master3307"
+  },
+  {
+    "sha": "c5f63a4faed2dabf750cfbf11406c0a5ffde3f3c",
+    "date": "2025-05-11T23:20:03Z",
+    "message": "404 Release",
+    "author": "Master3307"
+  },
+  {
+    "sha": "1beeb42a5c2b147f8605f5b16b03ae875ff90a8e",
+    "date": "2025-05-11T22:40:44Z",
+    "message": "404 Test",
+    "author": "Master3307"
+  },
+  {
+    "sha": "7d0dbc56e99902afd7d0cf0b7a21bc118d9f9351",
+    "date": "2025-05-11T22:20:56Z",
+    "message": "Embed Fix (srry)",
+    "author": "Master3307"
+  },
+  {
+    "sha": "3f1ccd09881ceb28f219246bd3b2cef255c7b8cd",
+    "date": "2025-05-11T22:17:00Z",
+    "message": "Embed Release",
+    "author": "Master3307"
+  },
+  {
+    "sha": "a98e6391db73f9052da1908196e96e3138b93068",
+    "date": "2025-05-11T21:53:21Z",
+    "message": "Embed Test V2",
+    "author": "Master3307"
+  },
+  {
+    "sha": "525bf52ddaf9aeb8b6bc1ae9af4f5eeb5a1471b9",
+    "date": "2025-05-11T21:44:24Z",
+    "message": "Merge branch 'main' of https://github.com/Master3307/MasterHome",
+    "author": "Master3307"
+  },
+  {
+    "sha": "3d8d92a49e95abc0be60d6e56c6a3ea16ee2a0f8",
+    "date": "2025-05-11T21:44:20Z",
+    "message": "Embed Test",
+    "author": "Master3307"
+  },
+  {
+    "sha": "520385287cc56dc3f33282163253bdba2a0bb04a",
+    "date": "2025-05-04T20:26:14Z",
+    "message": "Update README.md",
+    "author": "Master3307"
+  },
+  {
+    "sha": "2f8ad7b07234a77767eb9f44a5f1a1cc47cf45d7",
+    "date": "2025-05-01T19:50:26Z",
+    "message": "Overhaul Beta Release",
+    "author": "Master3307"
+  },
+  {
+    "sha": "4fbf94cc11e2c76ea1731ed42de1f085bf67d712",
+    "date": "2025-04-21T02:50:54Z",
+    "message": "Very small change to Linktree",
+    "author": "Master3307"
+  },
+  {
+    "sha": "223a63d70d6d8429562b20c871dcf47f27a03737",
+    "date": "2025-04-21T02:44:37Z",
+    "message": "Commit",
+    "author": "Master3307"
+  },
+  {
+    "sha": "3f4cfbc5a0f41d5ec52c70c32e2d4f0f7bfeafef",
+    "date": "2025-04-21T02:42:21Z",
+    "message": "Changed Header and Home Site",
+    "author": "Master3307"
+  },
+  {
+    "sha": "1ff81a096d5b0c6abdd3a66db47736a955ad21a9",
+    "date": "2025-04-15T15:37:04Z",
+    "message": "Made with <3 by Master3307",
+    "author": "Master3307"
+  },
+  {
+    "sha": "2c48ae255fdba84f740f24930f24b6ed5aa12c0a",
+    "date": "2025-04-15T15:13:58Z",
+    "message": "Refinements to Shrug",
+    "author": "Master3307"
+  },
+  {
+    "sha": "f89cecdd3e07eaec4daa3847e5f8271bb227ea73",
+    "date": "2025-04-15T15:04:54Z",
+    "message": "Major Changes to Linktree",
+    "author": "Master3307"
+  },
+  {
+    "sha": "f1826ca3738583e38a5006370840bf9914522263",
+    "date": "2025-04-13T23:21:23Z",
+    "message": "Updated Home Buttons. Sorry, another slight change its late.",
+    "author": "Master3307"
+  },
+  {
+    "sha": "02eef8eee62f96878a02773ec91dfe125a221d6e",
+    "date": "2025-04-13T23:15:31Z",
+    "message": "Small changes to Home buttons",
+    "author": "Master3307"
+  },
+  {
+    "sha": "825f6abb56f6ec3b3b50fa888aee6c5e2effc8e9",
+    "date": "2025-04-13T23:06:49Z",
+    "message": "Added Assets Page and more Assets",
+    "author": "Master3307"
+  },
+  {
+    "sha": "aa7041384066ce907a3fca834782727fc1fc0bef",
+    "date": "2025-04-13T16:59:27Z",
+    "message": "Removed something again",
+    "author": "Master3307"
+  },
+  {
+    "sha": "0f3687fb6631a2788268bf503aa4a87fd154320d",
+    "date": "2025-04-13T16:51:29Z",
+    "message": "Added something",
+    "author": "Master3307"
+  },
+  {
+    "sha": "ce86a64927a4d206cac7cfebb32e65a91e729315",
+    "date": "2025-04-13T15:21:34Z",
+    "message": "Minor changes to Cursor Test",
+    "author": "Master3307"
+  },
+  {
+    "sha": "240b06fddcc2d573e2b8372a0363fb44d48b0f1b",
+    "date": "2025-04-13T15:00:51Z",
+    "message": "Added Cursor Test",
+    "author": "Master3307"
+  },
+  {
+    "sha": "21c84d1bfd4f7ae98710ae70a84ecd6872806770",
+    "date": "2025-04-13T13:32:04Z",
+    "message": "Updated Home Buttons + Edited Quellen.png",
+    "author": "Master3307"
+  },
+  {
+    "sha": "8958f2b667adc8f527b3814428faa8d6ae8f8866",
+    "date": "2025-04-13T11:57:56Z",
+    "message": "Added Sources, Linktree and Shrug Image",
+    "author": "Master3307"
+  },
+  {
+    "sha": "43b7c3961651e1c32b57516bc32df8ded0cae318",
+    "date": "2025-04-13T07:30:26Z",
+    "message": "Secret.",
+    "author": "Master3307"
+  },
+  {
+    "sha": "1869b64f8139e0ddb30849b4c04dafef7d3b6500",
+    "date": "2025-04-12T18:20:42Z",
+    "message": "Added old Shrug Project and Secret",
+    "author": "Master3307"
+  },
+  {
+    "sha": "9b14a2dbc85e968fe7ea2fc0b99f3fc1d76269e8",
+    "date": "2025-04-11T19:52:07Z",
+    "message": "Minor change to Site overall",
+    "author": "Master3307"
+  },
+  {
+    "sha": "41268f17d56fb512a3b7735cfd4bedd697a13668",
+    "date": "2025-04-11T19:23:03Z",
+    "message": "Formatted Code with Prettier Extension",
+    "author": "Master3307"
+  },
+  {
+    "sha": "216a96e912afbc629ba8c03802ae2098dd18c050",
+    "date": "2025-04-11T04:14:49Z",
+    "message": "Updated Website Icon",
+    "author": "Master3307"
+  },
+  {
+    "sha": "ede1708eac4600b304d8111d574f64520f653b8f",
+    "date": "2025-04-10T19:54:37Z",
+    "message": "Fixed Home button Problem, Added Home info and planning to make german and english site versions",
+    "author": "Master3307"
+  },
+  {
+    "sha": "8c5b6f823c02b926092d62c82d016716ec1d2740",
+    "date": "2025-04-09T20:34:16Z",
+    "message": "Removes \"index.html\" from links",
+    "author": "Master3307"
+  },
+  {
+    "sha": "a25edd0b9a1148056e142f3975a05b70d29bed62",
+    "date": "2025-04-09T20:31:39Z",
+    "message": "Added Linktree\nGeneral Refinements",
+    "author": "Master3307"
+  },
+  {
+    "sha": "4c1dd074f60c932fd1a8a259f048971456759c7e",
+    "date": "2025-04-09T18:49:44Z",
+    "message": "README Update",
+    "author": "Master3307"
+  },
+  {
+    "sha": "ebcfcc95008aa710aeb42c23b75fd7bdf8fe4e4b",
+    "date": "2025-04-09T18:34:18Z",
+    "message": "Added more Logos",
+    "author": "Master3307"
+  },
+  {
+    "sha": "d86156a7d6918cfbd10dca13cde60fbe4bf848b8",
+    "date": "2025-04-09T17:38:18Z",
+    "message": "Created Home Page",
+    "author": "Master3307"
+  },
+  {
+    "sha": "1b03515651f1bcc363e30d2563fa77b83d2b4fa4",
+    "date": "2025-04-09T16:00:55Z",
+    "message": "Structure Update:\nUpdated the Structure of the site to be nicer\nDeleted unnecessary files\n\nName change:\nI am naming this site \"master3307\" to make it kind of my home website with all my projects on.",
+    "author": "Master3307"
+  },
+  {
+    "sha": "f9f34e81c1ee16b25c14ee199d5816b819c7a2b5",
+    "date": "2025-04-09T15:15:35Z",
+    "message": "Tries to make everything look and work a little better",
+    "author": "Master3307"
+  },
+  {
+    "sha": "37b5b48b1aa9609cc614d2c023de9d2603efe569",
+    "date": "2025-04-09T04:46:45Z",
+    "message": "Added Working Settings\nAdded my sources page to it\nMade it Look better",
+    "author": "Master3307"
+  },
+  {
+    "sha": "c803bd81a48a05be7cd8fde27dfb98e52b6ea27b",
+    "date": "2025-03-24T21:27:03Z",
+    "message": "Readme changes",
+    "author": "Master3307"
+  },
+  {
+    "sha": "9c24784ba3d99a423e2692f4d64c0910e995d1e5",
+    "date": "2025-03-24T18:00:24Z",
+    "message": "General Content update",
+    "author": "Master3307"
+  },
+  {
+    "sha": "ccc1577b6c331b34ed3d999b25637f9a05bd6ab5",
+    "date": "2025-03-23T13:34:06Z",
+    "message": "Update README.md",
+    "author": "Master3307"
+  },
+  {
+    "sha": "c5d8ce5bee3e7dde2f314e0605cfeb647fdfeba2",
+    "date": "2025-03-23T11:26:06Z",
+    "message": "Commit to README.md",
+    "author": "Master3307"
+  },
+  {
+    "sha": "eb18b5db01f09962e0774d9fea0ee8616bb280fb",
+    "date": "2025-03-23T11:22:49Z",
+    "message": "Commit",
+    "author": "Master3307"
+  },
+  {
+    "sha": "1f5c4589f025931b66b155cf6c40353d6f18ac35",
+    "date": "2025-03-23T11:21:17Z",
+    "message": "Commit",
+    "author": "Master3307"
+  },
+  {
+    "sha": "8b98a2a137699b80dab356a75081c69ac957b809",
+    "date": "2025-03-23T10:51:52Z",
+    "message": "Index\n\nEvery page is index",
+    "author": "Master3307"
+  },
+  {
+    "sha": "0405940884659ddd7c9d8244ba618f43d0a22383",
+    "date": "2025-03-22T20:08:31Z",
+    "message": "Commit",
+    "author": "Master3307"
+  },
+  {
+    "sha": "51daea519c7cb80f136b4809f5826cf72b78ab1e",
+    "date": "2025-03-22T20:05:58Z",
+    "message": "Initial commit",
+    "author": "Master3307"
+  }
+]
