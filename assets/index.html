@@ -313,7 +313,22 @@
         let previewElem;
         if (isImageFile(image)) {
           previewElem = document.createElement("img");
-          previewElem.src = image;
+          // Use thumbnail if available
+          let thumbSrc = image;
+          if (image.startsWith("Media/")) {
+            thumbSrc = "Media/thumb/" + image.substring("Media/".length);
+          } else if (image.startsWith("assets/media/Media/")) {
+            thumbSrc = "assets/media/Media/thumb/" + image.substring("assets/media/Media/".length);
+          } else if (image.startsWith("assets/media/")) {
+            // If images are prefixed with assets/media/Media/
+            const rel = image.substring("assets/media/".length);
+            if (rel.startsWith("Media/")) {
+              thumbSrc = "assets/media/Media/thumb/" + rel.substring("Media/".length);
+            } else {
+              thumbSrc = "assets/media/thumb/" + rel;
+            }
+          }
+          previewElem.src = thumbSrc;
           previewElem.alt = `Preview of ${image}`;
           previewElem.className = "button-preview";
         } else if (isJsFile(image)) {
