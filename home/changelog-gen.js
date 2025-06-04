@@ -9,14 +9,14 @@ try {
   process.exit(1);
 }
 
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+const TOKEN = process.env.TOKEN;
 const REPO = 'Master3307/MasterHome';
 const BRANCH = 'main';
 const PER_PAGE = 100;
 const API_URL = `https://api.github.com/repos/${REPO}/commits?sha=${BRANCH}&per_page=${PER_PAGE}`;
 
-if (!GITHUB_TOKEN) {
-  console.error('Please set the GITHUB_TOKEN environment variable.');
+if (!TOKEN) {
+  console.error('Please set the TOKEN environment variable.');
   process.exit(1);
 }
 
@@ -42,7 +42,7 @@ async function fetchAllCommits(url, headers) {
 (async () => {
   try {
     const headers = {
-      'Authorization': `token ${GITHUB_TOKEN}`,
+      'Authorization': `token ${TOKEN}`,
       'User-Agent': 'changelog-script'
     };
     const commits = await fetchAllCommits(API_URL, headers);
