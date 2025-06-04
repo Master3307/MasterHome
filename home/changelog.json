@@ -1,5 +1,11 @@
 [
   {
+    "sha": "02c661f24b3145ffae9f4b6ee443c1a64a631c13",
+    "date": "2025-06-04T14:03:25Z",
+    "message": "Minor Update\n- Added This Changelog (Yayy hello!)\n- Added button comment for game that might be on this site soon\n- Look how cool this looks and works woowwww\n- Also im testing commiting on my alt account!",
+    "author": "Master3307"
+  },
+  {
     "sha": "477f94d2f8a3b535d6cc49a50c5f23edbc32178a",
     "date": "2025-06-04T13:35:53Z",
     "message": "Assets View Now has Thumbnails!",
