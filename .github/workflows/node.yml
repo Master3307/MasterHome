@@ -21,6 +21,12 @@ jobs:
         with:
           node-version: '20' # Use a suitable Node.js version
 
+      - name: Install dependencies
+        run: npm install # Install project dependencies, including 'sharp'
+
+      - name: Run WebP Converter script
+        run: node ./assets/Media/webp-converter.js # Ensure this path is correct relative to the repo root
+
       - name: Run Thumbnail Generator script
         run: node ./assets/Media/generate-thumb.js # Ensure this path is correct relative to the repo root
 
