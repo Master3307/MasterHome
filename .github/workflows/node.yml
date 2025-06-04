@@ -17,12 +17,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: List files at repository root (for debugging)
-        run: ls -al /home/runner/work/MasterHome/MasterHome/ # List files in the checked-out repo
-
-      - name: List files in ./home directory (for debugging)
-        run: ls -al /home/runner/work/MasterHome/MasterHome/home/ # List files in the ./home directory
-
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:

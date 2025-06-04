@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "ignore": "^7.0.4",
+    "sharp": "^0.34.2"
+  }
+}
