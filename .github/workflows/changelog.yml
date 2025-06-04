@@ -2,41 +2,32 @@ name: Update Changelog
 
 on:
   push:
-    branches: [main]  # Triggers the workflow on every push to the main branch
-  workflow_dispatch:      # Allows manual triggering from the GitHub UI
-  schedule:
-    - cron: '0 3 * * *' # Runs the workflow daily at 03:00 UTC
+    branches:
+      - main # Or the branch you want to trigger on
+
+permissions:
+  contents: write # Grant write permission to the GITHUB_TOKEN
 
 jobs:
-  changelog:
+  update-changelog:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0 # Ensure full history so push works
 
-      - name: Setup Node.js
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: '20' # Use a suitable Node.js version
 
-      - name: Install dependencies (if any beyond node-fetch)
-        run: npm install node-fetch@2
+      - name: Run changelog generator script
+        run: node /home/changelog-gen.js # Ensure this path is correct relative to the repo root
 
-      - name: Generate changelog
-        run: node home/changelog-gen.js
-        env:
-          TOKEN: ${{ secrets.TOKEN }}
-
-      - name: Commit and push changelog
+      - name: Commit and push changes
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add home/changelog.json
-          if git diff --staged --quiet; then
-            echo "No changes to commit."
-          else
-            git commit -m "Update changelog.json [auto]"
-            git push
-          fi
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add /home/changelog.json # Ensure this path is correct relative to the repo root
+          git commit -m "Update changelog.json" || echo "No changes to commit"
+          git push
