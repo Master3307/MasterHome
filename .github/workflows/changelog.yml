@@ -29,7 +29,7 @@ jobs:
       - name: Generate changelog
         run: node home/changelog-gen.js # Executes your script
         env:
-          TOKEN: ${{ secrets.GITHUB_TOKEN }} # Provides the token as an environment variable
+          TOKEN: ${{ secrets.TOKEN }} # Provides the token as an environment variable
 
       - name: Commit and push changelog
         run: |
