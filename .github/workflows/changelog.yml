@@ -23,6 +23,8 @@ jobs:
 
       - name: Run changelog generator script
         run: node ./home/changelog-gen.js # Ensure this path is correct relative to the repo root
+        env:
+          TOKEN: ${{ secrets.TOKEN }} # Set the TOKEN environment variable from GitHub secrets
 
       - name: Commit and push changes
         run: |
