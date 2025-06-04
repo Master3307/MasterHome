@@ -1,5 +1,17 @@
 [
   {
+    "sha": "5998587d3f9b4515cff152739ab28349e25224dd",
+    "date": "2025-06-04T14:55:04Z",
+    "message": "Sorry for Spam\nI Spammed the Comits BUT:\n- I Fixed it Finally\n- It woks as Intended\n- You can actually see the lates changes i push to Github\n- Made changelog Display new changes Automaticaly",
+    "author": "Master3307"
+  },
+  {
+    "sha": "b3de15a3214e888549a6174850a98cd5040580c0",
+    "date": "2025-06-04T14:45:07Z",
+    "message": "Update changelog.json [auto]",
+    "author": "github-actions[bot]"
+  },
+  {
     "sha": "73d33ea907a25bbda3d25b8f0f47bb0c360983a6",
     "date": "2025-06-04T14:44:35Z",
     "message": "you know, i use the gemini ai now and redid the entire thing, its so much faster and i find it more reliable. i am confident that this works. if it does, this will be the last commit for today",
