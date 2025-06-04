@@ -174,12 +174,12 @@
           <span class="button-text">Assets Viewer</span>
         </button>
       </div>
-      <div class="button-item">
+      <!-- <div class="button-item">
         <button class="button" onclick="location.href='../cursor-adventure/'">
           <img src="../cursor-adventure/assets/cursor.png" alt="Cursor Adventure" class="button-image" style="width: 50%; height: auto;" />
           <span class="button-text">Cursor Adventure</span>
         </button>
-      </div>
+      </div> -->
     </section>
   </main>
   <footer class="footer">
@@ -196,7 +196,7 @@
         changelogIcon.onclick = function() {
           changelogModal.style.display = "flex";
           // Load changelog.json and display
-          fetch('changelog.json')
+          fetch('/changelog.json')
             .then(res => res.json())
             .then(data => {
               if (Array.isArray(data) && data.length > 0) {
