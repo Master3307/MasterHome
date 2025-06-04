@@ -1,5 +1,23 @@
 [
   {
+    "sha": "8145d71aff83d63b7c32350f2b75e7791114ec85",
+    "date": "2025-06-04T15:04:30Z",
+    "message": "Merge branch 'main' of https://github.com/Master3307/MasterHome",
+    "author": "Master3307"
+  },
+  {
+    "sha": "2b0c09ad9623e7a793f566f30f7049d47d3dcac4",
+    "date": "2025-06-04T15:04:23Z",
+    "message": "Filters\n- Made it Filter out Automated Changes and Merges",
+    "author": "Master3307"
+  },
+  {
+    "sha": "9adbc15eeaf507c63e89989083f7b4b507685589",
+    "date": "2025-06-04T14:58:15Z",
+    "message": "Update changelog.json [auto]",
+    "author": "github-actions[bot]"
+  },
+  {
     "sha": "d0c3457dfba300d7fe27d18701b3427bde8b97f6",
     "date": "2025-06-04T14:57:40Z",
     "message": "Merge branch 'main' of https://github.com/Master3307/MasterHome",
