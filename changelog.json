@@ -1,5 +1,23 @@
 [
   {
+    "sha": "d0c3457dfba300d7fe27d18701b3427bde8b97f6",
+    "date": "2025-06-04T14:57:40Z",
+    "message": "Merge branch 'main' of https://github.com/Master3307/MasterHome",
+    "author": "Master3307"
+  },
+  {
+    "sha": "0f7cbefec0dc09e91aefcf73ba5244258bf32e57",
+    "date": "2025-06-04T14:57:34Z",
+    "message": "Forgot Something\n- I forgot to change the \"./home/changelog.json\" to \"./changelog.json\"",
+    "author": "Master3307"
+  },
+  {
+    "sha": "89492a2e7cf810dfa679a451686dc41e60917dc9",
+    "date": "2025-06-04T14:55:36Z",
+    "message": "Update changelog.json [auto]",
+    "author": "github-actions[bot]"
+  },
+  {
     "sha": "5998587d3f9b4515cff152739ab28349e25224dd",
     "date": "2025-06-04T14:55:04Z",
     "message": "Sorry for Spam\nI Spammed the Comits BUT:\n- I Fixed it Finally\n- It woks as Intended\n- You can actually see the lates changes i push to Github\n- Made changelog Display new changes Automaticaly",
