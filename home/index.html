@@ -200,22 +200,29 @@
             .then(res => res.json())
             .then(data => {
               if (Array.isArray(data) && data.length > 0) {
-                changelogContent.innerHTML = '<ul style="text-align:left;max-height:60vh;overflow:auto;padding-left:1.2em;">' +
-                  data.map((entry) => {
-                    const shortMsg = entry.message.split('\n')[0];
-                    const desc = entry.message.split('\n').slice(1).join('\n').trim();
-                    // Format date in German, 24h
-                    const dateStr = entry.date
-                      ? new Date(entry.date).toLocaleString('de-DE', {
-                          year: 'numeric',
-                          month: '2-digit',
-                          day: '2-digit',
-                          hour: '2-digit',
-                          minute: '2-digit',
-                          second: '2-digit',
-                          hour12: false
-                        })
-                      : '';
+                // Filter out entries by 'github-actions[bot]' or merge commits
+                const filteredData = data.filter(entry =>
+                  entry.author !== 'github-actions[bot]' &&
+                  !entry.message.startsWith('Merge branch \'main\'') // Add this condition
+                );
+
+                if (filteredData.length > 0) {
+                  changelogContent.innerHTML = '<ul style="text-align:left;max-height:60vh;overflow:auto;padding-left:1.2em;">' +
+                    filteredData.map((entry) => { // Use filteredData here
+                      const shortMsg = entry.message.split('\n')[0];
+                      const desc = entry.message.split('\n').slice(1).join('\n').trim();
+                      // Format date in German, 24h
+                      const dateStr = entry.date
+                        ? new Date(entry.date).toLocaleString('de-DE', {
+                            year: 'numeric',
+                            month: '2-digit',
+                            day: '2-digit',
+                            hour: '2-digit',
+                            minute: '2-digit',
+                            second: '2-digit',
+                            hour12: false
+                          })
+                        : '';
                     const sha = entry.sha ? entry.sha.substring(0,7) : '';
                     const author = entry.author ? entry.author : '';
                     return `<li style="margin-bottom:1.2em;">
@@ -230,6 +237,9 @@
                     </li>`;
                   }).join('') +
                   '</ul>';
+                } else {
+                  changelogContent.innerHTML = "<p>No changelog entries found.</p>";
+                }
               } else {
                 changelogContent.innerHTML = "<p>No changelog entries found.</p>";
               }
