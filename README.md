@@ -21,6 +21,7 @@ Something human for once: The Original idea was to create a site with all my Stu
 - **Linktree**: Quick access to all your important links in one place.
 - **Shrug Tool**: Instantly copy the classic shrug emoticon ¯\\\_(ツ)\_/¯ to your clipboard.
 - **Cursor Test**: Test and preview custom cursor styles interactively.
+- **Changelog**: Access the project's commit history via the icon on the home page. View commit messages, authors, dates, and expandable lists of changed files with status icons (+/-/~ for added/modified/removed) and line counts (additions/deletions). A notification badge indicates new changes since your last visit.
 
 ## Project Structure
 
