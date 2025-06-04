@@ -54,8 +54,29 @@ async function fetchAllCommits(url, headers) {
     }));
     fs.writeFileSync('changelog.json', JSON.stringify(changelog, null, 2));
     console.log(`changelog.json generated. (${changelog.length} commits)`);
+
+    // If running in GitHub Actions, stage and commit/push the changelog
+    if (process.env.GITHUB_ACTIONS) {
+      const { execSync } = require('child_process');
+      execSync('git config --global user.name "github-actions[bot]"');
+      execSync('git config --global user.email "github-actions[bot]@users.noreply.github.com"');
+      execSync('git add changelog.json');
+      try {
+        execSync('git commit -m "Update changelog.json [auto]"');
+        execSync('git push');
+        console.log('changelog.json committed and pushed.');
+      } catch (e) {
+        console.log('No changes to commit.');
+      }
+    }
   } catch (err) {
     console.error('Error fetching commits:', err);
   }
 })();
+
+// If running in GitHub Actions, ensure you commit/push with correct permissions and fetch depth
+// Add this before your fetchAllCommits call (in your workflow):
+// - uses: actions/checkout@v3
+//   with:
+//     fetch-depth: 0
 

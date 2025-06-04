@@ -20,16 +20,12 @@ jobs:
           node-version: 20 # Adjust the Node.js version if needed
 
       - name: Install dependencies (if any beyond node-fetch)
-        run: npm install node-fetch # Or 'npm install' if you have a package.json
-                                   # Ensure all dependencies for your script are installed.
-                                   # If your script doesn't use external npm modules other than
-                                   # Node.js built-ins, and doesn't use node-fetch,
-                                   # you can adjust/remove this step.
+        run: npm install node-fetch@2 # Use v2 for compatibility with require()
 
       - name: Generate changelog
-        run: node home/changelog-gen.js # Executes your script
+        run: node home/changelog-gen.js
         env:
-          TOKEN: ${{ secrets.TOKEN }} # Provides the token as an environment variable
+          TOKEN: ${{ secrets.TOKEN }} # Use the default GitHub Actions token
 
       - name: Commit and push changelog
         run: |
