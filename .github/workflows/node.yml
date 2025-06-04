@@ -20,6 +20,9 @@ jobs:
       - name: List files at repository root (for debugging)
         run: ls -al /home/runner/work/MasterHome/MasterHome/ # List files in the checked-out repo
 
+      - name: List files in ./home directory (for debugging)
+        run: ls -al /home/runner/work/MasterHome/MasterHome/home/ # List files in the ./home directory
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
@@ -27,7 +30,7 @@ jobs:
 
       - name: Install dependencies
         run: npm install # Install project dependencies, including 'sharp'
-        working-directory: . # Explicitly run npm install at the repository root
+        working-directory: ./assets/ # Run npm install in the ./assets directory
 
       - name: Run WebP Converter script
         run: node ./assets/Media/webp-converter.js # Ensure this path is correct relative to the repo root
