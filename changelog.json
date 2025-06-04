@@ -1,536 +1,4550 @@
 [
   {
+    "sha": "22d6d8d1fb4c00d977d4217dea3708d25bc4f900",
+    "date": "2025-06-04T15:04:50Z",
+    "message": "Update changelog.json [auto]",
+    "author": "github-actions[bot]",
+    "filesChanged": [
+      {
+        "filename": "changelog.json",
+        "status": "modified",
+        "additions": 18,
+        "deletions": 0
+      }
+    ]
+  },
+  {
+    "sha": "8145d71aff83d63b7c32350f2b75e7791114ec85",
+    "date": "2025-06-04T15:04:30Z",
+    "message": "Merge branch 'main' of https://github.com/Master3307/MasterHome",
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "changelog.json",
+        "status": "modified",
+        "additions": 18,
+        "deletions": 0
+      }
+    ]
+  },
+  {
+    "sha": "2b0c09ad9623e7a793f566f30f7049d47d3dcac4",
+    "date": "2025-06-04T15:04:23Z",
+    "message": "Filters\n- Made it Filter out Automated Changes and Merges",
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "home/index.html",
+        "status": "modified",
+        "additions": 26,
+        "deletions": 16
+      }
+    ]
+  },
+  {
+    "sha": "9adbc15eeaf507c63e89989083f7b4b507685589",
+    "date": "2025-06-04T14:58:15Z",
+    "message": "Update changelog.json [auto]",
+    "author": "github-actions[bot]",
+    "filesChanged": [
+      {
+        "filename": "changelog.json",
+        "status": "modified",
+        "additions": 18,
+        "deletions": 0
+      }
+    ]
+  },
+  {
     "sha": "d0c3457dfba300d7fe27d18701b3427bde8b97f6",
     "date": "2025-06-04T14:57:40Z",
     "message": "Merge branch 'main' of https://github.com/Master3307/MasterHome",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "changelog.json",
+        "status": "modified",
+        "additions": 12,
+        "deletions": 0
+      }
+    ]
   },
   {
     "sha": "0f7cbefec0dc09e91aefcf73ba5244258bf32e57",
     "date": "2025-06-04T14:57:34Z",
     "message": "Forgot Something\n- I forgot to change the \"./home/changelog.json\" to \"./changelog.json\"",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": ".github/workflows/changelog.yml",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1
+      }
+    ]
   },
   {
     "sha": "89492a2e7cf810dfa679a451686dc41e60917dc9",
     "date": "2025-06-04T14:55:36Z",
     "message": "Update changelog.json [auto]",
-    "author": "github-actions[bot]"
+    "author": "github-actions[bot]",
+    "filesChanged": [
+      {
+        "filename": "changelog.json",
+        "status": "modified",
+        "additions": 12,
+        "deletions": 0
+      }
+    ]
   },
   {
     "sha": "5998587d3f9b4515cff152739ab28349e25224dd",
     "date": "2025-06-04T14:55:04Z",
     "message": "Sorry for Spam\nI Spammed the Comits BUT:\n- I Fixed it Finally\n- It woks as Intended\n- You can actually see the lates changes i push to Github\n- Made changelog Display new changes Automaticaly",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "home/changelog.json",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 452
+      },
+      {
+        "filename": "home/index.html",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 3
+      }
+    ]
   },
   {
     "sha": "b3de15a3214e888549a6174850a98cd5040580c0",
     "date": "2025-06-04T14:45:07Z",
     "message": "Update changelog.json [auto]",
-    "author": "github-actions[bot]"
+    "author": "github-actions[bot]",
+    "filesChanged": [
+      {
+        "filename": "changelog.json",
+        "status": "added",
+        "additions": 506,
+        "deletions": 0
+      }
+    ]
   },
   {
     "sha": "73d33ea907a25bbda3d25b8f0f47bb0c360983a6",
     "date": "2025-06-04T14:44:35Z",
     "message": "you know, i use the gemini ai now and redid the entire thing, its so much faster and i find it more reliable. i am confident that this works. if it does, this will be the last commit for today",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": ".github/workflows/changelog.yml",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 0
+      }
+    ]
   },
   {
     "sha": "70d3bb5fc811095682f88243a1e0f96209889642",
     "date": "2025-06-04T14:41:59Z",
     "message": "Commit",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": ".github/workflows/changelog.yml",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 2
+      }
+    ]
   },
   {
     "sha": "9f191c2586929d3a60304119260fa9eec901ca72",
     "date": "2025-06-04T14:39:15Z",
     "message": "one last try...\nthis is getting annoying",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": ".github/workflows/changelog.yml",
+        "status": "modified",
+        "additions": 18,
+        "deletions": 27
+      }
+    ]
   },
   {
     "sha": "9342fcf40884312218fe71a312e8f52965240a05",
     "date": "2025-06-04T14:33:57Z",
     "message": "Commit",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": ".github/workflows/changelog.yml",
+        "status": "modified",
+        "additions": 7,
+        "deletions": 7
+      }
+    ]
   },
   {
     "sha": "912acab5c0a66c7551cf5a615473cbe231118d96",
     "date": "2025-06-04T14:28:39Z",
     "message": "This time it Might work updating the json...",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": ".github/workflows/changelog.yml",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 7
+      },
+      {
+        "filename": "home/changelog-gen.js",
+        "status": "modified",
+        "additions": 21,
+        "deletions": 0
+      }
+    ]
   },
   {
     "sha": "54c84063936c1d42ccebb574bce7967e6a4d99d0",
     "date": "2025-06-04T14:22:53Z",
     "message": "Forgot to change the Variable in the js too....",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "home/changelog-gen.js",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 4
+      }
+    ]
   },
   {
     "sha": "da5343bc2931c585edf1510fc7bd02cc3e62114e",
     "date": "2025-06-04T14:21:25Z",
     "message": "Lets try this one again\n- added the js that i need to generate the changelog",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "home/changelog-gen.js",
+        "status": "added",
+        "additions": 61,
+        "deletions": 0
+      },
+      {
+        "filename": "home/changelog.json",
+        "status": "modified",
+        "additions": 6,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/.package-lock.json",
+        "status": "added",
+        "additions": 98,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/data-uri-to-buffer/README.md",
+        "status": "added",
+        "additions": 88,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/data-uri-to-buffer/dist/index.d.ts",
+        "status": "added",
+        "additions": 15,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/data-uri-to-buffer/dist/index.js",
+        "status": "added",
+        "additions": 53,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/data-uri-to-buffer/dist/index.js.map",
+        "status": "added",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/data-uri-to-buffer/package.json",
+        "status": "added",
+        "additions": 62,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/data-uri-to-buffer/src/index.ts",
+        "status": "added",
+        "additions": 68,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/fetch-blob/LICENSE",
+        "status": "added",
+        "additions": 21,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/fetch-blob/README.md",
+        "status": "added",
+        "additions": 106,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/fetch-blob/file.d.ts",
+        "status": "added",
+        "additions": 2,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/fetch-blob/file.js",
+        "status": "added",
+        "additions": 49,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/fetch-blob/from.d.ts",
+        "status": "added",
+        "additions": 26,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/fetch-blob/from.js",
+        "status": "added",
+        "additions": 100,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/fetch-blob/index.d.ts",
+        "status": "added",
+        "additions": 3,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/fetch-blob/index.js",
+        "status": "added",
+        "additions": 250,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/fetch-blob/package.json",
+        "status": "added",
+        "additions": 56,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/fetch-blob/streams.cjs",
+        "status": "added",
+        "additions": 51,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/formdata-polyfill/FormData.js",
+        "status": "added",
+        "additions": 441,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/formdata-polyfill/LICENSE",
+        "status": "added",
+        "additions": 21,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/formdata-polyfill/README.md",
+        "status": "added",
+        "additions": 145,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/formdata-polyfill/esm.min.d.ts",
+        "status": "added",
+        "additions": 5,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/formdata-polyfill/esm.min.js",
+        "status": "added",
+        "additions": 40,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/formdata-polyfill/formdata-to-blob.js",
+        "status": "added",
+        "additions": 39,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/formdata-polyfill/formdata.min.js",
+        "status": "added",
+        "additions": 21,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/formdata-polyfill/package.json",
+        "status": "added",
+        "additions": 50,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/README_20210527203617.md",
+        "status": "added",
+        "additions": 2,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/README_20210527212714.md",
+        "status": "added",
+        "additions": 41,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/README_20210527213345.md",
+        "status": "added",
+        "additions": 36,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/README_20210527213411.md",
+        "status": "added",
+        "additions": 36,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/README_20210527213803.md",
+        "status": "added",
+        "additions": 36,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/README_20210527214323.md",
+        "status": "added",
+        "additions": 38,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/README_20210527214408.md",
+        "status": "added",
+        "additions": 38,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/index_20210527203842.js",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/index_20210527203947.js",
+        "status": "added",
+        "additions": 8,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/index_20210527204259.js",
+        "status": "added",
+        "additions": 9,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/index_20210527204418.js",
+        "status": "added",
+        "additions": 9,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/index_20210527204756.js",
+        "status": "added",
+        "additions": 11,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/index_20210527204833.js",
+        "status": "added",
+        "additions": 11,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/index_20210527211208.js",
+        "status": "added",
+        "additions": 15,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/index_20210527211248.js",
+        "status": "added",
+        "additions": 15,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/index_20210527212722.js",
+        "status": "added",
+        "additions": 23,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/index_20210527212731.js",
+        "status": "added",
+        "additions": 23,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/index_20210527212746.js",
+        "status": "added",
+        "additions": 15,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/index_20210527212900.js",
+        "status": "added",
+        "additions": 16,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/index_20210527213022.js",
+        "status": "added",
+        "additions": 16,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/index_20210527213822.js",
+        "status": "added",
+        "additions": 16,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/index_20210527213843.js",
+        "status": "added",
+        "additions": 17,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/index_20210527213852.js",
+        "status": "added",
+        "additions": 17,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/index_20210527213910.js",
+        "status": "added",
+        "additions": 16,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/index_20210527214034.js",
+        "status": "added",
+        "additions": 16,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/index_20210527214643.js",
+        "status": "added",
+        "additions": 41,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/index_20210527214654.js",
+        "status": "added",
+        "additions": 41,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/index_20210527214700.js",
+        "status": "added",
+        "additions": 16,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/package_20210527203733.json",
+        "status": "added",
+        "additions": 19,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/package_20210527203825.json",
+        "status": "added",
+        "additions": 16,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/package_20210527204621.json",
+        "status": "added",
+        "additions": 19,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/package_20210527204913.json",
+        "status": "added",
+        "additions": 25,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/package_20210527204925.json",
+        "status": "added",
+        "additions": 25,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/package_20210527205145.json",
+        "status": "added",
+        "additions": 29,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/package_20210527205156.json",
+        "status": "added",
+        "additions": 29,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/test_20210527205603.js",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/test_20210527205957.js",
+        "status": "added",
+        "additions": 3,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/test_20210527210021.js",
+        "status": "added",
+        "additions": 3,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-domexception/LICENSE",
+        "status": "added",
+        "additions": 21,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-domexception/README.md",
+        "status": "added",
+        "additions": 46,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-domexception/index.js",
+        "status": "added",
+        "additions": 16,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-domexception/package.json",
+        "status": "added",
+        "additions": 29,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-fetch/@types/index.d.ts",
+        "status": "added",
+        "additions": 219,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-fetch/LICENSE.md",
+        "status": "added",
+        "additions": 22,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-fetch/README.md",
+        "status": "added",
+        "additions": 872,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-fetch/package.json",
+        "status": "added",
+        "additions": 131,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-fetch/src/body.js",
+        "status": "added",
+        "additions": 397,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-fetch/src/errors/abort-error.js",
+        "status": "added",
+        "additions": 10,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-fetch/src/errors/base.js",
+        "status": "added",
+        "additions": 17,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-fetch/src/errors/fetch-error.js",
+        "status": "added",
+        "additions": 26,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-fetch/src/headers.js",
+        "status": "added",
+        "additions": 267,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-fetch/src/index.js",
+        "status": "added",
+        "additions": 417,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-fetch/src/request.js",
+        "status": "added",
+        "additions": 313,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-fetch/src/response.js",
+        "status": "added",
+        "additions": 160,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-fetch/src/utils/get-search.js",
+        "status": "added",
+        "additions": 9,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-fetch/src/utils/is-redirect.js",
+        "status": "added",
+        "additions": 11,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-fetch/src/utils/is.js",
+        "status": "added",
+        "additions": 87,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-fetch/src/utils/multipart-parser.js",
+        "status": "added",
+        "additions": 432,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-fetch/src/utils/referrer.js",
+        "status": "added",
+        "additions": 340,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/LICENSE",
+        "status": "added",
+        "additions": 22,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/README.md",
+        "status": "added",
+        "additions": 110,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/polyfill.es2018.js",
+        "status": "added",
+        "additions": 4765,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/polyfill.es2018.js.map",
+        "status": "added",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/polyfill.es2018.min.js",
+        "status": "added",
+        "additions": 9,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/polyfill.es2018.min.js.map",
+        "status": "added",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/polyfill.es2018.mjs",
+        "status": "added",
+        "additions": 4745,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/polyfill.es2018.mjs.map",
+        "status": "added",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/polyfill.es6.js",
+        "status": "added",
+        "additions": 4838,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/polyfill.es6.js.map",
+        "status": "added",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/polyfill.es6.min.js",
+        "status": "added",
+        "additions": 9,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/polyfill.es6.min.js.map",
+        "status": "added",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/polyfill.es6.mjs",
+        "status": "added",
+        "additions": 4818,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/polyfill.es6.mjs.map",
+        "status": "added",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/polyfill.js",
+        "status": "added",
+        "additions": 5011,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/polyfill.js.map",
+        "status": "added",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/polyfill.min.js",
+        "status": "added",
+        "additions": 9,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/polyfill.min.js.map",
+        "status": "added",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/polyfill.mjs",
+        "status": "added",
+        "additions": 4991,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/polyfill.mjs.map",
+        "status": "added",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/ponyfill.es2018.js",
+        "status": "added",
+        "additions": 4737,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/ponyfill.es2018.js.map",
+        "status": "added",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/ponyfill.es2018.mjs",
+        "status": "added",
+        "additions": 4717,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/ponyfill.es2018.mjs.map",
+        "status": "added",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/ponyfill.es6.js",
+        "status": "added",
+        "additions": 4810,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/ponyfill.es6.js.map",
+        "status": "added",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/ponyfill.es6.mjs",
+        "status": "added",
+        "additions": 4790,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/ponyfill.es6.mjs.map",
+        "status": "added",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/ponyfill.js",
+        "status": "added",
+        "additions": 4983,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/ponyfill.js.map",
+        "status": "added",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/ponyfill.mjs",
+        "status": "added",
+        "additions": 4963,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/ponyfill.mjs.map",
+        "status": "added",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/types/polyfill.d.ts",
+        "status": "added",
+        "additions": 24,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/types/ponyfill.d.ts",
+        "status": "added",
+        "additions": 780,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/types/ts3.6/polyfill.d.ts",
+        "status": "added",
+        "additions": 28,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/types/ts3.6/ponyfill.d.ts",
+        "status": "added",
+        "additions": 821,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/types/tsdoc-metadata.json",
+        "status": "added",
+        "additions": 11,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/es2018/package.json",
+        "status": "added",
+        "additions": 14,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/es6/package.json",
+        "status": "added",
+        "additions": 14,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/package.json",
+        "status": "added",
+        "additions": 83,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/ponyfill/es2018/package.json",
+        "status": "added",
+        "additions": 13,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/ponyfill/es6/package.json",
+        "status": "added",
+        "additions": 13,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/ponyfill/package.json",
+        "status": "added",
+        "additions": 13,
+        "deletions": 0
+      },
+      {
+        "filename": "home/package-lock.json",
+        "status": "added",
+        "additions": 103,
+        "deletions": 0
+      },
+      {
+        "filename": "home/package.json",
+        "status": "added",
+        "additions": 5,
+        "deletions": 0
+      }
+    ]
   },
   {
     "sha": "03f997063bf5372009a7cc977868f488ac3ba367",
     "date": "2025-06-04T14:19:37Z",
     "message": "Did something wrong oops",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": ".github/workflows/changelog.yml",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1
+      }
+    ]
   },
   {
     "sha": "f8d882756dbfa5e552e51db933a9cbe570e70314",
     "date": "2025-06-04T14:18:47Z",
     "message": "Testing\n- Guthub Workflow that hopefully works\n- I saw that i had to commit to update the commit and that was kind of bad so i asked ai to help and it suggested this...",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": ".github/workflows/changelog.yml",
+        "status": "added",
+        "additions": 46,
+        "deletions": 0
+      }
+    ]
   },
   {
     "sha": "02c661f24b3145ffae9f4b6ee443c1a64a631c13",
     "date": "2025-06-04T14:03:25Z",
     "message": "Minor Update\n- Added This Changelog (Yayy hello!)\n- Added button comment for game that might be on this site soon\n- Look how cool this looks and works woowwww\n- Also im testing commiting on my alt account!",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "home/changelog.json",
+        "status": "added",
+        "additions": 446,
+        "deletions": 0
+      },
+      {
+        "filename": "home/index.html",
+        "status": "modified",
+        "additions": 88,
+        "deletions": 6
+      }
+    ]
   },
   {
     "sha": "477f94d2f8a3b535d6cc49a50c5f23edbc32178a",
     "date": "2025-06-04T13:35:53Z",
     "message": "Assets View Now has Thumbnails!",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "assets/Media/thumb/Alex.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/thumb/Assets.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/thumb/Builds.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/thumb/CursorTest.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/thumb/Linktree.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/thumb/M437.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/thumb/MT-Light-Trans.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/thumb/MT-Light.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/thumb/MT-Trans.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/thumb/MT.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/thumb/MasterTech.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/thumb/MasterTechLightTrans.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/thumb/Master_pfp.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/thumb/Quellen.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/thumb/Repairs.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/thumb/Shrug.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/thumb/blocktanks-bg.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/thumb/channels4_banner.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/thumb/city.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/thumb/cool-cat.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/thumb/giphy.gif",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/thumb/ohoh.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/thumb/shop.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/thumb/twitch-bg.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/index.html",
+        "status": "modified",
+        "additions": 16,
+        "deletions": 1
+      },
+      {
+        "filename": "home/index.html",
+        "status": "modified",
+        "additions": 6,
+        "deletions": 0
+      }
+    ]
   },
   {
     "sha": "372a343c997f86b67feb1e1105c52871e98d3f21",
     "date": "2025-05-31T02:28:14Z",
     "message": "Google Analytics fr now.",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "home/index.html",
+        "status": "modified",
+        "additions": 9,
+        "deletions": 0
+      },
+      {
+        "filename": "index.html",
+        "status": "modified",
+        "additions": 19,
+        "deletions": 8
+      }
+    ]
   },
   {
     "sha": "c393f9a0a19b192592609bfe1417f7f323bd55cd",
     "date": "2025-05-31T02:02:09Z",
     "message": "Google Tags Test",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "home/index.html",
+        "status": "modified",
+        "additions": 143,
+        "deletions": 148
+      },
+      {
+        "filename": "index.html",
+        "status": "modified",
+        "additions": 19,
+        "deletions": 3
+      }
+    ]
   },
   {
     "sha": "5624fe9a07aab8ed21623a27d38e2a43122dfa36",
     "date": "2025-05-31T01:49:42Z",
     "message": "Analytics Test",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "index.html",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 0
+      },
+      {
+        "filename": "master-tech-services/home/index.html",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 1
+      }
+    ]
   },
   {
     "sha": "18e7c7fc6ed6b3ebdbe867601c9be322e0c7b97b",
     "date": "2025-05-31T01:32:54Z",
     "message": "Major Site Update\n- All Images are WEBP\n- Added Folder just for Images\n- Updated Assets View to Support JS and CSS\n- In Home: Info Text is now under the Image\n\nPlans:\n- Do settings in the next Update\n- Add This changelog from Github to the site automatically and add a Automatically generated Version Number\n- Add more features like a game\n- Its like 3 am me writing this lol I cant i have to sleep",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "404.html",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 3
+      },
+      {
+        "filename": "README.md",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 2
+      },
+      {
+        "filename": "Special/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1
+      },
+      {
+        "filename": "assets/M437.png",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/Alex.webp",
+        "status": "renamed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/Assets.webp",
+        "status": "renamed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/Builds.webp",
+        "status": "renamed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/CursorTest.webp",
+        "status": "renamed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/Linktree.webp",
+        "status": "renamed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/M437.webp",
+        "status": "renamed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/MT-Light-Trans.webp",
+        "status": "renamed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/MT-Light.webp",
+        "status": "renamed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/MT-Trans.webp",
+        "status": "renamed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/MT.webp",
+        "status": "renamed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/MasterTech.webp",
+        "status": "renamed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/MasterTechLightTrans.webp",
+        "status": "renamed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/Master_pfp.webp",
+        "status": "renamed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/Quellen.webp",
+        "status": "renamed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/Repairs.webp",
+        "status": "renamed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/Shrug.webp",
+        "status": "renamed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/blocktanks-bg.webp",
+        "status": "renamed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/channels4_banner.webp",
+        "status": "renamed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/city.webp",
+        "status": "renamed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/cool-cat.webp",
+        "status": "renamed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/giphy.gif",
+        "status": "renamed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/ohoh.webp",
+        "status": "renamed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/shop.webp",
+        "status": "renamed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/twitch-bg.webp",
+        "status": "renamed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/assets.json",
+        "status": "modified",
+        "additions": 28,
+        "deletions": 28
+      },
+      {
+        "filename": "assets/blocktanks-bg.png",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/channels4_banner.jpg",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/giphy.webp",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/index.html",
+        "status": "modified",
+        "additions": 485,
+        "deletions": 322
+      },
+      {
+        "filename": "assets/script.js",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/style.css",
+        "status": "modified",
+        "additions": 7,
+        "deletions": 5
+      },
+      {
+        "filename": "cursor-test/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1
+      },
+      {
+        "filename": "dating/chat/index.html",
+        "status": "modified",
+        "additions": 315,
+        "deletions": 31
+      },
+      {
+        "filename": "dating/index.html",
+        "status": "modified",
+        "additions": 0,
+        "deletions": 1
+      },
+      {
+        "filename": "home/index.html",
+        "status": "modified",
+        "additions": 12,
+        "deletions": 11
+      },
+      {
+        "filename": "linktree/index.html",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 3
+      },
+      {
+        "filename": "master-tech-services/home/index.html",
+        "status": "modified",
+        "additions": 5,
+        "deletions": 4
+      },
+      {
+        "filename": "master-tech-services/repairs/advanced/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "filename": "master-tech-services/repairs/basic/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "filename": "master-tech-services/repairs/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "filename": "master-tech-services/repairs/professional/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "filename": "quellen/ethanol-quellen/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "filename": "quellen/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "filename": "settings/index.html",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 2
+      },
+      {
+        "filename": "shrug/shrug.html",
+        "status": "modified",
+        "additions": 175,
+        "deletions": 171
+      }
+    ]
   },
   {
     "sha": "8eaa21f5d6b6382aa96aca5e02f0392ebb6699ed",
     "date": "2025-05-30T14:27:56Z",
     "message": "Testing it with a JS",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "index.html",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 1
+      }
+    ]
   },
   {
     "sha": "e5d193669afd40a630011c1da71adf8986c20a2f",
     "date": "2025-05-30T14:24:48Z",
     "message": "Adsesnse for gods sake",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "index.html",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 0
+      }
+    ]
   },
   {
     "sha": "338c9ede0137dcc850be01d232715e3134beda89",
     "date": "2025-05-30T14:23:14Z",
     "message": "Ads test meta tag",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "dating/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 0
+      }
+    ]
   },
   {
     "sha": "98f52d7347986f0998a31e4e8b1dd1aa99122f04",
     "date": "2025-05-30T14:19:23Z",
     "message": "Ads Test",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "dating/index.html",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 0
+      }
+    ]
   },
   {
     "sha": "2a96a579aa6e9aec25243ed69b9878097817c1c2",
     "date": "2025-05-30T13:58:09Z",
     "message": "Dating Images available",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "dating/chat/index.html",
+        "status": "modified",
+        "additions": 205,
+        "deletions": 24
+      },
+      {
+        "filename": "dating/index.html",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 5
+      }
+    ]
   },
   {
     "sha": "4b560be5e3df768f3cb80568000bc0a2749beb3a",
     "date": "2025-05-30T13:41:40Z",
     "message": "AI update",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "dating/chat/index.html",
+        "status": "modified",
+        "additions": 7,
+        "deletions": 1
+      }
+    ]
   },
   {
     "sha": "a95b441b46303f4b0858267fcb2144c091298a9a",
     "date": "2025-05-30T13:22:08Z",
     "message": "Dating AI update",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "dating/chat/index.html",
+        "status": "added",
+        "additions": 170,
+        "deletions": 0
+      },
+      {
+        "filename": "dating/index.html",
+        "status": "modified",
+        "additions": 12,
+        "deletions": 38
+      }
+    ]
   },
   {
     "sha": "06e40c14e34a07ecc3286980a7155fffbeff4136",
     "date": "2025-05-26T12:28:23Z",
     "message": "Dating Update again",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "dating/Janka.jpg",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "dating/index.html",
+        "status": "modified",
+        "additions": 67,
+        "deletions": 3
+      }
+    ]
   },
   {
     "sha": "e6418ac35f4332c5a7445bbcb90feb8134e68419",
     "date": "2025-05-26T11:53:42Z",
     "message": "Dating Update (Joke Update)",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "dating/index.html",
+        "status": "added",
+        "additions": 127,
+        "deletions": 0
+      }
+    ]
   },
   {
     "sha": "19ceb4ba388c8a69c02a3eeba7c411c65cb1a470",
     "date": "2025-05-24T22:04:15Z",
     "message": "Small Update\n- Updated README\n- Switched from \"styles.css\" to \"style.css\" and put the old style.css out of its misery\n- Planning to give Images their Own Folder in Assets\n- Planning NOT to give Cursor-Test its own css and js\n- Planning to optimize more Stuff in General",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "README.md",
+        "status": "modified",
+        "additions": 38,
+        "deletions": 25
+      },
+      {
+        "filename": "assets/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1
+      },
+      {
+        "filename": "assets/style.css",
+        "status": "modified",
+        "additions": 1005,
+        "deletions": 253
+      },
+      {
+        "filename": "assets/styles.css",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 1147
+      },
+      {
+        "filename": "home/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1
+      },
+      {
+        "filename": "linktree/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1
+      },
+      {
+        "filename": "master-tech-services/about/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1
+      },
+      {
+        "filename": "master-tech-services/home/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1
+      },
+      {
+        "filename": "master-tech-services/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "filename": "master-tech-services/repairs/advanced/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1
+      },
+      {
+        "filename": "master-tech-services/repairs/basic/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1
+      },
+      {
+        "filename": "master-tech-services/repairs/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1
+      },
+      {
+        "filename": "master-tech-services/repairs/professional/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1
+      },
+      {
+        "filename": "quellen/README.md",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 30
+      },
+      {
+        "filename": "quellen/ethanol-quellen/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1
+      },
+      {
+        "filename": "quellen/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1
+      },
+      {
+        "filename": "settings/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1
+      }
+    ]
   },
   {
     "sha": "9397347d9a8f0c8973b4a7a66fb779dfaa8ebc01",
     "date": "2025-05-24T21:37:18Z",
     "message": "Performance Update\n- Added a Tool on my side to convert Images to WEBP\n- Converted all Images to WEBP\n- Coming Changes to Settings",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "assets/Assets.png",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Assets.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Builds.png",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Builds.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/CursorTest.png",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/CursorTest.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Linktree.png",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Linktree.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/M437.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/MT-Light-Trans.png",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/MT-Light-Trans.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/MT-Light.png",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/MT-Light.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/MT-Trans.png",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/MT-Trans.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/MT.png",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/MT.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/MasterTech.png",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/MasterTech.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/MasterTechLightTrans.png",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/MasterTechLightTrans.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Master_pfp.png",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Master_pfp.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Quellen.png",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Quellen.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Repairs.png",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Repairs.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Shrug.png",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Shrug.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/assets.json",
+        "status": "modified",
+        "additions": 26,
+        "deletions": 22
+      },
+      {
+        "filename": "assets/blocktanks-bg.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/channels4_banner.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/city.png",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/city.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/cool-cat.png",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/cool-cat.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/giphy.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/index.html",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 4
+      },
+      {
+        "filename": "assets/ohoh.png",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/ohoh.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/shop.png",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/shop.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/twitch-bg.png",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/twitch-bg.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "cursor-test/index.html",
+        "status": "modified",
+        "additions": 5,
+        "deletions": 5
+      },
+      {
+        "filename": "home/index.html",
+        "status": "modified",
+        "additions": 11,
+        "deletions": 11
+      },
+      {
+        "filename": "index.html",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 4
+      },
+      {
+        "filename": "linktree/index.html",
+        "status": "modified",
+        "additions": 5,
+        "deletions": 5
+      },
+      {
+        "filename": "master-tech-services/about/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1
+      },
+      {
+        "filename": "master-tech-services/home/index.html",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 4
+      },
+      {
+        "filename": "master-tech-services/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1
+      },
+      {
+        "filename": "quellen/index.html",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 4
+      },
+      {
+        "filename": "settings/index.html",
+        "status": "modified",
+        "additions": 27,
+        "deletions": 4
+      }
+    ]
   },
   {
     "sha": "05873fdee61aee060efd0a5f58f8a62a98b340dc",
     "date": "2025-05-23T20:54:17Z",
     "message": "Assets Viewer Update\n- No more Offscreen!\n- Nicer and bigger Image Previews\n- Animations\n- Semi-Automatic adding of new Images\n- Improved Support for Mobile Devices",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "assets/assets.json",
+        "status": "added",
+        "additions": 26,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/index.html",
+        "status": "modified",
+        "additions": 250,
+        "deletions": 37
+      }
+    ]
   },
   {
     "sha": "949fd09a5c9f979d1878acfd18c4e7e71e06907a",
     "date": "2025-05-16T23:44:12Z",
     "message": "Very Very small Color Change to Very old css",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "assets/style.css",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1
+      }
+    ]
   },
   {
     "sha": "2c9ee34453e6bca45b0e111517b690a8e9a42191",
     "date": "2025-05-16T11:46:43Z",
     "message": "Some Problem Fixing",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "Special/index.html",
+        "status": "modified",
+        "additions": 9,
+        "deletions": 1
+      },
+      {
+        "filename": "cursor-test/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1
+      },
+      {
+        "filename": "quellen/ethanol-quellen/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1
+      },
+      {
+        "filename": "quellen/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1
+      },
+      {
+        "filename": "shrug/secret/secret.html",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 2
+      },
+      {
+        "filename": "shrug/shrug-backup.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1
+      },
+      {
+        "filename": "shrug/shrug.html",
+        "status": "modified",
+        "additions": 8,
+        "deletions": 14
+      },
+      {
+        "filename": "shrug/test.html",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 1
+      },
+      {
+        "filename": "shrug/testt.html",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 3
+      }
+    ]
   },
   {
     "sha": "c3dfb5fb79cf251e518f1535b114339f408f23bd",
     "date": "2025-05-15T21:15:25Z",
     "message": "Button Jitter Fix + Birthday Fix",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "Special/index.html",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 2
+      },
+      {
+        "filename": "assets/styles.css",
+        "status": "modified",
+        "additions": 12,
+        "deletions": 15
+      }
+    ]
   },
   {
     "sha": "ad104110e9b5675ca90346e38d334747cb42dee4",
     "date": "2025-05-14T13:48:12Z",
     "message": "No Redirects + No Select in Special",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "Special/index.html",
+        "status": "modified",
+        "additions": 19,
+        "deletions": 0
+      },
+      {
+        "filename": "_redirects",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      }
+    ]
   },
   {
     "sha": "99c85508c072f6f1c143bb42b546d2c3f98e91cb",
     "date": "2025-05-13T22:27:57Z",
     "message": "Remove Redirects",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "_redirects",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 5
+      }
+    ]
   },
   {
     "sha": "f072e272266d5ae49c1f3abb09b30a9e13b309f2",
     "date": "2025-05-13T22:26:01Z",
     "message": "Fix",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "home/index.html",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 2
+      },
+      {
+        "filename": "index.html",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 3
+      }
+    ]
   },
   {
     "sha": "e84f5d8cabf37adf89c91487b45dabaf2d743f80",
     "date": "2025-05-13T22:23:04Z",
     "message": "Freunde Fix",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "assets/Alex.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      }
+    ]
   },
   {
     "sha": "aeb034ec3afba560a4369fdcf10eb475b3f82dab",
     "date": "2025-05-13T22:22:17Z",
     "message": "Freunde Update",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "Special/index.html",
+        "status": "added",
+        "additions": 93,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/styles.css",
+        "status": "modified",
+        "additions": 15,
+        "deletions": 13
+      }
+    ]
   },
   {
     "sha": "066f338c9fb23390c9c236248dffa9dbae813cec",
     "date": "2025-05-11T23:39:42Z",
     "message": "Redirects 2",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "_redirects",
+        "status": "modified",
+        "additions": 5,
+        "deletions": 3
+      }
+    ]
   },
   {
     "sha": "62c01a79656d39680f5bb7c3a30e457a133abbc7",
     "date": "2025-05-11T23:36:39Z",
     "message": "Redirects",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "_redirects",
+        "status": "added",
+        "additions": 3,
+        "deletions": 0
+      }
+    ]
   },
   {
     "sha": "c5f63a4faed2dabf750cfbf11406c0a5ffde3f3c",
     "date": "2025-05-11T23:20:03Z",
     "message": "404 Release",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "404.html",
+        "status": "modified",
+        "additions": 67,
+        "deletions": 5
+      },
+      {
+        "filename": "assets/styles.css",
+        "status": "modified",
+        "additions": 8,
+        "deletions": 5
+      }
+    ]
   },
   {
     "sha": "1beeb42a5c2b147f8605f5b16b03ae875ff90a8e",
     "date": "2025-05-11T22:40:44Z",
     "message": "404 Test",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "404.html",
+        "status": "added",
+        "additions": 42,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/ohoh.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      }
+    ]
   },
   {
     "sha": "7d0dbc56e99902afd7d0cf0b7a21bc118d9f9351",
     "date": "2025-05-11T22:20:56Z",
     "message": "Embed Fix (srry)",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "assets/index.html",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 2
+      },
+      {
+        "filename": "cursor-test/index.html",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 2
+      },
+      {
+        "filename": "home/index.html",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 2
+      },
+      {
+        "filename": "linktree/index.html",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 2
+      },
+      {
+        "filename": "quellen/index.html",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 2
+      },
+      {
+        "filename": "settings/index.html",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 2
+      }
+    ]
   },
   {
     "sha": "3f1ccd09881ceb28f219246bd3b2cef255c7b8cd",
     "date": "2025-05-11T22:17:00Z",
     "message": "Embed Release",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "assets/index.html",
+        "status": "modified",
+        "additions": 23,
+        "deletions": 1
+      },
+      {
+        "filename": "cursor-test/index.html",
+        "status": "modified",
+        "additions": 222,
+        "deletions": 235
+      },
+      {
+        "filename": "home/index.html",
+        "status": "modified",
+        "additions": 22,
+        "deletions": 0
+      },
+      {
+        "filename": "index.html",
+        "status": "modified",
+        "additions": 30,
+        "deletions": 39
+      },
+      {
+        "filename": "linktree/index.html",
+        "status": "modified",
+        "additions": 200,
+        "deletions": 278
+      },
+      {
+        "filename": "quellen/ethanol-quellen/index.html",
+        "status": "modified",
+        "additions": 72,
+        "deletions": 70
+      },
+      {
+        "filename": "quellen/index.html",
+        "status": "modified",
+        "additions": 59,
+        "deletions": 37
+      },
+      {
+        "filename": "settings/index.html",
+        "status": "modified",
+        "additions": 81,
+        "deletions": 68
+      }
+    ]
   },
   {
     "sha": "a98e6391db73f9052da1908196e96e3138b93068",
     "date": "2025-05-11T21:53:21Z",
     "message": "Embed Test V2",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "index.html",
+        "status": "modified",
+        "additions": 14,
+        "deletions": 3
+      }
+    ]
   },
   {
     "sha": "525bf52ddaf9aeb8b6bc1ae9af4f5eeb5a1471b9",
     "date": "2025-05-11T21:44:24Z",
     "message": "Merge branch 'main' of https://github.com/Master3307/MasterHome",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "README.md",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1
+      }
+    ]
   },
   {
     "sha": "3d8d92a49e95abc0be60d6e56c6a3ea16ee2a0f8",
     "date": "2025-05-11T21:44:20Z",
     "message": "Embed Test",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "index.html",
+        "status": "modified",
+        "additions": 23,
+        "deletions": 0
+      }
+    ]
   },
   {
     "sha": "520385287cc56dc3f33282163253bdba2a0bb04a",
     "date": "2025-05-04T20:26:14Z",
     "message": "Update README.md",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "README.md",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1
+      }
+    ]
   },
   {
     "sha": "2f8ad7b07234a77767eb9f44a5f1a1cc47cf45d7",
     "date": "2025-05-01T19:50:26Z",
     "message": "Overhaul Beta Release",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "assets/Builds.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Repairs.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/script.js",
+        "status": "modified",
+        "additions": 151,
+        "deletions": 239
+      },
+      {
+        "filename": "assets/shop.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/styles.css",
+        "status": "modified",
+        "additions": 251,
+        "deletions": 20
+      },
+      {
+        "filename": "home/index.html",
+        "status": "modified",
+        "additions": 11,
+        "deletions": 7
+      },
+      {
+        "filename": "master-tech-services/about/index.html",
+        "status": "added",
+        "additions": 17,
+        "deletions": 0
+      },
+      {
+        "filename": "master-tech-services/builds/index.html",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "master-tech-services/home/index.html",
+        "status": "modified",
+        "additions": 37,
+        "deletions": 19
+      },
+      {
+        "filename": "master-tech-services/index.html",
+        "status": "added",
+        "additions": 10,
+        "deletions": 0
+      },
+      {
+        "filename": "master-tech-services/repairs/advanced/index.html",
+        "status": "added",
+        "additions": 48,
+        "deletions": 0
+      },
+      {
+        "filename": "master-tech-services/repairs/basic/index.html",
+        "status": "added",
+        "additions": 48,
+        "deletions": 0
+      },
+      {
+        "filename": "master-tech-services/repairs/index.html",
+        "status": "added",
+        "additions": 115,
+        "deletions": 0
+      },
+      {
+        "filename": "master-tech-services/repairs/professional/index.html",
+        "status": "added",
+        "additions": 52,
+        "deletions": 0
+      },
+      {
+        "filename": "settings/index.html",
+        "status": "added",
+        "additions": 70,
+        "deletions": 0
+      }
+    ]
   },
   {
     "sha": "4fbf94cc11e2c76ea1731ed42de1f085bf67d712",
     "date": "2025-04-21T02:50:54Z",
     "message": "Very small change to Linktree",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "linktree/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1
+      }
+    ]
   },
   {
     "sha": "223a63d70d6d8429562b20c871dcf47f27a03737",
     "date": "2025-04-21T02:44:37Z",
     "message": "Commit",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "master-tech-services/README.md",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 25
+      },
+      {
+        "filename": "master-tech-services/about/index.html",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 90
+      },
+      {
+        "filename": "master-tech-services/auth/index.html",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 55
+      },
+      {
+        "filename": "master-tech-services/contact/index.html",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 84
+      },
+      {
+        "filename": "master-tech-services/home/index.html",
+        "status": "modified",
+        "additions": 46,
+        "deletions": 84
+      },
+      {
+        "filename": "master-tech-services/settings/index.html",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 89
+      },
+      {
+        "filename": "master-tech-services/shop/index.html",
+        "status": "modified",
+        "additions": 0,
+        "deletions": 107
+      }
+    ]
   },
   {
     "sha": "3f4cfbc5a0f41d5ec52c70c32e2d4f0f7bfeafef",
     "date": "2025-04-21T02:42:21Z",
     "message": "Changed Header and Home Site",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "assets/cursor-lock.js",
+        "status": "modified",
+        "additions": 52,
+        "deletions": 11
+      },
+      {
+        "filename": "assets/cursor-test.css",
+        "status": "modified",
+        "additions": 21,
+        "deletions": 4
+      },
+      {
+        "filename": "assets/styles.css",
+        "status": "modified",
+        "additions": 76,
+        "deletions": 5
+      },
+      {
+        "filename": "home/index.html",
+        "status": "modified",
+        "additions": 20,
+        "deletions": 9
+      },
+      {
+        "filename": "linktree/index.html",
+        "status": "modified",
+        "additions": 22,
+        "deletions": 1
+      }
+    ]
   },
   {
     "sha": "1ff81a096d5b0c6abdd3a66db47736a955ad21a9",
     "date": "2025-04-15T15:37:04Z",
     "message": "Made with <3 by Master3307",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "assets/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "filename": "cursor-test/index.html",
+        "status": "modified",
+        "additions": 16,
+        "deletions": 4
+      },
+      {
+        "filename": "home/index.html",
+        "status": "modified",
+        "additions": 6,
+        "deletions": 2
+      },
+      {
+        "filename": "master-tech-services/about/index.html",
+        "status": "modified",
+        "additions": 6,
+        "deletions": 2
+      },
+      {
+        "filename": "master-tech-services/auth/index.html",
+        "status": "modified",
+        "additions": 7,
+        "deletions": 0
+      },
+      {
+        "filename": "master-tech-services/contact/index.html",
+        "status": "modified",
+        "additions": 6,
+        "deletions": 2
+      },
+      {
+        "filename": "master-tech-services/home/index.html",
+        "status": "modified",
+        "additions": 6,
+        "deletions": 2
+      },
+      {
+        "filename": "master-tech-services/settings/index.html",
+        "status": "modified",
+        "additions": 6,
+        "deletions": 2
+      },
+      {
+        "filename": "master-tech-services/shop/index.html",
+        "status": "modified",
+        "additions": 6,
+        "deletions": 2
+      },
+      {
+        "filename": "quellen/index.html",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 2
+      },
+      {
+        "filename": "shrug/Other/test.html",
+        "status": "modified",
+        "additions": 9,
+        "deletions": 0
+      },
+      {
+        "filename": "shrug/shrug.html",
+        "status": "modified",
+        "additions": 7,
+        "deletions": 0
+      },
+      {
+        "filename": "shrug/testt.html",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 0
+      }
+    ]
   },
   {
     "sha": "2c48ae255fdba84f740f24930f24b6ed5aa12c0a",
     "date": "2025-04-15T15:13:58Z",
     "message": "Refinements to Shrug",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "shrug/Other/test.html",
+        "status": "modified",
+        "additions": 21,
+        "deletions": 16
+      },
+      {
+        "filename": "shrug/edit.html",
+        "status": "modified",
+        "additions": 7,
+        "deletions": 1
+      },
+      {
+        "filename": "shrug/secret/secret.html",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 1
+      },
+      {
+        "filename": "shrug/shrug.html",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 2
+      },
+      {
+        "filename": "shrug/style.css",
+        "status": "modified",
+        "additions": 14,
+        "deletions": 19
+      },
+      {
+        "filename": "shrug/testt.html",
+        "status": "modified",
+        "additions": 54,
+        "deletions": 42
+      }
+    ]
   },
   {
     "sha": "f89cecdd3e07eaec4daa3847e5f8271bb227ea73",
     "date": "2025-04-15T15:04:54Z",
     "message": "Major Changes to Linktree",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "assets/blocktanks-bg.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/script.js",
+        "status": "modified",
+        "additions": 83,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/styles.css",
+        "status": "modified",
+        "additions": 325,
+        "deletions": 24
+      },
+      {
+        "filename": "linktree/index.html",
+        "status": "modified",
+        "additions": 210,
+        "deletions": 90
+      }
+    ]
   },
   {
     "sha": "f1826ca3738583e38a5006370840bf9914522263",
     "date": "2025-04-13T23:21:23Z",
     "message": "Updated Home Buttons. Sorry, another slight change its late.",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "home/index.html",
+        "status": "modified",
+        "additions": 5,
+        "deletions": 3
+      }
+    ]
   },
   {
     "sha": "02eef8eee62f96878a02773ec91dfe125a221d6e",
     "date": "2025-04-13T23:15:31Z",
     "message": "Small changes to Home buttons",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "home/index.html",
+        "status": "modified",
+        "additions": 20,
+        "deletions": 6
+      }
+    ]
   },
   {
     "sha": "825f6abb56f6ec3b3b50fa888aee6c5e2effc8e9",
     "date": "2025-04-13T23:06:49Z",
     "message": "Added Assets Page and more Assets",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "assets/Assets.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/M437.png",
+        "status": "renamed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/giphy.gif",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/index.html",
+        "status": "added",
+        "additions": 140,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/script.js",
+        "status": "modified",
+        "additions": 100,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/styles.css",
+        "status": "modified",
+        "additions": 160,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/twitch-bg.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "home/index.html",
+        "status": "modified",
+        "additions": 16,
+        "deletions": 0
+      },
+      {
+        "filename": "linktree/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1
+      }
+    ]
   },
   {
     "sha": "aa7041384066ce907a3fca834782727fc1fc0bef",
     "date": "2025-04-13T16:59:27Z",
     "message": "Removed something again",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "cursor-test/index.html",
+        "status": "modified",
+        "additions": 0,
+        "deletions": 5
+      },
+      {
+        "filename": "home/index.html",
+        "status": "modified",
+        "additions": 0,
+        "deletions": 5
+      },
+      {
+        "filename": "linktree/index.html",
+        "status": "modified",
+        "additions": 0,
+        "deletions": 5
+      },
+      {
+        "filename": "master-tech-services/about/index.html",
+        "status": "modified",
+        "additions": 0,
+        "deletions": 5
+      },
+      {
+        "filename": "master-tech-services/contact/index.html",
+        "status": "modified",
+        "additions": 0,
+        "deletions": 5
+      },
+      {
+        "filename": "master-tech-services/home/index.html",
+        "status": "modified",
+        "additions": 0,
+        "deletions": 5
+      },
+      {
+        "filename": "master-tech-services/settings/index.html",
+        "status": "modified",
+        "additions": 0,
+        "deletions": 5
+      },
+      {
+        "filename": "master-tech-services/shop/index.html",
+        "status": "modified",
+        "additions": 0,
+        "deletions": 5
+      },
+      {
+        "filename": "shrug/shrug.html",
+        "status": "modified",
+        "additions": 0,
+        "deletions": 5
+      }
+    ]
   },
   {
     "sha": "0f3687fb6631a2788268bf503aa4a87fd154320d",
     "date": "2025-04-13T16:51:29Z",
     "message": "Added something",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "cursor-test/index.html",
+        "status": "modified",
+        "additions": 5,
+        "deletions": 0
+      },
+      {
+        "filename": "home/index.html",
+        "status": "modified",
+        "additions": 5,
+        "deletions": 0
+      },
+      {
+        "filename": "linktree/index.html",
+        "status": "modified",
+        "additions": 21,
+        "deletions": 0
+      },
+      {
+        "filename": "master-tech-services/about/index.html",
+        "status": "modified",
+        "additions": 5,
+        "deletions": 0
+      },
+      {
+        "filename": "master-tech-services/contact/index.html",
+        "status": "modified",
+        "additions": 5,
+        "deletions": 0
+      },
+      {
+        "filename": "master-tech-services/home/index.html",
+        "status": "modified",
+        "additions": 5,
+        "deletions": 0
+      },
+      {
+        "filename": "master-tech-services/settings/index.html",
+        "status": "modified",
+        "additions": 5,
+        "deletions": 0
+      },
+      {
+        "filename": "master-tech-services/shop/index.html",
+        "status": "modified",
+        "additions": 5,
+        "deletions": 0
+      },
+      {
+        "filename": "shrug/shrug.html",
+        "status": "modified",
+        "additions": 5,
+        "deletions": 0
+      }
+    ]
   },
   {
     "sha": "ce86a64927a4d206cac7cfebb32e65a91e729315",
     "date": "2025-04-13T15:21:34Z",
     "message": "Minor changes to Cursor Test",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "assets/CursorTest.png",
+        "status": "modified",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/cursor-test.css",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/styles.css",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 0
+      },
+      {
+        "filename": "cursor-test/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 0
+      }
+    ]
   },
   {
     "sha": "240b06fddcc2d573e2b8372a0363fb44d48b0f1b",
     "date": "2025-04-13T15:00:51Z",
     "message": "Added Cursor Test",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "assets/CursorTest.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/cursor-lock.js",
+        "status": "added",
+        "additions": 31,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/cursor-test.css",
+        "status": "added",
+        "additions": 503,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/styles.css",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 1
+      },
+      {
+        "filename": "cursor-test/index.html",
+        "status": "added",
+        "additions": 241,
+        "deletions": 0
+      },
+      {
+        "filename": "home/index.html",
+        "status": "modified",
+        "additions": 10,
+        "deletions": 0
+      }
+    ]
   },
   {
     "sha": "21c84d1bfd4f7ae98710ae70a84ecd6872806770",
     "date": "2025-04-13T13:32:04Z",
     "message": "Updated Home Buttons + Edited Quellen.png",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "assets/Quellen.png",
+        "status": "modified",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/styles.css",
+        "status": "modified",
+        "additions": 15,
+        "deletions": 20
+      },
+      {
+        "filename": "home/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1
+      }
+    ]
   },
   {
     "sha": "8958f2b667adc8f527b3814428faa8d6ae8f8866",
     "date": "2025-04-13T11:57:56Z",
     "message": "Added Sources, Linktree and Shrug Image",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "assets/Linktree.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Quellen.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Shrug.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "home/index.html",
+        "status": "modified",
+        "additions": 11,
+        "deletions": 3
+      }
+    ]
   },
   {
     "sha": "43b7c3961651e1c32b57516bc32df8ded0cae318",
     "date": "2025-04-13T07:30:26Z",
     "message": "Secret.",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "shrug/secret/secret.html",
+        "status": "modified",
+        "additions": 27,
+        "deletions": 12
+      }
+    ]
   },
   {
     "sha": "1869b64f8139e0ddb30849b4c04dafef7d3b6500",
     "date": "2025-04-12T18:20:42Z",
     "message": "Added old Shrug Project and Secret",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "assets/script.js",
+        "status": "modified",
+        "additions": 32,
+        "deletions": 0
+      },
+      {
+        "filename": "home/index.html",
+        "status": "modified",
+        "additions": 6,
+        "deletions": 0
+      },
+      {
+        "filename": "linktree/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "filename": "shrug/.vs/ProjectSettings.json",
+        "status": "added",
+        "additions": 3,
+        "deletions": 0
+      },
+      {
+        "filename": "shrug/.vs/Shrug.html/FileContentIndex/081a9585-1f31-4cc1-9333-0cf8de060780.vsidx",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "shrug/.vs/Shrug.html/FileContentIndex/4366a657-f5db-4d0f-a61f-242c57d2780e.vsidx",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "shrug/.vs/Shrug.html/FileContentIndex/44d22714-e748-4545-8610-cf04a2c2a5db.vsidx",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "shrug/.vs/Shrug.html/FileContentIndex/7f5235dc-73d1-444f-b230-fae23e3b8564.vsidx",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "shrug/.vs/Shrug.html/FileContentIndex/84a7b40e-5c5b-4788-aa2d-d8c3a3176cb3.vsidx",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "shrug/.vs/Shrug.html/FileContentIndex/d8ebe0b4-3fc7-4a71-a04d-796ca8ace711.vsidx",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "shrug/.vs/Shrug.html/v17/.wsuo",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "shrug/.vs/Shrug.html/v17/DocumentLayout.json",
+        "status": "added",
+        "additions": 133,
+        "deletions": 0
+      },
+      {
+        "filename": "shrug/.vs/VSWorkspaceState.json",
+        "status": "added",
+        "additions": 7,
+        "deletions": 0
+      },
+      {
+        "filename": "shrug/.vs/slnx.sqlite",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "shrug/Lattensepp.jfif",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "shrug/Master3307_PFP.ico",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "shrug/Other/ClearVision_v6.theme.css",
+        "status": "added",
+        "additions": 115,
+        "deletions": 0
+      },
+      {
+        "filename": "shrug/Other/Master3307_PFP.ico",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "shrug/Other/test.html",
+        "status": "added",
+        "additions": 57,
+        "deletions": 0
+      },
+      {
+        "filename": "shrug/Other/test.js",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "shrug/city.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "shrug/edit.html",
+        "status": "added",
+        "additions": 137,
+        "deletions": 0
+      },
+      {
+        "filename": "shrug/edit.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "shrug/gatze.jpg",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "shrug/retrowave.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "shrug/secret/secret.html",
+        "status": "added",
+        "additions": 22,
+        "deletions": 0
+      },
+      {
+        "filename": "shrug/shrug-backup.html",
+        "status": "added",
+        "additions": 138,
+        "deletions": 0
+      },
+      {
+        "filename": "shrug/shrug.html",
+        "status": "added",
+        "additions": 179,
+        "deletions": 0
+      },
+      {
+        "filename": "shrug/style.css",
+        "status": "added",
+        "additions": 67,
+        "deletions": 0
+      },
+      {
+        "filename": "shrug/test.html",
+        "status": "added",
+        "additions": 11,
+        "deletions": 0
+      },
+      {
+        "filename": "shrug/testt.html",
+        "status": "added",
+        "additions": 43,
+        "deletions": 0
+      }
+    ]
   },
   {
     "sha": "9b14a2dbc85e968fe7ea2fc0b99f3fc1d76269e8",
     "date": "2025-04-11T19:52:07Z",
     "message": "Minor change to Site overall",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "home/index.html",
+        "status": "modified",
+        "additions": 52,
+        "deletions": 38
+      },
+      {
+        "filename": "master-tech-services/about/index.html",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 2
+      }
+    ]
   },
   {
     "sha": "41268f17d56fb512a3b7735cfd4bedd697a13668",
     "date": "2025-04-11T19:23:03Z",
     "message": "Formatted Code with Prettier Extension",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "README.md",
+        "status": "modified",
+        "additions": 12,
+        "deletions": 6
+      },
+      {
+        "filename": "assets/script.js",
+        "status": "modified",
+        "additions": 218,
+        "deletions": 202
+      },
+      {
+        "filename": "assets/style.css",
+        "status": "modified",
+        "additions": 205,
+        "deletions": 205
+      },
+      {
+        "filename": "assets/styles.css",
+        "status": "modified",
+        "additions": 230,
+        "deletions": 221
+      },
+      {
+        "filename": "home/index.html",
+        "status": "modified",
+        "additions": 6,
+        "deletions": 2
+      },
+      {
+        "filename": "index.html",
+        "status": "modified",
+        "additions": 7,
+        "deletions": 6
+      },
+      {
+        "filename": "linktree/index.html",
+        "status": "modified",
+        "additions": 115,
+        "deletions": 38
+      },
+      {
+        "filename": "master-tech-services/README.md",
+        "status": "modified",
+        "additions": 6,
+        "deletions": 6
+      },
+      {
+        "filename": "master-tech-services/about/index.html",
+        "status": "modified",
+        "additions": 75,
+        "deletions": 32
+      },
+      {
+        "filename": "master-tech-services/auth/index.html",
+        "status": "modified",
+        "additions": 37,
+        "deletions": 25
+      },
+      {
+        "filename": "master-tech-services/contact/index.html",
+        "status": "modified",
+        "additions": 66,
+        "deletions": 31
+      },
+      {
+        "filename": "master-tech-services/home/index.html",
+        "status": "modified",
+        "additions": 71,
+        "deletions": 33
+      },
+      {
+        "filename": "master-tech-services/settings/index.html",
+        "status": "modified",
+        "additions": 72,
+        "deletions": 35
+      },
+      {
+        "filename": "master-tech-services/shop/index.html",
+        "status": "modified",
+        "additions": 88,
+        "deletions": 47
+      },
+      {
+        "filename": "quellen/README.md",
+        "status": "modified",
+        "additions": 6,
+        "deletions": 1
+      },
+      {
+        "filename": "quellen/ethanol-quellen/index.html",
+        "status": "modified",
+        "additions": 62,
+        "deletions": 24
+      },
+      {
+        "filename": "quellen/index.html",
+        "status": "modified",
+        "additions": 27,
+        "deletions": 26
+      }
+    ]
   },
   {
     "sha": "216a96e912afbc629ba8c03802ae2098dd18c050",
     "date": "2025-04-11T04:14:49Z",
     "message": "Updated Website Icon",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "home/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "filename": "index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "filename": "linktree/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "filename": "master-tech-services/about/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "filename": "master-tech-services/auth/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "filename": "master-tech-services/contact/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "filename": "master-tech-services/home/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "filename": "master-tech-services/settings/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "filename": "master-tech-services/shop/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "filename": "quellen/ethanol-quellen/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "filename": "quellen/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 0
+      }
+    ]
   },
   {
     "sha": "ede1708eac4600b304d8111d574f64520f653b8f",
     "date": "2025-04-10T19:54:37Z",
     "message": "Fixed Home button Problem, Added Home info and planning to make german and english site versions",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "assets/styles.css",
+        "status": "modified",
+        "additions": 20,
+        "deletions": 0
+      },
+      {
+        "filename": "home/index.html",
+        "status": "modified",
+        "additions": 13,
+        "deletions": 7
+      }
+    ]
   },
   {
     "sha": "8c5b6f823c02b926092d62c82d016716ec1d2740",
     "date": "2025-04-09T20:34:16Z",
     "message": "Removes \"index.html\" from links",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "master-tech-services/about/index.html",
+        "status": "modified",
+        "additions": 7,
+        "deletions": 7
+      },
+      {
+        "filename": "master-tech-services/auth/index.html",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 2
+      },
+      {
+        "filename": "master-tech-services/contact/index.html",
+        "status": "modified",
+        "additions": 6,
+        "deletions": 6
+      },
+      {
+        "filename": "master-tech-services/home/index.html",
+        "status": "modified",
+        "additions": 6,
+        "deletions": 6
+      },
+      {
+        "filename": "master-tech-services/settings/index.html",
+        "status": "modified",
+        "additions": 6,
+        "deletions": 6
+      },
+      {
+        "filename": "master-tech-services/shop/index.html",
+        "status": "modified",
+        "additions": 6,
+        "deletions": 6
+      }
+    ]
   },
   {
     "sha": "a25edd0b9a1148056e142f3975a05b70d29bed62",
     "date": "2025-04-09T20:31:39Z",
     "message": "Added Linktree\nGeneral Refinements",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "assets/00f98d5a247ff139d4a12aface91155a.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Master_pfp.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/channels4_banner.jpg",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/city.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/cool-cat.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/script.js",
+        "status": "modified",
+        "additions": 7,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/style.css",
+        "status": "modified",
+        "additions": 9,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/styles.css",
+        "status": "modified",
+        "additions": 102,
+        "deletions": 4
+      },
+      {
+        "filename": "home/index.html",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 1
+      },
+      {
+        "filename": "index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1
+      },
+      {
+        "filename": "linktree/index.html",
+        "status": "added",
+        "additions": 50,
+        "deletions": 0
+      },
+      {
+        "filename": "quellen/ethanol-quellen/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1
+      },
+      {
+        "filename": "quellen/index.html",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 3
+      }
+    ]
   },
   {
     "sha": "4c1dd074f60c932fd1a8a259f048971456759c7e",
     "date": "2025-04-09T18:49:44Z",
     "message": "README Update",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "README.md",
+        "status": "modified",
+        "additions": 31,
+        "deletions": 0
+      }
+    ]
   },
   {
     "sha": "ebcfcc95008aa710aeb42c23b75fd7bdf8fe4e4b",
     "date": "2025-04-09T18:34:18Z",
     "message": "Added more Logos",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "README.md",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/MT-Light-Trans.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/MT-Light.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/MT-Trans.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/MT.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/MasterTechLightTrans.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "home/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1
+      }
+    ]
   },
   {
     "sha": "d86156a7d6918cfbd10dca13cde60fbe4bf848b8",
     "date": "2025-04-09T17:38:18Z",
     "message": "Created Home Page",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "assets/MasterTech.png",
+        "status": "modified",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/script.js",
+        "status": "modified",
+        "additions": 5,
+        "deletions": 2
+      },
+      {
+        "filename": "assets/styles.css",
+        "status": "modified",
+        "additions": 81,
+        "deletions": 14
+      },
+      {
+        "filename": "home/index.html",
+        "status": "added",
+        "additions": 34,
+        "deletions": 0
+      },
+      {
+        "filename": "index.html",
+        "status": "added",
+        "additions": 8,
+        "deletions": 0
+      },
+      {
+        "filename": "master-tech-services/about/index.html",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 1
+      },
+      {
+        "filename": "master-tech-services/auth/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1
+      },
+      {
+        "filename": "master-tech-services/contact/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1
+      },
+      {
+        "filename": "master-tech-services/home/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1
+      },
+      {
+        "filename": "master-tech-services/settings/index.html",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 2
+      },
+      {
+        "filename": "master-tech-services/shop/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1
+      },
+      {
+        "filename": "quellen/ethanol-quellen/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1
+      },
+      {
+        "filename": "quellen/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1
+      }
+    ]
   },
   {
     "sha": "1b03515651f1bcc363e30d2563fa77b83d2b4fa4",
     "date": "2025-04-09T16:00:55Z",
     "message": "Structure Update:\nUpdated the Structure of the site to be nicer\nDeleted unnecessary files\n\nName change:\nI am naming this site \"master3307\" to make it kind of my home website with all my projects on.",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "assets/MasterTech.png",
+        "status": "renamed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/script.js",
+        "status": "renamed",
+        "additions": 3,
+        "deletions": 3
+      },
+      {
+        "filename": "assets/style.css",
+        "status": "renamed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/styles.css",
+        "status": "renamed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "contact/script.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 23
+      },
+      {
+        "filename": "master-tech-services/README.md",
+        "status": "renamed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "master-tech-services/about/index.html",
+        "status": "renamed",
+        "additions": 9,
+        "deletions": 9
+      },
+      {
+        "filename": "master-tech-services/auth/index.html",
+        "status": "renamed",
+        "additions": 2,
+        "deletions": 2
+      },
+      {
+        "filename": "master-tech-services/contact/index.html",
+        "status": "renamed",
+        "additions": 8,
+        "deletions": 8
+      },
+      {
+        "filename": "master-tech-services/home/index.html",
+        "status": "renamed",
+        "additions": 8,
+        "deletions": 8
+      },
+      {
+        "filename": "master-tech-services/settings/index.html",
+        "status": "renamed",
+        "additions": 8,
+        "deletions": 8
+      },
+      {
+        "filename": "master-tech-services/shop/index.html",
+        "status": "renamed",
+        "additions": 9,
+        "deletions": 9
+      },
+      {
+        "filename": "shop/script.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 23
+      }
+    ]
   },
   {
     "sha": "f9f34e81c1ee16b25c14ee199d5816b819c7a2b5",
     "date": "2025-04-09T15:15:35Z",
     "message": "Tries to make everything look and work a little better",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "about/index.html",
+        "status": "added",
+        "additions": 41,
+        "deletions": 0
+      },
+      {
+        "filename": "auth/index.html",
+        "status": "modified",
+        "additions": 9,
+        "deletions": 4
+      },
+      {
+        "filename": "contact/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "filename": "index.html",
+        "status": "modified",
+        "additions": 10,
+        "deletions": 9
+      },
+      {
+        "filename": "quellen/README.md",
+        "status": "renamed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "quellen/ethanol-quellen/index.html",
+        "status": "renamed",
+        "additions": 1,
+        "deletions": 1
+      },
+      {
+        "filename": "quellen/index.html",
+        "status": "renamed",
+        "additions": 10,
+        "deletions": 1
+      },
+      {
+        "filename": "script.js",
+        "status": "modified",
+        "additions": 20,
+        "deletions": 1
+      },
+      {
+        "filename": "settings/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "filename": "shop/index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "filename": "style.css",
+        "status": "modified",
+        "additions": 39,
+        "deletions": 10
+      }
+    ]
   },
   {
     "sha": "37b5b48b1aa9609cc614d2c023de9d2603efe569",
     "date": "2025-04-09T04:46:45Z",
     "message": "Added Working Settings\nAdded my sources page to it\nMade it Look better",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "assets/css/styles.css",
+        "status": "added",
+        "additions": 187,
+        "deletions": 0
+      },
+      {
+        "filename": "auth/index.html",
+        "status": "added",
+        "additions": 30,
+        "deletions": 0
+      },
+      {
+        "filename": "contact/MasterTech.png",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "contact/index.html",
+        "status": "modified",
+        "additions": 7,
+        "deletions": 4
+      },
+      {
+        "filename": "index.html",
+        "status": "modified",
+        "additions": 5,
+        "deletions": 5
+      },
+      {
+        "filename": "quellen-homepage/README.md",
+        "status": "added",
+        "additions": 25,
+        "deletions": 0
+      },
+      {
+        "filename": "quellen-homepage/ethanol-quellen/index.html",
+        "status": "added",
+        "additions": 33,
+        "deletions": 0
+      },
+      {
+        "filename": "quellen-homepage/index.html",
+        "status": "added",
+        "additions": 28,
+        "deletions": 0
+      },
+      {
+        "filename": "script.js",
+        "status": "modified",
+        "additions": 218,
+        "deletions": 12
+      },
+      {
+        "filename": "settings/index.html",
+        "status": "modified",
+        "additions": 15,
+        "deletions": 8
+      },
+      {
+        "filename": "shop/MasterTech.png",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "shop/index.html",
+        "status": "modified",
+        "additions": 13,
+        "deletions": 6
+      },
+      {
+        "filename": "shop/view/index.html",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "style.css",
+        "status": "modified",
+        "additions": 114,
+        "deletions": 0
+      }
+    ]
   },
   {
     "sha": "c803bd81a48a05be7cd8fde27dfb98e52b6ea27b",
     "date": "2025-03-24T21:27:03Z",
     "message": "Readme changes",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "README.md",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 44
+      }
+    ]
   },
   {
     "sha": "9c24784ba3d99a423e2692f4d64c0910e995d1e5",
     "date": "2025-03-24T18:00:24Z",
     "message": "General Content update",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "README.md",
+        "status": "modified",
+        "additions": 14,
+        "deletions": 2
+      },
+      {
+        "filename": "contact/index.html",
+        "status": "modified",
+        "additions": 9,
+        "deletions": 5
+      },
+      {
+        "filename": "contact/style.css",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 88
+      },
+      {
+        "filename": "index.html",
+        "status": "modified",
+        "additions": 19,
+        "deletions": 15
+      },
+      {
+        "filename": "script.js",
+        "status": "modified",
+        "additions": 34,
+        "deletions": 0
+      },
+      {
+        "filename": "settings/index.html",
+        "status": "added",
+        "additions": 39,
+        "deletions": 0
+      },
+      {
+        "filename": "shop/index.html",
+        "status": "modified",
+        "additions": 28,
+        "deletions": 22
+      },
+      {
+        "filename": "shop/style.css",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 88
+      },
+      {
+        "filename": "shop/view/index.html",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "style.css",
+        "status": "modified",
+        "additions": 99,
+        "deletions": 16
+      }
+    ]
   },
   {
     "sha": "ccc1577b6c331b34ed3d999b25637f9a05bd6ab5",
     "date": "2025-03-23T13:34:06Z",
     "message": "Update README.md",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "README.md",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 5
+      }
+    ]
   },
   {
     "sha": "c5d8ce5bee3e7dde2f314e0605cfeb647fdfeba2",
     "date": "2025-03-23T11:26:06Z",
     "message": "Commit to README.md",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "README.md",
+        "status": "modified",
+        "additions": 0,
+        "deletions": 8
+      }
+    ]
   },
   {
     "sha": "eb18b5db01f09962e0774d9fea0ee8616bb280fb",
     "date": "2025-03-23T11:22:49Z",
     "message": "Commit",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "README.md",
+        "status": "added",
+        "additions": 67,
+        "deletions": 0
+      }
+    ]
   },
   {
     "sha": "1f5c4589f025931b66b155cf6c40353d6f18ac35",
     "date": "2025-03-23T11:21:17Z",
     "message": "Commit",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "contact/index.html",
+        "status": "modified",
+        "additions": 10,
+        "deletions": 5
+      },
+      {
+        "filename": "index.html",
+        "status": "modified",
+        "additions": 11,
+        "deletions": 2
+      },
+      {
+        "filename": "shop/index.html",
+        "status": "modified",
+        "additions": 25,
+        "deletions": 9
+      },
+      {
+        "filename": "style.css",
+        "status": "modified",
+        "additions": 72,
+        "deletions": 0
+      }
+    ]
   },
   {
     "sha": "8b98a2a137699b80dab356a75081c69ac957b809",
     "date": "2025-03-23T10:51:52Z",
     "message": "Index\n\nEvery page is index",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "contact/index.html",
+        "status": "renamed",
+        "additions": 2,
+        "deletions": 2
+      },
+      {
+        "filename": "index.html",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 2
+      },
+      {
+        "filename": "shop/index.html",
+        "status": "renamed",
+        "additions": 2,
+        "deletions": 2
+      }
+    ]
   },
   {
     "sha": "0405940884659ddd7c9d8244ba618f43d0a22383",
     "date": "2025-03-22T20:08:31Z",
     "message": "Commit",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "MasterTech.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "contact/MasterTech.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "contact/contact.html",
+        "status": "added",
+        "additions": 31,
+        "deletions": 0
+      },
+      {
+        "filename": "contact/script.js",
+        "status": "added",
+        "additions": 23,
+        "deletions": 0
+      },
+      {
+        "filename": "contact/style.css",
+        "status": "added",
+        "additions": 88,
+        "deletions": 0
+      },
+      {
+        "filename": "index.html",
+        "status": "added",
+        "additions": 31,
+        "deletions": 0
+      },
+      {
+        "filename": "script.js",
+        "status": "added",
+        "additions": 23,
+        "deletions": 0
+      },
+      {
+        "filename": "shop/MasterTech.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "shop/script.js",
+        "status": "added",
+        "additions": 23,
+        "deletions": 0
+      },
+      {
+        "filename": "shop/shop.html",
+        "status": "added",
+        "additions": 31,
+        "deletions": 0
+      },
+      {
+        "filename": "shop/style.css",
+        "status": "added",
+        "additions": 88,
+        "deletions": 0
+      },
+      {
+        "filename": "style.css",
+        "status": "added",
+        "additions": 88,
+        "deletions": 0
+      }
+    ]
   },
   {
     "sha": "51daea519c7cb80f136b4809f5826cf72b78ab1e",
     "date": "2025-03-22T20:05:58Z",
     "message": "Initial commit",
-    "author": "Master3307"
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": ".gitattributes",
+        "status": "added",
+        "additions": 2,
+        "deletions": 0
+      }
+    ]
   }
 ]
