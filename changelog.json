@@ -1,6 +1,1767 @@
 [
   {
-<<<<<<< HEAD
+    "sha": "a3a8995fffa0b5fba24ded16aff80ae379634437",
+    "date": "2025-06-04T16:13:04Z",
+    "message": "Trying something that might not work",
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": ".github/workflows/node.yml",
+        "status": "modified",
+        "additions": 0,
+        "deletions": 6
+      },
+      {
+        "filename": "assets/node_modules/.bin/semver",
+        "status": "added",
+        "additions": 16,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/.bin/semver.cmd",
+        "status": "added",
+        "additions": 17,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/.bin/semver.ps1",
+        "status": "added",
+        "additions": 28,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/.package-lock.json",
+        "status": "added",
+        "additions": 153,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/@img/sharp-win32-x64/LICENSE",
+        "status": "added",
+        "additions": 191,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/@img/sharp-win32-x64/README.md",
+        "status": "added",
+        "additions": 59,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/@img/sharp-win32-x64/lib/libvips-42.dll",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/@img/sharp-win32-x64/lib/libvips-cpp-8.16.1.dll",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/@img/sharp-win32-x64/lib/sharp-win32-x64.node",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/@img/sharp-win32-x64/package.json",
+        "status": "added",
+        "additions": 39,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/@img/sharp-win32-x64/versions.json",
+        "status": "added",
+        "additions": 30,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/color-convert/CHANGELOG.md",
+        "status": "added",
+        "additions": 54,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/color-convert/LICENSE",
+        "status": "added",
+        "additions": 21,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/color-convert/README.md",
+        "status": "added",
+        "additions": 68,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/color-convert/conversions.js",
+        "status": "added",
+        "additions": 839,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/color-convert/index.js",
+        "status": "added",
+        "additions": 81,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/color-convert/package.json",
+        "status": "added",
+        "additions": 48,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/color-convert/route.js",
+        "status": "added",
+        "additions": 97,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/color-name/LICENSE",
+        "status": "added",
+        "additions": 8,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/color-name/README.md",
+        "status": "added",
+        "additions": 11,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/color-name/index.js",
+        "status": "added",
+        "additions": 152,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/color-name/package.json",
+        "status": "added",
+        "additions": 28,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/color-string/LICENSE",
+        "status": "added",
+        "additions": 21,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/color-string/README.md",
+        "status": "added",
+        "additions": 62,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/color-string/index.js",
+        "status": "added",
+        "additions": 242,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/color-string/package.json",
+        "status": "added",
+        "additions": 39,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/color/LICENSE",
+        "status": "added",
+        "additions": 21,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/color/README.md",
+        "status": "added",
+        "additions": 123,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/color/index.js",
+        "status": "added",
+        "additions": 496,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/color/package.json",
+        "status": "added",
+        "additions": 47,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/detect-libc/LICENSE",
+        "status": "added",
+        "additions": 201,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/detect-libc/README.md",
+        "status": "added",
+        "additions": 163,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/detect-libc/index.d.ts",
+        "status": "added",
+        "additions": 14,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/detect-libc/lib/detect-libc.js",
+        "status": "added",
+        "additions": 267,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/detect-libc/lib/filesystem.js",
+        "status": "added",
+        "additions": 41,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/detect-libc/lib/process.js",
+        "status": "added",
+        "additions": 24,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/detect-libc/package.json",
+        "status": "added",
+        "additions": 41,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/ignore/LICENSE-MIT",
+        "status": "added",
+        "additions": 21,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/ignore/README.md",
+        "status": "added",
+        "additions": 452,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/ignore/index.d.ts",
+        "status": "added",
+        "additions": 81,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/ignore/index.js",
+        "status": "added",
+        "additions": 779,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/ignore/legacy.js",
+        "status": "added",
+        "additions": 673,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/ignore/package.json",
+        "status": "added",
+        "additions": 87,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/is-arrayish/LICENSE",
+        "status": "added",
+        "additions": 21,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/is-arrayish/README.md",
+        "status": "added",
+        "additions": 16,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/is-arrayish/index.js",
+        "status": "added",
+        "additions": 9,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/is-arrayish/package.json",
+        "status": "added",
+        "additions": 45,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/is-arrayish/yarn-error.log",
+        "status": "added",
+        "additions": 1443,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/LICENSE",
+        "status": "added",
+        "additions": 15,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/README.md",
+        "status": "added",
+        "additions": 664,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/bin/semver.js",
+        "status": "added",
+        "additions": 191,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/classes/comparator.js",
+        "status": "added",
+        "additions": 143,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/classes/index.js",
+        "status": "added",
+        "additions": 7,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/classes/range.js",
+        "status": "added",
+        "additions": 556,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/classes/semver.js",
+        "status": "added",
+        "additions": 319,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/functions/clean.js",
+        "status": "added",
+        "additions": 8,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/functions/cmp.js",
+        "status": "added",
+        "additions": 54,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/functions/coerce.js",
+        "status": "added",
+        "additions": 62,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/functions/compare-build.js",
+        "status": "added",
+        "additions": 9,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/functions/compare-loose.js",
+        "status": "added",
+        "additions": 5,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/functions/compare.js",
+        "status": "added",
+        "additions": 7,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/functions/diff.js",
+        "status": "added",
+        "additions": 60,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/functions/eq.js",
+        "status": "added",
+        "additions": 5,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/functions/gt.js",
+        "status": "added",
+        "additions": 5,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/functions/gte.js",
+        "status": "added",
+        "additions": 5,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/functions/inc.js",
+        "status": "added",
+        "additions": 21,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/functions/lt.js",
+        "status": "added",
+        "additions": 5,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/functions/lte.js",
+        "status": "added",
+        "additions": 5,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/functions/major.js",
+        "status": "added",
+        "additions": 5,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/functions/minor.js",
+        "status": "added",
+        "additions": 5,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/functions/neq.js",
+        "status": "added",
+        "additions": 5,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/functions/parse.js",
+        "status": "added",
+        "additions": 18,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/functions/patch.js",
+        "status": "added",
+        "additions": 5,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/functions/prerelease.js",
+        "status": "added",
+        "additions": 8,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/functions/rcompare.js",
+        "status": "added",
+        "additions": 5,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/functions/rsort.js",
+        "status": "added",
+        "additions": 5,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/functions/satisfies.js",
+        "status": "added",
+        "additions": 12,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/functions/sort.js",
+        "status": "added",
+        "additions": 5,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/functions/valid.js",
+        "status": "added",
+        "additions": 8,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/index.js",
+        "status": "added",
+        "additions": 91,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/internal/constants.js",
+        "status": "added",
+        "additions": 37,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/internal/debug.js",
+        "status": "added",
+        "additions": 11,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/internal/identifiers.js",
+        "status": "added",
+        "additions": 25,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/internal/lrucache.js",
+        "status": "added",
+        "additions": 42,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/internal/parse-options.js",
+        "status": "added",
+        "additions": 17,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/internal/re.js",
+        "status": "added",
+        "additions": 223,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/package.json",
+        "status": "added",
+        "additions": 78,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/preload.js",
+        "status": "added",
+        "additions": 4,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/range.bnf",
+        "status": "added",
+        "additions": 16,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/ranges/gtr.js",
+        "status": "added",
+        "additions": 6,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/ranges/intersects.js",
+        "status": "added",
+        "additions": 9,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/ranges/ltr.js",
+        "status": "added",
+        "additions": 6,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/ranges/max-satisfying.js",
+        "status": "added",
+        "additions": 27,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/ranges/min-satisfying.js",
+        "status": "added",
+        "additions": 26,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/ranges/min-version.js",
+        "status": "added",
+        "additions": 63,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/ranges/outside.js",
+        "status": "added",
+        "additions": 82,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/ranges/simplify.js",
+        "status": "added",
+        "additions": 49,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/ranges/subset.js",
+        "status": "added",
+        "additions": 249,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/ranges/to-comparators.js",
+        "status": "added",
+        "additions": 10,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/semver/ranges/valid.js",
+        "status": "added",
+        "additions": 13,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/sharp/LICENSE",
+        "status": "added",
+        "additions": 191,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/sharp/README.md",
+        "status": "added",
+        "additions": 118,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/sharp/install/check.js",
+        "status": "added",
+        "additions": 41,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/sharp/lib/channel.js",
+        "status": "added",
+        "additions": 175,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/sharp/lib/colour.js",
+        "status": "added",
+        "additions": 192,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/sharp/lib/composite.js",
+        "status": "added",
+        "additions": 212,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/sharp/lib/constructor.js",
+        "status": "added",
+        "additions": 483,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/sharp/lib/index.d.ts",
+        "status": "added",
+        "additions": 1900,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/sharp/lib/index.js",
+        "status": "added",
+        "additions": 16,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/sharp/lib/input.js",
+        "status": "added",
+        "additions": 721,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/sharp/lib/is.js",
+        "status": "added",
+        "additions": 169,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/sharp/lib/libvips.js",
+        "status": "added",
+        "additions": 205,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/sharp/lib/operation.js",
+        "status": "added",
+        "additions": 1018,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/sharp/lib/output.js",
+        "status": "added",
+        "additions": 1592,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/sharp/lib/resize.js",
+        "status": "added",
+        "additions": 590,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/sharp/lib/sharp.js",
+        "status": "added",
+        "additions": 122,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/sharp/lib/utility.js",
+        "status": "added",
+        "additions": 297,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/sharp/package.json",
+        "status": "added",
+        "additions": 224,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/sharp/src/binding.gyp",
+        "status": "added",
+        "additions": 294,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/sharp/src/common.cc",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/sharp/src/common.h",
+        "status": "added",
+        "additions": 394,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/sharp/src/metadata.cc",
+        "status": "added",
+        "additions": 338,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/sharp/src/metadata.h",
+        "status": "added",
+        "additions": 87,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/sharp/src/operations.cc",
+        "status": "added",
+        "additions": 497,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/sharp/src/operations.h",
+        "status": "added",
+        "additions": 134,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/sharp/src/pipeline.cc",
+        "status": "added",
+        "additions": 1824,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/sharp/src/pipeline.h",
+        "status": "added",
+        "additions": 398,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/sharp/src/sharp.cc",
+        "status": "added",
+        "additions": 41,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/sharp/src/stats.cc",
+        "status": "added",
+        "additions": 183,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/sharp/src/stats.h",
+        "status": "added",
+        "additions": 59,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/sharp/src/utilities.cc",
+        "status": "added",
+        "additions": 286,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/sharp/src/utilities.h",
+        "status": "added",
+        "additions": 20,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/simple-swizzle/LICENSE",
+        "status": "added",
+        "additions": 21,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/simple-swizzle/README.md",
+        "status": "added",
+        "additions": 39,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/simple-swizzle/index.js",
+        "status": "added",
+        "additions": 29,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/node_modules/simple-swizzle/package.json",
+        "status": "added",
+        "additions": 36,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/package-lock.json",
+        "status": "added",
+        "additions": 553,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/package.json",
+        "status": "added",
+        "additions": 6,
+        "deletions": 0
+      }
+    ]
+  },
+  {
+    "sha": "deefd8cbe47ceb0817b1fde930cb854ac5dbef95",
+    "date": "2025-06-04T16:10:09Z",
+    "message": "Trying to fix the problem again",
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": ".github/workflows/node.yml",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 1
+      }
+    ]
+  },
+  {
+    "sha": "8ee0ab7e690c142daa228468e7fa732b964ab73c",
+    "date": "2025-06-04T16:07:42Z",
+    "message": "Trying to fix the Problem",
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": ".github/workflows/node.yml",
+        "status": "modified",
+        "additions": 7,
+        "deletions": 1
+      }
+    ]
+  },
+  {
+    "sha": "75b72cdf64b2717119a3f99165b0abcf3647000c",
+    "date": "2025-06-04T16:05:59Z",
+    "message": "Trying to find the problem",
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": ".github/workflows/node.yml",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 0
+      }
+    ]
+  },
+  {
+    "sha": "2e0b8c288b5fc1ed8653037020799ae6e019bda6",
+    "date": "2025-06-04T16:04:30Z",
+    "message": "Added WEBP generation again and made it install dependencies",
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": ".github/workflows/node.yml",
+        "status": "modified",
+        "additions": 6,
+        "deletions": 0
+      }
+    ]
+  },
+  {
+    "sha": "e4e4811f1c6b134e692cc7b2e1359be33a32c5e9",
+    "date": "2025-06-04T16:02:44Z",
+    "message": "Removed Automatic WEBP conversion",
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": ".github/workflows/node.yml",
+        "status": "modified",
+        "additions": 0,
+        "deletions": 3
+      }
+    ]
+  },
+  {
+    "sha": "15ffdc07cf5af89a972e2a5a4dd6c0b11d72efda",
+    "date": "2025-06-04T16:00:09Z",
+    "message": "Merge branch 'main' of https://github.com/Master3307/MasterHome",
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "changelog.json",
+        "status": "modified",
+        "additions": 15,
+        "deletions": 0
+      }
+    ]
+  },
+  {
+    "sha": "78554182a20a8b4e9ba1535c72c34d9166cf46fb",
+    "date": "2025-06-04T15:59:40Z",
+    "message": "Pretty Big Update\n- Tried Removing Unused Node Assets\n- Added more changelog features such as:\n     - New Change Badge\n     - Sorting\n     - Searching\n     - Changed Files (its a lot of them in this one)\n- Automatically update the Assets View, generate WEBPs and Thumbnails",
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": ".github/workflows/node.yml",
+        "status": "renamed",
+        "additions": 10,
+        "deletions": 1
+      },
+      {
+        "filename": "assets/Media/generate-thumb.js",
+        "status": "added",
+        "additions": 33,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/thumb/giphy.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/webp-converter.js",
+        "status": "added",
+        "additions": 51,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/generate-assets-json.js",
+        "status": "added",
+        "additions": 98,
+        "deletions": 0
+      },
+      {
+        "filename": "changelog-gen.js",
+        "status": "added",
+        "additions": 149,
+        "deletions": 0
+      },
+      {
+        "filename": "changelog.json",
+        "status": "modified",
+        "additions": 4103,
+        "deletions": 89
+      },
+      {
+        "filename": "home/changelog-gen.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 82
+      },
+      {
+        "filename": "home/index.html",
+        "status": "modified",
+        "additions": 469,
+        "deletions": 60
+      },
+      {
+        "filename": "home/node_modules/.package-lock.json",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 98
+      },
+      {
+        "filename": "home/node_modules/data-uri-to-buffer/README.md",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 88
+      },
+      {
+        "filename": "home/node_modules/data-uri-to-buffer/dist/index.d.ts",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 15
+      },
+      {
+        "filename": "home/node_modules/data-uri-to-buffer/dist/index.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 53
+      },
+      {
+        "filename": "home/node_modules/data-uri-to-buffer/dist/index.js.map",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 1
+      },
+      {
+        "filename": "home/node_modules/data-uri-to-buffer/package.json",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 62
+      },
+      {
+        "filename": "home/node_modules/data-uri-to-buffer/src/index.ts",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 68
+      },
+      {
+        "filename": "home/node_modules/fetch-blob/LICENSE",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 21
+      },
+      {
+        "filename": "home/node_modules/fetch-blob/README.md",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 106
+      },
+      {
+        "filename": "home/node_modules/fetch-blob/file.d.ts",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 2
+      },
+      {
+        "filename": "home/node_modules/fetch-blob/file.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 49
+      },
+      {
+        "filename": "home/node_modules/fetch-blob/from.d.ts",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 26
+      },
+      {
+        "filename": "home/node_modules/fetch-blob/from.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 100
+      },
+      {
+        "filename": "home/node_modules/fetch-blob/index.d.ts",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 3
+      },
+      {
+        "filename": "home/node_modules/fetch-blob/index.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 250
+      },
+      {
+        "filename": "home/node_modules/fetch-blob/package.json",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 56
+      },
+      {
+        "filename": "home/node_modules/fetch-blob/streams.cjs",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 51
+      },
+      {
+        "filename": "home/node_modules/formdata-polyfill/FormData.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 441
+      },
+      {
+        "filename": "home/node_modules/formdata-polyfill/LICENSE",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 21
+      },
+      {
+        "filename": "home/node_modules/formdata-polyfill/README.md",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 145
+      },
+      {
+        "filename": "home/node_modules/formdata-polyfill/esm.min.d.ts",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 5
+      },
+      {
+        "filename": "home/node_modules/formdata-polyfill/esm.min.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 40
+      },
+      {
+        "filename": "home/node_modules/formdata-polyfill/formdata-to-blob.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 39
+      },
+      {
+        "filename": "home/node_modules/formdata-polyfill/formdata.min.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 21
+      },
+      {
+        "filename": "home/node_modules/formdata-polyfill/package.json",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 50
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/README_20210527203617.md",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 2
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/README_20210527212714.md",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 41
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/README_20210527213345.md",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 36
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/README_20210527213411.md",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 36
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/README_20210527213803.md",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 36
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/README_20210527214323.md",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 38
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/README_20210527214408.md",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 38
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/index_20210527203842.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/index_20210527203947.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 8
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/index_20210527204259.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 9
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/index_20210527204418.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 9
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/index_20210527204756.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 11
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/index_20210527204833.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 11
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/index_20210527211208.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 15
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/index_20210527211248.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 15
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/index_20210527212722.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 23
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/index_20210527212731.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 23
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/index_20210527212746.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 15
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/index_20210527212900.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 16
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/index_20210527213022.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 16
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/index_20210527213822.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 16
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/index_20210527213843.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 17
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/index_20210527213852.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 17
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/index_20210527213910.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 16
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/index_20210527214034.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 16
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/index_20210527214643.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 41
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/index_20210527214654.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 41
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/index_20210527214700.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 16
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/package_20210527203733.json",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 19
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/package_20210527203825.json",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 16
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/package_20210527204621.json",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 19
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/package_20210527204913.json",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 25
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/package_20210527204925.json",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 25
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/package_20210527205145.json",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 29
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/package_20210527205156.json",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 29
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/test_20210527205603.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/test_20210527205957.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 3
+      },
+      {
+        "filename": "home/node_modules/node-domexception/.history/test_20210527210021.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 3
+      },
+      {
+        "filename": "home/node_modules/node-domexception/LICENSE",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 21
+      },
+      {
+        "filename": "home/node_modules/node-domexception/README.md",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 46
+      },
+      {
+        "filename": "home/node_modules/node-domexception/index.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 16
+      },
+      {
+        "filename": "home/node_modules/node-domexception/package.json",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 29
+      },
+      {
+        "filename": "home/node_modules/node-fetch/@types/index.d.ts",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 219
+      },
+      {
+        "filename": "home/node_modules/node-fetch/LICENSE.md",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 22
+      },
+      {
+        "filename": "home/node_modules/node-fetch/README.md",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 872
+      },
+      {
+        "filename": "home/node_modules/node-fetch/package.json",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 131
+      },
+      {
+        "filename": "home/node_modules/node-fetch/src/body.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 397
+      },
+      {
+        "filename": "home/node_modules/node-fetch/src/errors/abort-error.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 10
+      },
+      {
+        "filename": "home/node_modules/node-fetch/src/errors/base.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 17
+      },
+      {
+        "filename": "home/node_modules/node-fetch/src/errors/fetch-error.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 26
+      },
+      {
+        "filename": "home/node_modules/node-fetch/src/headers.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 267
+      },
+      {
+        "filename": "home/node_modules/node-fetch/src/index.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 417
+      },
+      {
+        "filename": "home/node_modules/node-fetch/src/request.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 313
+      },
+      {
+        "filename": "home/node_modules/node-fetch/src/response.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 160
+      },
+      {
+        "filename": "home/node_modules/node-fetch/src/utils/get-search.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 9
+      },
+      {
+        "filename": "home/node_modules/node-fetch/src/utils/is-redirect.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 11
+      },
+      {
+        "filename": "home/node_modules/node-fetch/src/utils/is.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 87
+      },
+      {
+        "filename": "home/node_modules/node-fetch/src/utils/multipart-parser.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 432
+      },
+      {
+        "filename": "home/node_modules/node-fetch/src/utils/referrer.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 340
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/LICENSE",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 22
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/README.md",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 110
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/polyfill.es2018.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 4765
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/polyfill.es2018.js.map",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 1
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/polyfill.es2018.min.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 9
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/polyfill.es2018.min.js.map",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 1
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/polyfill.es2018.mjs",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 4745
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/polyfill.es2018.mjs.map",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 1
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/polyfill.es6.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 4838
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/polyfill.es6.js.map",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 1
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/polyfill.es6.min.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 9
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/polyfill.es6.min.js.map",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 1
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/polyfill.es6.mjs",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 4818
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/polyfill.es6.mjs.map",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 1
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/polyfill.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 5011
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/polyfill.js.map",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 1
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/polyfill.min.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 9
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/polyfill.min.js.map",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 1
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/polyfill.mjs",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 4991
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/polyfill.mjs.map",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 1
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/ponyfill.es2018.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 4737
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/ponyfill.es2018.js.map",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 1
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/ponyfill.es2018.mjs",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 4717
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/ponyfill.es2018.mjs.map",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 1
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/ponyfill.es6.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 4810
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/ponyfill.es6.js.map",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 1
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/ponyfill.es6.mjs",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 4790
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/ponyfill.es6.mjs.map",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 1
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/ponyfill.js",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 4983
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/ponyfill.js.map",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 1
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/ponyfill.mjs",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 4963
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/ponyfill.mjs.map",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 1
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/types/polyfill.d.ts",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 24
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/types/ponyfill.d.ts",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 780
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/types/ts3.6/polyfill.d.ts",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 28
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/types/ts3.6/ponyfill.d.ts",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 821
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/dist/types/tsdoc-metadata.json",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 11
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/es2018/package.json",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 14
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/es6/package.json",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 14
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/package.json",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 83
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/ponyfill/es2018/package.json",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 13
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/ponyfill/es6/package.json",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 13
+      },
+      {
+        "filename": "home/node_modules/web-streams-polyfill/ponyfill/package.json",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 13
+      },
+      {
+        "filename": "home/package-lock.json",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 103
+      },
+      {
+        "filename": "home/package.json",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 5
+      }
+    ]
+  },
+  {
     "sha": "22d6d8d1fb4c00d977d4217dea3708d25bc4f900",
     "date": "2025-06-04T15:04:50Z",
     "message": "Update changelog.json [auto]",
@@ -27,18 +1788,11 @@
         "deletions": 0
       }
     ]
-=======
-    "sha": "8145d71aff83d63b7c32350f2b75e7791114ec85",
-    "date": "2025-06-04T15:04:30Z",
-    "message": "Merge branch 'main' of https://github.com/Master3307/MasterHome",
-    "author": "Master3307"
->>>>>>> 22d6d8d1fb4c00d977d4217dea3708d25bc4f900
   },
   {
     "sha": "2b0c09ad9623e7a793f566f30f7049d47d3dcac4",
     "date": "2025-06-04T15:04:23Z",
     "message": "Filters\n- Made it Filter out Automated Changes and Merges",
-<<<<<<< HEAD
     "author": "Master3307",
     "filesChanged": [
       {
@@ -48,15 +1802,11 @@
         "deletions": 16
       }
     ]
-=======
-    "author": "Master3307"
->>>>>>> 22d6d8d1fb4c00d977d4217dea3708d25bc4f900
   },
   {
     "sha": "9adbc15eeaf507c63e89989083f7b4b507685589",
     "date": "2025-06-04T14:58:15Z",
     "message": "Update changelog.json [auto]",
-<<<<<<< HEAD
     "author": "github-actions[bot]",
     "filesChanged": [
       {
@@ -66,9 +1816,6 @@
         "deletions": 0
       }
     ]
-=======
-    "author": "github-actions[bot]"
->>>>>>> 22d6d8d1fb4c00d977d4217dea3708d25bc4f900
   },
   {
     "sha": "d0c3457dfba300d7fe27d18701b3427bde8b97f6",
