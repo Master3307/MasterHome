@@ -299,34 +299,51 @@
 
     #changelog-modal .commit-description b, 
     #changelog-modal .commit-description strong {
-      color: #f36e21;
+      color: #fff !important;
       font-weight: bold;
+      background: #f36e21;
+      padding: 0 0.2em;
+      border-radius: 2px;
     }
-
+    #changelog-modal .commit-description i, 
+    #changelog-modal .commit-description em {
+      color: #ffd580 !important;
+      font-style: italic;
+    }
+    #changelog-modal .commit-description code {
+      background: #1a1207;
+      color: #ffb86c;
+      border-radius: 4px;
+      padding: 0.1em 0.4em;
+      font-size: 0.98em;
+      font-family: "Fira Mono", "Consolas", "Menlo", monospace;
+    }
+    #changelog-modal .commit-description blockquote {
+      margin: 0.2em 0 0.2em 1em;
+      border-left: 2px solid #f36e21;
+      padding-left: 0.7em;
+      color: #ffd580;
+      background: #23190a;
+      font-style: italic;
+      font-size: 0.98em;
+    }
+    #changelog-modal .commit-description img {
+      max-width: 100px;
+      vertical-align: middle;
+      background: #18181b;
+      border-radius: 4px;
+      border: 1px solid #444;
+      margin: 0 0.2em;
+    }
     #changelog-modal .commit-description a {
-      color: #ffb347 !important;
+      color: #ff9f3f !important; /* lighter orange */
       text-decoration: underline !important;
       font-weight: bold;
       transition: color 0.2s;
     }
-
     #changelog-modal .commit-description a:hover {
       color: #ffd580 !important;
     }
-
-    /* Fix for additions/deletions color in file list */
-    #changelog-modal .file-additions {
-      color: #28a745 !important;
-      margin-left: 0.8em;
-      font-weight: bold;
-    }
-
-    #changelog-modal .file-deletions {
-      color: #dc3545 !important;
-      margin-left: 0.5em;
-      font-weight: bold;
-    }
-
     /* ...existing code... */
   </style>
   <!-- Discord Embed meta tags -->
@@ -578,10 +595,23 @@
           const chars = { '&': '&amp;', '<': '&lt;', '>': '&gt;' };
           return chars[tag] || tag;
         });
+        // Custom color: <color="...">...</color>
+        desc = desc.replace(/<color="([^"]+)">([\s\S]*?)<\/color>/gi, function(_, color, content) {
+          return `<span style="color:${color}">${content}</span>`;
+        });
+        // Custom size: <size="...">...</size>
+        desc = desc.replace(/<size="([^"]+)">([\s\S]*?)<\/size>/gi, function(_, size, content) {
+          return `<span style="font-size:${size}">${content}</span>`;
+        });
         // Headers: #, ##, ###
         desc = desc.replace(/^### (.*)$/gm, '<h3>$1</h3>');
         desc = desc.replace(/^## (.*)$/gm, '<h2>$1</h2>');
         desc = desc.replace(/^# (.*)$/gm, '<h1>$1</h1>');
+        // Images: ![alt](url)
+        desc = desc.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, function(_, alt, src) {
+          const altText = alt ? alt : 'image';
+          return `<img src="${src}" alt="${altText}" title="${altText}">`;
+        });
         // Bold: **text** or __text__
         desc = desc.replace(/(\*\*|__)(.*?)\1/g, '<b>$2</b>');
         // Italic: *text* or _text_
@@ -590,15 +620,13 @@
         desc = desc.replace(/`([^`]+)`/g, '<code>$1</code>');
         // Links: [text](url)
         desc = desc.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
-        // Images: ![alt](url)
-        desc = desc.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img alt="$1" src="$2" style="max-width:100px;vertical-align:middle;">');
         // Bullet points: - text or * text
         desc = desc.replace(/^(\s*)- (.*)$/gm, '$1&#8226; $2');
         desc = desc.replace(/^(\s*)\* (.*)$/gm, '$1&#8226; $2');
         // Numbered lists: 1. text
         desc = desc.replace(/^(\s*)\d+\.\s+(.*)$/gm, '$1<span style="font-weight:bold;">$&</span>');
         // Blockquotes: > text
-        desc = desc.replace(/^> (.*)$/gm, '<blockquote style="margin:0.2em 0 0.2em 1em; border-left:2px solid #f36e21; padding-left:0.7em; color:#f36e21;">$1</blockquote>');
+        desc = desc.replace(/^> (.*)$/gm, '<blockquote>$1</blockquote>');
         // Horizontal rule: --- or ***
         desc = desc.replace(/^(---|\*\*\*)$/gm, '<hr style="border:0;border-top:1px solid #f36e21;margin:0.5em 0;">');
         // Replace remaining newlines with <br>
@@ -647,8 +675,8 @@
               const fileTypeInfo = getFileIcon(file.filename); // Get icon based on file type
               const fileStatusInfo = getFileStatusIcon(file.status); // Get icon/color based on status
               // Display additions and deletions counts (with correct class for color)
-              const additionsHtml = file.additions > 0 ? `<span class="file-additions">+${file.additions}</span>` : '';
-              const deletionsHtml = file.deletions > 0 ? `<span class="file-deletions">-${file.deletions}</span>` : '';
+              const additionsHtml = file.additions > 0 ? `<span class="file-additions" style="color:#28a745;font-weight:bold;margin-left:0.8em;">+${file.additions}</span>` : '';
+              const deletionsHtml = file.deletions > 0 ? `<span class="file-deletions" style="color:#dc3545;font-weight:bold;margin-left:0.5em;">-${file.deletions}</span>` : '';
 
               return `<li style="margin-bottom:0.4em; font-size:0.9em; color:#ccc; display:flex; align-items:center;">
                     <i class="${fileStatusInfo.icon}" style="color:${fileStatusInfo.color}; margin-right:0.6em; width:1em; text-align:center;"></i>

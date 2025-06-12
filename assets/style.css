@@ -998,31 +998,6 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 
-/* Save Settings Button */
-.save-settings-button {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #2196f3;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  padding: 12px 24px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.save-settings-button:hover {
-  background-color: #1976d2;
-  transform: translateY(-3px);
-}
-
-.save-settings-button:active {
-  transform: translateY(0);
-}
 
 /* Styled Input */
 .styled-input {
@@ -1146,4 +1121,11 @@ input:checked + .slider:before {
 .freunde {
   font-size: 0.4rem; /* Make the font slightly smaller */
   color: #ffcc00; /* Change the color to a golden yellow */
+}
+
+.settings-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
 }
