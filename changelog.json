@@ -1,5 +1,47 @@
 [
   {
+    "sha": "55ccac9edeb420d1113e14a53567017ce6ad11f0",
+    "date": "2025-06-11T23:55:57Z",
+    "message": "Merge branch 'main' of https://github.com/Master3307/MasterHome",
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "changelog.json",
+        "status": "modified",
+        "additions": 42,
+        "deletions": 0
+      }
+    ]
+  },
+  {
+    "sha": "92b21eb30d370955f345956b1672ad0c1c8ffa2e",
+    "date": "2025-06-11T23:55:51Z",
+    "message": "Added favicon for Osufy\n- This is for a Userscript called \"BetterOsufy\" and im just hosting it here!",
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "assets/Media/Osufy_Favicon.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      }
+    ]
+  },
+  {
+    "sha": "4c53d3b4f3c8413eaa0b7ac817fc397d8c211881",
+    "date": "2025-06-04T20:15:08Z",
+    "message": "Update changelog.json [auto]",
+    "author": "github-actions[bot]",
+    "filesChanged": [
+      {
+        "filename": "changelog.json",
+        "status": "modified",
+        "additions": 42,
+        "deletions": 0
+      }
+    ]
+  },
+  {
     "sha": "ba1a4d8969bfd6053ad4e283e6423a004e38a49f",
     "date": "2025-06-04T20:14:23Z",
     "message": "Merge branch 'main' of https://github.com/Master3307/MasterHome",
