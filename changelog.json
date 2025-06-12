@@ -1,5 +1,33 @@
 [
   {
+    "sha": "b6c45460e94ab83746ebfc81ea03a8f2c4d4e748",
+    "date": "2025-06-12T13:51:25Z",
+    "message": "(Hopefully) Added somewhat of a markdown support\nand im testing it here\n## Test header\n# Test Thing again\n- this is a bullet\n[This is Examle.com](https://example.com/)\n**This is Bold**",
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "home/index.html",
+        "status": "modified",
+        "additions": 29,
+        "deletions": 2
+      }
+    ]
+  },
+  {
+    "sha": "37828de8b9b7d720c2f5bd1dcf07027f1c163678",
+    "date": "2025-06-12T13:37:08Z",
+    "message": "Update changelog.json [auto]",
+    "author": "github-actions[bot]",
+    "filesChanged": [
+      {
+        "filename": "changelog.json",
+        "status": "modified",
+        "additions": 42,
+        "deletions": 0
+      }
+    ]
+  },
+  {
     "sha": "76040b4566ba3af5e04715007cecd7b96b65d9d7",
     "date": "2025-06-12T13:36:21Z",
     "message": "Merge branch 'main' of https://github.com/Master3307/MasterHome",
