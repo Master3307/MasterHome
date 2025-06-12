@@ -1,5 +1,39 @@
 [
   {
+    "sha": "67db5ff770320f4d4e8cea7a69c89bed51d04142",
+    "date": "2025-06-12T14:29:28Z",
+    "message": "Works better now, should now be able to change colors and font size:\n<color=\"red\">This should be red<color>\nthis should be normal non red text\n<size=\"200%\">this should be twice as big<size>\n<color=\"#ffffff\">this should be WHITE<color>\n\n<size=\"400%\">lets test<size>\n<size=\"150%\">just to see i do it like this too</size>",
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "assets/style.css",
+        "status": "modified",
+        "additions": 7,
+        "deletions": 25
+      },
+      {
+        "filename": "home/index.html",
+        "status": "modified",
+        "additions": 51,
+        "deletions": 23
+      }
+    ]
+  },
+  {
+    "sha": "a159f99f5a8ebd9e4002941d9e4a232630c896fe",
+    "date": "2025-06-12T14:10:37Z",
+    "message": "Update changelog.json [auto]",
+    "author": "github-actions[bot]",
+    "filesChanged": [
+      {
+        "filename": "changelog.json",
+        "status": "modified",
+        "additions": 28,
+        "deletions": 0
+      }
+    ]
+  },
+  {
     "sha": "39ff546a4fa67de64dba796bd78e8ad703598362",
     "date": "2025-06-12T14:09:35Z",
     "message": "Testing it again\n\neven got a test thing  this time\n\n# Main Header\n\n## Sub Header\n\n### Smallest Header\n\nThis is a normal line.\n\n- Bullet point one\n- Bullet point two with **bold**\n- Bullet point three with _italic_\n- Bullet with a [link](https://example.com)\n- Bullet with `inline code`\n- Bullet with an image ![Alt text](https://via.placeholder.com/40)\n\n1. Numbered item one\n2. Numbered item two\n\n**This is bold text** and *this is italic text* and `inline code` in a line.\n\nHere is a [link to Google](https://google.com).\n\n> This is a blockquote.\n\n---\n\nNormal text after horizontal rule.",
