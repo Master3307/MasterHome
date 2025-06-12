@@ -595,14 +595,28 @@
           const chars = { '&': '&amp;', '<': '&lt;', '>': '&gt;' };
           return chars[tag] || tag;
         });
-        // Custom color: <color="...">...</color>
-        desc = desc.replace(/<color="([^"]+)">([\s\S]*?)<\/color>/gi, function(_, color, content) {
-          return `<span style="color:${color}">${content}</span>`;
-        });
-        // Custom size: <size="...">...</size>
-        desc = desc.replace(/<size="([^"]+)">([\s\S]*?)<\/size>/gi, function(_, size, content) {
-          return `<span style="font-size:${size}">${content}</span>`;
-        });
+
+        // --- Color and Size Tag Handling ---
+        // Replace <color="...">...</color> and <color="...">...<color> with <span style="color:...">...</span>
+        // Replace <size="...">...</size> and <size="...">...<size> with <span style="font-size:...">...</span>
+        // Repeat until no more matches (to handle nested tags)
+        let prev;
+        do {
+          prev = desc;
+          // Color: closing tag can be </color> or <color>
+          desc = desc.replace(/&lt;color="([^"]+)"&gt;([\s\S]*?)(?:&lt;\/color&gt;|&lt;color&gt;)/gi, function(_, color, content) {
+            return `<span style="color:${color} !important;">${content}</span>`;
+          });
+          // Size: closing tag can be </size> or <size>
+          desc = desc.replace(/&lt;size="([^"]+)"&gt;([\s\S]*?)(?:&lt;\/size&gt;|&lt;size&gt;)/gi, function(_, size, content) {
+            return `<span style="font-size:${size} !important;">${content}</span>`;
+          });
+        } while (desc !== prev);
+
+        // Remove any stray opening/closing tags left (if any)
+        desc = desc.replace(/&lt;\/?color(="[^"]*")?&gt;/gi, '');
+        desc = desc.replace(/&lt;\/?size(="[^"]*")?&gt;/gi, '');
+
         // Headers: #, ##, ###
         desc = desc.replace(/^### (.*)$/gm, '<h3>$1</h3>');
         desc = desc.replace(/^## (.*)$/gm, '<h2>$1</h2>');
@@ -688,15 +702,17 @@
             }).join('')
             : '<li style="font-size:0.9em; color:#888;">No files changed listed.</li>'; // Message if no files
 
-          // --- Simple markdown rendering for description ---
+          // --- Simple markdown rendering for description and header ---
           let descHtml = '';
           if (desc) {
             descHtml = `<div class="commit-description">${simpleMarkdown(desc)}</div>`;
           }
+          // Apply markdown to header (shortMsg)
+          const headerHtml = `<div class="commit-message">${simpleMarkdown(shortMsg)}</div>`;
           // --- end simple markdown rendering ---
           return `<li style="margin-bottom:1.5em; border-bottom:1px solid #333; padding-bottom:1.5em; position:relative;">
                   <div class="commit-entry" style="position:relative;">
-                      <div class="commit-message">${shortMsg}</div>
+                      ${headerHtml}
                       <div class="commit-meta">${dateStr} &mdash; <span style="color:#f36e21;">${author}</span></div>
                       <div class="commit-sha" style="color:#f36e21;">${sha}</div>
                       ${descHtml}
