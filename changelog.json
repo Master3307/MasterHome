@@ -1,5 +1,89 @@
 [
   {
+    "sha": "4a534d275d9cd4a3a7b1319571754f5384940e4b",
+    "date": "2025-06-12T11:42:25Z",
+    "message": "Merge branch 'main' of https://github.com/Master3307/MasterHome",
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "changelog.json",
+        "status": "modified",
+        "additions": 42,
+        "deletions": 0
+      }
+    ]
+  },
+  {
+    "sha": "e0776913fb13b10a91a6356bac1b67d31898b3f7",
+    "date": "2025-06-12T11:42:17Z",
+    "message": "Small Update\n- Updated Images\n- Added Linktree Links",
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "assets/Media/Osufy_Favicon.png",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/Osufy_Favicon.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/osufy!.png",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/osufy!.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/thumb/Osufy_Favicon.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/thumb/osufy!.webp",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/assets.json",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 0
+      },
+      {
+        "filename": "linktree/index.html",
+        "status": "modified",
+        "additions": 21,
+        "deletions": 0
+      }
+    ]
+  },
+  {
+    "sha": "a63b23bd2ffb3c5d83193e5115374969c20e7b77",
+    "date": "2025-06-12T01:28:38Z",
+    "message": "Update changelog.json [auto]",
+    "author": "github-actions[bot]",
+    "filesChanged": [
+      {
+        "filename": "changelog.json",
+        "status": "modified",
+        "additions": 42,
+        "deletions": 0
+      }
+    ]
+  },
+  {
     "sha": "d636e5c75a0c2585942a30ed95a6b12a69e62f4d",
     "date": "2025-06-12T01:27:58Z",
     "message": "Merge branch 'main' of https://github.com/Master3307/MasterHome",
