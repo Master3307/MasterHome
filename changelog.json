@@ -1,5 +1,33 @@
 [
   {
+    "sha": "39ff546a4fa67de64dba796bd78e8ad703598362",
+    "date": "2025-06-12T14:09:35Z",
+    "message": "Testing it again\n\neven got a test thing  this time\n\n# Main Header\n\n## Sub Header\n\n### Smallest Header\n\nThis is a normal line.\n\n- Bullet point one\n- Bullet point two with **bold**\n- Bullet point three with _italic_\n- Bullet with a [link](https://example.com)\n- Bullet with `inline code`\n- Bullet with an image ![Alt text](https://via.placeholder.com/40)\n\n1. Numbered item one\n2. Numbered item two\n\n**This is bold text** and *this is italic text* and `inline code` in a line.\n\nHere is a [link to Google](https://google.com).\n\n> This is a blockquote.\n\n---\n\nNormal text after horizontal rule.",
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "home/index.html",
+        "status": "modified",
+        "additions": 80,
+        "deletions": 51
+      }
+    ]
+  },
+  {
+    "sha": "e643bd3ca9ddc4c3d713d0ddaaa61b572d4fd7df",
+    "date": "2025-06-12T13:52:19Z",
+    "message": "Update changelog.json [auto]",
+    "author": "github-actions[bot]",
+    "filesChanged": [
+      {
+        "filename": "changelog.json",
+        "status": "modified",
+        "additions": 28,
+        "deletions": 0
+      }
+    ]
+  },
+  {
     "sha": "b6c45460e94ab83746ebfc81ea03a8f2c4d4e748",
     "date": "2025-06-12T13:51:25Z",
     "message": "(Hopefully) Added somewhat of a markdown support\nand im testing it here\n## Test header\n# Test Thing again\n- this is a bullet\n[This is Examle.com](https://example.com/)\n**This is Bold**",
