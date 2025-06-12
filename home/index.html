@@ -260,7 +260,7 @@
 
     /* Styling for the always-visible description */
     #changelog-modal .commit-description {
-      white-space: pre-line;
+      white-space: normal;
       margin-top: 1em;
       color: #f36e21;
       background: #2d1a0b;
@@ -268,51 +268,66 @@
       padding: 0.7em 1em;
     }
 
-    /* Styling for additions and deletions counts */
+    #changelog-modal .commit-description h1,
+    #changelog-modal .commit-description h2,
+    #changelog-modal .commit-description h3 {
+      color: #f36e21;
+      font-weight: bold;
+      margin: 0.08em 0 0.08em 0; /* Even less spacing */
+      line-height: 1.08;
+    }
+
+    #changelog-modal .commit-description h1 { font-size: 1.4em; }
+    #changelog-modal .commit-description h2 { font-size: 1.2em; }
+    #changelog-modal .commit-description h3 { font-size: 1.08em; }
+
+    #changelog-modal .commit-description ul {
+      margin: 0.2em 0 0.2em 1.2em;
+      padding-left: 1.2em;
+      color: #f36e21;
+      list-style: disc outside;
+      display: block;
+    }
+
+    #changelog-modal .commit-description li {
+      color: #f36e21;
+      margin: 0 0 0.1em 0;
+      padding: 0;
+      display: list-item;
+      list-style: inherit;
+    }
+
+    #changelog-modal .commit-description b, 
+    #changelog-modal .commit-description strong {
+      color: #f36e21;
+      font-weight: bold;
+    }
+
+    #changelog-modal .commit-description a {
+      color: #ffb347 !important;
+      text-decoration: underline !important;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+
+    #changelog-modal .commit-description a:hover {
+      color: #ffd580 !important;
+    }
+
+    /* Fix for additions/deletions color in file list */
     #changelog-modal .file-additions {
-      color: #28a745;
-      /* Green */
+      color: #28a745 !important;
       margin-left: 0.8em;
-      /* Space before additions */
       font-weight: bold;
     }
 
     #changelog-modal .file-deletions {
-      color: #dc3545;
-      /* Red */
+      color: #dc3545 !important;
       margin-left: 0.5em;
-      /* Space before deletions */
       font-weight: bold;
     }
 
-    /* Styling for the notification badge */
-    .changelog-icon-container {
-      position: relative;
-      /* Needed for absolute positioning of the badge */
-      display: inline-block;
-      /* Ensure container wraps the icon */
-    }
-
-    .notification-badge {
-      position: absolute;
-      top: 10px;
-      right: -30px;
-      background: none;
-      color: #ffffff;
-      border-radius: 0;
-      padding: 0;
-      font-size: 0.9em;
-      font-weight: bold;
-      line-height: 1;
-      text-align: center;
-      min-width: 1.2em;
-      height: auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 11;
-      box-shadow: none;
-    }
+    /* ...existing code... */
   </style>
   <!-- Discord Embed meta tags -->
   <meta property="og:title" content="MasterHome" />
@@ -563,16 +578,30 @@
           const chars = { '&': '&amp;', '<': '&lt;', '>': '&gt;' };
           return chars[tag] || tag;
         });
+        // Headers: #, ##, ###
+        desc = desc.replace(/^### (.*)$/gm, '<h3>$1</h3>');
+        desc = desc.replace(/^## (.*)$/gm, '<h2>$1</h2>');
+        desc = desc.replace(/^# (.*)$/gm, '<h1>$1</h1>');
+        // Bold: **text** or __text__
+        desc = desc.replace(/(\*\*|__)(.*?)\1/g, '<b>$2</b>');
+        // Italic: *text* or _text_
+        desc = desc.replace(/(\*|_)([^*_]+)\1/g, '<i>$2</i>');
+        // Inline code: `code`
+        desc = desc.replace(/`([^`]+)`/g, '<code>$1</code>');
         // Links: [text](url)
         desc = desc.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
-        // Headers: ###, ##, #
-        desc = desc.replace(/^### (.*)$/gm, '<b>$1</b>');
-        desc = desc.replace(/^## (.*)$/gm, '<b>$1</b>');
-        desc = desc.replace(/^# (.*)$/gm, '<b>$1</b>');
-        // Bullet points: - text
-        // Replace "- " at line start with • and a space
-        desc = desc.replace(/^- (.*)$/gm, '• $1');
-        // Replace newlines with <br>
+        // Images: ![alt](url)
+        desc = desc.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img alt="$1" src="$2" style="max-width:100px;vertical-align:middle;">');
+        // Bullet points: - text or * text
+        desc = desc.replace(/^(\s*)- (.*)$/gm, '$1&#8226; $2');
+        desc = desc.replace(/^(\s*)\* (.*)$/gm, '$1&#8226; $2');
+        // Numbered lists: 1. text
+        desc = desc.replace(/^(\s*)\d+\.\s+(.*)$/gm, '$1<span style="font-weight:bold;">$&</span>');
+        // Blockquotes: > text
+        desc = desc.replace(/^> (.*)$/gm, '<blockquote style="margin:0.2em 0 0.2em 1em; border-left:2px solid #f36e21; padding-left:0.7em; color:#f36e21;">$1</blockquote>');
+        // Horizontal rule: --- or ***
+        desc = desc.replace(/^(---|\*\*\*)$/gm, '<hr style="border:0;border-top:1px solid #f36e21;margin:0.5em 0;">');
+        // Replace remaining newlines with <br>
         desc = desc.replace(/\n/g, '<br>');
         return desc;
       }
@@ -617,17 +646,17 @@
             ? entry.filesChanged.map(file => {
               const fileTypeInfo = getFileIcon(file.filename); // Get icon based on file type
               const fileStatusInfo = getFileStatusIcon(file.status); // Get icon/color based on status
-              // Display additions and deletions counts
+              // Display additions and deletions counts (with correct class for color)
               const additionsHtml = file.additions > 0 ? `<span class="file-additions">+${file.additions}</span>` : '';
               const deletionsHtml = file.deletions > 0 ? `<span class="file-deletions">-${file.deletions}</span>` : '';
 
               return `<li style="margin-bottom:0.4em; font-size:0.9em; color:#ccc; display:flex; align-items:center;">
-                                <i class="${fileStatusInfo.icon}" style="color:${fileStatusInfo.color}; margin-right:0.6em; width:1em; text-align:center;"></i>
-                                <i class="${fileTypeInfo.icon}" style="color:${fileTypeInfo.color}; margin-right:0.6em; width:1em; text-align:center;"></i>
-                                ${file.filename}
-                                ${additionsHtml}
-                                ${deletionsHtml}
-                              </li>`;
+                    <i class="${fileStatusInfo.icon}" style="color:${fileStatusInfo.color}; margin-right:0.6em; width:1em; text-align:center;"></i>
+                    <i class="${fileTypeInfo.icon}" style="color:${fileTypeInfo.color}; margin-right:0.6em; width:1em; text-align:center;"></i>
+                    ${file.filename}
+                    ${additionsHtml}
+                    ${deletionsHtml}
+                  </li>`;
             }).join('')
             : '<li style="font-size:0.9em; color:#888;">No files changed listed.</li>'; // Message if no files
 
