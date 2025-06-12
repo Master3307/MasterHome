@@ -556,6 +556,27 @@
         return result.join(', ') + ' ago';
       }
 
+      function simpleMarkdown(desc) {
+        if (!desc) return '';
+        // Escape HTML
+        desc = desc.replace(/[&<>]/g, function(tag) {
+          const chars = { '&': '&amp;', '<': '&lt;', '>': '&gt;' };
+          return chars[tag] || tag;
+        });
+        // Links: [text](url)
+        desc = desc.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+        // Headers: ###, ##, #
+        desc = desc.replace(/^### (.*)$/gm, '<b>$1</b>');
+        desc = desc.replace(/^## (.*)$/gm, '<b>$1</b>');
+        desc = desc.replace(/^# (.*)$/gm, '<b>$1</b>');
+        // Bullet points: - text
+        // Replace "- " at line start with • and a space
+        desc = desc.replace(/^- (.*)$/gm, '• $1');
+        // Replace newlines with <br>
+        desc = desc.replace(/\n/g, '<br>');
+        return desc;
+      }
+
       function renderChangelog(dataToRender, initialCommitDate) {
         if (!Array.isArray(dataToRender) || dataToRender.length === 0) {
           changelogContent.innerHTML = "<p>No changelog entries found.</p>";
@@ -610,13 +631,19 @@
             }).join('')
             : '<li style="font-size:0.9em; color:#888;">No files changed listed.</li>'; // Message if no files
 
+          // --- Simple markdown rendering for description ---
+          let descHtml = '';
+          if (desc) {
+            descHtml = `<div class="commit-description">${simpleMarkdown(desc)}</div>`;
+          }
+          // --- end simple markdown rendering ---
           return `<li style="margin-bottom:1.5em; border-bottom:1px solid #333; padding-bottom:1.5em; position:relative;">
                   <div class="commit-entry" style="position:relative;">
                       <div class="commit-message">${shortMsg}</div>
                       <div class="commit-meta">${dateStr} &mdash; <span style="color:#f36e21;">${author}</span></div>
                       <div class="commit-sha" style="color:#f36e21;">${sha}</div>
-                      ${desc ? `<div class="commit-description">${desc}</div>` : ''} <!-- Description is now always visible -->
-                      <div class="file-details"> <!-- Container for expandable file list -->
+                      ${descHtml}
+                      <div class="file-details">
                           <details>
                               <summary>Changed Files:</summary>
                               <ul class="changed-files-list">
