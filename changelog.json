@@ -1,5 +1,47 @@
 [
   {
+    "sha": "d636e5c75a0c2585942a30ed95a6b12a69e62f4d",
+    "date": "2025-06-12T01:27:58Z",
+    "message": "Merge branch 'main' of https://github.com/Master3307/MasterHome",
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "changelog.json",
+        "status": "modified",
+        "additions": 42,
+        "deletions": 0
+      }
+    ]
+  },
+  {
+    "sha": "799ad82834c699b4326d4d539e1c93980f259442",
+    "date": "2025-06-12T01:27:53Z",
+    "message": "Another Image for Osufy",
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "assets/Media/osufy!.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      }
+    ]
+  },
+  {
+    "sha": "7a4ca0f75cf3bd55b215db3c08843055ac28d1be",
+    "date": "2025-06-11T23:56:38Z",
+    "message": "Update changelog.json [auto]",
+    "author": "github-actions[bot]",
+    "filesChanged": [
+      {
+        "filename": "changelog.json",
+        "status": "modified",
+        "additions": 42,
+        "deletions": 0
+      }
+    ]
+  },
+  {
     "sha": "55ccac9edeb420d1113e14a53567017ce6ad11f0",
     "date": "2025-06-11T23:55:57Z",
     "message": "Merge branch 'main' of https://github.com/Master3307/MasterHome",
