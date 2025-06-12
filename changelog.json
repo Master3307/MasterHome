@@ -1,5 +1,33 @@
 [
   {
+    "sha": "de48294a4fb6fd38eb8d451b0fcf4ba669d853a7",
+    "date": "2025-06-12T14:48:02Z",
+    "message": "<size=\"150%\"> works now i hope<size> <color=\"red\"> test<color> <size=\"50%\"><color=\"blue\">testtest<color><size>\nhello <color=\"red\">how<color> are you",
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "home/index.html",
+        "status": "modified",
+        "additions": 26,
+        "deletions": 10
+      }
+    ]
+  },
+  {
+    "sha": "6da1a81702edf595389e16307824871af930c32b",
+    "date": "2025-06-12T14:30:17Z",
+    "message": "Update changelog.json [auto]",
+    "author": "github-actions[bot]",
+    "filesChanged": [
+      {
+        "filename": "changelog.json",
+        "status": "modified",
+        "additions": 34,
+        "deletions": 0
+      }
+    ]
+  },
+  {
     "sha": "67db5ff770320f4d4e8cea7a69c89bed51d04142",
     "date": "2025-06-12T14:29:28Z",
     "message": "Works better now, should now be able to change colors and font size:\n<color=\"red\">This should be red<color>\nthis should be normal non red text\n<size=\"200%\">this should be twice as big<size>\n<color=\"#ffffff\">this should be WHITE<color>\n\n<size=\"400%\">lets test<size>\n<size=\"150%\">just to see i do it like this too</size>",
