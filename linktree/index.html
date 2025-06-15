@@ -51,7 +51,8 @@
   </header>
   <div class="linktree-container">
     <div class="profile">
-      <img src="../assets/media/Master_pfp.webp" height="125" width="125" alt="Profile Picture" class="profile-picture" />
+      <img src="../assets/media/Master_pfp.webp" height="125" width="125" alt="Profile Picture"
+        class="profile-picture" />
       <h1 class="profile-name">⁘ Master3307 ⁘</h1>
       <p class="profile-bio">Hello :D Check out some of my Links</p>
     </div>
@@ -60,7 +61,7 @@
         <h2 class="collapsible-header" onclick="toggleCollapsible(this)">
           • Main Links • <i class="fas fa-chevron-right arrow"></i>
         </h2>
-        <ul class="links collapsible-content">
+        <ul class="links collapsible-content open" style="max-height: none;">
           <li class="tile">
             <a class="link-button twitch" href="https://twitch.tv/master3307" target="_blank" rel="noopener">
               <i class="fab fa-twitch"></i> Twitch - Look at my streams :D
@@ -79,7 +80,8 @@
           </li>
           <!-- SteamDB profile link -->
           <li class="tile">
-            <a class="link-button steamdb" href="https://steamdb.info/calculator/76561199053976137/" target="_blank" rel="noopener" style="background-color:#181c24;">
+            <a class="link-button steamdb" href="https://steamdb.info/calculator/76561199053976137/" target="_blank"
+              rel="noopener" style="background-color:#181c24;">
               <i class="fas fa-database" style="color:#36c4f3;"></i> SteamDB - My SteamDB Profile
             </a>
           </li>
@@ -90,9 +92,9 @@
           </li>
           <li class="tile">
             <a class="link-button spotify"
-              href="https://open.spotify.com/playlist/1Arh1kSxAN78wKxb3Xe8wS?si=ded27a9e1f42490c" target="_blank"
+              href="https://open.spotify.com/user/31my4lm5nu6eeti44jz3aid65tdi" target="_blank"
               rel="noopener">
-              <i class="fab fa-spotify"></i> Spotify - My favorite Music
+              <i class="fab fa-spotify"></i> Spotify - My Spotify Profile
             </a>
           </li>
           <li class="tile">
@@ -111,12 +113,16 @@
             </a>
           </li>
         </ul>
+        <!-- Spotify Playlist Embed -->
+        <div style="margin: 2em 0;">
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/1Arh1kSxAN78wKxb3Xe8wS?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
       </div>
       <div class="collapsible">
         <h2 class="collapsible-header" onclick="toggleCollapsible(this)">
           • Other Links • <i class="fas fa-chevron-right arrow"></i>
         </h2>
-        <ul class="other-links collapsible-content">
+        <ul class="other-links collapsible-content open" style="max-height: none;">
           <li class="tile">
             <a class="link-button blocktanks" href="https://blocktanks.net/user/master3307" target="_blank"
               rel="noopener">
@@ -175,17 +181,22 @@
             </a>
           </li>
           <li class="tile">
-            <a class="link-button greasyfork" href="https://greasyfork.org/en/users/1423693-master3307" target="_blank" rel="noopener" style="background-color:#b94a48;">
-                <i class="fas fa-code" style="color:#fff5e1; background: linear-gradient(to bottom, #6A0000, #980000); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i> Greasy Fork - My Userscripts
+            <a class="link-button greasyfork" href="https://greasyfork.org/en/users/1423693-master3307" target="_blank"
+              rel="noopener" style="background-color:#b94a48;">
+              <i class="fas fa-code"
+                style="color:#fff5e1; background: linear-gradient(to bottom, #6A0000, #980000); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
+              Greasy Fork - My Userscripts
             </a>
           </li>
           <li class="tile">
-            <a class="link-button kick" href="https://kick.com/master3307" target="_blank" rel="noopener" style="background-color:#53fc18;">
+            <a class="link-button kick" href="https://kick.com/master3307" target="_blank" rel="noopener"
+              style="background-color:#53fc18;">
               <i class="fab fa-kickstarter-k" style="color:#53FC18;"></i> Kick - My Kick Profile
             </a>
           </li>
           <li class="tile">
-            <a class="link-button modrinth" href="https://modrinth.com/user/Master3307" target="_blank" rel="noopener" style="background-color:#00dc82;">
+            <a class="link-button modrinth" href="https://modrinth.com/user/Master3307" target="_blank" rel="noopener"
+              style="background-color:#00dc82;">
               <i class="fas fa-cubes" style="color:#1BD96A;"></i> Modrinth - My Modrinth Profile
             </a>
           </li>
@@ -223,6 +234,17 @@
         arrow.classList.add("fa-chevron-down");
       }
     }
+
+    // Expand both collapsibles by default (set arrow direction)
+    document.addEventListener("DOMContentLoaded", function() {
+      document.querySelectorAll('.collapsible-header').forEach(function(header) {
+        const arrow = header.querySelector('.arrow');
+        if (arrow) {
+          arrow.classList.remove("fa-chevron-right");
+          arrow.classList.add("fa-chevron-down");
+        }
+      });
+    });
   </script>
 </body>
 

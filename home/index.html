@@ -732,6 +732,24 @@
         changelogContent.innerHTML = '<ul style="list-style:none; text-align:left; padding-left:0; margin:0;">' + listHtml + '</ul>';
       }
 
+      function stripFormattingTags(text) {
+        // Remove <color="...">, <size="...">, </color>, </size>, <color>, <size>
+        // Also remove HTML-escaped versions (&lt;color="..."> etc)
+        return text
+          .replace(/<color="[^"]*">/gi, '')
+          .replace(/<size="[^"]*">/gi, '')
+          .replace(/<\/?color>/gi, '')
+          .replace(/<\/?size>/gi, '')
+          .replace(/<color>/gi, '')
+          .replace(/<size>/gi, '')
+          .replace(/&lt;color="[^"]*"&gt;/gi, '')
+          .replace(/&lt;size="[^"]*"&gt;/gi, '')
+          .replace(/&lt;\/?color&gt;/gi, '')
+          .replace(/&lt;\/?size&gt;/gi, '')
+          .replace(/&lt;color&gt;/gi, '')
+          .replace(/&lt;size&gt;/gi, '');
+      }
+
       function sortChangelog(data, sortBy) {
         const sortedData = [...data]; // Create a copy to avoid modifying the original array
         switch (sortBy) {
@@ -740,7 +758,14 @@
             break;
           // Removed 'author-asc' case
           case 'message-asc':
-            sortedData.sort((a, b) => a.message.localeCompare(b.message));
+            sortedData.sort((a, b) => {
+              // Compare shortMsg with tags stripped, and ignore case
+              // Also, ignore all <color> and <size> tags (both raw and HTML-escaped)
+              const aMsg = stripFormattingTags(a.message.split('\n')[0]).toLowerCase();
+              const bMsg = stripFormattingTags(b.message.split('\n')[0]).toLowerCase();
+              // Use localeCompare with sensitivity 'base' to ignore case and diacritics
+              return aMsg.localeCompare(bMsg, undefined, { sensitivity: 'base' });
+            });
             break;
           case 'date-desc': // Default
           default:
@@ -844,8 +869,9 @@
           .then(data => {
             if (Array.isArray(data)) {
               allChangelogData = data.filter(entry =>
-                entry.author !== 'github-actions[bot]' &&
-                !entry.message.startsWith('Merge branch \'main\'')
+              entry.author !== 'github-actions[bot]' &&
+              !entry.message.startsWith('Merge branch \'main\'') &&
+              !entry.message.startsWith('Update Crowdin configuration file')
               );
               allChangelogData.sort((a, b) => new Date(b.date) - new Date(a.date));
               const storedTimestamp = localStorage.getItem(LAST_VIEWED_STORAGE_KEY);
