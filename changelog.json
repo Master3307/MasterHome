@@ -1,5 +1,93 @@
 [
   {
+    "sha": "eb0ca1aa2e762fa65bcb16e4a37fd00694861949",
+    "date": "2025-06-15T19:25:18Z",
+    "message": "Trying to fix something",
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "crowdin.yml",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 3
+      }
+    ]
+  },
+  {
+    "sha": "92c31143248db2df27b53b8f9438a920ac1230e8",
+    "date": "2025-06-15T19:21:35Z",
+    "message": "Fuck it\nWe <color=\"red\">not<color> doing Translations just yet...",
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "assets/de/de.json",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/en/en.json",
+        "status": "removed",
+        "additions": 0,
+        "deletions": 0
+      }
+    ]
+  },
+  {
+    "sha": "38d66a774f2696aaa867de17221f01fbc63a0a11",
+    "date": "2025-06-15T19:18:01Z",
+    "message": "Merge branch 'main' of https://github.com/Master3307/MasterHome",
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "changelog.json",
+        "status": "modified",
+        "additions": 28,
+        "deletions": 0
+      },
+      {
+        "filename": "crowdin.yml",
+        "status": "added",
+        "additions": 3,
+        "deletions": 0
+      }
+    ]
+  },
+  {
+    "sha": "58479cd70eff2f8d8656395d2f0bdb1e18e61156",
+    "date": "2025-06-15T19:14:38Z",
+    "message": "Translations Maybe",
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "assets/de/de.json",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/en/en.json",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0
+      }
+    ]
+  },
+  {
+    "sha": "754043bb174e8ff71ba8e7badc41e05468970009",
+    "date": "2025-06-15T19:13:20Z",
+    "message": "Update changelog.json [auto]",
+    "author": "github-actions[bot]",
+    "filesChanged": [
+      {
+        "filename": "changelog.json",
+        "status": "modified",
+        "additions": 28,
+        "deletions": 0
+      }
+    ]
+  },
+  {
     "sha": "a5131c19dddfbed8d8f922d0687ed59cc28c313e",
     "date": "2025-06-15T19:12:37Z",
     "message": "Update Crowdin configuration file",
