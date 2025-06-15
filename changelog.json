@@ -1,5 +1,33 @@
 [
   {
+    "sha": "a5131c19dddfbed8d8f922d0687ed59cc28c313e",
+    "date": "2025-06-15T19:12:37Z",
+    "message": "Update Crowdin configuration file",
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "crowdin.yml",
+        "status": "added",
+        "additions": 3,
+        "deletions": 0
+      }
+    ]
+  },
+  {
+    "sha": "91bf9c95e14fc374cf6623083329674853f9d57e",
+    "date": "2025-06-12T14:48:50Z",
+    "message": "Update changelog.json [auto]",
+    "author": "github-actions[bot]",
+    "filesChanged": [
+      {
+        "filename": "changelog.json",
+        "status": "modified",
+        "additions": 28,
+        "deletions": 0
+      }
+    ]
+  },
+  {
     "sha": "de48294a4fb6fd38eb8d451b0fcf4ba669d853a7",
     "date": "2025-06-12T14:48:02Z",
     "message": "<size=\"150%\"> works now i hope<size> <color=\"red\"> test<color> <size=\"50%\"><color=\"blue\">testtest<color><size>\nhello <color=\"red\">how<color> are you",
