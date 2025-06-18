@@ -412,7 +412,7 @@
           <option value="date-desc">Sort by Date (Newest)</option>
           <option value="date-asc">Sort by Date (Oldest)</option>
           <!-- Removed Author sort option -->
-          <option value="message-asc">Sort by Message (A-Z)</option>
+          <!-- <option value="message-asc">Sort by Message (A-Z)</option> -->
         </select>
       </div>
       <div id="changelog-stats" style="color:#ccc; text-align:left; margin:0.5em 1em 0.5em 1em; font-size:1em;"></div>
@@ -756,17 +756,7 @@
           case 'date-asc':
             sortedData.sort((a, b) => new Date(a.date) - new Date(b.date));
             break;
-          // Removed 'author-asc' case
-          case 'message-asc':
-            sortedData.sort((a, b) => {
-              // Compare shortMsg with tags stripped, and ignore case
-              // Also, ignore all <color> and <size> tags (both raw and HTML-escaped)
-              const aMsg = stripFormattingTags(a.message.split('\n')[0]).toLowerCase();
-              const bMsg = stripFormattingTags(b.message.split('\n')[0]).toLowerCase();
-              // Use localeCompare with sensitivity 'base' to ignore case and diacritics
-              return aMsg.localeCompare(bMsg, undefined, { sensitivity: 'base' });
-            });
-            break;
+          // Removed 'author-asc' and 'message-asc' cases
           case 'date-desc': // Default
           default:
             sortedData.sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -869,9 +859,8 @@
           .then(data => {
             if (Array.isArray(data)) {
               allChangelogData = data.filter(entry =>
-              entry.author !== 'github-actions[bot]' &&
-              !entry.message.startsWith('Merge branch \'main\'') &&
-              !entry.message.startsWith('Update Crowdin configuration file')
+                entry.author !== 'github-actions[bot]' &&
+                !entry.message.startsWith('Merge branch \'main\'')
               );
               allChangelogData.sort((a, b) => new Date(b.date) - new Date(a.date));
               const storedTimestamp = localStorage.getItem(LAST_VIEWED_STORAGE_KEY);
