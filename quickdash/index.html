@@ -4,17 +4,91 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Master's App Menu</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
-<body>
-<script>
-// ...open popup and close self...
-window.open(
-    'https://master3307.netlify.app/quickdash',
-    'AppMenuPopup',
-    'width=380,height=600,menubar=no,toolbar=no,location=no,status=no,resizable=yes,scrollbars=yes'
-);
-document.body.innerHTML = '';
-window.close();
-</script>
+<body class="dark-mode">
+    <div class="menu-container">
+        <div class="app-menu" id="appMenu">
+            <div class="app-grid">
+                <a href="https://example.com/mail" target="_blank" class="app-item">
+                    <span class="material-icons">mail</span>
+                    <span>Mail</span>
+                </a>
+                <a href="https://example.com/drive" target="_blank" class="app-item">
+                    <span class="material-icons">cloud_queue</span>
+                    <span>Drive</span>
+                </a>
+                <a href="https://example.com/calendar" target="_blank" class="app-item">
+                    <span class="material-icons">calendar_today</span>
+                    <span>Calendar</span>
+                </a>
+                <a href="https://example.com/photos" target="_blank" class="app-item">
+                    <span class="material-icons">photo</span>
+                    <span>Photos</span>
+                </a>
+                <a href="https://example.com/youtube" target="_blank" class="app-item">
+                    <span class="material-icons">play_circle_filled</span>
+                    <span>YouTube</span>
+                </a>
+                <a href="https://example.com/maps" target="_blank" class="app-item">
+                    <span class="material-icons">map</span>
+                    <span>Maps</span>
+                </a>
+                <a href="https://example.com/meet" target="_blank" class="app-item">
+                    <span class="material-icons">videocam</span>
+                    <span>Meet</span>
+                </a>
+                <a href="https://example.com/docs" target="_blank" class="app-item">
+                    <span class="material-icons">article</span>
+                    <span>Docs</span>
+                </a>
+                <a href="https://example.com/sheets" target="_blank" class="app-item">
+                    <span class="material-icons">grid_on</span>
+                    <span>Sheets</span>
+                </a>
+                <a href="https://example.com/slides" target="_blank" class="app-item">
+                    <span class="material-icons">slideshow</span>
+                    <span>Slides</span>
+                </a>
+                <a href="https://example.com/sites" target="_blank" class="app-item">
+                    <span class="material-icons">web</span>
+                    <span>Sites</span>
+                </a>
+                <a href="https://example.com/contacts" target="_blank" class="app-item">
+                    <span class="material-icons">contacts</span>
+                    <span>Contacts</span>
+                </a>
+                <a href="https://example.com/blogger" target="_blank" class="app-item">
+                    <span class="material-icons">rss_feed</span>
+                    <span>Blogger</span>
+                </a>
+                <a href="https://example.com/chat" target="_blank" class="app-item">
+                    <span class="material-icons">chat</span>
+                    <span>Chat</span>
+                </a>
+                <a href="https://example.com/keep" target="_blank" class="app-item">
+                    <span class="material-icons">lightbulb_outline</span>
+                    <span>Keep</span>
+                </a>
+                <a href="https://example.com/jamboard" target="_blank" class="app-item">
+                    <span class="material-icons">brush</span>
+                    <span>Jamboard</span>
+                </a>
+                <a href="https://example.com/currents" target="_blank" class="app-item">
+                    <span class="material-icons">group</span>
+                    <span>Currents</span>
+                </a>
+                <a href="https://example.com/books" target="_blank" class="app-item">
+                    <span class="material-icons">book</span>
+                    <span>Books</span>
+                </a>
+            </div>
+            <a href="https://about.google/products/" target="_blank" class="more-apps-button">More from Google</a>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
