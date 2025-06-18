@@ -1,5 +1,47 @@
 [
   {
+    "sha": "4f0e470efd55526a5bde400cf2f32400b421fcb3",
+    "date": "2025-06-18T13:59:25Z",
+    "message": "Merge branch 'main' of https://github.com/Master3307/MasterHome",
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "changelog.json",
+        "status": "modified",
+        "additions": 48,
+        "deletions": 0
+      }
+    ]
+  },
+  {
+    "sha": "7d6c2c305a01a18ee4f9f369b317792d07140cce",
+    "date": "2025-06-18T13:59:19Z",
+    "message": "<size=\"130%\">Small Update<size>\n- Removed the option to Sort the changelog by Name",
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "home/index.html",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 15
+      }
+    ]
+  },
+  {
+    "sha": "0c5ef7f662632d1a945159e4ec1afc286b6fb3a6",
+    "date": "2025-06-15T20:32:01Z",
+    "message": "Update changelog.json [auto]",
+    "author": "github-actions[bot]",
+    "filesChanged": [
+      {
+        "filename": "changelog.json",
+        "status": "modified",
+        "additions": 48,
+        "deletions": 0
+      }
+    ]
+  },
+  {
     "sha": "d5881f643a5c762d6ab72a3ba3f92b26467ac1d6",
     "date": "2025-06-15T20:31:11Z",
     "message": "Merge branch 'main' of https://github.com/Master3307/MasterHome",
