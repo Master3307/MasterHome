@@ -9,6 +9,7 @@
   </script>
   <script type="text/javascript" src="https://cs.iubenda.com/autoblocking/4053697.js"></script>
   <script type="text/javascript" src="//cdn.iubenda.com/cs/gpp/stub.js"></script>
+   <script type="text/javascript" src="/assets/script.js"></script>
   <script type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>
   <meta name="google-adsense-account" content="ca-pub-4916225440542731">
   <!-- Google tag (gtag.js) -->
@@ -344,7 +345,10 @@
     #changelog-modal .commit-description a:hover {
       color: #ffd580 !important;
     }
-    /* ...existing code... */
+    /* Ensure all headers use the CSS variable for orange */
+    h1, h2, h3, h4, h5, h6 {
+      color: var(--main-header-color, orangered) !important;
+    }
   </style>
   <!-- Discord Embed meta tags -->
   <meta property="og:title" content="MasterHome" />
@@ -391,7 +395,7 @@
       <i class="fas fa-cog"></i>
     </a>
     <h1 class="title-with-icon" style="text-align:center;">
-      <span class="title-text">
+      <span class="title-text" style="color:var(--main-header-color) !important;">
         Welcome to MasterHome,<br />
         a place to be!
       </span>
@@ -858,10 +862,21 @@
           })
           .then(data => {
             if (Array.isArray(data)) {
-              allChangelogData = data.filter(entry =>
-                entry.author !== 'github-actions[bot]' &&
-                !entry.message.startsWith('Merge branch \'main\'')
-              );
+              // Filter out invisible entries
+              allChangelogData = data.filter(entry => {
+                // Exclude bot/merge as before
+                if (
+                  entry.author === 'github-actions[bot]' ||
+                  entry.message.startsWith('Merge branch \'main\'')
+                ) return false;
+                // Split message into header and description
+                const [header, ...descArr] = entry.message.split('\n');
+                const desc = descArr.join('\n').trim();
+                // Check for <invisible> or <invis> (case-insensitive) in header or desc
+                const invisRegex = /<invisible>|<invis>/i;
+                if (invisRegex.test(header) || invisRegex.test(desc)) return false;
+                return true;
+              });
               allChangelogData.sort((a, b) => new Date(b.date) - new Date(a.date));
               const storedTimestamp = localStorage.getItem(LAST_VIEWED_STORAGE_KEY);
               if (!storedTimestamp) {

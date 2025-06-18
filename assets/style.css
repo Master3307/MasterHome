@@ -1,19 +1,70 @@
+/* Remove variables from :root and move to theme-specific selectors */
+
+/* Theme variables: only in :root for default (dark) theme */
+:root {
+  --main-bg: #272727;
+  --main-bg-secondary: #2a2a2a;
+  --main-bg-tertiary: #3a3a3a;
+  --main-bg-quaternary: #4a4a4a;
+  --main-bg-accent: #1e1e1e;
+  --main-bg-modal: #232323;
+  --main-bg-modal-desc: #2d1a0b;
+  --main-bg-modal-blockquote: #23190a;
+  --main-bg-modal-code: #1a1207;
+  --main-bg-modal-img-scrollbar: #18181b;
+  --main-bg-image-viewer: #1a1a1a;
+  --main-bg-profile-border: #4a4a4a;
+  --main-bg-profile-shadow: rgba(0, 0, 0, 0.3);
+
+  --main-gradient: linear-gradient(135deg, var(--main-bg-secondary), var(--main-bg-tertiary));
+  --main-gradient-hover: linear-gradient(135deg, var(--main-bg-tertiary), var(--main-bg-quaternary));
+  --main-header-gradient: linear-gradient(90deg, var(--main-bg-tertiary), var(--main-bg-quaternary));
+  --main-footer-gradient: linear-gradient(90deg, var(--main-bg-tertiary), var(--main-bg-quaternary));
+  --main-footer-alt-gradient: linear-gradient(135deg, var(--main-bg-tertiary), var(--main-bg-quaternary));
+
+  --button-pulse1: orange;
+  --button-pulse2: orangered;
+
+  --main-header-color: orangered;
+  --close-button: red !important;
+  --main-text: #e4e4e7;
+}
+
+/* Remove these blocks: theme variables are now JS-only */
+/*
+body,
+body[data-theme="dark"] {
+  ...theme vars...
+}
+body[data-theme="light"] {
+  ...theme vars...
+}
+*/
+
+/* Keep only text color override if needed */
+body[data-theme="light"] {
+  --main-text: #232323;
+}
+body[data-theme="dark"] {
+  --main-text: #e4e4e7;
+}
+
 /* General Styles */
 body {
   font-family: "Inter", sans-serif;
   margin: 0;
   padding: 0;
-  background: #272727;
-  color: #e4e4e7;
-  transition: background 0.3s ease, color 0.3s ease;
+  background: var(--main-bg);
+  color: var(--main-text, #e4e4e7);
+  /* Removed transition to avoid fade effect on reload */
 }
 
 header {
-  background: linear-gradient(90deg, #3a3a3a, #4a4a4a);
+  background: var(--main-header-gradient);
   color: white;
   padding: 20px 0;
   text-align: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 6px var(--main-bg-profile-shadow);
   transition: background 0.3s ease;
 }
 
@@ -26,13 +77,13 @@ h2 {
 main {
   padding: 20px;
   margin: 0 auto;
-  max-width: 1200px; /* Center content with a max width */
-  border-left: 20px solid transparent; /* Invisible border */
-  border-right: 20px solid transparent; /* Invisible border */
+  max-width: 1200px;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
 }
 
 footer {
-  background: linear-gradient(90deg, #3a3a3a, #4a4a4a);
+  background: var(--main-footer-gradient);
   color: white;
   text-align: center;
   padding: 10px 0;
@@ -46,14 +97,14 @@ footer {
 .button {
   display: flex;
   justify-content: center;
-  align-items: flex-end; /* Align text at the bottom */
-  width: 100%; /* Make the button take the full width of its container */
-  max-width: 450px; /* Set a maximum width */
-  aspect-ratio: 3 / 2; /* Maintain a consistent aspect ratio */
-  padding: 0; /* Remove padding to fit the image */
-  margin: 20px auto; /* Center the button and add spacing */
-  background: #1e1e1e; /* Match sidebar color */
-  border: 2px solid transparent; /* Match sidebar border color */
+  align-items: flex-end;
+  width: 100%;
+  max-width: 450px;
+  aspect-ratio: 3 / 2;
+  padding: 0;
+  margin: 20px auto;
+  background: var(--main-bg-accent);
+  border: 2px solid transparent;
   border-radius: 20px;
   position: relative;
   overflow: hidden;
@@ -63,24 +114,22 @@ footer {
 }
 
 .button:hover {
-  transform: translate3d(10px, -10px, 10px); /* Lift the button on hover */
-  box-shadow: 0 0 15px orangered;
-  border: orangered;
-  animation: pulse-orange 2s infinite alternate ease-in-out; /* Add pulse animation */
-  box-shadow: 0 0 15px orange, 0 0 15px orangered; /* Add pulsing shadow */
-  border: orange; /* Add pulsing border */
+  transform: translate3d(10px, -10px, 10px);
+  box-shadow: 0 0 15px orangered, 0 0 15px orange;
+  border: orange;
+  animation: pulse-orange 2s infinite alternate ease-in-out;
 }
 
 @keyframes pulse-orange {
   0% {
-    color: orange;
-    box-shadow: 0 0 10px orange, 0 0 14px orangered;
-    border-color: orange;
+    color: var(--button-pulse1);
+    box-shadow: 0 0 10px var(--button-pulse1), 0 0 14px var(--button-pulse2);
+    border-color: var(--button-pulse1);
   }
   100% {
-    color: orangered;
-    box-shadow: 0 0 15px orangered, 0 0 14px orange;
-    border-color: orangered;
+    color: var(--button-pulse2);
+    box-shadow: 0 0 15px var(--button-pulse2), 0 0 14px var(--button-pulse1);
+    border-color: var(--button-pulse2);
   }
 }
 
@@ -88,11 +137,11 @@ footer {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 110%; /* Slightly larger than the button */
+  width: 110%;
   height: auto;
   transform: translate(-50%, -50%);
   z-index: 1;
-  pointer-events: none; /* Prevent interaction with the image */
+  pointer-events: none;
 }
 
 .button-text {
@@ -117,40 +166,37 @@ footer {
 }
 
 .button:hover .button-text {
-  opacity: 1; /* Fade-in effect */
-  transform: translateY(0); /* Slide up effect */
+  opacity: 1;
+  transform: translateY(0);
 }
 
-/* Ensure buttons adjust dynamically for smaller screens */
 @media (max-width: 768px) {
   .button {
-    max-width: 90%; /* Allow buttons to take up most of the screen width */
+    max-width: 90%;
   }
 }
 
 @media (max-width: 480px) {
   .button {
-    max-width: 100%; /* Allow buttons to take the full screen width */
+    max-width: 100%;
   }
 }
 
-/* Adjust button size specifically for the home page */
 .button-container .button {
-  max-width: 400px; /* Reduce the maximum width */
-  aspect-ratio: 3 / 2; /* Maintain the aspect ratio */
-  margin: 15px auto; /* Slightly reduce the margin */
+  max-width: 400px;
+  aspect-ratio: 3 / 2;
+  margin: 15px auto;
 }
 
-/* Adjust button size for smaller screens */
 @media (max-width: 768px) {
   .button-container .button {
-    max-width: 80%; /* Slightly smaller width for medium screens */
+    max-width: 80%;
   }
 }
 
 @media (max-width: 480px) {
   .button-container .button {
-    max-width: 90%; /* Slightly smaller width for small screens */
+    max-width: 90%;
   }
 }
 
@@ -164,19 +210,19 @@ ul {
 ul li {
   margin: 10px 0;
   padding: 15px 20px;
-  background: linear-gradient(135deg, #2a2a2a, #3a3a3a);
+  background: var(--main-gradient);
   border-radius: 8px;
   color: #e4e4e7;
   font-size: 18px;
   font-weight: bold;
   transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 6px var(--main-bg-profile-shadow);
 }
 
 ul li:hover {
-  background: linear-gradient(135deg, #3a3a3a, #4a4a4a);
+  background: var(--main-gradient-hover);
   transform: translateY(-3px);
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 6px 10px var(--main-bg-profile-shadow);
 }
 
 ul li a {
@@ -211,15 +257,15 @@ a:hover {
 
 .tile {
   display: flex;
-  justify-content: center; /* Center the button inside the tile */
-  align-items: center; /* Vertically center the button */
-  padding: 0; /* Remove padding */
-  margin: 10px auto; /* Center the tiles and add spacing */
-  width: 100%; /* Ensure tiles take the full width of the collapsible */
-  max-width: 400px; /* Set a maximum width for consistency */
-  background: none; /* Remove background */
-  border: none; /* Remove border */
-  box-shadow: none; /* Remove shadow */
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 10px auto;
+  width: 100%;
+  max-width: 400px;
+  background: none;
+  border: none;
+  box-shadow: none;
 }
 
 .tile a {
@@ -236,7 +282,7 @@ a:hover {
 /* Header Styles */
 .header {
   position: relative;
-  padding: 20px 60px; /* Increase padding for a wider header */
+  padding: 20px 60px;
   text-align: center;
 }
 
@@ -247,42 +293,36 @@ a:hover {
   transform: translateY(-50%);
   background: none;
   border: none;
-  color: #ff4d4d;
-  font-size: 48px; /* Make the "X" larger */
+  font-size: 48px;
   text-decoration: none;
-  box-shadow: none; /* Remove bloom effect */
+  box-shadow: none;
   transition: color 0.3s ease;
 }
 
 .header .close-button:hover {
-  color: #ff1a1a; /* Slightly darker red on hover */
+  color: #ff1a1a;
 }
 
 #sources {
-  min-height: 150vh; /* Extend the height */
-  background: linear-gradient(135deg, #2a2a2a, #3a3a3a);
+  min-height: 150vh;
+  background: var(--main-gradient);
   padding: 20px;
-  transform: none; /* Remove any transform effects */
-  box-shadow: none; /* Remove any shadow effects */
-  transition: none; /* Remove all transitions */
+  transform: none;
+  box-shadow: none;
+  transition: none;
 }
 
-/* Remove hover effect */
 #sources:hover {
   transform: none;
   box-shadow: none;
-  background: linear-gradient(
-    135deg,
-    #2a2a2a,
-    #3a3a3a
-  ); /* Ensure consistent background */
+  background: var(--main-gradient);
 }
 
 /* Button Container Styles */
 .button-container {
-  display: flex; /* Change to flexbox for row layout */
-  justify-content: center; /* Center buttons horizontally */
-  gap: 20px; /* Add spacing between buttons */
+  display: flex;
+  justify-content: center;
+  gap: 20px;
   margin: 3rem 0;
 }
 
@@ -291,26 +331,25 @@ a:hover {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  max-width: 100%; /* Ensure buttons fit within their container */
+  max-width: 100%;
   gap: 1rem;
 }
 
 .button {
-  width: 250px; /* Fixed button width */
-  aspect-ratio: 3 / 2; /* Maintain aspect ratio */
-  margin: 0 auto; /* Center buttons */
-  -webkit-user-select: none; /* Prevent text selection for Safari */
-  user-select: none; /* Prevent text selection */
+  width: 250px;
+  aspect-ratio: 3 / 2;
+  margin: 0 auto;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
-/* Remove unnecessary adjustments for smaller screens */
 @media (max-width: 480px) {
   .button-container {
     grid-template-columns: repeat(
       auto-fill,
       250px
-    ); /* Keep fixed button size */
-    justify-content: center; /* Center the grid */
+    );
+    justify-content: center;
   }
 }
 
@@ -318,20 +357,20 @@ a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start; /* Align content closer to the top */
-  min-height: 80vh; /* Reduce vertical height to move content up */
+  justify-content: flex-start;
+  min-height: 80vh;
   text-align: center;
-  margin-top: 40px; /* Move the entire container up */
+  margin-top: 40px;
 }
 
 .profile-picture {
-  border-radius: 50%; /* Make the image round */
-  border: 4px solid #e4e4e7; /* Add a border around the image */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
-  width: 110px; /* Ensure consistent size */
-  height: 110px; /* Ensure consistent size */
-  object-fit: cover; /* Ensure the image fits within the circle */
-  margin-bottom: 20px; /* Add spacing below the image */
+  border-radius: 50%;
+  border: 4px solid #e4e4e7;
+  box-shadow: 0 4px 6px var(--main-bg-profile-shadow);
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  margin-bottom: 20px;
 }
 
 .profile {
@@ -342,45 +381,41 @@ a:hover {
 .link-button {
   display: flex;
   align-items: center;
-  justify-content: flex-start; /* Align content to the left */
+  justify-content: flex-start;
   gap: 10px;
   padding: 12px 24px;
   font-family: "Inter", sans-serif;
   font-size: 16px;
   font-weight: 500;
   color: #ffffff;
-  background: linear-gradient(135deg, #3a3a3a, #2a2a2a); /* Gray gradient */
+  background: var(--main-gradient);
   border: none;
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  letter-spacing: 0.5px; /* Keep slight spacing for readability */
-  -webkit-user-select: none; /* Prevent text selection for Safari */
-  user-select: none; /* Prevent text selection */
-  width: 600px; /* Ensure all buttons take the full width of their container */
-  max-width: 400px; /* Set a maximum width for consistency */
-  box-sizing: border-box; /* Include padding in width calculation */
+  box-shadow: 0 4px 6px var(--main-bg-profile-shadow);
+  letter-spacing: 0.5px;
+  -webkit-user-select: none;
+  user-select: none;
+  width: 600px;
+  max-width: 400px;
+  box-sizing: border-box;
 }
 
 .link-button i {
-  font-size: 25px; /* Increased by 5% from 20px */
-  flex-shrink: 0; /* Prevent the icon from shrinking */
+  font-size: 25px;
+  flex-shrink: 0;
 }
 
 .link-button:hover {
-  background: linear-gradient(
-    135deg,
-    #2a2a2a,
-    #1a1a1a
-  ); /* Slightly darker gray on hover */
+  background: var(--main-gradient-hover);
   transform: translateY(-3px);
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 6px 10px var(--main-bg-profile-shadow);
 }
 
 .link-button:active {
   transform: translateY(0);
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 3px 5px var(--main-bg-profile-shadow);
 }
 
 .link-button:focus {
@@ -389,201 +424,80 @@ a:hover {
 }
 
 /* Twitch Button */
-.link-button.twitch {
-  color: #ffffff;
-  border: none;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-}
-
-.link-button.twitch:hover {
-  background: none;
-}
-
-/* Discord Button */
-.link-button.discord {
-  color: #ffffff;
-  border: none;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-}
-
-.link-button.discord:hover {
-  background: none;
-}
-
-/* Steam Button */
-.link-button.steam {
-  color: #ffffff;
-  border: none;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-}
-
-.link-button.steam:hover {
-  background: none;
-}
-
-/* YouTube Button */
-.link-button.youtube {
-  color: #ffffff;
-  border: none;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-}
-
-.link-button.youtube:hover {
-  background: none;
-}
-
-/* Spotify Button */
-.link-button.spotify {
-  color: #ffffff;
-  border: none;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-}
-
-.link-button.spotify:hover {
-  background: none;
-}
-
-/* GitHub Button */
-.link-button.github {
-  color: #ffffff;
-  border: none;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-}
-
-.link-button.github:hover {
-  background: none;
-}
-
-/* Reddit Button */
-.link-button.reddit {
-  color: #ffffff;
-  border: none;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-}
-
-.link-button.reddit:hover {
-  background: none;
-}
-
-/* BlockTanks Button */
+.link-button.twitch,
+.link-button.discord,
+.link-button.steam,
+.link-button.youtube,
+.link-button.spotify,
+.link-button.github,
+.link-button.reddit,
 .link-button.blocktanks {
   color: #ffffff;
   border: none;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 6px var(--main-bg-profile-shadow);
 }
 
+.link-button.twitch:hover,
+.link-button.discord:hover,
+.link-button.steam:hover,
+.link-button.youtube:hover,
+.link-button.spotify:hover,
+.link-button.github:hover,
+.link-button.reddit:hover,
 .link-button.blocktanks:hover {
   background: none;
 }
 
 /* Icon Colors */
-.link-button.twitch i {
-  color: #9146ff; /* Twitch purple */
-}
-
-.link-button.discord i {
-  color: #5865f2; /* Discord blue */
-}
-
-.link-button.steam i {
-  color: #111111; /* Steam dark gray */
-}
-
-.link-button.youtube i {
-  color: #ff0000; /* YouTube red */
-}
-
-.link-button.spotify i {
-  color: #1db954; /* Spotify green */
-}
-
-.link-button.github i {
-  color: #111111; /* GitHub dark gray */
-}
-
-.link-button.reddit i {
-  color: #ff4500; /* Reddit orange */
-}
-
-.link-button.blocktanks i {
-  color: #6e6e6e; /* Neutral gray for BlockTanks */
-}
-
-.link-button.epicgames i {
-  color: #6b6b6b; /* Epic Games dark gray */
-}
-
-.link-button.labymod i {
-  color: #ffcc00; /* LabyMod yellow */
-}
-
-.link-button.linktree i {
-  color: #39e09b; /* Linktree green */
-}
-
-.link-button.wakatime i {
-  color: #563d7c; /* WakaTime purple */
-}
-
-.link-button.aniworld i {
-  color: #ff6f61; /* AniWorld coral */
-}
-
-.link-button.lastfm i {
-  color: #d51007; /* Last.fm red */
-}
-
-.link-button.nexusmods i {
-  color: #f88c00; /* Nexus Mods orange */
-}
-
-.link-button.duolingo i {
-  color: #58cc02; /* Duolingo green */
-}
-
-.link-button.crazygames i {
-  color: #7c19b6; /* CrazyGames blue */
-}
-
-.link-button.epicgames i {
-  color: #6b6b6b;
-}
-
-/* Newgrounds Button */
-.link-button.newgrounds i {
-  color: #ffae00; /* Newgrounds yellow */
-}
+.link-button.twitch i { color: #9146ff; }
+.link-button.discord i { color: #5865f2; }
+.link-button.steam i { color: #111111; }
+.link-button.youtube i { color: #ff0000; }
+.link-button.spotify i { color: #1db954; }
+.link-button.github i { color: #111111; }
+.link-button.reddit i { color: #ff4500; }
+.link-button.blocktanks i { color: #6e6e6e; }
+.link-button.epicgames i { color: #6b6b6b; }
+.link-button.labymod i { color: #ffcc00; }
+.link-button.linktree i { color: #39e09b; }
+.link-button.wakatime i { color: #563d7c; }
+.link-button.aniworld i { color: #ff6f61; }
+.link-button.lastfm i { color: #d51007; }
+.link-button.nexusmods i { color: #f88c00; }
+.link-button.duolingo i { color: #58cc02; }
+.link-button.crazygames i { color: #7c19b6; }
+.link-button.newgrounds i { color: #ffae00; }
 
 .banner-image {
   width: 100%;
   height: auto;
-  object-fit: cover; /* Crop the image to fit the header */
-  max-height: 200px; /* Limit the height of the banner */
+  object-fit: cover;
+  max-height: 200px;
 }
 
 /* Image Viewer Styles */
 .image-viewer {
   position: relative;
   width: 100%;
-  height: calc(100vh - 150px); /* Adjust height to fit screen */
+  height: calc(100vh - 150px);
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  background: #1a1a1a;
+  background: var(--main-bg-image-viewer);
 }
 
 #current-image {
-  display: block; /* Ensure compatibility with text box */
-  max-width: 100%; /* Ensure the image fits horizontally */
-  max-height: 100%; /* Ensure the image fits vertically */
-  object-fit: contain; /* Maintain aspect ratio without distortion */
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
   transition: transform 0.3s ease;
   cursor: zoom-in;
 }
 
 #current-image:active {
-  transform: scale(2); /* Zoom on click */
+  transform: scale(2);
   cursor: zoom-out;
 }
 
@@ -624,7 +538,7 @@ a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #2a2a2a;
+  background: var(--main-bg-modal-details);
   border: none;
   border-radius: 8px;
   padding: 10px;
@@ -649,15 +563,15 @@ a:hover {
 .text-box {
   width: 90%;
   max-width: 800px;
-  height: 60%; /* Limit height */
+  height: 60%;
   margin: 0 auto;
   padding: 10px;
-  background: #1a1a1a;
+  background: var(--main-bg-modal-details);
   color: #e4e4e7;
   font-family: "Courier New", Courier, monospace;
   font-size: 1rem;
-  overflow-y: auto; /* Enable vertical scrolling */
-  border: 1px solid #4a4a4a;
+  overflow-y: auto;
+  border: 1px solid var(--main-bg-profile-border);
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
@@ -665,16 +579,16 @@ a:hover {
 .code-block {
   margin: 0;
   padding: 10px;
-  background: #2a2a2a;
+  background: var(--main-bg-modal-details);
   color: #e4e4e7;
-  overflow-x: auto; /* Enable horizontal scrolling */
-  white-space: pre-wrap; /* Wrap long lines */
+  overflow-x: auto;
+  white-space: pre-wrap;
   border-radius: 5px;
 }
 
 /* Highlight.js theme overrides */
 .hljs {
-  background: #2a2a2a;
+  background: var(--main-bg-modal-details);
   color: #e4e4e7;
 }
 
@@ -683,7 +597,7 @@ a:hover {
 .hljs-literal,
 .hljs-section,
 .hljs-link {
-  color: #ff79c6; /* Pink */
+  color: #ff79c6;
 }
 
 .hljs-string,
@@ -691,25 +605,25 @@ a:hover {
 .hljs-name,
 .hljs-type,
 .hljs-attribute {
-  color: #50fa7b; /* Green */
+  color: #50fa7b;
 }
 
 .hljs-comment {
-  color: #6272a4; /* Grayish blue */
+  color: #6272a4;
 }
 
 .hljs-number,
 .hljs-meta,
 .hljs-symbol,
 .hljs-bullet {
-  color: #bd93f9; /* Purple */
+  color: #bd93f9;
 }
 
 .text-preview {
   display: block;
   width: 100%;
   height: 70%;
-  background: #2a2a2a;
+  background: var(--main-bg-modal-details);
   color: #e4e4e7;
   font-family: "Courier New", Courier, monospace;
   font-size: 0.8rem;
@@ -723,24 +637,18 @@ a:hover {
 
 /* Collapsible Section Styles */
 .collapsible-container {
-  display: flex; /* Ensure collapsibles are in a single line */
-  flex-wrap: wrap; /* Allow wrapping if the screen is too small */
-  gap: 20px; /* Maintain spacing between collapsibles */
-  justify-content: center; /* Center the collapsibles */
-  align-items: flex-start; /* Align collapsibles at the top */
-  position: relative; /* Allow dynamic height adjustment */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
 }
 
 .collapsible {
-  width: 400px; /* Fixed width for headers and links */
-  position: relative; /* Ensure the header stays in place */
+  width: 400px;
+  position: relative;
 }
-
-/* @media (max-width: 768px) {
-  .collapsible-container {
-    flex-direction: column;
-  }
-} */
 
 .collapsible {
   margin-bottom: 20px;
@@ -751,7 +659,7 @@ a:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(135deg, #2a2a2a, #3a3a3a);
+  background: var(--main-gradient-2a3a);
   padding: 15px 20px;
   border-radius: 8px;
   color: #e4e4e7;
@@ -759,12 +667,12 @@ a:hover {
   font-weight: bold;
   transition: background 0.3s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  -webkit-user-select: none; /* Prevent text selection for Safari */
-  user-select: none; /* Prevent text selection */
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .collapsible-header:hover {
-  background: linear-gradient(135deg, #3a3a3a, #4a4a4a);
+  background: var(--main-gradient-hover);
 }
 
 .arrow {
@@ -774,110 +682,110 @@ a:hover {
 }
 
 .collapsible-content {
-  max-height: 0; /* Start with no height */
-  overflow: hidden; /* Hide content when collapsed */
-  transition: max-height 0.3s ease-out; /* Smooth transition for height */
-  width: auto; /* Adjust width dynamically to fit content */
-  position: relative; /* Ensure content expansion affects container height */
-  padding: 0; /* Remove padding when collapsed */
-  background: none; /* Remove background */
-  box-shadow: none; /* Remove shadow */
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  width: auto;
+  position: relative;
+  padding: 0;
+  background: none;
+  box-shadow: none;
 }
 
 .collapsible-content.open {
-  max-height: 1000px; /* Large enough to fit all content */
-  padding: 10px 0; /* Add padding when expanded */
-  width: 100%; /* Ensure content width matches the container */
+  max-height: 1000px;
+  padding: 10px 0;
+  width: 100%;
 }
 
 /* Responsive styles for smaller screens */
 @media (max-width: 768px) {
   .linktree-container {
-    padding: 0 15px; /* Add consistent padding on left and right */
+    padding: 0 15px;
   }
 
   .collapsible {
-    width: calc(100% - 30px); /* Account for padding */
-    margin: 0 auto; /* Center collapsibles */
+    width: calc(100% - 30px);
+    margin: 0 auto;
   }
 
   .link-button {
-    width: calc(100% - 30px); /* Ensure buttons fit within the container */
-    max-width: none; /* Remove max-width restriction */
-    font-size: 14px; /* Adjust font size for smaller screens */
-    padding: 10px 15px; /* Adjust padding for better fit */
-    margin: 0 auto; /* Center buttons */
+    width: calc(100% - 30px);
+    max-width: none;
+    font-size: 14px;
+    padding: 10px 15px;
+    margin: 0 auto;
   }
 
   .profile-picture {
-    width: 90px; /* Reduce size for smaller screens */
+    width: 90px;
     height: 90px;
   }
 
   .profile-name {
-    font-size: 1.5rem; /* Adjust font size */
+    font-size: 1.5rem;
   }
 
   .profile-bio {
-    font-size: 1rem; /* Adjust font size */
+    font-size: 1rem;
   }
 
   .collapsible-header {
-    font-size: 16px; /* Adjust header font size */
-    padding: 10px 15px; /* Adjust padding */
+    font-size: 16px;
+    padding: 10px 15px;
   }
 }
 
 @media (max-width: 480px) {
   .linktree-container {
-    padding: 0 10px; /* Reduce padding for very small screens */
+    padding: 0 10px;
   }
 
   .link-button {
-    width: calc(100% - 20px); /* Ensure buttons fit within the container */
-    font-size: 12px; /* Further reduce font size */
-    padding: 8px 12px; /* Adjust padding */
-    margin: 0 auto; /* Center buttons */
+    width: calc(100% - 20px);
+    font-size: 12px;
+    padding: 8px 12px;
+    margin: 0 auto;
   }
 
   .profile-picture {
-    width: 75px; /* Further reduce size */
+    width: 75px;
     height: 75px;
   }
 
   .profile-name {
-    font-size: 1.2rem; /* Further adjust font size */
+    font-size: 1.2rem;
   }
 
   .profile-bio {
-    font-size: 0.9rem; /* Further adjust font size */
+    font-size: 0.9rem;
   }
 
   .collapsible-header {
-    font-size: 14px; /* Further adjust header font size */
-    padding: 8px 10px; /* Further adjust padding */
+    font-size: 14px;
+    padding: 8px 10px;
   }
 }
 
 /* MasterTech Services-specific rules */
 body.master-tech-services footer {
-  background: none; /* Make the footer background invisible */
+  background: none;
 }
 
 body.master-tech-services .tile {
-  display: none; /* Hide tiles on the home tab */
+  display: none;
 }
 br {
-  -webkit-user-select: none; /* Safari, iOS Safari */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none; /* Modern browsers */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .what {
   display: flex;
-  flex-direction: column; /* Stack image and text vertically */
-  align-items: center;    /* Center image and text horizontally */
+  flex-direction: column;
+  align-items: center;
   gap: 20px;
   margin-top: 145px;
   margin-bottom: 100px;
@@ -894,20 +802,20 @@ br {
 h3,
 h2,
 h1 {
-  color: orangered; /* White color for the title */
+  color: orangered;
 }
 .what h2 {
-  margin: 0; /* remove the margin that was pushing it to the center */
+  margin: 0;
   font-size: 1.5rem;
-  text-align: left; /* Align text to the left */
-  max-width: 600px; /* Limit width of text */
+  text-align: left;
+  max-width: 600px;
 }
 .what-text {
-  flex: 1; /* Allow text to take up remaining space */
+  flex: 1;
 }
 
 .footer {
-  background: linear-gradient(135deg, #3a3a3a, #4a4a4a);
+  background: var(--main-footer-alt-gradient);
   color: white;
   text-align: center;
   padding: 10px 0;
@@ -920,16 +828,15 @@ h1 {
   padding: 20px;
   box-sizing: border-box;
   z-index: 1000;
-  min-height: 100px; /* Ensure a minimum height */
+  min-height: 100px;
 }
 
-
 .header {
-  display: flex; /* Use flexbox for alignment */
-  align-items: center; /* Center vertically */
-  justify-content: center; /* Center horizontally */
-  text-align: center; /* Ensure text is centered */
-  height: 100%; /* Ensure it takes full height if needed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
 }
 .banner-image {
   margin-top: 3.5%;
@@ -937,15 +844,15 @@ h1 {
 .title-with-icon {
   display: flex;
   align-items: center;
-  gap: 12px; /* space between icon and text */
+  gap: 12px;
   font-size: 2rem;
 }
 
 .settings-icon i {
   font-size: 3rem;
-  color: rgb(128, 128, 128); /* or whatever color you want */
+  color: rgb(128, 128, 128);
   cursor: pointer;
-  margin-right: 10px; /* space between icon and text */
+  margin-right: 10px;
 }
 
 .title-text {
@@ -998,16 +905,15 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 
-
 /* Styled Input */
 .styled-input {
   width: 100%;
   max-width: 400px;
   padding: 10px;
   margin: 10px 0;
-  border: 1px solid #4a4a4a;
+  border: 1px solid var(--bg-profile-border);
   border-radius: 8px;
-  background-color: #2a2a2a;
+  background-color: var(--bg-profile-input);
   color: #e4e4e7;
   font-size: 16px;
   transition: border-color 0.3s ease;
@@ -1024,9 +930,9 @@ input:checked + .slider:before {
   max-width: 400px;
   padding: 10px;
   margin: 10px 0;
-  border: 1px solid #4a4a4a;
+  border: 1px solid var(--bg-profile-border);
   border-radius: 8px;
-  background-color: #2a2a2a;
+  background-color: var(--bg-profile-select);
   color: #e4e4e7;
   font-size: 16px;
   transition: border-color 0.3s ease;
@@ -1045,12 +951,12 @@ input:checked + .slider:before {
   height: 100px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid #4a4a4a;
+  border: 2px solid var(--main-bg-profile-border);
 }
 
 /* Sidebar styles */
 .sidebar {
-  background: #1e1e1e; /* Updated background color */
+  background: var(--main-bg-accent);
   padding: 20px;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
   min-height: calc(100vh);
@@ -1103,24 +1009,24 @@ input:checked + .slider:before {
 
 /* Icon styles for repair services */
 .bronze-icon {
-  color: #cd7f32; /* Bronze color */
+  color: #cd7f32;
   margin-right: 8px;
 }
 
 .silver-icon {
-  color: #c0c0c0; /* Silver color */
+  color: #c0c0c0;
   margin-right: 8px;
 }
 
 .diamond-icon {
-  color: #b9f2ff; /* Diamond color */
+  color: #b9f2ff;
   margin-right: 8px;
 }
 
 /* Freunde class styles */
 .freunde {
-  font-size: 0.4rem; /* Make the font slightly smaller */
-  color: #ffcc00; /* Change the color to a golden yellow */
+  font-size: 0.4rem;
+  color: #ffcc00;
 }
 
 .settings-area {
@@ -1128,4 +1034,121 @@ input:checked + .slider:before {
   justify-content: center;
   align-items: center;
   align-content: center;
+}
+
+/* Add color and background fixes for light mode */
+body {
+  color: var(--main-text, #e4e4e7);
+  background: var(--main-bg);
+}
+
+/* --- TEXT COLOR FIX FOR ALL ELEMENTS --- */
+:root {
+  --main-text: #e4e4e7;
+}
+
+/* When in light mode, set text to dark for all elements */
+body[data-theme="light"],
+[data-theme="light"] body,
+[data-theme="light"] {
+  --main-text: #232323;
+  --close-button: red !important;
+}
+
+body[data-theme="dark"] {
+  --main-text: #e4e4e7;
+  --close-button: red !important;
+}
+
+/* Apply text color to all elements except headers */
+body,
+.header,
+.footer,
+ul li,
+a,
+.button-text,
+.button,
+input,
+select,
+label,
+p,
+span,
+div,
+section,
+main,
+strong,
+b,
+em,
+i,
+details,
+summary,
+textarea,
+th,
+td {
+  color: var(--main-text, #232323) !important;
+  /* fallback to dark text */
+}
+
+/* Restore original orange for all headers, override everything */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--main-header-color, orangered) !important;
+}
+
+/* Inputs and selects */
+input,
+select,
+textarea {
+  background: var(--main-bg-accent, #fff) !important;
+  color: var(--main-text, #232323) !important;
+  border: 1px solid var(--main-bg-profile-border, #cccccc) !important;
+}
+
+/* Modal backgrounds and text */
+#changelog-modal .modal-content,
+#changelog-modal .file-details details,
+#changelog-modal .commit-description,
+#changelog-modal .commit-description code,
+#changelog-modal .commit-description blockquote {
+  background: var(--main-bg-modal, #fff) !important;
+  color: var(--main-text, #232323) !important;
+}
+
+/* Special backgrounds for modal description/code/blockquote */
+#changelog-modal .commit-description {
+  background: var(--main-bg-modal-desc, #ffe5c2) !important;
+}
+#changelog-modal .commit-description code {
+  background: var(--main-bg-modal-code, #f5f2e7) !important;
+}
+#changelog-modal .commit-description blockquote {
+  background: var(--main-bg-modal-blockquote, #fff6e0) !important;
+}
+
+/* Fix for images in modal description */
+#changelog-modal .commit-description img {
+  background: var(--main-bg-modal-img-scrollbar, #f0f0f0) !important;
+}
+
+/* Ensure all text is visible in light mode */
+* {
+  text-shadow: none !important;
+}
+
+/* --- THEME SWITCHING SUPPORT --- */
+/* Add a data-theme attribute to <body> for switching */
+body[data-theme="light"] {
+  --main-text: #232323;
+}
+body[data-theme="dark"] {
+  --main-text: #e4e4e7;
+}
+.close-button {
+  color: var(--close-button);
+}
+
+.close-button,
+.header .close-button,
+button.close-button,
+a.close-button {
+  color: var(--close-button) !important;
 }
