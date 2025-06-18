@@ -1,0 +1,160 @@
+body {
+    margin: 0;
+    font-family: 'Roboto', Arial, sans-serif;
+    background-color: #f0f0f0; /* Default light mode background */
+    display: flex; /* Kept for general layout control */
+    justify-content: flex-start; /* Aligns content to the start (left) */
+    align-items: flex-start; /* Aligns content to the top */
+    padding: 20px; /* Padding for the frame from the edges */
+    box-sizing: border-box;
+    height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.menu-container {
+    position: relative; /* Changed to relative as it's the main container now */
+    display: inline-block; /* Keeps it as a block that wraps its content */
+    z-index: 1000;
+    /* Removed specific positioning for the container as flexbox handles it */
+}
+
+/* Nine-dot button styles are now irrelevant as the button is removed */
+.nine-dot-button {
+    display: none; /* Explicitly hide the button if it were to somehow appear */
+}
+
+.app-menu {
+    display: block; /* Always visible now */
+    position: static; /* Removed absolute positioning as it's now part of flow */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15), 0 1px 3px rgba(0, 0, 0, 0.3);
+    width: 320px;
+    padding: 16px;
+    box-sizing: border-box;
+    /* Removed animation as it's always displayed */
+}
+
+.app-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e8eaed;
+    margin-bottom: 10px;
+}
+
+.app-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 8px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #1f1f1f;
+    transition: background-color 0.3s ease;
+}
+
+.app-item:hover {
+    background-color: #e9eef6;
+}
+
+.app-item .material-icons {
+    font-size: 48px;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 5px;
+    color: #5f6368;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.app-item span {
+    font-size: 14px;
+    line-height: 18px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.more-apps-button {
+    display: block;
+    width: calc(100% - 32px);
+    padding: 10px 24px;
+    border-radius: 100px;
+    border: 1px solid #747775;
+    background: none;
+    color: #0b57d0;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.more-apps-button:hover {
+    background-color: rgba(11, 87, 208, 0.08);
+    border-color: #0b57d0;
+}
+
+.more-apps-button:focus-visible {
+    box-shadow: 0 0 0 2px rgba(11, 87, 208, 0.5);
+    outline: none;
+}
+
+/* Removed fadeIn animation as menu is always visible */
+@keyframes fadeIn {
+    from { opacity: 1; }
+    to { opacity: 1; }
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #e3e3e3;
+}
+
+body.dark-mode .nine-dot-button:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+body.dark-mode .nine-dot-button svg {
+    fill: #c4c7c5;
+}
+
+body.dark-mode .app-menu {
+    background-color: #1b1b1b; 
+    box-shadow: 0 -1px 2px 0 rgba(0,0,0,.3),0 -2px 6px 2px rgba(0,0,0,.15); 
+}
+
+body.dark-mode .app-item {
+    color: #e3e3e3; 
+}
+
+body.dark-mode .app-item:hover {
+    background-color: #282a2c; 
+}
+
+body.dark-mode .app-item .material-icons {
+    color: #a8c7fa;
+}
+
+body.dark-mode .app-grid {
+    border-bottom-color: #5f6368; 
+}
+
+body.dark-mode .more-apps-button {
+    border-color: #8e918f;
+    color: #a8c7fa; 
+}
+
+body.dark-mode .more-apps-button:hover {
+    background-color: rgba(168, 199, 250, 0.08);
+}
