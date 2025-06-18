@@ -1,5 +1,53 @@
 [
   {
+    "sha": "d5881f643a5c762d6ab72a3ba3f92b26467ac1d6",
+    "date": "2025-06-15T20:31:11Z",
+    "message": "Merge branch 'main' of https://github.com/Master3307/MasterHome",
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "changelog.json",
+        "status": "modified",
+        "additions": 88,
+        "deletions": 0
+      }
+    ]
+  },
+  {
+    "sha": "04f9fd4a6eb6370f403d96b742459dda8006d468",
+    "date": "2025-06-15T20:30:59Z",
+    "message": "<size=\"120%\">Linktree Update<size>\n- Changed <color=\"#1ED760\">Spotify Playlist<color> to Profile Link\n- Added <color=\"#1ED760\">Spotify Playlist<color> Embed\n- Links now Auto-Expand",
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "home/index.html",
+        "status": "modified",
+        "additions": 29,
+        "deletions": 3
+      },
+      {
+        "filename": "linktree/index.html",
+        "status": "modified",
+        "additions": 32,
+        "deletions": 10
+      }
+    ]
+  },
+  {
+    "sha": "06044f017f1b52d5279888d08337fb3f6a525ca9",
+    "date": "2025-06-15T19:27:28Z",
+    "message": "Update changelog.json [auto]",
+    "author": "github-actions[bot]",
+    "filesChanged": [
+      {
+        "filename": "changelog.json",
+        "status": "modified",
+        "additions": 88,
+        "deletions": 0
+      }
+    ]
+  },
+  {
     "sha": "eb0ca1aa2e762fa65bcb16e4a37fd00694861949",
     "date": "2025-06-15T19:25:18Z",
     "message": "Trying to fix something",
