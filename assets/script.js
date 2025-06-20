@@ -382,6 +382,7 @@ document.addEventListener("DOMContentLoaded", () => {
         cancelAnimationFrame(animationFrameId);
       }
 
+      
       animationFrameId = requestAnimationFrame(() => {
         const rect = button.getBoundingClientRect();
         const x = e.clientX - rect.left; // Mouse X position relative to button
