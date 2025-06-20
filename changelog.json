@@ -1,5 +1,173 @@
 [
   {
+    "sha": "10b513e40926e1e189d0d0067f56d2abce1be8b0",
+    "date": "2025-06-20T01:09:56Z",
+    "message": "Merge branch 'main' of https://github.com/Master3307/MasterHome",
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "changelog.json",
+        "status": "modified",
+        "additions": 54,
+        "deletions": 0
+      }
+    ]
+  },
+  {
+    "sha": "1d227a7b2d248bf9a87e707d97b14fc0fdbdf209",
+    "date": "2025-06-20T01:09:37Z",
+    "message": "<size=\"\"130%>Weird Update<size>\n- Made site <color=\"black\">darker<color>\n- Finally fixed a button animation code i made a long time ago on accident\n- Tried making a Theme Update but it didn't work.\n- Have to fix text colors in the future\n- React Rewrite goes in the box for now\n- Settings may <size=\"120%\">sill<size> be added soon\n- Made all Logos <color=\"#CCFFFFFF\">Transparent<color>",
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "assets/Media/Assets.webp",
+        "status": "modified",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/Builds.webp",
+        "status": "modified",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/CursorTest.webp",
+        "status": "modified",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/Linktree.webp",
+        "status": "modified",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/MasterTech.webp",
+        "status": "modified",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/Quellen.webp",
+        "status": "modified",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/Repairs.webp",
+        "status": "modified",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/Shrug.webp",
+        "status": "modified",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/ohoh.webp",
+        "status": "modified",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/shop.webp",
+        "status": "modified",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/thumb/Assets.webp",
+        "status": "modified",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/thumb/Builds.webp",
+        "status": "modified",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/thumb/CursorTest.webp",
+        "status": "modified",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/thumb/Linktree.webp",
+        "status": "modified",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/thumb/MasterTech.webp",
+        "status": "modified",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/thumb/Quellen.webp",
+        "status": "modified",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/thumb/Repairs.webp",
+        "status": "modified",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/thumb/Shrug.webp",
+        "status": "modified",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/thumb/ohoh.webp",
+        "status": "modified",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/Media/thumb/shop.webp",
+        "status": "modified",
+        "additions": 0,
+        "deletions": 0
+      },
+      {
+        "filename": "assets/script.js",
+        "status": "modified",
+        "additions": 46,
+        "deletions": 53
+      },
+      {
+        "filename": "assets/style.css",
+        "status": "modified",
+        "additions": 45,
+        "deletions": 44
+      }
+    ]
+  },
+  {
+    "sha": "4ec4bc5043a438522b8b686711eea57021dcd59c",
+    "date": "2025-06-18T23:32:12Z",
+    "message": "Update changelog.json [auto]",
+    "author": "github-actions[bot]",
+    "filesChanged": [
+      {
+        "filename": "changelog.json",
+        "status": "modified",
+        "additions": 54,
+        "deletions": 0
+      }
+    ]
+  },
+  {
     "sha": "9fc3c60b78153cc0f9f183114ab4b6a9f8a40bec",
     "date": "2025-06-18T23:31:29Z",
     "message": "Merge branch 'main' of https://github.com/Master3307/MasterHome",
