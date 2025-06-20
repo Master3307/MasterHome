@@ -22,24 +22,8 @@ function setActivePage() {
 // Call setActivePage when the page loads
 document.addEventListener("DOMContentLoaded", setActivePage);
 
-// Initialize darkmode-js
-const darkmode = new Darkmode({
-  bottom: '32px', // default: '32px'
-  right: '32px', // default: '32px'
-  left: 'unset', // default: 'unset'
-  time: '0.5s', // default: '0.3s'
-  mixColor: '#fff', // default: '#fff'
-  backgroundColor: '#000', // default: '#fff'
-  buttonColorDark: '#100f2c', // default: '#100f2c'
-  buttonColorLight: '#fff', // default: '#fff'
-  saveInCookies: true, // default: true
-  label: '🌓', // default: ''
-  autoMatchOsTheme: true // default: true
-});
-
 // Object to store temporary settings
 const tempSettings = {
-  theme: localStorage.getItem("theme") || "dark",
   language: localStorage.getItem("language") || "en",
   username: localStorage.getItem("userName") || "Guest",
   profilePicture: localStorage.getItem("profilePicture") || "",
@@ -47,13 +31,6 @@ const tempSettings = {
 
 // Function to apply temporary settings
 function applyTempSettings() {
-  // Apply theme
-  const body = document.body;
-  const themeSlider = document.getElementById("theme-slider");
-  const isLightMode = tempSettings.theme === "light";
-  body.classList.toggle("light-mode", isLightMode);
-  if (themeSlider) themeSlider.checked = isLightMode;
-
   // Apply language
   const languageSelect = document.getElementById("language-select");
   if (languageSelect) {
@@ -75,17 +52,10 @@ function applyTempSettings() {
 
 // Function to save settings to localStorage
 function saveSettings() {
-  localStorage.setItem("theme", tempSettings.theme);
   localStorage.setItem("language", tempSettings.language);
   localStorage.setItem("userName", tempSettings.username);
   localStorage.setItem("profilePicture", tempSettings.profilePicture);
   alert("Settings saved!");
-}
-
-// Function to handle theme slider change
-function handleThemeChange() {
-  const themeSlider = document.getElementById("theme-slider");
-  tempSettings.theme = themeSlider.checked ? "light" : "dark";
 }
 
 // Function to handle language selection change
@@ -119,11 +89,6 @@ document.addEventListener("DOMContentLoaded", () => {
   applyTempSettings();
 
   // Add event listeners
-  const themeSlider = document.getElementById("theme-slider");
-  if (themeSlider) {
-    themeSlider.addEventListener("change", handleThemeChange);
-  }
-
   const languageSelect = document.getElementById("language-select");
   if (languageSelect) {
     languageSelect.addEventListener("change", handleLanguageChange);
@@ -171,24 +136,16 @@ function setLanguage(language) {
 // Load saved settings and set default language based on browser's language
 document.addEventListener("DOMContentLoaded", () => {
   const savedLanguage = localStorage.getItem("language") || "en";
-  const browserLanguage = navigator.language.slice(0, 2); // Get the first two characters of the browser's language
+  const browserLanguage = navigator.language.slice(0, 2);
   const defaultLanguage = translations[browserLanguage]
     ? browserLanguage
-    : "en"; // Default to English if unsupported
+    : "en";
   const language = savedLanguage || defaultLanguage;
-
-  // Apply theme
-  if (darkmode.isActivated()) {
-    document.body.classList.add("light-mode");
-  }
 
   // Apply language
   setLanguage(language);
 
   // Add event listeners
-  const themeToggle = document.getElementById("theme-toggle");
-  themeToggle.addEventListener("click", toggleTheme);
-
   const languageSelect = document.getElementById("language-select");
   if (languageSelect) {
     languageSelect.value = language;
@@ -417,21 +374,57 @@ document.addEventListener("DOMContentLoaded", () => {
   const buttons = document.querySelectorAll(".button");
 
   buttons.forEach((button) => {
+    let animationFrameId = null; // To store the requestAnimationFrame ID
+
     button.addEventListener("mousemove", (e) => {
-      const rect = button.getBoundingClientRect();
-      const x = e.clientX - rect.left; // Mouse X position relative to button
-      const y = e.clientY - rect.top; // Mouse Y position relative to button
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
+      // Clear any pending animation frame to ensure only the latest one runs
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
 
-      const rotateX = ((y - centerY) / centerY) * 10; // Tilt based on Y-axis
-      const rotateY = ((x - centerX) / centerX) * -10; // Tilt based on X-axis
+      animationFrameId = requestAnimationFrame(() => {
+        const rect = button.getBoundingClientRect();
+        const x = e.clientX - rect.left; // Mouse X position relative to button
+        const y = e.clientY - rect.top; // Mouse Y position relative to button
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
 
-      button.style.transform = `perspective(500px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        const rotateX = ((y - centerY) / centerY) * 10; // Tilt based on Y-axis
+        const rotateY = ((x - centerX) / centerX) * -10; // Tilt based on X-axis
+
+        button.style.transform = `perspective(500px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      });
     });
 
     button.addEventListener("mouseleave", () => {
+      // Clear any pending animation frame when mouse leaves
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
       button.style.transform = "perspective(500px) rotateX(0deg) rotateY(0deg)";
     });
   });
 });
+
+
+
+// Replace all occurrences of --main-bg-modal-img and --main-bg-modal-scrollbar with --main-bg-modal-img-scrollbar if you use them in JS-injected styles or CSS-in-JS.
+// No direct JS changes needed unless you dynamically inject those CSS variables via JS.
+
+// Utility: force header color for all h1-h6 (for pages like home/index.html)
+function forceHeaderColor() {
+  const headers = document.querySelectorAll('h1, h2, h3, h4, h5, h6, .title-text');
+  headers.forEach(h => {
+    h.style.color = getComputedStyle(document.documentElement).getPropertyValue('--main-header-color') || 'orangered';
+  });
+}
+
+// Call after theme is set and on DOMContentLoaded
+document.addEventListener("DOMContentLoaded", forceHeaderColor);
+
+// Also call after theme changes
+const origSetColorMode = setColorMode;
+window.setColorMode = function(mode) {
+  origSetColorMode(mode);
+  forceHeaderColor();
+};
