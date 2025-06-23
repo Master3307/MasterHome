@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Custom Build</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 2em; }
+    h1 { color: #333; }
+    form { margin-bottom: 1em; }
+    label { display: block; margin: 0.5em 0; }
+    #buildResult { margin-top: 1em; background: #f9f9f9; padding: 1em; border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <h1>Create Your Custom Build</h1>
+  <form id="customBuildForm">
+    <label>
+      <input type="checkbox" name="feature1" value="Feature 1">
+      Feature 1
+    </label>
+    <label>
+      <input type="checkbox" name="feature2" value="Feature 2">
+      Feature 2
+    </label>
+    <label>
+      <input type="checkbox" name="feature3" value="Feature 3">
+      Feature 3
+    </label>
+    <!-- Add more features as needed -->
+    <button type="submit">Generate Build</button>
+  </form>
+  <div id="buildResult"></div>
+
+  <script>
+    document.getElementById('customBuildForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Collect selected features
+      const form = e.target;
+      let selected = [];
+      ['feature1', 'feature2', 'feature3'].forEach(f => {
+        if (form[f].checked) selected.push(form[f].value);
+      });
+
+      const resultDiv = document.getElementById('buildResult');
+      if (selected.length === 0) {
+        resultDiv.textContent = 'Please select at least one feature.';
+        return;
+      }
+
+      // For demo: Show selected features. Replace with actual build logic as needed.
+      resultDiv.innerHTML = `<h2>Your Custom Build:</h2><ul>${selected.map(f => `<li>${f}</li>`).join('')}</ul>`;
+    });
+  </script>
+</body>
+</html>
