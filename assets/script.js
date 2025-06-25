@@ -215,6 +215,12 @@ function updateAuthButtons() {
   const user = localStorage.getItem("user");
   const authButtons = document.getElementById("auth-buttons");
 
+  if (!authButtons) {
+    // If the element is missing, do nothing to avoid errors on pages
+    // without authentication controls
+    return;
+  }
+
   if (user) {
     authButtons.innerHTML = `<span>Welcome, ${user}</span> <button id="logout-button">Logout</button>`;
     document
