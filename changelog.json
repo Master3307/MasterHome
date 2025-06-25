@@ -1,5 +1,47 @@
 [
   {
+    "sha": "1cea2f6f6b91221169566a1ecd811077e074c292",
+    "date": "2025-06-25T09:18:19Z",
+    "message": "Merge pull request #1 from Master3307/codex/find-and-fix-a-bug\n\nFix script error when auth container is missing",
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "assets/script.js",
+        "status": "modified",
+        "additions": 6,
+        "deletions": 0
+      }
+    ]
+  },
+  {
+    "sha": "d08f2d56b55e214e0e8f5f611660e0c674b3f1af",
+    "date": "2025-06-25T09:17:54Z",
+    "message": "fix: guard auth button update if element missing",
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "assets/script.js",
+        "status": "modified",
+        "additions": 6,
+        "deletions": 0
+      }
+    ]
+  },
+  {
+    "sha": "e910886e405f88437834eadc6bc080ed8c2f03ef",
+    "date": "2025-06-23T11:49:08Z",
+    "message": "Update changelog.json [auto]",
+    "author": "github-actions[bot]",
+    "filesChanged": [
+      {
+        "filename": "changelog.json",
+        "status": "modified",
+        "additions": 28,
+        "deletions": 0
+      }
+    ]
+  },
+  {
     "sha": "7288880078a4f6badb4f235b92a8124751022669",
     "date": "2025-06-23T11:48:25Z",
     "message": "<invis> build updatee",
