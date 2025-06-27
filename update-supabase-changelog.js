@@ -105,10 +105,6 @@ async function fetchCommitDetails(sha, headers) {
       try {
         const commitDetails = await fetchCommitDetails(commitSummary.sha, githubHeaders);
 
-        // Debug-Log: Überprüfe den Inhalt von commitDetails.files
-        console.log(`Commit ${commitDetails.sha} - raw files:`, commitDetails.files);
-
-
         const filesChanged = commitDetails.files ? commitDetails.files.map(file => ({
           filename: file.filename,
           status: file.status,
@@ -116,15 +112,12 @@ async function fetchCommitDetails(sha, headers) {
           deletions: file.deletions
         })) : [];
 
-        // Debug-Log: Überprüfe den Inhalt des filesChanged Arrays
-        console.log(`Commit ${commitDetails.sha} - processed filesChanged:`, filesChanged);
-
         commitsToUpsert.push({
           sha: commitDetails.sha,
           date: commitDetails.commit.author.date,
           message: commitDetails.commit.message,
           author: commitDetails.commit.author.name,
-          files_changed: filesChanged
+          fileschanges: filesChanged
         });
       } catch (detailError) {
         console.error(`Fehler beim Abrufen der Details für Commit ${commitSummary.sha}:`, detailError);
@@ -134,7 +127,7 @@ async function fetchCommitDetails(sha, headers) {
           date: commitSummary.commit.author.date,
           message: commitSummary.commit.message,
           author: commitSummary.commit.author.name,
-          files_changed: []
+          fileschanges: []
         });
       }
     }
