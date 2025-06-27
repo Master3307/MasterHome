@@ -2,7 +2,7 @@
 // Dieses Skript ruft GitHub-Commits ab und aktualisiert die Supabase-Tabelle 'changelog'.
 
 const { createClient } = require('@supabase/supabase-js');
-const fetch = require('node-fetch'); // Für Node.js < v18, sonst ist fetch eingebaut
+// const fetch = require('node-fetch'); // ENTFERNT: fetch ist in Node.js v18+ global verfügbar
 
 // ENVIRONMENT VARIABLEN:
 // Diese sollten über GitHub Secrets gesetzt werden, NICHT direkt im Code!
@@ -43,6 +43,7 @@ async function fetchPaginatedData(url, headers) {
   let allData = [];
   let nextUrl = url;
   while (nextUrl) {
+    // 'fetch' wird hier direkt verwendet, da es in Node.js 20 global ist.
     console.log(`Fetching: ${nextUrl}`);
     const res = await fetch(nextUrl, { headers });
     if (!res.ok) {

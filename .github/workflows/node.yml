@@ -30,8 +30,8 @@ jobs:
         run: npm install # Install project dependencies, including 'sharp'
         working-directory: ./assets/ # Run npm install in the ./assets directory
 
-      - name: Install Supabase dependencies
-        run: npm install @supabase/supabase-js node-fetch # Installiert die Supabase-Client-Bibliothek und node-fetch
+      - name: Install Supabase client library
+        run: npm install @supabase/supabase-js # Nur Supabase Client Bibliothek, da fetch nativ ist
         # Da `update-supabase-changelog.js` im Root-Verzeichnis ausgeführt wird,
         # sollten diese Abhängigkeiten im Root installiert werden, falls sie nicht schon global sind.
         # Wenn deine `package.json` im Root ist, kannst du `working-directory` hier weglassen oder auf '.' setzen.
@@ -60,7 +60,7 @@ jobs:
         working-directory: . # Führe das Skript vom Repository-Root aus
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }} # Dein GitHub PAT für Supabase-Zugriff
-          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }} # Dein Supabase Service Role Key!
 
       - name: Commit and push changes
         run: |
