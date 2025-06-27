@@ -1,5 +1,75 @@
 [
   {
+    "sha": "2f86e071d4a6b19d7fc2e1d11b2f8ac425471ba4",
+    "date": "2025-06-27T12:01:22Z",
+    "message": "<size=\"130%\">Search Fix<size>\n\n- Fixed Bugs",
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "search/index.html",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 2
+      }
+    ]
+  },
+  {
+    "sha": "f53c7ab141a75fb0c2fdf6f40f81e4b3be7dc2dc",
+    "date": "2025-06-27T11:58:50Z",
+    "message": "<size=\"130%\">Search Fix<size>\n- Fixed a bug where provider icon markup had an extra closing span and removed unused updateResults call",
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "search/index.html",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 2
+      }
+    ]
+  },
+  {
+    "sha": "cdf09a149a53d3fa246a6e58a7971b6632535530",
+    "date": "2025-06-27T11:53:12Z",
+    "message": "Update changelog.json [auto]",
+    "author": "github-actions[bot]",
+    "filesChanged": [
+      {
+        "filename": "changelog.json",
+        "status": "modified",
+        "additions": 28,
+        "deletions": 0
+      }
+    ]
+  },
+  {
+    "sha": "eb41446f96581697a53d889335c49e46fa28af85",
+    "date": "2025-06-27T11:51:52Z",
+    "message": "<size=\"130\">Search Update<size>\n- Added a search site here: [MasterSearch](https://master3307.netlify.app/search)",
+    "author": "Master3307",
+    "filesChanged": [
+      {
+        "filename": "search/index.html",
+        "status": "added",
+        "additions": 852,
+        "deletions": 0
+      }
+    ]
+  },
+  {
+    "sha": "eb6a8c5c757a6fb55d06d54541cb859d4ce975cf",
+    "date": "2025-06-25T09:19:12Z",
+    "message": "Update changelog.json [auto]",
+    "author": "github-actions[bot]",
+    "filesChanged": [
+      {
+        "filename": "changelog.json",
+        "status": "modified",
+        "additions": 42,
+        "deletions": 0
+      }
+    ]
+  },
+  {
     "sha": "1cea2f6f6b91221169566a1ecd811077e074c292",
     "date": "2025-06-25T09:18:19Z",
     "message": "Merge pull request #1 from Master3307/codex/find-and-fix-a-bug\n\nFix script error when auth container is missing",
