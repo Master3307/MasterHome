@@ -7,7 +7,7 @@ const fetch = require('node-fetch'); // Für Node.js < v18, sonst ist fetch eing
 // ENVIRONMENT VARIABLEN:
 // Diese sollten über GitHub Secrets gesetzt werden, NICHT direkt im Code!
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN; // Dein GitHub Personal Access Token mit 'repo'-Rechten
-const SUPABASE_KEY = process.env.SUPABASE_KEY; // Dein Supabase Key (sollte der 'anon' Schlüssel sein)
+const SUPABASE_KEY = process.env.SUPABASE_KEY; // Dein Supabase Service Role Key (wird über Environment Variable geladen)!
 
 // Supabase URL (Direkt im Code, wie von dir gewünscht)
 const SUPABASE_URL = 'https://joeygiadleywsruuwgyv.supabase.co';
@@ -22,13 +22,17 @@ const GITHUB_PER_PAGE = 100; // Maximale Commits pro Seite für GitHub API
 let supabase;
 try {
   if (!SUPABASE_URL || !SUPABASE_KEY) {
-    // Check if both URL and Key are provided as environment variables for safety.
-    // Even if URL is hardcoded, the key is still dynamic.
     throw new Error('Supabase URL oder SUPABASE_KEY Umgebungsvariablen fehlen!');
   }
-  // Verwende createClient mit der direkten URL und dem Umgebungsschlüssel
-  supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
-  console.log('Supabase Client initialisiert.');
+  // Initialisiere Supabase mit dem Service Role Key (SUPABASE_KEY).
+  // Der Service Role Key hat administrative Rechte und umgeht RLS,
+  // daher ist KEINE explizite Anmeldung wie signInAnonymously() erforderlich.
+  supabase = createClient(SUPABASE_URL, SUPABASE_KEY, {
+    auth: {
+      persistSession: false // Wichtig für Server/Workflows, um keine Sessions zu speichern
+    }
+  });
+  console.log('Supabase Client mit Service Role Key initialisiert.');
 } catch (error) {
   console.error('Fehler beim Initialisieren des Supabase Clients:', error.message);
   process.exit(1);
@@ -76,14 +80,9 @@ async function fetchCommitDetails(sha, headers) {
       throw new Error('GITHUB_TOKEN Umgebungsvariable fehlt.');
     }
 
-    // Authentifiziere Supabase anonym für Schreibzugriff (gemäß RLS-Regel)
-    // Da SUPABASE_KEY der 'anon' Schlüssel ist, muss die anonyme Anmeldung erfolgen,
-    // damit die Sitzung die Rolle 'authenticated' erhält, um Schreibrechte zu haben.
-    const { error: authError } = await supabase.auth.signInAnonymously();
-    if (authError) {
-      throw new Error(`Supabase Auth Error: ${authError.message}`);
-    }
-    console.log('Supabase: Anonyme Authentifizierung erfolgreich.');
+    // Da der Service Role Key (SUPABASE_KEY) verwendet wird, ist keine explizite Authentifizierungsmethode
+    // (wie signInAnonymously) nötig, da der Client bereits mit den nötigen administrativen Rechten initialisiert wurde.
+    console.log('Supabase: Verwende Service Role Key für direkten Datenbankzugriff. Keine explizite Anmeldung erforderlich.');
 
     const githubHeaders = {
       'Authorization': `token ${GITHUB_TOKEN}`,
@@ -126,7 +125,6 @@ async function fetchCommitDetails(sha, headers) {
           sha: commitSummary.sha,
           date: commitSummary.commit.author.date,
           message: commitSummary.commit.message,
-          // Fixed: Ensure 'author.name' is used consistently.
           author: commitSummary.commit.author.name,
           files_changed: []
         });

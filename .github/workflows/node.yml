@@ -48,11 +48,11 @@ jobs:
         run: node ./assets/generate-assets-json.js # Ensure this path is correct relative to the repo root
         working-directory: . # Run script from repository root
 
-      - name: Run changelog generator script
-        run: node ./changelog-gen.js # Ensure this path is correct relative to the repo root
-        working-directory: . # Run script from repository root
-        env:
-          TOKEN: ${{ secrets.TOKEN }} # Set the TOKEN environment variable from GitHub secrets
+      # - name: Run changelog generator script
+      #   run: node ./changelog-gen.js # Ensure this path is correct relative to the repo root
+      #   working-directory: . # Run script from repository root
+      #   env:
+      #     TOKEN: ${{ secrets.TOKEN }} # Set the TOKEN environment variable from GitHub secrets
 
       # Hinzugefügt: Schritt zum Aktualisieren der Supabase Changelog-Tabelle
       - name: Run Supabase Changelog Update script
