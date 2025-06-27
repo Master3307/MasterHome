@@ -1,5 +1,7 @@
+# .github/workflows/update-changelog.yml
+
 name: Run Node.js Scripts and Update Changelog
-description: This workflow runs Node.js scripts to convert images, generate thumbnails, and update the changelog when changes are pushed to the main branch.
+description: This workflow runs Node.js scripts to convert images, generate thumbnails, update the changelog, and update Supabase when changes are pushed to the main branch.
 
 on:
   push:
@@ -16,15 +18,23 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Hinzugefügt: Wichtig, um alle Commits für die GitHub API abrufen zu können.
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20' # Use a suitable Node.js version
 
-      - name: Install dependencies
+      - name: Install general dependencies
         run: npm install # Install project dependencies, including 'sharp'
         working-directory: ./assets/ # Run npm install in the ./assets directory
+
+      - name: Install Supabase dependencies
+        run: npm install @supabase/supabase-js node-fetch # Installiert die Supabase-Client-Bibliothek und node-fetch
+        # Da `update-supabase-changelog.js` im Root-Verzeichnis ausgeführt wird,
+        # sollten diese Abhängigkeiten im Root installiert werden, falls sie nicht schon global sind.
+        # Wenn deine `package.json` im Root ist, kannst du `working-directory` hier weglassen oder auf '.' setzen.
 
       - name: Run WebP Converter script
         run: node ./assets/Media/webp-converter.js # Ensure this path is correct relative to the repo root
@@ -44,10 +54,19 @@ jobs:
         env:
           TOKEN: ${{ secrets.TOKEN }} # Set the TOKEN environment variable from GitHub secrets
 
+      # Hinzugefügt: Schritt zum Aktualisieren der Supabase Changelog-Tabelle
+      - name: Run Supabase Changelog Update script
+        run: node ./update-supabase-changelog.js # Stelle sicher, dass dieser Pfad korrekt ist
+        working-directory: . # Führe das Skript vom Repository-Root aus
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }} # Dein GitHub PAT für Supabase-Zugriff
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+
       - name: Commit and push changes
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add ./changelog.json # Ensure this path is correct relative to the repo root
-          git commit -m "Update changelog.json" || echo "No changes to commit"
+          # Füge auch das Supabase-Skript selbst zu `git add` hinzu, falls es sich geändert hat und gepusht werden soll.
+          git commit -m "Update changelog.json [ci skip]" || echo "No changes to commit"
           git push

@@ -510,421 +510,437 @@
     <script
       type="text/javascript">(function (w, d) { var loader = function () { var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src = "https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s, tag); }; if (w.addEventListener) { w.addEventListener("load", loader, false); } else if (w.attachEvent) { w.attachEvent("onload", loader); } else { w.onload = loader; } })(window, document);</script>
   </footer>
-  <script>
-    // Changelog modal logic
-    document.addEventListener("DOMContentLoaded", function () {
-      var changelogIcon = document.getElementById("changelog-icon");
-      var changelogModal = document.getElementById("changelog-modal");
-      var closeChangelog = document.getElementById("close-changelog");
-      var changelogContent = document.getElementById("changelog-content");
-      var searchInput = document.getElementById("changelog-search");
-      var sortSelect = document.getElementById("changelog-sort");
-      var changelogBadge = document.getElementById("changelog-badge"); // Get the badge element
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script type="text/javascript">
+        // Supabase Client Initialization
+        let supabaseClientInstance;
 
-      const LAST_VIEWED_STORAGE_KEY = 'changelogLastViewed'; // Key for localStorage
-
-      let allChangelogData = []; // Store the original fetched data
-
-      // Mapping for file extensions to Font Awesome icons and colors
-      const fileIconMap = {
-        js: { icon: 'fas fa-file-code', color: '#f7df1e' }, // Yellow
-        ts: { icon: 'fas fa-file-code', color: '#3178c6' }, // Blue
-        html: { icon: 'fas fa-file-code', color: '#e34c26' }, // Orange
-        css: { icon: 'fas fa-file-code', color: '#1572b6' }, // Blue
-        scss: { icon: 'fas fa-file-code', color: '#cc6699' }, // Purple
-        json: { icon: 'fas fa-file-alt', color: '#aaa' }, // Grey
-        yaml: { icon: 'fas fa-file-alt', color: '#aaa' }, // Grey
-        yml: { icon: 'fas fa-file-alt', color: '#aaa' }, // Grey
-        md: { icon: 'fas fa-file-alt', color: '#fff' }, // White
-        png: { icon: 'fas fa-file-image', color: '#28a745' }, // Green
-        jpg: { icon: 'fas fa-file-image', color: '#28a745' }, // Green
-        jpeg: { icon: 'fas fa-file-image', color: '#28a745' }, // Green
-        gif: { icon: 'fas fa-file-image', color: '#28a745' }, // Green
-        webp: { icon: 'fas fa-file-image', color: '#28a745' }, // Green
-        svg: { icon: 'fas fa-file-image', color: '#00bcd4' }, // Teal
-        pdf: { icon: 'fas fa-file-pdf', color: '#dc3545' }, // Red
-        zip: { icon: 'fas fa-file-archive', color: '#6c757d' }, // Grey
-        tar: { icon: 'fas fa-file-archive', color: '#6c757d' }, // Grey
-        gz: { icon: 'fas fa-file-archive', color: '#6c757d' }, // Grey
-        txt: { icon: 'fas fa-file-alt', color: '#aaa' }, // Grey
-        // Add more mappings as needed
-        default: { icon: 'fas fa-file', color: '#aaa' } // Default grey file icon
-      };
-
-      // Mapping for file status to Font Awesome icons and colors
-      const fileStatusIconMap = {
-        added: { icon: 'fas fa-plus', color: '#28a745' }, // Green +
-        modified: { icon: 'fas fa-circle-notch', color: '#ffc107' }, // Yellow ~ (using circle-notch as a wavy line)
-        removed: { icon: 'fas fa-minus', color: '#dc3545' }, // Red -
-        default: { icon: 'fas fa-file', color: '#aaa' } // Default file icon
-      };
-
-
-      function getFileIcon(filename) {
-        const parts = filename.split('.');
-        const extension = parts.length > 1 ? parts.pop().toLowerCase() : '';
-        return fileIconMap[extension] || fileIconMap.default;
-      }
-
-      function getFileStatusIcon(status) {
-        return fileStatusIconMap[status] || fileStatusIconMap.default;
-      }
-
-      // Helper to format "time since"
-      function timeSince(date) {
-        const now = new Date();
-        let diff = Math.max(0, now - date);
-        const units = [
-          { label: 'year', ms: 1000 * 60 * 60 * 24 * 365 },
-          { label: 'month', ms: 1000 * 60 * 60 * 24 * 30 },
-          { label: 'day', ms: 1000 * 60 * 60 * 24 },
-          { label: 'hour', ms: 1000 * 60 * 60 }
-        ];
-        let result = [];
-        for (const unit of units) {
-          const amount = Math.floor(diff / unit.ms);
-          if (amount > 0) {
-            result.push(`${amount} ${unit.label}${amount > 1 ? 's' : ''}`);
-            diff -= amount * unit.ms;
-          }
-        }
-        if (result.length === 0) return 'just now';
-        return result.join(', ') + ' ago';
-      }
-
-      function simpleMarkdown(desc) {
-        if (!desc) return '';
-        // Escape HTML
-        desc = desc.replace(/[&<>]/g, function(tag) {
-          const chars = { '&': '&amp;', '<': '&lt;', '>': '&gt;' };
-          return chars[tag] || tag;
-        });
-
-        // --- Color and Size Tag Handling ---
-        // Replace <color="...">...</color> and <color="...">...<color> with <span style="color:...">...</span>
-        // Replace <size="...">...</size> and <size="...">...<size> with <span style="font-size:...">...</span>
-        // Repeat until no more matches (to handle nested tags)
-        let prev;
-        do {
-          prev = desc;
-          // Color: closing tag can be </color> or <color>
-          desc = desc.replace(/&lt;color="([^"]+)"&gt;([\s\S]*?)(?:&lt;\/color&gt;|&lt;color&gt;)/gi, function(_, color, content) {
-            return `<span style="color:${color} !important;">${content}</span>`;
-          });
-          // Size: closing tag can be </size> or <size>
-          desc = desc.replace(/&lt;size="([^"]+)"&gt;([\s\S]*?)(?:&lt;\/size&gt;|&lt;size&gt;)/gi, function(_, size, content) {
-            return `<span style="font-size:${size} !important;">${content}</span>`;
-          });
-        } while (desc !== prev);
-
-        // Remove any stray opening/closing tags left (if any)
-        desc = desc.replace(/&lt;\/?color(="[^"]*")?&gt;/gi, '');
-        desc = desc.replace(/&lt;\/?size(="[^"]*")?&gt;/gi, '');
-
-        // Headers: #, ##, ###
-        desc = desc.replace(/^### (.*)$/gm, '<h3>$1</h3>');
-        desc = desc.replace(/^## (.*)$/gm, '<h2>$1</h2>');
-        desc = desc.replace(/^# (.*)$/gm, '<h1>$1</h1>');
-        // Images: ![alt](url)
-        desc = desc.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, function(_, alt, src) {
-          const altText = alt ? alt : 'image';
-          return `<img src="${src}" alt="${altText}" title="${altText}">`;
-        });
-        // Bold: **text** or __text__
-        desc = desc.replace(/(\*\*|__)(.*?)\1/g, '<b>$2</b>');
-        // Italic: *text* or _text_
-        desc = desc.replace(/(\*|_)([^*_]+)\1/g, '<i>$2</i>');
-        // Inline code: `code`
-        desc = desc.replace(/`([^`]+)`/g, '<code>$1</code>');
-        // Links: [text](url)
-        desc = desc.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
-        // Bullet points: - text or * text
-        desc = desc.replace(/^(\s*)- (.*)$/gm, '$1&#8226; $2');
-        desc = desc.replace(/^(\s*)\* (.*)$/gm, '$1&#8226; $2');
-        // Numbered lists: 1. text
-        desc = desc.replace(/^(\s*)\d+\.\s+(.*)$/gm, '$1<span style="font-weight:bold;">$&</span>');
-        // Blockquotes: > text
-        desc = desc.replace(/^> (.*)$/gm, '<blockquote>$1</blockquote>');
-        // Horizontal rule: --- or ***
-        desc = desc.replace(/^(---|\*\*\*)$/gm, '<hr style="border:0;border-top:1px solid #f36e21;margin:0.5em 0;">');
-        // Replace remaining newlines with <br>
-        desc = desc.replace(/\n/g, '<br>');
-        return desc;
-      }
-
-      function renderChangelog(dataToRender, initialCommitDate) {
-        if (!Array.isArray(dataToRender) || dataToRender.length === 0) {
-          changelogContent.innerHTML = "<p>No changelog entries found.</p>";
-          return;
-        }
-
-        // Always show oldest first as #1, latest as highest number
-        // So, get the sorted array by ascending date for numbering
-        const sortedByDateAsc = [...dataToRender].sort((a, b) => new Date(a.date) - new Date(b.date));
-        const shaToNumber = {};
-        sortedByDateAsc.forEach((entry, idx) => {
-          shaToNumber[entry.sha] = idx + 1;
-        });
-
-        const listHtml = dataToRender.map((entry) => {
-          const shortMsg = entry.message.split('\n')[0];
-          const desc = entry.message.split('\n').slice(1).join('\n').trim();
-          // Format date in German, 24h
-          const dateStr = entry.date
-            ? new Date(entry.date).toLocaleString('de-DE', {
-              year: 'numeric',
-              month: '2-digit',
-              day: '2-digit',
-              hour: '2-digit',
-              minute: '2-digit',
-              second: '2-digit',
-              hour12: false
-            })
-            : '';
-          const sha = entry.sha ? entry.sha.substring(0, 7) : '';
-          const author = entry.author ? entry.author : '';
-
-          // Entry number (right side)
-          const entryNumber = shaToNumber[entry.sha] || '';
-
-          // Generate HTML for changed files
-          const filesHtml = entry.filesChanged && entry.filesChanged.length > 0
-            ? entry.filesChanged.map(file => {
-              const fileTypeInfo = getFileIcon(file.filename); // Get icon based on file type
-              const fileStatusInfo = getFileStatusIcon(file.status); // Get icon/color based on status
-              // Display additions and deletions counts (with correct class for color)
-              const additionsHtml = file.additions > 0 ? `<span class="file-additions" style="color:#28a745;font-weight:bold;margin-left:0.8em;">+${file.additions}</span>` : '';
-              const deletionsHtml = file.deletions > 0 ? `<span class="file-deletions" style="color:#dc3545;font-weight:bold;margin-left:0.5em;">-${file.deletions}</span>` : '';
-
-              return `<li style="margin-bottom:0.4em; font-size:0.9em; color:#ccc; display:flex; align-items:center;">
-                    <i class="${fileStatusInfo.icon}" style="color:${fileStatusInfo.color}; margin-right:0.6em; width:1em; text-align:center;"></i>
-                    <i class="${fileTypeInfo.icon}" style="color:${fileTypeInfo.color}; margin-right:0.6em; width:1em; text-align:center;"></i>
-                    ${file.filename}
-                    ${additionsHtml}
-                    ${deletionsHtml}
-                  </li>`;
-            }).join('')
-            : '<li style="font-size:0.9em; color:#888;">No files changed listed.</li>'; // Message if no files
-
-          // --- Simple markdown rendering for description and header ---
-          let descHtml = '';
-          if (desc) {
-            descHtml = `<div class="commit-description">${simpleMarkdown(desc)}</div>`;
-          }
-          // Apply markdown to header (shortMsg)
-          const headerHtml = `<div class="commit-message">${simpleMarkdown(shortMsg)}</div>`;
-          // --- end simple markdown rendering ---
-          return `<li style="margin-bottom:1.5em; border-bottom:1px solid #333; padding-bottom:1.5em; position:relative;">
-                  <div class="commit-entry" style="position:relative;">
-                      ${headerHtml}
-                      <div class="commit-meta">${dateStr} &mdash; <span style="color:#f36e21;">${author}</span></div>
-                      <div class="commit-sha" style="color:#f36e21;">${sha}</div>
-                      ${descHtml}
-                      <div class="file-details">
-                          <details>
-                              <summary>Changed Files:</summary>
-                              <ul class="changed-files-list">
-                                  ${filesHtml}
-                              </ul>
-                          </details>
-                      </div>
-                      <div style="position:absolute; top:0; right:0; color:#888; font-size:1.2em; font-weight:bold; padding:0.2em 0.7em;">${entryNumber}</div>
-                  </div>
-              </li>`;
-        }).join('');
-
-        changelogContent.innerHTML = '<ul style="list-style:none; text-align:left; padding-left:0; margin:0;">' + listHtml + '</ul>';
-      }
-
-      function stripFormattingTags(text) {
-        // Remove <color="...">, <size="...">, </color>, </size>, <color>, <size>
-        // Also remove HTML-escaped versions (&lt;color="..."> etc)
-        return text
-          .replace(/<color="[^"]*">/gi, '')
-          .replace(/<size="[^"]*">/gi, '')
-          .replace(/<\/?color>/gi, '')
-          .replace(/<\/?size>/gi, '')
-          .replace(/<color>/gi, '')
-          .replace(/<size>/gi, '')
-          .replace(/&lt;color="[^"]*"&gt;/gi, '')
-          .replace(/&lt;size="[^"]*"&gt;/gi, '')
-          .replace(/&lt;\/?color&gt;/gi, '')
-          .replace(/&lt;\/?size&gt;/gi, '')
-          .replace(/&lt;color&gt;/gi, '')
-          .replace(/&lt;size&gt;/gi, '');
-      }
-
-      function sortChangelog(data, sortBy) {
-        const sortedData = [...data]; // Create a copy to avoid modifying the original array
-        switch (sortBy) {
-          case 'date-asc':
-            sortedData.sort((a, b) => new Date(a.date) - new Date(b.date));
-            break;
-          // Removed 'author-asc' and 'message-asc' cases
-          case 'date-desc': // Default
-          default:
-            sortedData.sort((a, b) => new Date(b.date) - new Date(a.date));
-            break;
-        }
-        return sortedData;
-      }
-
-      function filterChangelog(data, searchTerm) {
-        if (!searchTerm) {
-          return data; // Return all data if no search term
-        }
-        const lowerSearchTerm = searchTerm.toLowerCase();
-        return data.filter(entry => {
-          const shortMsg = entry.message.split('\n')[0].toLowerCase();
-          const fullMsg = entry.message.toLowerCase();
-          const author = entry.author.toLowerCase();
-          const sha = entry.sha.toLowerCase(); // Get the SHA and convert to lowercase
-          // Search in short message, full message, author, or SHA
-          return shortMsg.includes(lowerSearchTerm) ||
-            fullMsg.includes(lowerSearchTerm) ||
-            author.includes(lowerSearchTerm) ||
-            sha.includes(lowerSearchTerm); // Add SHA to search criteria
-        });
-      }
-
-      function updateChangelogDisplay() {
-        let currentData = [...allChangelogData]; // Start with a copy of all data
-
-        // 1. Filter the data based on the search term
-        const searchTerm = searchInput.value.trim();
-        currentData = filterChangelog(currentData, searchTerm);
-
-        // 2. Sort the filtered data
-        const sortBy = sortSelect.value;
-        currentData = sortChangelog(currentData, sortBy);
-
-        // 3. Find initial commit (oldest in allChangelogData)
-        let initialCommit = null;
-        if (allChangelogData.length > 0) {
-          initialCommit = allChangelogData.reduce((min, curr) =>
-            new Date(curr.date) < new Date(min.date) ? curr : min, allChangelogData[0]);
-        }
-
-        // 4. Render the sorted and filtered data
-        renderChangelog(currentData, initialCommit ? new Date(initialCommit.date) : null);
-
-        // 5. Update stats
-        const statsDiv = document.getElementById("changelog-stats");
-        if (statsDiv) {
-          let statsText = `Entries: ${currentData.length}`;
-          if (initialCommit) {
-            const initialDate = new Date(initialCommit.date);
-            const initialDateStr = initialDate.toLocaleString('de-DE', {
-              year: 'numeric',
-              month: '2-digit',
-              day: '2-digit',
-              hour: '2-digit',
-              minute: '2-digit',
-              second: '2-digit',
-              hour12: false
-            });
-            statsText += ` &nbsp;|&nbsp; Initial: ${initialDateStr} &nbsp;(${timeSince(initialDate)})`;
-          }
-          statsDiv.innerHTML = statsText;
-        }
-      }
-
-      function updateBadge(lastViewedDate) {
-        let newEntriesCount = 0;
-        if (allChangelogData.length > 0 && lastViewedDate) {
-          const lastViewedTime = lastViewedDate.getTime();
-          for (const entry of allChangelogData) {
-            const commitDate = new Date(entry.date);
-            if (commitDate.getTime() > lastViewedTime) {
-              newEntriesCount++;
-            } else {
-              break;
-            }
-          }
-        }
-        if (newEntriesCount > 0) {
-          changelogBadge.textContent = newEntriesCount > 99 ? '99+' : newEntriesCount;
-          changelogBadge.style.display = 'flex';
+        if (typeof supabase !== 'undefined' && typeof supabase.createClient === 'function') {
+            supabaseClientInstance = supabase.createClient(
+                'https://joeygiadleywsruuwgyv.supabase.co',
+                'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpvZXlnaWFkbGV5d3NydXV3Z3l2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTEwMjUyMjQsImV4cCI6MjA2NjYwMTIyNH0.JxybhCWIHmVx1HoBmozxcgWnIQxQk7LbXQn0DNDXZ0A'
+            );
+            window.supabase = supabaseClientInstance;
+            console.log("Supabase client initialized successfully.");
         } else {
-          changelogBadge.style.display = 'none';
+            console.error("Supabase 'createClient' function not found after CDN load. Ensure the CDN script is loaded correctly.");
         }
-      }
+    </script>
+    <script>
+        // Changelog modal logic (YOUR MAIN JS CODE FOR THE CHANGELOG)
+        document.addEventListener("DOMContentLoaded", function () {
+            var changelogIcon = document.getElementById("changelog-icon");
+            var changelogModal = document.getElementById("changelog-modal");
+            var closeChangelog = document.getElementById("close-changelog");
+            var changelogContent = document.getElementById("changelog-content");
+            var searchInput = document.getElementById("changelog-search");
+            var sortSelect = document.getElementById("changelog-sort");
+            var changelogBadge = document.getElementById("changelog-badge");
 
-      if (changelogIcon && changelogModal && closeChangelog && searchInput && sortSelect && changelogBadge) {
-        // Fetch changelog data on DOM ready
-        changelogContent.innerHTML = "<p>Loading changelog...</p>";
-        fetch('/changelog.json')
-          .then(res => {
-            if (!res.ok) {
-              throw new Error(`HTTP error! status: ${res.status}`);
+            const LAST_VIEWED_STORAGE_KEY = 'changelogLastViewed';
+
+            let allChangelogData = [];
+
+            // Mapping for file extensions to Font Awesome Icons and Colors
+            const fileIconMap = {
+                js: { icon: 'fas fa-file-code', color: '#f7df1e' }, // Yellow
+                ts: { icon: 'fas fa-file-code', color: '#3178c6' }, // Blue
+                html: { icon: 'fas fa-file-code', color: '#e34c26' }, // Orange
+                css: { icon: 'fas fa-file-code', color: '#1572b6' }, // Blue
+                scss: { icon: 'fas fa-file-code', color: '#cc6699' }, // Purple
+                json: { icon: 'fas fa-file-alt', color: '#aaa' }, // Grey
+                yaml: { icon: 'fas fa-file-alt', color: '#aaa' }, // Grey
+                yml: { icon: 'fas fa-file-alt', color: '#aaa' }, // Grey
+                md: { icon: 'fas fa-file-alt', color: '#fff' }, // White
+                png: { icon: 'fas fa-file-image', color: '#28a745' }, // Green
+                jpg: { icon: 'fas fa-file-image', color: '#28a745' }, // Green
+                jpeg: { icon: 'fas fa-file-image', color: '#28a745' }, // Green
+                gif: { icon: 'fas fa-file-image', color: '#28a745' }, // Green
+                webp: { icon: 'fas fa-file-image', color: '#28a745' }, // Green
+                svg: { icon: 'fas fa-file-image', color: '#00bcd4' }, // Teal
+                pdf: { icon: 'fas fa-file-pdf', color: '#dc3545' }, // Red
+                zip: { icon: 'fas fa-file-archive', color: '#6c757d' }, // Grey
+                tar: { icon: 'fas fa-file-archive', color: '#6c757d' }, // Grey
+                gz: { icon: 'fas fa-file-archive', color: '#6c757d' }, // Grey
+                txt: { icon: 'fas fa-file-alt', color: '#aaa' }, // Grey
+                default: { icon: 'fas fa-file', color: '#aaa' } // Default grey file icon
+            };
+
+            // Mapping for file status to Font Awesome Icons and Colors
+            const fileStatusIconMap = {
+                added: { icon: 'fas fa-plus', color: '#28a745' }, // Green +
+                modified: { icon: 'fas fa-circle-notch', color: '#ffc107' }, // Yellow ~ (using circle-notch as a wavy line)
+                removed: { icon: 'fas fa-minus', color: '#dc3545' }, // Red -
+                default: { icon: 'fas fa-file', color: '#aaa' } // Default file icon
+            };
+
+
+            function getFileIcon(filename) {
+                const parts = filename.split('.');
+                const extension = parts.length > 1 ? parts.pop().toLowerCase() : '';
+                return fileIconMap[extension] || fileIconMap.default;
             }
-            return res.json();
-          })
-          .then(data => {
-            if (Array.isArray(data)) {
-              // Filter out invisible entries
-              allChangelogData = data.filter(entry => {
-                // Exclude bot/merge as before
-                if (
-                  entry.author === 'github-actions[bot]' ||
-                  entry.message.startsWith('Merge branch \'main\'')
-                ) return false;
-                // Split message into header and description
-                const [header, ...descArr] = entry.message.split('\n');
-                const desc = descArr.join('\n').trim();
-                // Check for <invisible> or <invis> (case-insensitive) in header or desc
-                const invisRegex = /<invisible>|<invis>/i;
-                if (invisRegex.test(header) || invisRegex.test(desc)) return false;
-                return true;
-              });
-              allChangelogData.sort((a, b) => new Date(b.date) - new Date(a.date));
-              const storedTimestamp = localStorage.getItem(LAST_VIEWED_STORAGE_KEY);
-              if (!storedTimestamp) {
-                localStorage.setItem(LAST_VIEWED_STORAGE_KEY, Date.now().toString());
-              }
-              const lastViewedTimestamp = localStorage.getItem(LAST_VIEWED_STORAGE_KEY);
-              const lastViewedDate = lastViewedTimestamp ? new Date(parseInt(lastViewedTimestamp, 10)) : null;
 
-              updateBadge(lastViewedDate); // <-- Only update badge here, on page load/data load
-              updateChangelogDisplay();
+            function getFileStatusIcon(status) {
+                return fileStatusIconMap[status] || fileStatusIconMap.default;
+            }
+
+            // Helper function for formatting "time since"
+            function timeSince(date) {
+                const now = new Date();
+                let diff = Math.max(0, now - date);
+                const units = [
+                    { label: 'year', ms: 1000 * 60 * 60 * 24 * 365 },
+                    { label: 'month', ms: 1000 * 60 * 60 * 24 * 30 },
+                    { label: 'day', ms: 1000 * 60 * 60 * 24 },
+                    { label: 'hour', ms: 1000 * 60 * 60 }
+                ];
+                let result = [];
+                for (const unit of units) {
+                    const amount = Math.floor(diff / unit.ms);
+                    if (amount > 0) {
+                        result.push(`${amount} ${unit.label}${amount > 1 ? 's' : ''}`);
+                        diff -= amount * unit.ms;
+                    }
+                }
+                if (result.length === 0) return 'just now';
+                return result.join(', ') + ' ago';
+            }
+
+            function simpleMarkdown(desc) {
+                if (!desc) return '';
+                // Escape HTML special characters
+                desc = desc.replace(/[&<>]/g, function (tag) {
+                    const chars = { '&': '&amp;', '<': '&lt;', '>': '&gt;' };
+                    return chars[tag] || tag;
+                });
+
+                // --- Process color and size tags ---
+                let prev;
+                do {
+                    prev = desc;
+                    // Color: closing tag can be </color> or <color>
+                    desc = desc.replace(/&lt;color="([^"]+)"&gt;([\s\S]*?)(?:&lt;\/color&gt;|&lt;color&gt;)/gi, function (_, color, content) {
+                        return `<span style="color:${color} !important;">${content}</span>`;
+                    });
+                    // Size: closing tag can be </size> or <size>
+                    desc = desc.replace(/&lt;size="([^"]+)"&gt;([\s\S]*?)(?:&lt;\/size&gt;|&lt;size&gt;)/gi, function (_, size, content) {
+                        return `<span style="font-size:${size} !important;">${content}</span>`;
+                    });
+                } while (desc !== prev);
+
+                // Remove any remaining stray tags (if any)
+                desc = desc.replace(/&lt;\/?color(="[^"]*")?&gt;/gi, '');
+                desc = desc.replace(/&lt;\/?size(="[^"]*")?&gt;/gi, '');
+
+                // Headings: #, ##, ###
+                desc = desc.replace(/^### (.*)$/gm, '<h3>$1</h3>');
+                desc = desc.replace(/^## (.*)$/gm, '<h2>$1</h2>');
+                desc = desc.replace(/^# (.*)$/gm, '<h1>$1</h1>');
+                // Images: ![alt](url)
+                desc = desc.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, function (_, alt, src) {
+                    const altText = alt ? alt : 'image';
+                    return `<img src="${src}" alt="${altText}" title="${altText}">`;
+                });
+                // Bold: **text** or __text__
+                desc = desc.replace(/(\*\*|__)(.*?)\1/g, '<b>$2</b>');
+                // Italic: *text* or _text_
+                desc = desc.replace(/(\*|_)([^*_]+)\1/g, '<i>$2</i>');
+                // Inline-Code: `code`
+                desc = desc.replace(/`([^`]+)`/g, '<code>$1</code>');
+                // Links: [text](url)
+                desc = desc.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+                // List items: - text or * text
+                desc = desc.replace(/^(\s*)- (.*)$/gm, '$1&#8226; $2');
+                desc = desc.replace(/^(\s*)\* (.*)$/gm, '$1&#8226; $2');
+                // Numbered lists: 1. text
+                desc = desc.replace(/^(\s*)\d+\.\s+(.*)$/gm, '$1<span style="font-weight:bold;">$&</span>');
+                // Blockquotes: > text
+                desc = desc.replace(/^> (.*)$/gm, '<blockquote>$1</blockquote>');
+                // Horizontal line: --- or ***
+                desc = desc.replace(/^(---|\*\*\*)$/gm, '<hr style="border:0;border-top:1px solid #f36e21;margin:0.5em 0;">');
+                // Replace remaining newlines with <br>
+                desc = desc.replace(/\n/g, '<br>');
+                return desc;
+            }
+
+            function stripFormattingTags(text) {
+                // Removes all custom tags and HTML-escaped tags
+                return text
+                    .replace(/<color="[^"]*">/gi, '')
+                    .replace(/<size="[^"]*">/gi, '')
+                    .replace(/<\/?color>/gi, '')
+                    .replace(/<\/?size>/gi, '')
+                    .replace(/<color>/gi, '')
+                    .replace(/<size>/gi, '')
+                    .replace(/&lt;color="[^"]*"&gt;/gi, '')
+                    .replace(/&lt;size="[^"]*"&gt;/gi, '')
+                    .replace(/&lt;\/?color&gt;/gi, '')
+                    .replace(/&lt;\/?size&gt;/gi, '')
+                    .replace(/&lt;color&gt;/gi, '')
+                    .replace(/&lt;size&gt;/gi, '');
+            }
+
+            function renderChangelog(dataToRender, initialCommitDate) {
+                if (!Array.isArray(dataToRender) || dataToRender.length === 0) {
+                    changelogContent.innerHTML = "<p>No changelog entries found.</p>";
+                    return;
+                }
+
+                // Show oldest first as #1, newest as highest number
+                const sortedByDateAsc = [...dataToRender].sort((a, b) => new Date(a.date) - new Date(b.date));
+                const shaToNumber = {};
+                sortedByDateAsc.forEach((entry, idx) => {
+                    shaToNumber[entry.sha] = idx + 1;
+                });
+
+                const listHtml = dataToRender.map((entry) => {
+                    const shortMsg = entry.message.split('\n')[0];
+                    const desc = entry.message.split('\n').slice(1).join('\n').trim();
+                    // Format date in German, 24h (though "de-DE" makes it 24h, removed explicit hour12:false for brevity but kept in mind for context)
+                    const dateStr = entry.date
+                        ? new Date(entry.date).toLocaleString('en-US', { // Changed to en-US for English date format
+                            year: 'numeric',
+                            month: '2-digit',
+                            day: '2-digit',
+                            hour: '2-digit',
+                            minute: '2-digit',
+                            second: '2-digit',
+                            hour12: false // Explicitly kept for Berlin time, as per user's preference
+                        })
+                        : '';
+                    const sha = entry.sha ? entry.sha.substring(0, 7) : '';
+                    const author = entry.author ? entry.author : '';
+
+                    // Entry number (right side)
+                    const entryNumber = shaToNumber[entry.sha] || '';
+
+                    // Generate HTML for changed files - NOTE: entry.fileschanged (lowercase)
+                    const filesHtml = entry.fileschanged && Array.isArray(entry.fileschanged) && entry.fileschanged.length > 0
+                        ? entry.fileschanged.map(file => {
+                            const fileTypeInfo = getFileIcon(file.filename);
+                            const fileStatusInfo = getFileStatusIcon(file.status);
+                            const additionsHtml = file.additions > 0 ? `<span class="file-additions" style="color:#28a745;font-weight:bold;margin-left:0.8em;">+${file.additions}</span>` : '';
+                            const deletionsHtml = file.deletions > 0 ? `<span class="file-deletions" style="color:#dc3545;font-weight:bold;margin-left:0.5em;">-${file.deletions}</span>` : '';
+
+                            return `<li style="margin-bottom:0.4em; font-size:0.9em; color:#ccc; display:flex; align-items:center;">
+                                <i class="${fileStatusInfo.icon}" style="color:${fileStatusInfo.color}; margin-right:0.6em; width:1em; text-align:center;"></i>
+                                <i class="${fileTypeInfo.icon}" style="color:${fileTypeInfo.color}; margin-right:0.6em; width:1em; text-align:center;"></i>
+                                ${file.filename}
+                                ${additionsHtml}
+                                ${deletionsHtml}
+                                </li>`;
+                        }).join('')
+                        : '<li style="font-size:0.9em; color:#888;">No changed files listed.</li>';
+
+                    // --- Simple Markdown rendering for description and header ---
+                    let descHtml = '';
+                    if (desc) {
+                        descHtml = `<div class="commit-description">${simpleMarkdown(desc)}</div>`;
+                    }
+                    // Apply Markdown to the header (shortMsg)
+                    const headerHtml = `<div class="commit-message">${simpleMarkdown(shortMsg)}</div>`;
+                    // --- End Markdown rendering ---
+                    return `<li style="margin-bottom:1.5em; border-bottom:1px solid #333; padding-bottom:1.5em; position:relative;">
+                                <div class="commit-entry" style="position:relative;">
+                                    ${headerHtml}
+                                    <div class="commit-meta">${dateStr} &mdash; <span style="color:#f36e21;">${author}</span></div>
+                                    <div class="commit-sha" style="color:#f36e21;">${sha}</div>
+                                    ${descHtml}
+                                    <div class="file-details">
+                                        <details>
+                                            <summary>Changed Files:</summary>
+                                            <ul class="changed-files-list">
+                                                ${filesHtml}
+                                            </ul>
+                                        </details>
+                                    </div>
+                                    <div style="position:absolute; top:0; right:0; color:#888; font-size:1.2em; font-weight:bold; padding:0.2em 0.7em;">${entryNumber}</div>
+                                </div>
+                            </li>`;
+                }).join('');
+
+                changelogContent.innerHTML = '<ul style="list-style:none; text-align:left; padding-left:0; margin:0;">' + listHtml + '</ul>';
+            }
+
+            function sortChangelog(data, sortBy) {
+                const sortedData = [...data];
+                switch (sortBy) {
+                    case 'date-asc':
+                        sortedData.sort((a, b) => new Date(a.date) - new Date(b.date));
+                        break;
+                    case 'date-desc':
+                    default:
+                        sortedData.sort((a, b) => new Date(b.date) - new Date(a.date));
+                        break;
+                }
+                return sortedData;
+            }
+
+            function filterChangelog(data, searchTerm) {
+                if (!searchTerm) {
+                    return data;
+                }
+                const lowerSearchTerm = searchTerm.toLowerCase();
+                return data.filter(entry => {
+                    const shortMsg = entry.message.split('\n')[0].toLowerCase();
+                    const fullMsg = entry.message.toLowerCase();
+                    const author = entry.author.toLowerCase();
+                    const sha = entry.sha.toLowerCase();
+                    return shortMsg.includes(lowerSearchTerm) ||
+                        fullMsg.includes(lowerSearchTerm) ||
+                        author.includes(lowerSearchTerm) ||
+                        sha.includes(lowerSearchTerm);
+                });
+            }
+
+            function updateChangelogDisplay() {
+                let currentData = [...allChangelogData];
+
+                // 1. Filter data
+                const searchTerm = searchInput.value.trim();
+                currentData = filterChangelog(currentData, searchTerm);
+
+                // 2. Sort filtered data
+                const sortBy = sortSelect.value;
+                currentData = sortChangelog(currentData, sortBy);
+
+                // 3. Find the first commit (oldest in allChangelogData)
+                let initialCommit = null;
+                if (allChangelogData.length > 0) {
+                    initialCommit = allChangelogData.reduce((min, curr) =>
+                        new Date(curr.date) < new Date(min.date) ? curr : min, allChangelogData[0]);
+                }
+
+                // 4. Render sorted and filtered data
+                renderChangelog(currentData, initialCommit ? new Date(initialCommit.date) : null);
+
+                // 5. Update statistics
+                const statsDiv = document.getElementById("changelog-stats");
+                if (statsDiv) {
+                    let statsText = `Entries: ${currentData.length}`;
+                    if (initialCommit) {
+                        const initialDate = new Date(initialCommit.date);
+                        const initialDateStr = initialDate.toLocaleString('en-US', {
+                            year: 'numeric',
+                            month: '2-digit',
+                            day: '2-digit',
+                            hour: '2-digit',
+                            minute: '2-digit',
+                            second: '2-digit',
+                            hour12: false
+                        });
+                        statsText += ` &nbsp;|&nbsp; Initial: ${initialDateStr} &nbsp;(${timeSince(initialDate)})`;
+                    }
+                    statsDiv.innerHTML = statsText;
+                }
+            }
+
+            function updateBadge(lastViewedDate) {
+                let newEntriesCount = 0;
+                if (allChangelogData.length > 0 && lastViewedDate) {
+                    const lastViewedTime = lastViewedDate.getTime();
+                    // allChangelogData is already sorted from newest to oldest
+                    for (const entry of allChangelogData) {
+                        const commitDate = new Date(entry.date);
+                        if (commitDate.getTime() > lastViewedTime) {
+                            newEntriesCount++;
+                        } else {
+                            break; // Stop counting once we reach an old entry
+                        }
+                    }
+                }
+                if (newEntriesCount > 0) {
+                    changelogBadge.textContent = newEntriesCount > 99 ? '99+' : newEntriesCount;
+                    changelogBadge.style.display = 'flex';
+                } else {
+                    changelogBadge.style.display = 'none';
+                }
+            }
+
+            if (changelogIcon && changelogModal && closeChangelog && searchInput && sortSelect && changelogBadge) {
+                changelogContent.innerHTML = "<p>Loading Changelog...</p>";
+                // Supabase Integration
+                (async function () {
+                    try {
+                        if (window.supabase && typeof window.supabase.from === 'function') {
+                            const { data, error } = await window.supabase
+                                .from('changelog')
+                                .select('*')
+                                .order('date', { ascending: false });
+
+                            if (error) {
+                                console.error("Error loading changelog from Supabase:", error);
+                                changelogContent.innerHTML = "<p>Changelog could not be loaded from Supabase. Please check your Supabase RLS policies and table schema. " + error.message + "</p>";
+                            } else if (Array.isArray(data) && data.length > 0) {
+                                allChangelogData = data.filter(entry => {
+                                    if (
+                                        entry.author === 'github-actions[bot]' ||
+                                        entry.message.startsWith('Merge branch \'main\'')
+                                    ) return false;
+                                    const [header, ...descArr] = entry.message.split('\n');
+                                    const desc = descArr.join('\n').trim();
+                                    const invisRegex = /<invisible>|<invis>/i;
+                                    if (invisRegex.test(header) || invisRegex.test(desc)) return false;
+                                    return true;
+                                });
+
+                                allChangelogData.sort((a, b) => new Date(b.date) - new Date(a.date));
+                                if (allChangelogData.length === 0) {
+                                    changelogContent.innerHTML = "<p>No changelog entries found after filtering.</p>";
+                                }
+                            } else {
+                                changelogContent.innerHTML = "<p>No changelog entries found in Supabase.</p>";
+                            }
+                        } else {
+                            console.error("Supabase client is not properly initialized.");
+                            changelogContent.innerHTML = "<p>Supabase client not ready. Please ensure the Supabase CDN is loaded and the client is initialized correctly.</p>";
+                        }
+
+                        // Common logic after data loading
+                        const storedTimestamp = localStorage.getItem(LAST_VIEWED_STORAGE_KEY);
+                        if (!storedTimestamp) {
+                            localStorage.setItem(LAST_VIEWED_STORAGE_KEY, Date.now().toString());
+                        }
+                        const lastViewedTimestamp = localStorage.getItem(LAST_VIEWED_STORAGE_KEY);
+                        const lastViewedDate = lastViewedTimestamp ? new Date(parseInt(lastViewedTimestamp, 10)) : null;
+
+                        updateBadge(lastViewedDate);
+                        updateChangelogDisplay();
+
+                    } catch (error) {
+                        console.error("Critical error loading changelog:", error);
+                        changelogContent.innerHTML = "<p>A critical error occurred while loading the changelog: " + error.message + "</p>";
+                        updateChangelogDisplay();
+                    }
+                })();
+
+                changelogIcon.onclick = function () {
+                    changelogModal.style.display = "flex";
+                    localStorage.setItem(LAST_VIEWED_STORAGE_KEY, Date.now().toString());
+                    changelogBadge.style.display = 'none'; // Hide badge when modal is opened
+                    updateChangelogDisplay(); // Re-render to show the latest data
+                };
+
+                closeChangelog.onclick = function () {
+                    changelogModal.style.display = "none";
+                };
+
+                changelogModal.addEventListener("click", function (e) {
+                    if (e.target === changelogModal) {
+                        changelogModal.style.display = "none";
+                    }
+                });
+
+                searchInput.addEventListener("input", updateChangelogDisplay);
+                sortSelect.addEventListener("change", updateChangelogDisplay);
+
             } else {
-              changelogContent.innerHTML = "<p>Invalid changelog data format.</p>";
+                console.error("Changelog modal elements not found. Changelog functionality cannot be initialized.");
+                changelogContent.innerHTML = "<p>Error: Changelog elements missing. Functionality cannot be initialized.</p>";
             }
-          })
-          .catch((error) => {
-            console.error("Error loading changelog:", error);
-            changelogContent.innerHTML = "<p>Could not load changelog.json.</p>";
-          });
-
-        changelogIcon.onclick = function () {
-          changelogModal.style.display = "flex";
-          localStorage.setItem(LAST_VIEWED_STORAGE_KEY, Date.now().toString());
-          changelogBadge.style.display = 'none';
-          updateChangelogDisplay();
-        };
-
-        closeChangelog.onclick = function () {
-          changelogModal.style.display = "none";
-          // Do NOT updateBadge here!
-        };
-
-        changelogModal.addEventListener("click", function (e) {
-          if (e.target === changelogModal) {
-            changelogModal.style.display = "none";
-            // Do NOT updateBadge here!
-          }
         });
-
-        searchInput.addEventListener("input", updateChangelogDisplay);
-        sortSelect.addEventListener("change", updateChangelogDisplay);
-
-      } else {
-        console.error("Changelog modal elements not found.");
-      }
-
-      // Remove any test code that sets changelogBadge.textContent directly here!
-    });
-  </script>
+    </script>
 </body>
 
 </html>
