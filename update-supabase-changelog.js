@@ -105,12 +105,19 @@ async function fetchCommitDetails(sha, headers) {
       try {
         const commitDetails = await fetchCommitDetails(commitSummary.sha, githubHeaders);
 
+        // Debug-Log: Überprüfe den Inhalt von commitDetails.files
+        console.log(`Commit ${commitDetails.sha} - raw files:`, commitDetails.files);
+
+
         const filesChanged = commitDetails.files ? commitDetails.files.map(file => ({
           filename: file.filename,
           status: file.status,
           additions: file.additions,
           deletions: file.deletions
         })) : [];
+
+        // Debug-Log: Überprüfe den Inhalt des filesChanged Arrays
+        console.log(`Commit ${commitDetails.sha} - processed filesChanged:`, filesChanged);
 
         commitsToUpsert.push({
           sha: commitDetails.sha,
