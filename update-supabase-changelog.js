@@ -98,10 +98,25 @@ async function fetchCommitDetails(sha, headers) {
     );
     console.log(`Abgerufen: ${commitsSummary.length} Commits-Zusammenfassungen.`);
 
+    // NEU: Vorhandene SHAs aus Supabase abrufen
+    console.log('Vorhandene SHAs aus Supabase abrufen...');
+    const { data: existingRows, error: fetchShaError } = await supabase
+      .from('changelog')
+      .select('sha');
+    if (fetchShaError) {
+      throw fetchShaError;
+    }
+    const existingShas = new Set((existingRows || []).map(row => row.sha));
+    console.log(`Gefundene vorhandene SHAs: ${existingShas.size}`);
+
     const commitsToUpsert = [];
 
     console.log('2. Details für jeden Commit abrufen und vorbereiten...');
     for (const commitSummary of commitsSummary) {
+      // Nur neue SHAs verarbeiten
+      if (existingShas.has(commitSummary.sha)) {
+        continue;
+      }
       try {
         const commitDetails = await fetchCommitDetails(commitSummary.sha, githubHeaders);
 
