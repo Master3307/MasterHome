@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>MasterSearch</title>
+    <link rel="stylesheet" href="/assets/style.css" />
+    <script src="/assets/script.js" defer></script>
+    <link rel="icon" href="/assets/media/MT.webp" type="image/webp" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="/assets/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Modal fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+    /* --- App Menu Modal Styles --- */
+
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background: var(--main-bg);
+        min-height: 100vh;
+        color: var(--main-text);
+        font-family: 'Roboto', Arial, sans-serif;
+        overflow-x: hidden;
+    }
+    body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        background: var(--main-bg-gradient, var(--main-bg));
+    }
+    main {
+        flex: 1 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 80vh;
+    }
+    .header {
+        background: none;
+        box-shadow: none;
+        border: none;
+        margin-bottom: 0;
+    }
+    .footer {
+        background: none;
+        color: #aaa;
+        text-align: center;
+        font-size: 1em;
+        padding: 14em 0 2.5em 0; /* Even more top padding for lower footer */
+        border: none;
+        box-shadow: none;
+    }
+    .footer a {
+        color: #a8c7fa;
+        text-decoration: underline;
+        margin: 0 0.3em;
+        font-size: 1em;
+    }
+    .footer i {
+        color: #f36e21;
+    }
+    .what {
+        background: none;
+        box-shadow: none;
+        border: none;
+        margin-bottom: 0.5em;
+    }
+    .what img {
+        max-width: 160px;
+        margin-bottom: 1.2em;
+        border-radius: 16px;
+        box-shadow: 0 4px 32px #0005;
+    }
+    .what-text {
+        background: var(--main-bg-tertiary);
+        border-radius: 18px;
+        box-shadow: 0 8px 32px 0 rgba(0,0,0,0.25);
+        border: 1.5px solid rgba(255,255,255,0.08);
+        padding: 1.2em 2em;
+        margin: 0 auto;
+        max-width: 520px;
+        color: var(--main-text);
+        -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px);
+    }
+    .title-with-icon {
+        margin-top: 2.5em;
+        margin-bottom: 1.2em;
+        font-size: 2.2em;
+        font-weight: 600;
+        letter-spacing: 0.01em;
+        color: var(--main-text);
+        text-shadow: 0 2px 12px #0005;
+    }
+    .title-text {
+        color: var(--main-header-color) !important;
+        font-weight: 700;
+        letter-spacing: 0.01em;
+    }
+    #search-bar-row {
+        margin-bottom: 0 !important;
+        width: 100%;
+        max-width: 400px;
+        position: relative;
+        z-index: 21;
+        justify-content: center;
+        /* Add transition for width */
+        transition: max-width 0.35s cubic-bezier(.4,1.4,.6,1), width 0.35s cubic-bezier(.4,1.4,.6,1);
+    }
+    #search-bar-row.expand {
+        max-width: 600px;
+    }
+    #search-bar-row.shrink {
+        max-width: 400px;
+    }
+    #search-input {
+        flex: 3;
+        padding: 0.9em 1.2em;
+        font-size: 1.18em;
+        border-radius: 12px 0 0 12px;
+        border: none;
+        background: var(--main-bg-accent);
+        color: var(--main-text);
+        outline: none;
+        box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
+        transition: background 0.2s, box-shadow 0.2s, width 0.35s cubic-bezier(.4,1.4,.6,1);
+        width: 100%;
+        min-width: 0;
+    }
+    #search-input:focus {
+        background: #23272b;
+        box-shadow: 0 4px 16px #0008;
+    }
+    #search-btn {
+        padding: 0.9em 1.4em;
+        border-radius: 0 12px 12px 0;
+        border: none;
+        background: var(--button-pulse2);
+        color: #fff;
+        font-size: 1.18em;
+        cursor: pointer;
+        box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
+        transition: background 0.2s, box-shadow 0.2s;
+    }
+    #search-btn:hover {
+        background: var(--button-pulse1);
+        color: #fff;
+        box-shadow: 0 4px 16px #0008;
+    }
+    /* Recent searches bar: hidden by default, shown on focus */
+    #recent-searches-bar {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 0.25s cubic-bezier(.4,1.4,.6,1), visibility 0.25s;
+    }
+    #search-bar-row.focused #recent-searches-bar {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transition-delay: 0.05s;
+    }
+    #recent-searches-bar {
+        border-radius: 0 0 12px 12px;
+        border: none !important;
+        box-shadow: 0 8px 32px 0 rgba(0,0,0,0.18);
+        background: transparent !important;
+        transition: box-shadow 0.2s;
+        overflow: hidden;
+        margin-top: -2px;
+        max-height: 24em;
+        overflow-y: auto;
+    }
+    .recent-search-item {
+        display: flex;
+        align-items: center;
+        padding: 0.7em 1.1em;
+        cursor: pointer;
+        position: relative;
+        background: transparent !important;
+        color: var(--main-text);
+        font-size: 1.08em;
+        border-radius: 0;
+        transition: background 0.18s;
+    }
+    .recent-search-item:hover {
+        background: var(--main-bg-tertiary);
+    }
+    .recent-search-item:not(:last-child)::after {
+        content: "";
+        display: block;
+        position: absolute;
+        left: 0.7em;
+        right: 0.7em;
+        bottom: 0;
+        height: 2px;
+        background: linear-gradient(
+            to right,
+            rgba(255,255,255,0.10) 0%,
+            rgba(255,255,255,0.22) 50%,
+            rgba(255,255,255,0.10) 100%
+        );
+        pointer-events: none;
+    }
+    .recent-search-item i {
+        color: var(--button-pulse2);
+    }
+    .recent-search-item .remove-recent-btn {
+        background: none;
+        border: none;
+        color: #888;
+        font-size: 1.1em;
+        cursor: pointer;
+        margin-left: 0.7em;
+        transition: color 0.18s;
+    }
+    .recent-search-item .remove-recent-btn:hover {
+        color: #ff4b4b;
+    }
+    /* App menu modal and grid (unchanged) */
+    .menu-container {
+        position: fixed;
+        top: 24px;
+        right: 24px;
+        z-index: 2000;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+    .nine-dot-button {
+        background: #23272b;
+        border: none;
+        border-radius: 50%;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 2px 8px #0003;
+        margin-bottom: 8px;
+        transition: background 0.2s;
+    }
+    .nine-dot-button:hover {
+        background: #2d3846;
+    }
+    .nine-dot-icon {
+        display: grid;
+        grid-template-columns: repeat(3, 6px);
+        grid-template-rows: repeat(3, 6px);
+        gap: 4px;
+    }
+    .nine-dot-dot {
+        width: 6px;
+        height: 6px;
+        background: #a8c7fa;
+        border-radius: 50%;
+        display: inline-block;
+    }
+    .app-menu {
+        display: none;
+        background-color: #1b1b1b;
+        border-radius: 8px;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.25), 0 1px 3px rgba(0,0,0,0.3);
+        width: 320px;
+        padding: 16px;
+        box-sizing: border-box;
+        font-family: 'Roboto', Arial, sans-serif;
+        animation: fadeIn 0.3s;
+        position: relative;
+        z-index: 2001;
+    }
+    .app-menu.open {
+        display: block;
+    }
+    .app-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #5f6368;
+        margin-bottom: 10px;
+    }
+    .app-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 6px 0 2px 0;
+        border-radius: 8px;
+        text-decoration: none;
+        color: #e3e3e3;
+        transition: background-color 0.3s;
+        min-width: 0;
+        min-height: 0;
+        box-sizing: border-box;
+        font-family: 'Roboto', Arial, sans-serif;
+    }
+    .app-item:hover {
+        background-color: #282a2c;
+    }
+    .app-item .material-icons {
+        font-size: 32px;
+        width: 48px;
+        height: 48px;
+        margin-bottom: 4px;
+        color: #a8c7fa;
+        background: #23272b;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: none;
+        transition: background 0.2s;
+    }
+    .app-item:hover .material-icons {
+        background: #2d3846;
+    }
+    .app-item span {
+        font-size: 13px;
+        line-height: 18px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 100%;
+        margin-top: 0;
+        margin-bottom: 0;
+        font-weight: 400;
+    }
+    .more-apps-button {
+        display: block;
+        width: calc(100% - 32px);
+        padding: 10px 24px;
+        border-radius: 100px;
+        border: 1px solid #8e918f;
+        background: none;
+        color: #a8c7fa;
+        font-size: 14px;
+        font-weight: 500;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+    .more-apps-button:hover {
+        background-color: rgba(168, 199, 250, 0.08);
+        border-color: #a8c7fa;
+    }
+    .more-apps-button:focus-visible {
+        box-shadow: 0 0 0 2px rgba(168, 199, 250, 0.5);
+        outline: none;
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    /* Modal overlay for app menu */
+    .app-menu-overlay {
+        display: none;
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: transparent;
+        z-index: 2000;
+    }
+    .app-menu.open ~ .app-menu-overlay {
+        display: block;
+    }
+    .provider-option.selected,
+    .provider-option:hover {
+        background: #333;
+        color: #f36e21;
+        font-weight: bold;
+    }
+    .provider-label {
+        font-size: 1.08em;
+        letter-spacing: 0.01em;
+    }
+    @media (max-width: 500px) {
+        .app-menu { width: 98vw; min-width: 0; padding: 8px; }
+        .menu-container { right: 2vw; top: 8px; }
+    }
+    @media (max-width: 600px) {
+        #provider-list {
+            width: 98vw !important;
+            left: 1vw !important;
+            right: auto !important;
+            top: 60px !important;
+        }
+    }
+    #search-bar-row {
+        margin-bottom: 0 !important;
+    }
+    #recent-searches-bar {
+        border-radius: 0 0 8px 8px;
+        border-top: none;
+        box-shadow: none;
+        background: transparent !important;
+        transition: box-shadow 0.2s;
+        overflow: hidden;
+        border-left: none !important;
+        border-right: none !important;
+        border-bottom: none !important;
+    }
+    .recent-search-item {
+        display: flex;
+        align-items: center;
+        padding: 0.7em 1em;
+        cursor: pointer;
+        position: relative;
+        background: transparent !important;
+    }
+    .recent-search-item:hover {
+        background: var(--main-bg-tertiary, #292929);
+    }
+    .recent-search-item:not(:last-child)::after {
+        content: "";
+        display: block;
+        position: absolute;
+        left: 0.7em;
+        right: 0.7em;
+        bottom: 0;
+        height: 2px;
+        background: linear-gradient(
+            to right,
+            rgba(255,255,255,0.10) 0%,
+            rgba(255,255,255,0.22) 50%,
+            rgba(255,255,255,0.10) 100%
+        );
+        pointer-events: none;
+    }
+    </style>
+</head>
+<body>
+    <header class="header" style="position:relative;">
+        <a href="/home/" aria-label="Back to Home" style="position:absolute; left:16px; top:16px; color:#f36e21; font-size:1.7em; z-index:10;">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+        <h1 class="title-with-icon" style="text-align:center;">
+            <span class="title-text" style="color:var(--main-header-color, orangered) !important;">
+                MasterSearch
+            </span>
+        </h1>
+    </header>
+    <main>
+        <section class="what" style="text-align:center;">
+            <img src="/assets/media/M437.webp" alt="Master-Tech-Logo" style="max-width:180px;" />
+            <div class="what-text">
+                <h2 style="text-align:center;">What you see here:</h2>
+                <p>
+                    This is a for me personalized search site inspired by "google.com"<br />
+                    I liked the menu in the top right and kind of the simplicity of the page.<br />
+                    So I made my own version of it!<br />
+                </p>
+            </div>
+        </section>
+        <section style="display:flex; flex-direction:column; align-items:center; margin:2em 0;">
+            <div id="search-bar-row" class="shrink">
+                <!-- Custom provider dropdown (icon only, dropdown left of input/button) -->
+                <div style="display:flex; flex-direction:row; align-items:center; gap:0.5em; width:100%;">
+                    <div id="provider-dropdown" style="position:relative; min-width:48px; max-width:48px;">
+                        <button id="provider-btn" type="button" title="Select search provider" aria-label="Select search provider" style="width:48px; height:48px; display:flex; align-items:center; justify-content:center; padding:0; border-radius:8px; border:1px solid #333; background:#232323; color:#fff; font-size:1.5em; cursor:pointer;"><span id="provider-btn-icon" style="display:flex; align-items:center;"></span>
+                                <i class="fab fa-google"></i>
+                            </span>
+                        </button>
+                        <!-- Dropdown list: full width, overlays footer, scrollable if needed, positioned left of input -->
+                        <div id="provider-list" style="display:none; position:fixed; left:calc(50vw - 200px); top:calc(50vh - 180px); width:400px; max-width:96vw; max-height:80vh; overflow-y:auto; background:#232323; border:1px solid #333; border-radius:12px; box-shadow:0 8px 32px #000a; z-index:3000;">
+                            <div class="provider-option" data-provider="google" style="display:flex; align-items:center; padding:0.8em 1.2em; cursor:pointer;">
+                                <i class="fab fa-google" style="margin-right:1em; width:24px; font-size:1.4em;"></i>
+                                <span class="provider-label">Google</span>
+                            </div>
+                            <div class="provider-option" data-provider="brave" style="display:flex; align-items:center; padding:0.8em 1.2em; cursor:pointer;">
+                                <i class="fas fa-fire" style="margin-right:1em; width:24px; font-size:1.4em;"></i>
+                                <span class="provider-label">Brave</span>
+                            </div>
+                            <div class="provider-option" data-provider="duckduckgo" style="display:flex; align-items:center; padding:0.8em 1.2em; cursor:pointer;">
+                                <i class="fas fa-feather" style="margin-right:1em; width:24px; font-size:1.4em;"></i>
+                                <span class="provider-label">DuckDuckGo</span>
+                            </div>
+                            <div class="provider-option" data-provider="bing" style="display:flex; align-items:center; padding:0.8em 1.2em; cursor:pointer;">
+                                <i class="fab fa-microsoft" style="margin-right:1em; width:24px; font-size:1.4em;"></i>
+                                <span class="provider-label">Bing</span>
+                            </div>
+                            <div class="provider-option" data-provider="yahoo" style="display:flex; align-items:center; padding:0.8em 1.2em; cursor:pointer;">
+                                <i class="fab fa-yahoo" style="margin-right:1em; width:24px; font-size:1.4em;"></i>
+                                <span class="provider-label">Yahoo</span>
+                            </div>
+                            <div class="provider-option" data-provider="yandex" style="display:flex; align-items:center; padding:0.8em 1.2em; cursor:pointer;">
+                                <i class="fab fa-yandex" style="margin-right:1em; width:24px; font-size:1.4em;"></i>
+                                <span class="provider-label">Yandex</span>
+                            </div>
+                            <div class="provider-option" data-provider="startpage" style="display:flex; align-items:center; padding:0.8em 1.2em; cursor:pointer;">
+                                <i class="fas fa-user-secret" style="margin-right:1em; width:24px; font-size:1.4em;"></i>
+                                <span class="provider-label">Startpage</span>
+                            </div>
+                            <div class="provider-option" data-provider="ecosia" style="display:flex; align-items:center; padding:0.8em 1.2em; cursor:pointer;">
+                                <i class="fas fa-leaf" style="margin-right:1em; width:24px; font-size:1.4em;"></i>
+                                <span class="provider-label">Ecosia</span>
+                            </div>
+                            <div class="provider-option" data-provider="qwant" style="display:flex; align-items:center; padding:0.8em 1.2em; cursor:pointer;">
+                                <i class="fas fa-globe" style="margin-right:1em; width:24px; font-size:1.4em;"></i>
+                                <span class="provider-label">Qwant</span>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="text" id="search-input" placeholder="Type your search..." style="flex:3; padding:0.7em 1em; font-size:1.1em; border-radius:8px 0 0 8px; border:1px solid #333; border-right:none; background:#232323; color:#fff; outline:none;" autofocus />
+                    <button id="search-btn" title="Search" aria-label="Search" style="padding:0.7em 1.2em; border-radius:0 8px 8px 0; border:none; background:#f36e21; color:#fff; font-size:1.1em; cursor:pointer;">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <!-- Recent searches bar, merged under input, always visible -->
+                <div id="recent-searches-bar" style="position:absolute; left:0; top:100%; width:100%; background:#232323; border:1px solid #333; border-top:none; border-radius:0 0 8px 8px; box-shadow:0 4px 16px #000a; z-index:20; display:block; transition:box-shadow 0.2s;">
+                    <!-- Recent searches will be injected here -->
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <p>Made with <i class="fas fa-heart"></i> by Master3307</p>
+        <a href="https://www.iubenda.com/privacy-policy/11473542"
+            class="no-brand iubenda-black iubenda-noiframe iubenda-embed iubenda-noiframe" title="Privacy Policy">Privacy Policy</a>
+        |
+        <a href="https://www.iubenda.com/terms-and-conditions/11473542"
+            class="no-brand iubenda-black iubenda-noiframe iubenda-embed iubenda-noiframe" title="Terms and Conditions">Terms and Conditions</a>
+        |
+        <a href="https://www.iubenda.com/privacy-policy/11473542/cookie-policy"
+            class="no-brand iubenda-black iubenda-noiframe iubenda-embed iubenda-noiframe" title="Cookie Policy">Cookie Policy</a>
+    </footer>
+    <!-- App Menu Modal (top right) with 9-dot button -->
+    <div class="menu-container">
+        <button class="nine-dot-button" id="openAppMenu" aria-label="Open app menu">
+            <span class="nine-dot-icon">
+                <span class="nine-dot-dot"></span>
+                <span class="nine-dot-dot"></span>
+                <span class="nine-dot-dot"></span>
+                <span class="nine-dot-dot"></span>
+                <span class="nine-dot-dot"></span>
+                <span class="nine-dot-dot"></span>
+                <span class="nine-dot-dot"></span>
+                <span class="nine-dot-dot"></span>
+                <span class="nine-dot-dot"></span>
+            </span>
+        </button>
+        <div class="app-menu" id="appMenu">
+            <div class="app-grid">
+                <a href="https://master3307.netlify.app/" target="_blank" rel="noopener" class="app-item app-link">
+                    <span class="material-icons">home</span>
+                    <span>MasterHome</span>
+                </a>
+                <a href="https://mail.google.com/" target="_blank" rel="noopener" class="app-item app-link">
+                    <span class="material-icons">mail</span>
+                    <span>Mail</span>
+                </a>
+                <a href="https://drive.google.com/" target="_blank" rel="noopener" class="app-item app-link">
+                    <span class="material-icons">cloud_queue</span>
+                    <span>Drive</span>
+                </a>
+                <a href="https://calendar.google.com/" target="_blank" rel="noopener" class="app-item app-link">
+                    <span class="material-icons">calendar_today</span>
+                    <span>Calendar</span>
+                </a>
+                <a href="https://docs.google.com/document/u/0/" target="_blank" rel="noopener" class="app-item app-link">
+                    <span class="material-icons">article</span>
+                    <span>Docs</span>
+                </a>
+                <a href="https://docs.google.com/spreadsheets/u/0/" target="_blank" rel="noopener" class="app-item app-link">
+                    <span class="material-icons">grid_on</span>
+                    <span>Sheets</span>
+                </a>
+                <a href="https://docs.google.com/presentation/u/0/" target="_blank" rel="noopener" class="app-item app-link">
+                    <span class="material-icons">slideshow</span>
+                    <span>Slides</span>
+                </a>
+                <a href="https://meet.google.com/" target="_blank" rel="noopener" class="app-item app-link">
+                    <span class="material-icons">videocam</span>
+                    <span>Meet</span>
+                </a>
+                <a href="https://chat.google.com/" target="_blank" rel="noopener" class="app-item app-link">
+                    <span class="material-icons">chat</span>
+                    <span>Chat</span>
+                </a>
+                <a href="https://contacts.google.com/" target="_blank" rel="noopener" class="app-item app-link">
+                    <span class="material-icons">contacts</span>
+                    <span>Contacts</span>
+                </a>
+                <a href="https://keep.google.com/" target="_blank" rel="noopener" class="app-item app-link">
+                    <span class="material-icons">lightbulb_outline</span>
+                    <span>Keep</span>
+                </a>
+                <a href="https://photos.google.com/" target="_blank" rel="noopener" class="app-item app-link">
+                    <span class="material-icons">photo</span>
+                    <span>Photos</span>
+                </a>
+                <a href="https://maps.google.com/" target="_blank" rel="noopener" class="app-item app-link">
+                    <span class="material-icons">map</span>
+                    <span>Maps</span>
+                </a>
+                <a href="https://www.youtube.com/" target="_blank" rel="noopener" class="app-item app-link">
+                    <span class="material-icons">play_circle_filled</span>
+                    <span>YouTube</span>
+                </a>
+                <a href="https://news.google.com/" target="_blank" rel="noopener" class="app-item app-link">
+                    <span class="material-icons">feed</span>
+                    <span>News</span>
+                </a>
+                <a href="https://shopping.google.com/" target="_blank" rel="noopener" class="app-item app-link">
+                    <span class="material-icons">shopping_cart</span>
+                    <span>Shopping</span>
+                </a>
+                <a href="https://translate.google.com/" target="_blank" rel="noopener" class="app-item app-link">
+                    <span class="material-icons">translate</span>
+                    <span>Translate</span>
+                </a>
+                <a href="https://gemini.google.com/" target="_blank" rel="noopener" class="app-item app-link">
+                    <span class="material-icons">auto_awesome</span>
+                    <span>Gemini</span>
+                </a>
+                <a href="https://sites.google.com/" target="_blank" rel="noopener" class="app-item app-link">
+                    <span class="material-icons">web</span>
+                    <span>Sites</span>
+                </a>
+                <a href="https://books.google.com/" target="_blank" rel="noopener" class="app-item app-link">
+                    <span class="material-icons">book</span>
+                    <span>Books</span>
+                </a>
+            </div>
+            <a href="https://master3307.netlify.app/admin" target="_blank" rel="noopener" class="more-apps-button" style="margin-top:8px;">Admin Panel</a>
+        </div>
+        <div class="app-menu-overlay" id="appMenuOverlay"></div>
+    </div>
+    <script>
+        // Simple search placeholder logic
+        document.addEventListener("DOMContentLoaded", function () {
+            const input = document.getElementById("search-input");
+            const searchBarRow = document.getElementById("search-bar-row");
+            const recentBar = document.getElementById("recent-searches-bar");
+            // --- custom provider dropdown logic ---
+            const providerBtn = document.getElementById("provider-btn");
+            const providerList = document.getElementById("provider-list");
+            const providerBtnIcon = document.getElementById("provider-btn-icon");
+            let currentProvider = "google";
+            const providerMeta = {
+                google:     { label: "Google", icon: '<i class="fab fa-google"></i>' },
+                brave:      { label: "Brave", icon: '<i class="fas fa-fire"></i>' },
+                duckduckgo: { label: "DuckDuckGo", icon: '<i class="fas fa-feather"></i>' },
+                bing:       { label: "Bing", icon: '<i class="fab fa-microsoft"></i>' },
+                yahoo:      { label: "Yahoo", icon: '<i class="fab fa-yahoo"></i>' },
+                yandex:     { label: "Yandex", icon: '<i class="fab fa-yandex"></i>' },
+                startpage:  { label: "Startpage", icon: '<i class="fas fa-user-secret"></i>' },
+                ecosia:     { label: "Ecosia", icon: '<i class="fas fa-leaf"></i>' },
+                qwant:      { label: "Qwant", icon: '<i class="fas fa-globe"></i>' }
+            };
+            // Map provider to search URL (replace {q} with encoded query)
+            const searchUrls = {
+                google:     "https://www.google.com/search?q={q}",
+                brave:      "https://search.brave.com/search?q={q}",
+                duckduckgo: "https://duckduckgo.com/?q={q}",
+                bing:       "https://www.bing.com/search?q={q}",
+                yahoo:      "https://search.yahoo.com/search?p={q}",
+                yandex:     "https://yandex.com/search/?text={q}",
+                startpage:  "https://www.startpage.com/do/dsearch?query={q}",
+                ecosia:     "https://www.ecosia.org/search?q={q}",
+                qwant:      "https://www.qwant.com/?q={q}"
+            };
+
+            function setProvider(provider) {
+                currentProvider = provider;
+                providerBtnIcon.innerHTML = providerMeta[provider].icon;
+                // Highlight selected in dropdown
+                document.querySelectorAll('.provider-option').forEach(function(opt) {
+                    if (opt.getAttribute("data-provider") === provider) {
+                        opt.classList.add("selected");
+                    } else {
+                        opt.classList.remove("selected");
+                    }
+                });
+                providerList.style.display = "none";
+                updateResults();
+            }
+
+            providerBtn.addEventListener("click", function(e) {
+                e.stopPropagation();
+                // Position dropdown in center of viewport, overlaying footer if needed
+                providerList.style.display = "block";
+                // Highlight current
+                document.querySelectorAll('.provider-option').forEach(function(opt) {
+                    if (opt.getAttribute("data-provider") === currentProvider) {
+                        opt.classList.add("selected");
+                    } else {
+                        opt.classList.remove("selected");
+                    }
+                });
+            });
+            document.querySelectorAll('.provider-option').forEach(function(opt) {
+                opt.addEventListener("click", function(e) {
+                    setProvider(opt.getAttribute("data-provider"));
+                });
+            });
+            document.addEventListener("click", function(e) {
+                if (providerList.style.display === "block") {
+                    providerList.style.display = "none";
+                }
+            });
+
+            // --- FOCUS/BLUR logic for recent bar and search bar width ---
+            function expandSearchBar() {
+                searchBarRow.classList.remove('shrink');
+                searchBarRow.classList.add('expand', 'focused');
+            }
+            function shrinkSearchBar() {
+                searchBarRow.classList.remove('expand', 'focused');
+                searchBarRow.classList.add('shrink');
+            }
+            input.addEventListener('focus', function() {
+                expandSearchBar();
+            });
+            input.addEventListener('blur', function(e) {
+                setTimeout(() => {
+                    if (!recentBar.matches(':hover')) {
+                        shrinkSearchBar();
+                    }
+                }, 120);
+            });
+            recentBar.addEventListener('mousedown', function(e) {
+                e.preventDefault();
+                input.focus();
+            });
+
+            const RECENT_KEY = "mastersearch_recent";
+            const MAX_RECENT = 10;
+
+            function getRecentSearches() {
+                try {
+                    const arr = JSON.parse(localStorage.getItem(RECENT_KEY));
+                    return Array.isArray(arr) ? arr : [];
+                } catch {
+                    return [];
+                }
+            }
+            function saveRecentSearch(query) {
+                if (!query) return;
+                let recents = getRecentSearches();
+                recents = recents.filter(q => q !== query);
+                recents.unshift(query);
+                // Only keep the most recent MAX_RECENT items
+                while (recents.length > MAX_RECENT) recents.pop();
+                localStorage.setItem(RECENT_KEY, JSON.stringify(recents));
+            }
+            function renderRecentBar() {
+                const recents = getRecentSearches();
+                const maxToShow = MAX_RECENT;
+                if (!recents.length) {
+                    recentBar.innerHTML = '<div style="color:#888; padding:0.7em 1em; text-align:left;"><i class="fas fa-history" style="margin-right:0.7em;"></i>No recent searches</div>';
+                    return;
+                }
+                recentBar.innerHTML = recents.slice(0, maxToShow).map(q =>
+                    `<div class="recent-search-item" style="display:flex; align-items:center; padding:0.7em 1em; cursor:pointer; border-bottom:1px solid #292929;">
+                        <i class="fas fa-history" style="margin-right:0.7em; color:#f36e21;"></i>
+                        <span style="flex:1; color:#fff;">${q.replace(/</g,"&lt;")}</span>
+                        <button class="remove-recent-btn" title="Remove" style="background:none; border:none; color:#888; font-size:1.1em; cursor:pointer; margin-left:0.7em;"><i class="fas fa-times"></i></button>
+                    </div>`
+                ).join('');
+                // Remove last border
+                const items = recentBar.querySelectorAll('.recent-search-item');
+                if (items.length) items[items.length-1].style.borderBottom = "none";
+            }
+
+            // Always show recent bar, update on input change and page load
+            renderRecentBar();
+            input.addEventListener("input", renderRecentBar);
+
+            // Click on recent search: fill input and focus
+            recentBar.addEventListener("mousedown", function(e) {
+                const item = e.target.closest('.recent-search-item');
+                if (item) {
+                    const text = item.querySelector('span').textContent;
+                    input.value = text;
+                    input.focus();
+                    renderRecentBar();
+                    e.preventDefault();
+                }
+                // Remove button
+                const removeBtn = e.target.closest('.remove-recent-btn');
+                if (removeBtn && item) {
+                    let recents = getRecentSearches();
+                    const text = item.querySelector('span').textContent;
+                    recents = recents.filter(q => q !== text);
+                    localStorage.setItem(RECENT_KEY, JSON.stringify(recents));
+                    renderRecentBar();
+                    e.preventDefault();
+                }
+            });
+
+            // --- SEARCH LOGIC (fix: use currentProvider and searchUrls) ---
+            function doSearch() {
+                const val = input.value.trim();
+                const prov = typeof currentProvider === "string" ? currentProvider : "google";
+                if (!val || !searchUrls[prov]) return;
+                saveRecentSearch(val);
+                renderRecentBar();
+                window.open(searchUrls[prov].replace("{q}", encodeURIComponent(val)), "_blank");
+            }
+            input.addEventListener("keydown", function(e) {
+                if (e.key === "Enter") {
+                    doSearch();
+                }
+            });
+            document.getElementById("search-btn").addEventListener("click", function(e) {
+                e.preventDefault();
+                doSearch();
+            });
+
+            // App menu modal logic
+            const openBtn = document.getElementById('openAppMenu');
+            const appMenu = document.getElementById('appMenu');
+            const overlay = document.getElementById('appMenuOverlay');
+            function closeMenu() {
+                appMenu.classList.remove('open');
+            }
+            openBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                appMenu.classList.toggle('open');
+            });
+            overlay.addEventListener('click', closeMenu);
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') closeMenu();
+            });
+            // Close menu if clicking outside
+            document.addEventListener('click', function(e) {
+                if (!appMenu.contains(e.target) && e.target !== openBtn) {
+                    closeMenu();
+                }
+            });
+
+            // App menu: close tab after opening app link
+            var appLinks = document.querySelectorAll('.app-link');
+            appLinks.forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    setTimeout(function() {
+                        window.close();
+                    }, 100);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
