@@ -464,7 +464,8 @@
                 <!-- Custom provider dropdown (icon only, dropdown left of input/button) -->
                 <div style="display:flex; flex-direction:row; align-items:center; gap:0.5em; width:100%;">
                     <div id="provider-dropdown" style="position:relative; min-width:48px; max-width:48px;">
-                        <button id="provider-btn" type="button" title="Select search provider" aria-label="Select search provider" style="width:48px; height:48px; display:flex; align-items:center; justify-content:center; padding:0; border-radius:8px; border:1px solid #333; background:#232323; color:#fff; font-size:1.5em; cursor:pointer;"><span id="provider-btn-icon" style="display:flex; align-items:center;"></span>
+                        <button id="provider-btn" type="button" title="Select search provider" aria-label="Select search provider" style="width:48px; height:48px; display:flex; align-items:center; justify-content:center; padding:0; border-radius:8px; border:1px solid #333; background:#232323; color:#fff; font-size:1.5em; cursor:pointer;">
+                            <span id="provider-btn-icon" style="display:flex; align-items:center;">
                                 <i class="fab fa-google"></i>
                             </span>
                         </button>
@@ -680,7 +681,6 @@
                     }
                 });
                 providerList.style.display = "none";
-                updateResults();
             }
 
             providerBtn.addEventListener("click", function(e) {
