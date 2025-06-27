@@ -117,7 +117,7 @@ async function fetchCommitDetails(sha, headers) {
           date: commitDetails.commit.author.date,
           message: commitDetails.commit.message,
           author: commitDetails.commit.author.name,
-          fileschanges: filesChanged
+          fileschanged: filesChanged
         });
       } catch (detailError) {
         console.error(`Fehler beim Abrufen der Details für Commit ${commitSummary.sha}:`, detailError);
@@ -127,7 +127,7 @@ async function fetchCommitDetails(sha, headers) {
           date: commitSummary.commit.author.date,
           message: commitSummary.commit.message,
           author: commitSummary.commit.author.name,
-          fileschanges: []
+          fileschanged: []
         });
       }
     }
