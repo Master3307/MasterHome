@@ -67,7 +67,7 @@
         background: none;
         box-shadow: none;
         border: none;
-        margin-bottom: 0.5em;
+        margin-top: 0; /* add this to remove any top margin */
     }
     .what img {
         max-width: 160px;
@@ -88,7 +88,7 @@
         backdrop-filter: blur(12px);
     }
     .title-with-icon {
-        margin-top: 2.5em;
+        margin-top: 1em; /* reduced from 2.5em */
         margin-bottom: 1.2em;
         font-size: 2.2em;
         font-weight: 600;
@@ -434,6 +434,141 @@
         );
         pointer-events: none;
     }
+    /* Settings button bottom left */
+    #settings-btn {
+        position: fixed;
+        left: 24px;
+        bottom: 24px;
+        z-index: 3001;
+        background: #23272b;
+        color: #a8c7fa;
+        border: none;
+        border-radius: 50%;
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5em;
+        cursor: pointer;
+        box-shadow: 0 2px 8px #0005;
+        transition: background 0.2s;
+    }
+    #settings-btn:hover {
+        background: #2d3846;
+    }
+    /* Side panel overlay */
+    #settings-modal-overlay {
+        display: none;
+        position: fixed;
+        z-index: 4000;
+        left: 0; top: 0; right: 0; bottom: 0;
+        background: rgba(0,0,0,0.35);
+        transition: background 0.2s;
+    }
+    #settings-modal-overlay.open {
+        display: block;
+    }
+    /* Side panel */
+    #settings-modal {
+        display: block;
+        position: fixed;
+        z-index: 4001;
+        left: 0;
+        top: 0;
+        height: 100vh;
+        width: 350px;
+        max-width: 96vw;
+        background: #232323;
+        color: #fff;
+        border-radius: 0 12px 12px 0;
+        box-shadow: 4px 0 32px #000a;
+        padding: 2em 1.5em 1.5em 1.5em;
+        font-family: 'Roboto', Arial, sans-serif;
+        transform: translateX(-110%);
+        transition: transform 0.32s cubic-bezier(.4,1.4,.6,1);
+        overflow-y: auto;
+    }
+    #settings-modal.open {
+        transform: translateX(0);
+    }
+    #settings-modal h2 {
+        margin-top: 0;
+        font-size: 1.3em;
+        margin-bottom: 0.7em;
+        display: flex;
+        align-items: center;
+        gap: 0.5em;
+    }
+    #custom-css-textarea {
+        width: 100%;
+        min-height: 120px;
+        max-height: 40vh;
+        font-family: monospace;
+        font-size: 1em;
+        border-radius: 8px;
+        border: 1px solid #444;
+        background: #181818;
+        color: #fff;
+        padding: 0.7em;
+        margin-bottom: 1em;
+        resize: vertical;
+        box-sizing: border-box;
+    }
+    #settings-modal .modal-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 0.7em;
+    }
+    #settings-modal button {
+        padding: 0.5em 1.2em;
+        border-radius: 6px;
+        border: none;
+        font-size: 1em;
+        cursor: pointer;
+        background: #333;
+        color: #fff;
+        transition: background 0.2s;
+    }
+    #settings-modal button.save-btn {
+        background: #f36e21;
+        color: #fff;
+    }
+    #settings-modal button.save-btn:hover {
+        background: #ff8c42;
+    }
+    #settings-modal button.cancel-btn,
+    #settings-modal button.close-btn {
+        background: #444;
+    }
+    #settings-modal button.cancel-btn:hover,
+    #settings-modal button.close-btn:hover {
+        background: #666;
+    }
+    #settings-modal .close-btn {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        background: none;
+        color: #aaa;
+        font-size: 1.5em;
+        border: none;
+        cursor: pointer;
+        padding: 0.2em 0.5em;
+        border-radius: 6px;
+        transition: background 0.2s, color 0.2s;
+    }
+    #settings-modal .close-btn:hover {
+        background: #333;
+        color: #fff;
+    }
+    @media (max-width: 500px) {
+        #settings-modal {
+            width: 98vw;
+            min-width: 0;
+            padding: 1em 0.7em 1em 0.7em;
+        }
+    }
     </style>
 </head>
 <body>
@@ -448,7 +583,7 @@
         </h1>
     </header>
     <main>
-        <section class="what" style="text-align:center;">
+        <section class="what" style="text-align:center; margin-top:0;">
             <img src="/assets/media/M437.webp" alt="Master-Tech-Logo" style="max-width:180px;" />
             <div class="what-text">
                 <h2 style="text-align:center;">What you see here:</h2>
@@ -459,7 +594,7 @@
                 </p>
             </div>
         </section>
-        <section style="display:flex; flex-direction:column; align-items:center; margin:2em 0;">
+        <section style="display:flex; flex-direction:column; align-items:center; margin:1em 0;">
             <div id="search-bar-row" class="shrink">
                 <!-- Custom provider dropdown (icon only, dropdown left of input/button) -->
                 <div style="display:flex; flex-direction:row; align-items:center; gap:0.5em; width:100%;">
@@ -633,6 +768,24 @@
             <a href="https://master3307.netlify.app/admin" target="_blank" rel="noopener" class="more-apps-button" style="margin-top:8px;">Admin Panel</a>
         </div>
         <div class="app-menu-overlay" id="appMenuOverlay"></div>
+    </div>
+    <!-- Settings Button -->
+    <button id="settings-btn" title="Settings" aria-label="Settings">
+        <i class="fas fa-cog"></i>
+    </button>
+    <!-- Settings Side Panel & Overlay -->
+    <div id="settings-modal-overlay"></div>
+    <div id="settings-modal" role="dialog" aria-modal="true" aria-labelledby="settings-modal-title">
+        <button class="close-btn" id="close-css-btn" title="Close" aria-label="Close"><i class="fas fa-times"></i></button>
+        <h2 id="settings-modal-title"><i class="fas fa-cog"></i> Custom CSS</h2>
+        <div id="custom-css-editor" style="width:100%;height:240px;border-radius:8px;border:1px solid #444;margin-bottom:1em;overflow:hidden;background:#181818;"></div>
+        <div class="modal-actions">
+            <button class="save-btn" id="save-css-btn">Save</button>
+        </div>
+        <div style="font-size:0.95em; color:#aaa; margin-top:0.7em;">
+            Your CSS is stored only in your browser and applied instantly.<br>
+            <b>Shortcuts:</b> <kbd>Tab</kbd> indent, <kbd>Shift+Tab</kbd> outdent, <kbd>Ctrl+S</kbd> save, <kbd>Esc</kbd> close.
+        </div>
     </div>
     <script>
         // Simple search placeholder logic
@@ -846,7 +999,135 @@
                     }, 100);
                 });
             });
+
+            // --- Custom CSS Settings Side Panel Logic with Monaco Editor ---
+            (function() {
+                const SETTINGS_KEY = "mastersearch_custom_css";
+                const btn = document.getElementById("settings-btn");
+                const modal = document.getElementById("settings-modal");
+                const overlay = document.getElementById("settings-modal-overlay");
+                const saveBtn = document.getElementById("save-css-btn");
+                const closeBtn = document.getElementById("close-css-btn");
+                let styleTag = null;
+                let editor = null;
+                let monacoLoaded = false;
+
+                function applyCustomCSS(css) {
+                    if (!styleTag) {
+                        styleTag = document.createElement("style");
+                        styleTag.id = "custom-css-style";
+                        document.head.appendChild(styleTag);
+                    }
+                    styleTag.textContent = css || "";
+                }
+                // Load and apply on page load
+                const css = localStorage.getItem(SETTINGS_KEY);
+                if (css) applyCustomCSS(css);
+
+                // Monaco loader with CSS language support
+                function loadMonaco(cb) {
+                    if (monacoLoaded) return cb();
+                    // Wait for window.require to be available
+                    function waitRequire() {
+                        if (window.require && window.require.config) {
+                            window.require.config({ paths: { 'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs' } });
+                            // Only load 'vs/editor/editor.main', Monaco will register CSS language from basic-languages
+                            window.require(['vs/editor/editor.main'], function() {
+                                monacoLoaded = true;
+                                cb();
+                            });
+                        } else {
+                            setTimeout(waitRequire, 30);
+                        }
+                    }
+                    waitRequire();
+                }
+
+                function openPanel() {
+                    modal.classList.add("open");
+                    overlay.classList.add("open");
+                    setTimeout(function() {
+                        loadMonaco(function() {
+                            const editorDiv = document.getElementById('custom-css-editor');
+                            if (editorDiv && editorDiv.childNodes.length && !editor) {
+                                editorDiv.innerHTML = "";
+                            }
+                            if (!editor) {
+                                // Register CSS language if not already present (for CDN builds)
+                                if (!monaco.languages.getLanguages().some(l => l.id === 'css')) {
+                                    monaco.languages.register({ id: 'css' });
+                                    monaco.languages.setMonarchTokensProvider('css', window.monacoBasicLanguagesCss.language);
+                                    monaco.languages.setLanguageConfiguration('css', window.monacoBasicLanguagesCss.conf);
+                                }
+                                editor = monaco.editor.create(editorDiv, {
+                                    value: localStorage.getItem(SETTINGS_KEY) || "",
+                                    language: 'css',
+                                    theme: 'vs-dark',
+                                    fontSize: 15,
+                                    minimap: { enabled: false },
+                                    automaticLayout: true,
+                                    scrollBeyondLastLine: false,
+                                    wordWrap: "on",
+                                    lineNumbers: "on"
+                                });
+                                addEditorShortcuts(editor);
+                            } else {
+                                editor.setValue(localStorage.getItem(SETTINGS_KEY) || "");
+                            }
+                            editor.layout();
+                            editor.focus();
+                        });
+                    }, 500); // 0.5 second delay before loading Monaco
+                }
+                function closePanel() {
+                    modal.classList.remove("open");
+                    overlay.classList.remove("open");
+                }
+                function saveCSS() {
+                    if (!editor) return;
+                    const css = editor.getValue();
+                    localStorage.setItem(SETTINGS_KEY, css);
+                    applyCustomCSS(css);
+                    closePanel();
+                }
+
+                btn.addEventListener("click", openPanel);
+                overlay.addEventListener("click", closePanel);
+                closeBtn.addEventListener("click", closePanel);
+                saveBtn.addEventListener("click", saveCSS);
+
+                // ESC to close (for focus outside Monaco)
+                document.addEventListener("keydown", function(e) {
+                    if ((modal.classList.contains("open") || overlay.classList.contains("open")) && e.key === "Escape") {
+                        closePanel();
+                    }
+                });
+
+                // Add custom shortcuts to Monaco editor
+                function addEditorShortcuts(editor) {
+                    // Ctrl+S to save
+                    editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyS, function() {
+                        saveCSS();
+                    });
+                    // Esc to close
+                    editor.addCommand(monaco.KeyCode.Escape, function() {
+                        closePanel();
+                    });
+                    // Ctrl+/ for toggle line comment
+                    editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.Slash, function() {
+                        editor.trigger('keyboard', 'editor.action.commentLine', {});
+                    });
+                    // Ctrl+K for block comment
+                    editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyK, function() {
+                        editor.trigger('keyboard', 'editor.action.blockComment', {});
+                    });
+                }
+            })();
         });
     </script>
+    <!-- Monaco Editor CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/loader.min.js"></script>
+    <!-- Monaco CSS language for CDN builds -->
+    <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/basic-languages/css/css.js"></script>
 </body>
 </html>

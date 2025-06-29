@@ -99,7 +99,7 @@ async function fetchCommitDetails(sha, headers) {
     console.log(`Abgerufen: ${commitsSummary.length} Commits-Zusammenfassungen.`);
 
     // NEU: Vorhandene SHAs aus Supabase abrufen
-    console.log('Vorhandene SHAs aus Supabase abrufen...');
+    console.log('Checking existing SHAs...');
     const { data: existingRows, error: fetchShaError } = await supabase
       .from('changelog')
       .select('sha');
