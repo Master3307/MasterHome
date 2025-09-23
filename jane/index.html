@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jane's Collection of Cats</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 40px;
+        background-color: #1e1e1e;
+      }
+
+      h1 {
+        color: #ececec;
+      }
+
+      p {
+        font-size: 18px;
+        color: #999;
+      }
+
+      .heading {
+        margin-top: 100px;
+        margin-left: 100px;
+      }
+
+      .gallery {
+        max-width: 1040px;
+        margin: 80px auto;
+        padding: 0 24px;
+      }
+
+      .gallery-title {
+        margin-bottom: 32px;
+        font-size: 30px;
+        font-weight: 600;
+        text-align: center;
+        color: #ececec;
+        letter-spacing: 0.02em;
+      }
+
+      .heading-emote {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        margin-left: 0.2em;
+      }
+
+      .heading-emote + .heading-emote {
+        margin-left: 0.12em;
+      }
+
+      .heading-emote img {
+        height: 1.6em;
+        display: block;
+      }
+
+      .heading-emote::after {
+        content: attr(data-index);
+        position: absolute;
+        bottom: -0.7em;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.6em;
+        letter-spacing: 0.05em;
+        color: rgba(236, 236, 236, 0.65);
+        font-weight: 600;
+      }
+
+      .gallery,
+      .gallery * {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 28px;
+      }
+
+      .gallery-item {
+        position: relative;
+        margin: 0;
+        overflow: hidden;
+        border-radius: 14px;
+        isolation: isolate;
+      }
+
+      .gallery-item:focus-within .gallery-caption,
+      .gallery-item:hover .gallery-caption {
+        transform: translateY(0);
+      }
+
+      .gallery-image {
+        width: 100%;
+        height: 100%;
+        max-height: 420px;
+        object-fit: cover;
+        border-radius: 14px;
+        box-shadow: 0 14px 38px rgba(0, 0, 0, 0.45);
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        display: block;
+      }
+      @media screen and (-webkit-min-device-pixel-ratio:0) {
+        .gallery-image {
+          -webkit-user-drag: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+        }
+      }
+
+      .gallery-image:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 18px 48px rgba(0, 0, 0, 0.55);
+      }
+
+      .gallery-caption {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 18px 20px;
+        background: linear-gradient(
+          0deg,
+          rgba(0, 0, 0, 0.8) 0%,
+          rgba(0, 0, 0, 0) 100%
+        );
+        transform: translateY(100%);
+        transition: transform 0.24s ease-out;
+        display: flex;
+        justify-content: center;
+      }
+
+      .gallery-caption__title {
+        margin: 0;
+        font-size: 20px;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        color: #f6f6f6;
+        text-transform: uppercase;
+      }
+
+      .debug-toggle {
+        position: fixed;
+        bottom: 24px;
+        left: 24px;
+        z-index: 1200;
+        color: #ececec;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .debug-toggle__label {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        cursor: pointer;
+        -webkit-user-select: none;
+        user-select: none;
+      }
+
+      .debug-toggle__label input {
+        appearance: none;
+        width: 46px;
+        height: 24px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.28);
+        position: relative;
+        transition: background 0.2s ease;
+      }
+
+      .debug-toggle__label input::after {
+        content: "";
+        position: absolute;
+        top: 3px;
+        left: 4px;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: #fff;
+        transition: transform 0.2s ease;
+      }
+
+      .debug-toggle__label input:focus-visible {
+        outline: 2px solid #fff;
+        outline-offset: 3px;
+      }
+
+      .debug-toggle__label input:checked {
+        background: #7c5cff;
+      }
+
+      .debug-toggle__label input:checked::after {
+        transform: translateX(18px);
+      }
+
+      .debug-toggle__label .toggle-label {
+        opacity: 0.7;
+      }
+
+      body.debug-active * {
+        outline: 1px dashed rgba(124, 92, 255, 0.45);
+        outline-offset: -1px;
+      }
+
+      body.debug-active .gallery-grid {
+        background-image: linear-gradient(
+            rgba(124, 92, 255, 0.12) 1px,
+            transparent 1px
+          ),
+          linear-gradient(
+            90deg,
+            rgba(124, 92, 255, 0.12) 1px,
+            transparent 1px
+          );
+        background-size: 24px 24px;
+        padding: 16px;
+        border-radius: 18px;
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.75);
+        align-items: center;
+        justify-content: center;
+        padding: 40px;
+        box-sizing: border-box;
+        z-index: 1000;
+      }
+
+      .modal.is-visible {
+        display: flex;
+      }
+
+      .modal.is-zooming {
+        padding: 0;
+      }
+
+      .modal-content {
+        position: relative;
+        max-width: 90vw;
+        max-height: 90vh;
+        overflow: hidden;
+      }
+
+      .modal-content.is-zooming {
+        overflow: visible;
+      }
+
+      .modal-content img {
+        display: block;
+        max-width: 100%;
+        max-height: 90vh;
+        border-radius: 8px;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+        cursor: zoom-in;
+        transition: transform 0.12s ease-out;
+      }
+
+      .modal-content img.is-zoomed {
+        cursor: grab;
+        max-width: none;
+        max-height: none;
+      }
+
+      .modal-content img.is-grabbing {
+        cursor: grabbing;
+      }
+
+      .modal-close {
+        position: absolute;
+        top: -16px;
+        right: -16px;
+        background: rgba(0, 0, 0, 0.85);
+        color: #fff;
+        border: none;
+        border-radius: 50%;
+        width: 36px;
+        height: 36px;
+        font-size: 20px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .modal-close:focus-visible {
+        outline: 2px solid #fff;
+        outline-offset: 4px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="heading">
+      <h1 style="font-size: 36px">
+        Cats.
+        <span class="heading-emote" data-index="1"><img src="CatoDanse.png" alt="CatoDanse emote" /></span>
+        <span class="heading-emote" data-index="2"><img src="CatoDanse.png" alt="CatoDanse emote" /></span>
+        <span class="heading-emote" data-index="3"><img src="CatoDanse.png" alt="CatoDanse emote" /></span>
+        <span class="heading-emote" data-index="4"><img src="CatoDanse.png" alt="CatoDanse emote" /></span>
+        <span class="heading-emote" data-index="5"><img src="CatoDanse.png" alt="CatoDanse emote" /></span>
+        <span class="heading-emote" data-index="6"><img src="CatoDanse.png" alt="CatoDanse emote" /></span>
+        <span class="heading-emote" data-index="7"><img src="CatoDanse.png" alt="CatoDanse emote" /></span>
+        <span class="heading-emote" data-index="8"><img src="CatoDanse.png" alt="CatoDanse emote" /></span>
+        <span class="heading-emote" data-index="9"><img src="CatoDanse.png" alt="CatoDanse emote" /></span>
+        <span class="heading-emote" data-index="10"><img src="CatoDanse.png" alt="CatoDanse emote" /></span>
+        <span class="heading-emote" data-index="11"><img src="CatoDanse.png" alt="CatoDanse emote" /></span>
+        <span class="heading-emote" data-index="12"><img src="CatoDanse.png" alt="CatoDanse emote" /></span>
+        <span class="heading-emote" data-index="13"><img src="CatoDanse.png" alt="CatoDanse emote" /></span>
+      </h1>
+      <p style="line-height: 1.6">Yeahh.. There will be mainly cats on here.</p>
+    </div>
+    <section class="gallery">
+    <h2 class="gallery-title">
+      Cute Cats
+      <img src="CatoDanse.png" alt="CatoDanse emote" style="height: 1.6em; vertical-align: middle; margin-left: 0.5em; display: inline-block;" />
+    </h2>
+      <div class="gallery-grid" id="galleryGrid"></div>
+    </section>
+
+<!-- this stays off -->
+    <!-- <div class="debug-toggle">
+      <label class="debug-toggle__label">
+        <input type="checkbox" id="debugToggle" />
+        <span class="toggle-label">Debug mode</span>
+      </label>
+    </div> -->
+
+    <div
+      id="imageModal"
+      class="modal"
+      aria-hidden="true"
+      role="dialog"
+      aria-modal="true"
+    >
+      <div class="modal-content" role="document">
+        <button type="button" class="modal-close" aria-label="Close image">
+          &times;
+        </button>
+        <img id="modalImage" src="" alt="" draggable="false" />
+      </div>
+    </div>
+
+    <script>
+      async function fetchGalleryPictures() {
+        try {
+          const response = await fetch("gallery.json", { cache: "no-store" });
+          if (!response.ok) {
+            throw new Error("Failed to load gallery.json: " + response.status);
+          }
+
+          const data = await response.json();
+          if (!Array.isArray(data)) {
+            console.warn("gallery.json did not return an array");
+            return [];
+          }
+
+          return data;
+        } catch (error) {
+          console.error("Unable to fetch gallery data", error);
+          return [];
+        }
+      }
+
+      function renderGallery(pictures) {
+        const grid = document.getElementById("galleryGrid");
+        if (!grid || !Array.isArray(pictures)) {
+          return;
+        }
+
+        grid.textContent = "";
+
+        pictures.forEach((picture) => {
+          if (!picture || !picture.id || !picture.src) {
+            return;
+          }
+
+          const figure = document.createElement("figure");
+          figure.className = "gallery-item";
+          figure.dataset.pictureId = picture.id;
+
+          const img = document.createElement("img");
+          img.id = picture.id;
+          img.src = picture.src;
+          img.alt = picture.name || "";
+          img.loading = "lazy";
+          img.className = "gallery-image";
+          img.draggable = false;
+
+          const caption = document.createElement("figcaption");
+          caption.className = "gallery-caption";
+
+          const heading = document.createElement("h2");
+          heading.className = "gallery-caption__title";
+          heading.textContent = picture.name || "";
+
+          caption.appendChild(heading);
+          figure.appendChild(img);
+          figure.appendChild(caption);
+          grid.appendChild(figure);
+        });
+      }
+
+      function setupImageModal(thumbnailSelector) {
+        const thumbnails = Array.from(
+          document.querySelectorAll(thumbnailSelector)
+        );
+        const modal = document.getElementById("imageModal");
+        const modalImage = document.getElementById("modalImage");
+        const closeButton = modal.querySelector(".modal-close");
+        const modalContent = modal.querySelector(".modal-content");
+
+        if (
+          !thumbnails.length ||
+          !modal ||
+          !modalImage ||
+          !closeButton ||
+          !modalContent
+        ) {
+          return;
+        }
+
+        const zoomDefaults = {
+          defaultScale: 2.4,
+          minScale: 0.25,
+          maxScale: 6,
+          step: 0.3,
+          ctrlStep: 0.12,
+        };
+
+        let isZoomActive = false;
+        let pointerX = 0;
+        let pointerY = 0;
+        let currentScale = 1;
+        let rafId = null;
+
+        const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+
+        const resetZoomState = () => {
+          isZoomActive = false;
+          currentScale = 1;
+          modalImage.classList.remove("is-zoomed", "is-grabbing");
+          modalContent.classList.remove("is-zooming");
+          modal.classList.remove("is-zooming");
+          modalImage.style.removeProperty("transform");
+          modalImage.style.removeProperty("transform-origin");
+          if (rafId) {
+            cancelAnimationFrame(rafId);
+            rafId = null;
+          }
+        };
+
+        const applyZoomTransform = () => {
+          if (!isZoomActive) {
+            rafId = null;
+            return;
+          }
+
+          const rect = modalImage.getBoundingClientRect();
+          if (!rect.width || !rect.height) {
+            rafId = null;
+            return;
+          }
+
+          const xPercent = clamp(
+            ((pointerX - rect.left) / rect.width) * 100,
+            0,
+            100
+          );
+          const yPercent = clamp(
+            ((pointerY - rect.top) / rect.height) * 100,
+            0,
+            100
+          );
+
+          modalImage.style.transformOrigin = xPercent + "% " + yPercent + "%";
+          modalImage.style.transform = "scale(" + currentScale + ")";
+
+          rafId = null;
+        };
+
+        const beginZoom = (event) => {
+          if (event.button !== 0) {
+            return;
+          }
+
+          event.preventDefault();
+
+          isZoomActive = true;
+          currentScale = Math.max(currentScale, zoomDefaults.defaultScale);
+          pointerX = event.clientX;
+          pointerY = event.clientY;
+
+          modalImage.classList.add("is-zoomed", "is-grabbing");
+          modalContent.classList.add("is-zooming");
+          modal.classList.add("is-zooming");
+
+          if (modalImage.setPointerCapture) {
+            modalImage.setPointerCapture(event.pointerId);
+          }
+
+          applyZoomTransform();
+        };
+
+        const updateZoom = (event) => {
+          if (!isZoomActive) {
+            return;
+          }
+
+          pointerX = event.clientX;
+          pointerY = event.clientY;
+
+          if (!rafId) {
+            rafId = requestAnimationFrame(applyZoomTransform);
+          }
+        };
+
+        const handleWheel = (event) => {
+          if (!isZoomActive) {
+            return;
+          }
+
+          event.preventDefault();
+
+          const delta = event.deltaY;
+          if (delta === 0) {
+            return;
+          }
+
+          const stepValue = event.ctrlKey
+            ? zoomDefaults.ctrlStep
+            : zoomDefaults.step;
+          const direction = delta < 0 ? 1 : -1;
+          currentScale = clamp(
+            currentScale + direction * stepValue,
+            zoomDefaults.minScale,
+            zoomDefaults.maxScale
+          );
+
+          pointerX = event.clientX;
+          pointerY = event.clientY;
+
+          if (!rafId) {
+            rafId = requestAnimationFrame(applyZoomTransform);
+          }
+        };
+
+        const endZoom = (event) => {
+          if (!isZoomActive) {
+            return;
+          }
+
+          if (
+            modalImage.hasPointerCapture &&
+            event &&
+            modalImage.hasPointerCapture(event.pointerId)
+          ) {
+            modalImage.releasePointerCapture(event.pointerId);
+          }
+
+          resetZoomState();
+        };
+
+        const openModal = (thumbnail) => {
+          if (!thumbnail) {
+            return;
+          }
+          resetZoomState();
+          modalImage.src = thumbnail.src;
+          modalImage.alt = thumbnail.alt || "";
+          modal.classList.add("is-visible");
+          modal.setAttribute("aria-hidden", "false");
+        };
+
+        function closeModal() {
+          resetZoomState();
+          modal.classList.remove("is-visible");
+          modal.setAttribute("aria-hidden", "true");
+        }
+
+        thumbnails.forEach((thumbnail) => {
+          thumbnail.addEventListener("click", () => openModal(thumbnail));
+        });
+        closeButton.addEventListener("click", closeModal);
+
+        modal.addEventListener("click", (event) => {
+          if (event.target === modal) {
+            closeModal();
+          }
+        });
+
+        document.addEventListener("keydown", (event) => {
+          if (
+            event.key === "Escape" &&
+            modal.classList.contains("is-visible")
+          ) {
+            closeModal();
+          }
+        });
+
+        modalImage.addEventListener("pointerdown", beginZoom);
+        modalImage.addEventListener("pointermove", updateZoom);
+        modalImage.addEventListener("pointerup", endZoom);
+        modalImage.addEventListener("pointercancel", endZoom);
+        modalImage.addEventListener("pointerleave", endZoom);
+        modalImage.addEventListener("wheel", handleWheel, { passive: false });
+      }
+
+      document.addEventListener("DOMContentLoaded", async () => {
+        const pictures = await fetchGalleryPictures();
+        renderGallery(pictures);
+        setupImageModal(".gallery-image");
+
+        const debugToggle = document.getElementById("debugToggle");
+        if (debugToggle) {
+          debugToggle.addEventListener("change", () => {
+            document.body.classList.toggle(
+              "debug-active",
+              debugToggle.checked
+            );
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
