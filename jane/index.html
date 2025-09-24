@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jane's Collection of Cats</title>
-    <link rel="icon" type="image/png" href="CatoDanse.png" />
+    <link rel="icon" type="image/png" href="media/CatoDanse.png" />
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -308,26 +308,26 @@
     <div class="heading">
       <h1 style="font-size: 36px">
         Cats.
-        <span class="heading-emote" data-index="1"><img src="CatoDanse.png" alt="CatoDanse emote" /></span>
-        <span class="heading-emote" data-index="2"><img src="CatoDanse.png" alt="CatoDanse emote" /></span>
-        <span class="heading-emote" data-index="3"><img src="CatoDanse.png" alt="CatoDanse emote" /></span>
-        <span class="heading-emote" data-index="4"><img src="CatoDanse.png" alt="CatoDanse emote" /></span>
-        <span class="heading-emote" data-index="5"><img src="CatoDanse.png" alt="CatoDanse emote" /></span>
-        <span class="heading-emote" data-index="6"><img src="CatoDanse.png" alt="CatoDanse emote" /></span>
-        <span class="heading-emote" data-index="7"><img src="CatoDanse.png" alt="CatoDanse emote" /></span>
-        <span class="heading-emote" data-index="8"><img src="CatoDanse.png" alt="CatoDanse emote" /></span>
-        <span class="heading-emote" data-index="9"><img src="CatoDanse.png" alt="CatoDanse emote" /></span>
-        <span class="heading-emote" data-index="10"><img src="CatoDanse.png" alt="CatoDanse emote" /></span>
-        <span class="heading-emote" data-index="11"><img src="CatoDanse.png" alt="CatoDanse emote" /></span>
-        <span class="heading-emote" data-index="12"><img src="CatoDanse.png" alt="CatoDanse emote" /></span>
-        <span class="heading-emote" data-index="13"><img src="CatoDanse.png" alt="CatoDanse emote" /></span>
+        <span class="heading-emote" data-index="1"><img src="media/CatoDanse.png" alt="CatoDanse emote" /></span>
+        <span class="heading-emote" data-index="2"><img src="media/CatoDanse.png" alt="CatoDanse emote" /></span>
+        <span class="heading-emote" data-index="3"><img src="media/CatoDanse.png" alt="CatoDanse emote" /></span>
+        <span class="heading-emote" data-index="4"><img src="media/CatoDanse.png" alt="CatoDanse emote" /></span>
+        <span class="heading-emote" data-index="5"><img src="media/CatoDanse.png" alt="CatoDanse emote" /></span>
+        <span class="heading-emote" data-index="6"><img src="media/CatoDanse.png" alt="CatoDanse emote" /></span>
+        <span class="heading-emote" data-index="7"><img src="media/CatoDanse.png" alt="CatoDanse emote" /></span>
+        <span class="heading-emote" data-index="8"><img src="media/CatoDanse.png" alt="CatoDanse emote" /></span>
+        <span class="heading-emote" data-index="9"><img src="media/CatoDanse.png" alt="CatoDanse emote" /></span>
+        <span class="heading-emote" data-index="10"><img src="media/CatoDanse.png" alt="CatoDanse emote" /></span>
+        <span class="heading-emote" data-index="11"><img src="media/CatoDanse.png" alt="CatoDanse emote" /></span>
+        <span class="heading-emote" data-index="12"><img src="media/CatoDanse.png" alt="CatoDanse emote" /></span>
+        <span class="heading-emote" data-index="13"><img src="media/CatoDanse.png" alt="CatoDanse emote" /></span>
       </h1>
       <p style="line-height: 1.6">Yeahh.. There will be mainly cats on here.</p>
     </div>
     <section class="gallery">
     <h2 class="gallery-title">
       Cute Cats
-      <img src="CatoDanse.png" alt="CatoDanse emote" style="height: 1.6em; vertical-align: middle; margin-left: 0.5em; display: inline-block;" />
+      <img src="media/CatoDanse.png" alt="CatoDanse emote" style="height: 1.6em; vertical-align: middle; margin-left: 0.5em; display: inline-block;" />
     </h2>
       <div class="gallery-grid" id="galleryGrid"></div>
     </section>
@@ -358,7 +358,7 @@
     <script>
       async function fetchGalleryPictures() {
         try {
-          const response = await fetch("gallery.json", { cache: "no-store" });
+          const response = await fetch("media/gallery.json", { cache: "no-store" });
           if (!response.ok) {
             throw new Error("Failed to load gallery.json: " + response.status);
           }

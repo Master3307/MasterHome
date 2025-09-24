@@ -1,57 +1,62 @@
 [
   {
     "id": "p1",
-    "src": "CatPaw.png",
+    "src": "media/CatPaw.png",
     "name": "I consider this a Cat"
   },
   {
     "id": "p2",
-    "src": "BtwILoveYou.png",
+    "src": "media/BtwILoveYou.png",
     "name": "Me lol"
   },
   {
     "id": "p3",
-    "src": "CCAT.jpg",
+    "src": "media/CCAT.jpg",
     "name": "Shocked Cat"
   },
   {
     "id": "p4",
-    "src": "funni-cat.jpg",
+    "src": "media/funni-cat.jpg",
     "name": "Funni Cat"
   },
   {
     "id": "p5",
-    "src": "BlackCat.jpg",
+    "src": "media/BlackCat.jpg",
     "name": "Sitting black cat haha"
   },
   {
     "id": "p6",
-    "src": "HUUGE_Tail.jpg",
+    "src": "media/HUUGE_Tail.jpg",
     "name": "HUUGE Tail OMG"
   },
   {
     "id": "p7",
-    "src": "Cato.png",
+    "src": "media/Cato.png",
     "name": "CATO!!!"
   },
   {
     "id": "p8",
-    "src": "CCCATO.png",
+    "src": "media/CCCATO.png",
     "name": "I will Get this game for sure"
   },
   {
     "id": "p9",
-    "src": "Cutteeee.jpg",
+    "src": "media/Cutteeee.jpg",
     "name": "Look at this cutieeee"
   },
   {
     "id": "p10",
-    "src": "CatoDanse.png",
+    "src": "media/CatoDanse.png",
     "name": "CatoDanse"
   },
   {
     "id": "p11",
-    "src": "31177538.799999997_зображення_viber_2025-09-24_18-22-09-541.jpg",
+    "src": "media/31177538.799999997_зображення_viber_2025-09-24_18-22-09-541.jpg",
+    "name": ""
+  },
+  {
+    "id": "p12",
+    "src": "media/32375620.5_Знімок екрана 2025-09-24 184213.png",
     "name": ""
   }
 ]
