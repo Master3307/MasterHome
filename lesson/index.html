@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peer Pressure Worksheet</title>
+    <style>
+        :root {
+            --color-background: rgba(252, 252, 249, 1);
+            --color-surface: rgba(255, 255, 253, 1);
+            --color-text: rgba(19, 52, 59, 1);
+            --color-text-secondary: rgba(98, 108, 113, 1);
+            --color-primary: rgba(33, 128, 141, 1);
+            --color-border: rgba(94, 82, 64, 0.2);
+            --font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --space-16: 16px;
+            --space-8: 8px;
+            --space-12: 12px;
+            --radius-base: 8px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --color-background: rgba(31, 33, 33, 1);
+                --color-surface: rgba(38, 40, 40, 1);
+                --color-text: rgba(245, 245, 245, 1);
+                --color-text-secondary: rgba(167, 169, 169, 0.7);
+                --color-border: rgba(119, 124, 124, 0.3);
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family-base);
+            background: var(--color-background);
+            color: var(--color-text);
+            margin: 0;
+            padding: var(--space-16);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--color-surface);
+            padding: 24px;
+            border-radius: var(--radius-base);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: var(--color-primary);
+            margin-top: 0;
+            font-size: 24px;
+        }
+
+        h2 {
+            color: var(--color-primary);
+            font-size: 20px;
+            margin-top: 32px;
+            border-bottom: 2px solid var(--color-border);
+            padding-bottom: var(--space-8);
+        }
+
+        h3 {
+            font-size: 18px;
+            margin-top: 24px;
+        }
+
+        .word-box {
+            background: rgba(33, 128, 141, 0.08);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-base);
+            padding: var(--space-16);
+            margin: var(--space-16) 0;
+            font-size: 14px;
+            line-height: 2;
+        }
+
+        .exercise-text {
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        select {
+            padding: 4px 8px;
+            border: 1px solid var(--color-border);
+            border-radius: 4px;
+            background: var(--color-surface);
+            color: var(--color-text);
+            font-size: 15px;
+            font-family: var(--font-family-base);
+            cursor: pointer;
+            min-width: 100px;
+        }
+
+        select:focus {
+            outline: 2px solid var(--color-primary);
+            border-color: var(--color-primary);
+        }
+
+        .comment-box {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid var(--color-primary);
+            padding: var(--space-16);
+            margin: var(--space-16) 0;
+            border-radius: var(--radius-base);
+        }
+
+        .comment-author {
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: var(--space-8);
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 80px;
+            padding: var(--space-12);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-base);
+            background: var(--color-surface);
+            color: var(--color-text);
+            font-family: var(--font-family-base);
+            font-size: 14px;
+            resize: vertical;
+            margin-top: var(--space-8);
+        }
+
+        textarea:focus {
+            outline: 2px solid var(--color-primary);
+            border-color: var(--color-primary);
+        }
+
+        .answer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: var(--space-12);
+            margin-top: var(--space-16);
+        }
+
+        .answer-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-8);
+        }
+
+        .answer-item label {
+            font-weight: 600;
+            min-width: 30px;
+        }
+
+        .answer-item input {
+            flex: 1;
+            padding: var(--space-8);
+            border: 1px solid var(--color-border);
+            border-radius: 4px;
+            background: var(--color-surface);
+            color: var(--color-text);
+            font-size: 14px;
+        }
+
+        .answer-item input:focus {
+            outline: 2px solid var(--color-primary);
+            border-color: var(--color-primary);
+        }
+
+        .btn {
+            padding: var(--space-12) 24px;
+            background: var(--color-primary);
+            color: white;
+            border: none;
+            border-radius: var(--radius-base);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: var(--space-16);
+        }
+
+        .btn:hover {
+            background: rgba(29, 116, 128, 1);
+        }
+
+        .instructions {
+            color: var(--color-text-secondary);
+            font-style: italic;
+            margin: var(--space-8) 0;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid var(--color-border);
+            margin: 32px 0;
+        }
+
+        .dropdown-inline {
+            display: inline;
+        }
+
+        .correct {
+            background-color: rgba(34, 197, 94, 0.15);
+            border-color: rgba(34, 197, 94, 0.5);
+        }
+
+        .incorrect {
+            background-color: rgba(239, 68, 68, 0.15);
+            border-color: rgba(239, 68, 68, 0.5);
+        }
+
+        .feedback {
+            display: inline-block;
+            margin-left: 8px;
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .check-btn {
+            padding: 8px 16px;
+            background: var(--color-primary);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 12px;
+        }
+
+        .check-btn:hover {
+            background: rgba(29, 116, 128, 1);
+        }
+
+        .score {
+            background: rgba(33, 128, 141, 0.08);
+            border: 2px solid var(--color-primary);
+            border-radius: var(--radius-base);
+            padding: var(--space-16);
+            margin-top: var(--space-16);
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .mistake {
+            padding: 2px 4px;
+            border-radius: 3px;
+            cursor: text;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .mistake.correct-found {
+            background-color: rgba(34, 197, 94, 0.2);
+            color: green;
+            font-weight: 600;
+        }
+
+        .mistake.incorrect-found {
+            background-color: rgba(239, 68, 68, 0.2);
+            color: red;
+            font-weight: 600;
+        }
+
+        .input-replacement {
+            display: inline-block;
+            min-width: 80px;
+            padding: 2px 6px;
+            border: none;
+            border-bottom: 1px solid var(--color-border);
+            background: transparent;
+            color: var(--color-text);
+            font-family: var(--font-family-base);
+            font-size: inherit;
+            outline: none;
+        }
+
+        .input-replacement:focus {
+            border-bottom: 2px solid var(--color-primary);
+            background: rgba(33, 128, 141, 0.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📝 Respect and Peer Pressure - Worksheet</h1>
+
+        <!-- Exercise 2 -->
+        <h2>Exercise 2: Fill in the gaps</h2>
+        <p class="instructions">Read the text about peer pressure. Select the correct words from the dropdowns. There are some extra words in the box.</p>
+
+        <div class="word-box">
+            <strong>Word Box:</strong><br>
+            are • at • did • didn't • do • don't • does • else • for • from • have • how • if • influence • influenced • influencing • must • of • on • other • them • they • us • what • where • which • who • would • wouldn't
+        </div>
+
+        <div class="exercise-text">
+            <p>Your peers <strong>are</strong> (0) your friends, your classmates, the people 
+            <span class="dropdown-inline">
+                <select id="gap1">
+                    <option value="">... (1)</option>
+                    <option value="who">who</option>
+                    <option value="which">which</option>
+                    <option value="where">where</option>
+                    <option value="what">what</option>
+                    <option value="they">they</option>
+                </select>
+            </span>
+            are similar to you. 
+            <span class="dropdown-inline">
+                <select id="gap2">
+                    <option value="">... (2)</option>
+                    <option value="Do">Do</option>
+                    <option value="Does">Does</option>
+                    <option value="Did">Did</option>
+                    <option value="If">If</option>
+                    <option value="How">How</option>
+                </select>
+            </span>
+            you sometimes do something just because everybody 
+            <span class="dropdown-inline">
+                <select id="gap3">
+                    <option value="">... (3)</option>
+                    <option value="is">is</option>
+                    <option value="are">are</option>
+                    <option value="would">would</option>
+                    <option value="else">else</option>
+                </select>
+            </span>
+            doing it, or feel that you 
+            <span class="dropdown-inline">
+                <select id="gap4">
+                    <option value="">... (4)</option>
+                    <option value="have">have</option>
+                    <option value="must">must</option>
+                    <option value="would">would</option>
+                    <option value="do">do</option>
+                </select>
+            </span>
+            to do or wear 
+            <span class="dropdown-inline">
+                <select id="gap5">
+                    <option value="">... (5)</option>
+                    <option value="what">what</option>
+                    <option value="which">which</option>
+                    <option value="where">where</option>
+                    <option value="how">how</option>
+                </select>
+            </span>
+            your friends are doing or wearing? Are you afraid that you would look silly if you 
+            <span class="dropdown-inline">
+                <select id="gap6">
+                    <option value="">... (6)</option>
+                    <option value="don't">don't</option>
+                    <option value="didn't">didn't</option>
+                    <option value="wouldn't">wouldn't</option>
+                    <option value="do">do</option>
+                </select>
+            </span>
+            do it? That feeling is peer pressure. We all like to feel part of a group, so we are all 
+            <span class="dropdown-inline">
+                <select id="gap7">
+                    <option value="">... (7)</option>
+                    <option value="influenced">influenced</option>
+                    <option value="influencing">influencing</option>
+                    <option value="influence">influence</option>
+                </select>
+            </span>
+            by peer pressure. And one of the places 
+            <span class="dropdown-inline">
+                <select id="gap8">
+                    <option value="">... (8)</option>
+                    <option value="where">where</option>
+                    <option value="which">which</option>
+                    <option value="what">what</option>
+                    <option value="at">at</option>
+                </select>
+            </span>
+            peer pressure is greatest is at school. 
+            <span class="dropdown-inline">
+                <select id="gap9">
+                    <option value="">... (9)</option>
+                    <option value="Of">Of</option>
+                    <option value="For">For</option>
+                    <option value="From">From</option>
+                    <option value="On">On</option>
+                </select>
+            </span>
+            course, peer pressure isn't always bad. Your peers can motivate you to do great things. 
+            <span class="dropdown-inline">
+                <select id="gap10">
+                    <option value="">... (10)</option>
+                    <option value="On">On</option>
+                    <option value="At">At</option>
+                    <option value="For">For</option>
+                    <option value="From">From</option>
+                </select>
+            </span>
+            the other hand, some people feel under pressure to do things 
+            <span class="dropdown-inline">
+                <select id="gap11">
+                    <option value="">... (11)</option>
+                    <option value="which">which</option>
+                    <option value="who">who</option>
+                    <option value="what">what</option>
+                </select>
+            </span>
+            are illegal. 
+            <span class="dropdown-inline">
+                <select id="gap12">
+                    <option value="">... (12)</option>
+                    <option value="How">How</option>
+                    <option value="What">What</option>
+                    <option value="Where">Where</option>
+                    <option value="Who">Who</option>
+                </select>
+            </span>
+            can you deal with peer pressure? If you don't feel comfortable with something, 
+            <span class="dropdown-inline">
+                <select id="gap13">
+                    <option value="">... (13)</option>
+                    <option value="don't">don't</option>
+                    <option value="do">do</option>
+                    <option value="didn't">didn't</option>
+                </select>
+            </span>
+            do it! Be strong. Good friends won't stop being your friends just because you don't agree with 
+            <span class="dropdown-inline">
+                <select id="gap14">
+                    <option value="">... (14)</option>
+                    <option value="them">them</option>
+                    <option value="they">they</option>
+                    <option value="us">us</option>
+                </select>
+            </span>
+            . In fact, they might have more respect for you. Be there for your friends. Help them to say no to things 
+            <span class="dropdown-inline">
+                <select id="gap15">
+                    <option value="">... (15)</option>
+                    <option value="if">if</option>
+                    <option value="which">which</option>
+                    <option value="what">what</option>
+                </select>
+            </span>
+            they feel under pressure to do them.</p>
+        </div>
+
+        <hr>
+
+        <!-- Exercise 3 -->
+        <h2>Exercise 3: Find the mistakes</h2>
+        <p class="instructions">Find ten mistakes in the two comments and write the ten correct words below each comment.</p>
+
+        <h3>Comment 1 - Joshua</h3>
+        <div class="comment-box">
+            <div class="comment-author">Joshua says:</div>
+            <p>Two weeks ago I <input type="text" class="input-replacement" data-correct="found" data-mistake="find" placeholder="find"> out that three of my friends went shoplifting. I was shocked, but they laughed <input type="text" class="input-replacement" data-correct="at" data-mistake="to" placeholder="to"> me for being scared. So last week I went into a shop with <input type="text" class="input-replacement" data-correct="them" data-mistake="they" placeholder="they"> and I stole a scarf. But the <input type="text" class="input-replacement" data-correct="following" data-mistake="followed" placeholder="followed"> day the police came to my house and said that they <input type="text" class="input-replacement" data-correct="saw" data-mistake="see" placeholder="see"> me on CCTV. It was terrible. I felt more ashamed than I had ever <input type="text" class="input-replacement" data-correct="been" data-mistake="be" placeholder="be"> in my life. I felt that I had lost my parents' respect, and I promised them that I will never steal again.</p>
+        </div>
+
+        <h3>Comment 2 - Hannah</h3>
+        <div class="comment-box">
+            <div class="comment-author">Hannah says:</div>
+            <p>We all smoked cigarettes in my group. Then Steve said that he would stop smoking if we all would stop too. At first we said, "You're stupid," but then six of us <input type="text" class="input-replacement" data-correct="agreed" data-mistake="agree" placeholder="agree"> to try. To be honest, it was <input type="text" class="input-replacement" data-correct="really" data-mistake="real" placeholder="real"> difficult. But all except one of us <input type="text" class="input-replacement" data-correct="doesn't" data-mistake="don't" placeholder="don't"> smoke now. So peer pressure helped us to stop! And now I have more money to spend when I go out with my friends <input type="text" class="input-replacement" data-correct="than" data-mistake="as" placeholder="as"> I ever had before.</p>
+        </div>
+
+        <button class="btn" onclick="checkAllAnswers()">✅ Check All Answers</button>
+        <div id="total-score" class="score" style="display: none;"></div>
+
+        <button class="btn" onclick="printWorksheet()" style="margin-top: 8px;">🖨️ Print / Save as PDF</button>
+    </div>
+
+    <script>
+        // Correct answers
+        const correctAnswers = {
+            gap1: 'who',
+            gap2: 'Do',
+            gap3: 'is',
+            gap4: 'have',
+            gap5: 'what',
+            gap6: 'don\'t',
+            gap7: 'influenced',
+            gap8: 'where',
+            gap9: 'Of',
+            gap10: 'On',
+            gap11: 'which',
+            gap12: 'How',
+            gap13: 'don\'t',
+            gap14: 'them',
+            gap15: 'if'
+        };
+
+        const joshuaCorrect = ['found', 'at', 'them', 'following', 'saw', 'been'];
+        const hannahCorrect = ['agreed', 'really', 'doesn\'t', 'than'];
+
+        // Auto-save input replacements
+        document.querySelectorAll('.input-replacement').forEach(input => {
+            const savedValue = localStorage.getItem(input.dataset.correct);
+            if (savedValue) {
+                input.value = savedValue;
+            }
+            
+            input.addEventListener('input', () => {
+                localStorage.setItem(input.dataset.correct, input.value);
+            });
+        });
+
+        // Auto-save to localStorage
+        const inputs = document.querySelectorAll('select, textarea, input');
+        
+        inputs.forEach(input => {
+            const savedValue = localStorage.getItem(input.id);
+            if (savedValue) {
+                input.value = savedValue;
+            }
+            
+            input.addEventListener('change', () => {
+                localStorage.setItem(input.id, input.value);
+            });
+            
+            input.addEventListener('input', () => {
+                localStorage.setItem(input.id, input.value);
+            });
+        });
+
+        function checkExercise2() {
+            let correct = 0;
+            let total = 15;
+
+            // Remove previous feedback
+            document.querySelectorAll('.feedback').forEach(el => el.remove());
+
+            for (let i = 1; i <= 15; i++) {
+                const select = document.getElementById(`gap${i}`);
+                const isCorrect = select.value === correctAnswers[`gap${i}`];
+                
+                select.classList.remove('correct', 'incorrect');
+                
+                if (select.value !== '') {
+                    if (isCorrect) {
+                        select.classList.add('correct');
+                        const feedback = document.createElement('span');
+                        feedback.className = 'feedback';
+                        feedback.textContent = '✓';
+                        feedback.style.color = 'green';
+                        select.parentNode.appendChild(feedback);
+                        correct++;
+                    } else {
+                        select.classList.add('incorrect');
+                        const feedback = document.createElement('span');
+                        feedback.className = 'feedback';
+                        feedback.textContent = '✗';
+                        feedback.style.color = 'red';
+                        select.parentNode.appendChild(feedback);
+                    }
+                }
+            }
+
+            return { correct, total };
+        }
+
+        function checkExercise3() {
+            let correct = 0;
+            let total = 10;
+
+            // Check all input replacements
+            document.querySelectorAll('.input-replacement').forEach(input => {
+                const userAnswer = input.value.trim().toLowerCase();
+                const correctAnswer = input.dataset.correct.toLowerCase();
+                
+                input.classList.remove('correct-found', 'incorrect-found');
+                
+                if (userAnswer !== '') {
+                    if (userAnswer === correctAnswer) {
+                        input.classList.add('correct-found');
+                        correct++;
+                    } else {
+                        input.classList.add('incorrect-found');
+                    }
+                }
+            });
+
+            return { correct, total };
+        }
+
+        function checkAllAnswers() {
+            const ex2Results = checkExercise2();
+            const ex3Results = checkExercise3();
+
+            const totalCorrect = ex2Results.correct + ex3Results.correct;
+            const totalQuestions = ex2Results.total + ex3Results.total;
+            const percentage = Math.round((totalCorrect / totalQuestions) * 100);
+
+            const scoreDiv = document.getElementById('total-score');
+            scoreDiv.style.display = 'block';
+            scoreDiv.innerHTML = `
+                <div>📊 Your Score: ${totalCorrect} / ${totalQuestions} (${percentage}%)</div>
+                <div style="font-size: 14px; margin-top: 8px;">
+                    Exercise 2: ${ex2Results.correct}/${ex2Results.total} • 
+                    Exercise 3: ${ex3Results.correct}/${ex3Results.total}
+                </div>
+            `;
+
+            // Scroll to score
+            scoreDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function printWorksheet() {
+            window.print();
+        }
+    </script>
+</body>
+</html>
+
