@@ -1,0 +1,129 @@
+BEGIN:VCALENDAR
+PRODID:-//Mozilla.org/NONSGML Mozilla Calendar V1.1//EN
+VERSION:2.0
+NAME:Home
+X-WR-CALNAME:Home
+BEGIN:VTIMEZONE
+TZID:W. Europe Standard Time
+BEGIN:STANDARD
+DTSTART:16010101T030000
+TZOFFSETFROM:+0200
+TZOFFSETTO:+0100
+RRULE:FREQ=YEARLY;INTERVAL=1;BYDAY=-1SU;BYMONTH=10
+END:STANDARD
+BEGIN:DAYLIGHT
+DTSTART:16010101T020000
+TZOFFSETFROM:+0100
+TZOFFSETTO:+0200
+RRULE:FREQ=YEARLY;INTERVAL=1;BYDAY=-1SU;BYMONTH=3
+END:DAYLIGHT
+END:VTIMEZONE
+BEGIN:VEVENT
+CREATED:20260314T062123Z
+LAST-MODIFIED:20260113T141543Z
+DTSTAMP:20260113T141543Z
+UID:040000008200E00074C5B7101A82E00800000000F03F3CB09E84DC01000000000000000
+ 010000000DE414872A077AB41927DE96B4B1EA71A
+SUMMARY:Vorstellungsgespräch für eine Ausbildung zum IT-Systemelektronike
+ r (w/m/d) in Regensburg – DB InfraGO AG Kommunikationstechnik– Korbinia
+ n Hirmer
+PRIORITY:5
+STATUS:CONFIRMED
+ORGANIZER;CN=Tanja Riegler;SENT-BY="mailto:Joanna.Trept@deutschebahn.com":m
+ ailto:Tanja.Riegler@deutschebahn.com
+ATTENDEE;RSVP=TRUE;CN=Manuel Welter;PARTSTAT=NEEDS-ACTION;ROLE=REQ-PARTICIP
+ ANT:mailto:Manuel.Welter@deutschebahn.com
+ATTENDEE;RSVP=TRUE;CN=Mike Böhmer;PARTSTAT=NEEDS-ACTION;ROLE=REQ-PARTICIPA
+ NT:mailto:Mike.Boehmer@deutschebahn.com
+ATTENDEE;RSVP=TRUE;CN=hirmerkorbinian122@gmail.com;PARTSTAT=ACCEPTED;ROLE=R
+ EQ-PARTICIPANT:mailto:hirmerkorbinian122@gmail.com
+ATTENDEE;RSVP=TRUE;CN=Stefan Ferstl;PARTSTAT=NEEDS-ACTION;ROLE=OPT-PARTICIP
+ ANT:mailto:stefan.ferstl@deutschebahn.com
+ATTENDEE;RSVP=TRUE;CN=Axel Marquardt;PARTSTAT=NEEDS-ACTION;ROLE=OPT-PARTICI
+ PANT:mailto:axel.marquardt@deutschebahn.com
+ATTENDEE;RSVP=TRUE;CN=Betriebsrat DBKT Süd;PARTSTAT=NEEDS-ACTION;ROLE=OPT-
+ PARTICIPANT:mailto:Betriebsrat.DBKT.Sued@deutschebahn.com
+ATTENDEE;RSVP=TRUE;CN=JAV DBKT Süd;PARTSTAT=NEEDS-ACTION;ROLE=OPT-PARTICIP
+ ANT:mailto:JAV.DBKT.Sued@deutschebahn.com
+ATTENDEE;RSVP=TRUE;CN=Jonas Fronhöfer;PARTSTAT=NEEDS-ACTION;ROLE=OPT-PARTI
+ CIPANT:mailto:Jonas.Fronhoefer@deutschebahn.com
+ATTENDEE;RSVP=TRUE;CN=Manfred Fleischmann;PARTSTAT=NEEDS-ACTION;ROLE=OPT-PA
+ RTICIPANT:mailto:manfred.fleischmann@deutschebahn.com
+ATTACH:CID:B419D39989B5524BB15A3799D344208F@eurprd06.prod.outlook.com
+ATTACH:CID:23160BEDA106DA4B8CFD0DC492C00DCA@eurprd06.prod.outlook.com
+DTSTART;TZID=W. Europe Standard Time:20260122T120000
+DTEND;TZID=W. Europe Standard Time:20260122T124500
+CLASS:PUBLIC
+DESCRIPTION;LANGUAGE=de-DE:Guten Tag Korbinian Hirmer\,\n\ngerne möchten w
+ ir Ihnen Ihr persönliches Vorstellungsgespräch bestätigen.\n\nGute Vorbe
+ reitung ist alles! Deshalb haben wir Ihnen im Anhang wichtige Informationen
+  zur Vorbereitung auf das Gespräch zusammengefasst.\nBitte lesen Sie diese
+  gründlich durch und informieren sich darüber hinaus durch Internetrecher
+ chen über den Ausbildungsberuf des IT-Systemelektroniker (w/m/d) und über
+  die DB InfraGO AG Kommunikationstechnik.\n\nDaten zum Termin:\nDatum: 22. 
+ Januar 2026\nZeit: 12:00 Uhr\nOrt: Basa-Gebäude\, Bahnhofstr. 6\, 93047 Re
+ gensburg\n\n\nFalls Sie Fragen haben oder das Gespräch kurzfristig nicht w
+ ahrnehmen können\, dann schreiben Sie mir doch bitte eine kurze Mail an ta
+ nja.riegler@deutschebahn.com<mailto:tanja.riegler@deutschebahn.com> oder me
+ lden sich telefonisch unter der 0152/33114271.\n\nWir freuen uns\, schon ba
+ ld mehr über Sie erfahren zu dürfen.\n\nLiebe Grüße\n\nTanja Riegler\n\
+ n\n\n________________________________\n\nPflichtangaben anzeigen<https://ww
+ w.deutschebahn.com/pflichtangaben/20260105>\n\nNähere Informationen zur Da
+ tenverarbeitung im DB-Konzern finden Sie hier: https://www.deutschebahn.com
+ /de/konzern/datenschutz\n
+TRANSP:OPAQUE
+SEQUENCE:0
+LOCATION;LANGUAGE=de-DE:Basa-Gebäude\, Bahnhofstr. 6\, 93047 Regensburg
+X-MICROSOFT-CDO-APPT-SEQUENCE:0
+X-MICROSOFT-CDO-OWNERAPPTID:-1842538518
+X-MICROSOFT-CDO-BUSYSTATUS:TENTATIVE
+X-MICROSOFT-CDO-INTENDEDSTATUS:BUSY
+X-MICROSOFT-CDO-ALLDAYEVENT:FALSE
+X-MICROSOFT-CDO-IMPORTANCE:1
+X-MICROSOFT-CDO-INSTTYPE:0
+X-MICROSOFT-DONOTFORWARDMEETING:FALSE
+X-MICROSOFT-DISALLOW-COUNTER:FALSE
+X-MICROSOFT-REQUESTEDATTENDANCEMODE:DEFAULT
+X-MICROSOFT-ISRESPONSEREQUESTED:TRUE
+X-MICROSOFT-LOCATIONS:[{"DisplayName":"Basa-Gebäude\, Bahnhofstr. 6\, 9304
+ 7 Regensburg"\,"LocationAnnotation":""\,"LocationUri":""\,"LocationStreet":
+ ""\,"LocationCity":""\,"LocationState":""\,"LocationCountry":""\,"LocationP
+ ostalCode":""\,"LocationFullAddress":""}]
+X-MOZ-INVITED-ATTENDEE:mailto:hirmerkorbinian122@gmail.com
+X-MOZ-RECEIVED-SEQUENCE:0
+X-MOZ-RECEIVED-DTSTAMP:20260113T141314Z
+END:VEVENT
+BEGIN:VEVENT
+CREATED:20251225T213737Z
+LAST-MODIFIED:20260314T062112Z
+DTSTAMP:20260314T062112Z
+UID:87d93d17-b2c8-4b2c-9ded-31b153083884
+RDATE;VALUE=DATE:20251229
+X-MOZ-LASTACK:20251228T160015Z
+DTSTART;VALUE=DATE:20251229
+DTEND;VALUE=DATE:20251230
+X-MOZ-FAKED-MASTER:1
+X-MOZ-GENERATION:4
+END:VEVENT
+BEGIN:VEVENT
+CREATED:20251225T213652Z
+LAST-MODIFIED:20251225T213759Z
+DTSTAMP:20251225T213759Z
+UID:87d93d17-b2c8-4b2c-9ded-31b153083884
+SUMMARY:Papa
+STATUS:CONFIRMED
+RECURRENCE-ID;VALUE=DATE:20251229
+DTSTART;VALUE=DATE:20251229
+DTEND;VALUE=DATE:20251230
+SEQUENCE:4
+TRANSP:TRANSPARENT
+X-MOZ-GENERATION:12
+X-MOZ-GOOGLE-HTML-DESCRIPTION:true
+X-MOZ-SNOOZE-TIME-1757635200000000:20250913T004143Z
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT7H
+DESCRIPTION:This is an event reminder
+END:VALARM
+END:VEVENT
+END:VCALENDAR
