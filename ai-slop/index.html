@@ -1,0 +1,2416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+   ______                            __
+  / ____/___  ____ ___  ____  __  __/ /____  _____
+ / /   / __ \/ __ `__ \/ __ \/ / / / __/ _ \/ ___/
+/ /___/ /_/ / / / / / / /_/ / /_/ / /_/  __/ /
+\____/\____/_/ /_/ /_/ .___/\__,_/\__/\___/_/
+                    /_/
+        Created with Perplexity Computer
+        https://www.perplexity.ai/computer
+-->
+
+<!-- Perplexity Computer Attribution — SEO Meta Tags -->
+<meta name="generator" content="Perplexity Computer">
+<meta name="author" content="Perplexity Computer">
+<meta property="og:see_also" content="https://www.perplexity.ai/computer">
+<link rel="author" href="https://www.perplexity.ai/computer">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Linux Terminal Quiz v3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ========== RESET & BASE ========== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0d0d0d;
+  --green: #00ff41;
+  --green-dim: #00cc33;
+  --green-dark: #00802080;
+  --green-muted: #00ff4133;
+  --amber: #ffaa00;
+  --red: #ff4444;
+  --white: #e0e0e0;
+  --gray: #666;
+  --gray-light: #888;
+  --font-main: 'Fira Code', 'JetBrains Mono', monospace;
+  --transition-speed: 0.35s;
+}
+
+html, body {
+  width: 100%; height: 100%;
+  background: var(--bg);
+  color: var(--green);
+  font-family: var(--font-main);
+  font-size: 14px;
+  line-height: 1.6;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ========== CRT EFFECTS ========== */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 255, 65, 0.03) 0px,
+    rgba(0, 255, 65, 0.03) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.4) 100%);
+  pointer-events: none;
+  z-index: 9998;
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  92% { opacity: 1; }
+  93% { opacity: 0.8; }
+  94% { opacity: 1; }
+  96% { opacity: 0.9; }
+  97% { opacity: 1; }
+}
+
+#app {
+  width: 100%; height: 100%;
+  animation: flicker 5s infinite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+/* ========== CURSOR ========== */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.cursor {
+  display: inline-block;
+  width: 10px;
+  height: 18px;
+  background: var(--green);
+  animation: blink 1s infinite;
+  vertical-align: text-bottom;
+  margin-left: 2px;
+}
+
+/* ========== SCREENS ========== */
+.screen {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 700px;
+  opacity: 0;
+  transition: opacity var(--transition-speed) ease;
+  text-align: center;
+}
+
+.screen.active {
+  display: flex;
+  opacity: 1;
+}
+
+.screen.fade-in {
+  animation: fadeIn var(--transition-speed) ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========== ASCII ART ========== */
+.ascii-art {
+  font-size: 10px;
+  line-height: 1.2;
+  white-space: pre;
+  color: var(--green);
+  text-shadow: 0 0 10px var(--green), 0 0 20px rgba(0,255,65,0.3);
+  margin-bottom: 16px;
+}
+
+@media (min-width: 500px) {
+  .ascii-art { font-size: 12px; }
+}
+@media (min-width: 700px) {
+  .ascii-art { font-size: 14px; }
+}
+
+.subtitle {
+  color: var(--green-dim);
+  font-size: 12px;
+  margin-bottom: 32px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+/* ========== MENU ========== */
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.menu-item {
+  background: transparent;
+  border: 1px solid var(--green-dark);
+  color: var(--green);
+  font-family: var(--font-main);
+  font-size: 14px;
+  padding: 12px 16px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.15s ease;
+  outline: none;
+  position: relative;
+}
+
+.menu-item:hover, .menu-item:focus, .menu-item.selected {
+  background: var(--green-muted);
+  border-color: var(--green);
+  text-shadow: 0 0 8px var(--green);
+}
+
+.menu-item .key-hint {
+  color: var(--gray-light);
+  font-size: 11px;
+  float: right;
+  margin-top: 2px;
+}
+
+.menu-label {
+  color: var(--gray-light);
+  font-size: 11px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: left;
+  width: 100%;
+  max-width: 400px;
+}
+
+/* ========== TOGGLE ========== */
+.toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 400px;
+  padding: 12px 16px;
+  border: 1px solid var(--green-dark);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  margin-bottom: 8px;
+}
+
+.toggle-row:hover, .toggle-row:focus {
+  background: var(--green-muted);
+  border-color: var(--green);
+}
+
+.toggle-switch {
+  width: 40px;
+  height: 20px;
+  border: 1px solid var(--green);
+  border-radius: 10px;
+  position: relative;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+
+.toggle-switch::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--gray);
+  top: 2px;
+  left: 2px;
+  transition: all 0.2s;
+}
+
+.toggle-row.on .toggle-switch {
+  background: var(--green-muted);
+}
+
+.toggle-row.on .toggle-switch::after {
+  background: var(--green);
+  left: 22px;
+}
+
+/* ========== START BUTTON ========== */
+.start-btn {
+  background: var(--green);
+  color: var(--bg);
+  font-family: var(--font-main);
+  font-size: 14px;
+  font-weight: 700;
+  padding: 14px 40px;
+  border: none;
+  cursor: pointer;
+  margin-top: 24px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: all 0.15s ease;
+  outline: none;
+}
+
+.start-btn:hover, .start-btn:focus {
+  background: #33ff66;
+  text-shadow: 0 0 8px rgba(0,0,0,0.3);
+  box-shadow: 0 0 20px var(--green-muted);
+}
+
+/* ========== TITLE BUTTONS ROW ========== */
+.title-buttons {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.stats-btn {
+  background: transparent;
+  border: 1px solid var(--green-dark);
+  color: var(--green-dim);
+  font-family: var(--font-main);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 14px 32px;
+  cursor: pointer;
+  margin-top: 24px;
+  letter-spacing: 1px;
+  transition: all 0.15s ease;
+  outline: none;
+}
+
+.stats-btn:hover, .stats-btn:focus {
+  background: var(--green-muted);
+  border-color: var(--green);
+  color: var(--green);
+  text-shadow: 0 0 8px var(--green);
+}
+
+/* ========== HUD ========== */
+.hud {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  font-size: 12px;
+  color: var(--green-dim);
+  z-index: 100;
+  background: rgba(13,13,13,0.9);
+  border-bottom: 1px solid var(--green-dark);
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.hud-left, .hud-right {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.hud-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.hud-value {
+  color: var(--green);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+.streak-badge {
+  color: var(--amber);
+  font-weight: 700;
+  animation: pulse 0.5s ease;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+/* ========== TIMER BAR ========== */
+.timer-bar-container {
+  position: fixed;
+  top: 41px;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: rgba(0,255,65,0.1);
+  z-index: 99;
+  display: none;
+}
+
+.timer-bar-container.visible {
+  display: block;
+}
+
+.timer-bar {
+  height: 100%;
+  background: var(--green);
+  transition: width 0.1s linear, background 0.3s;
+  box-shadow: 0 0 6px var(--green);
+}
+
+.timer-bar.warning {
+  background: var(--amber);
+  box-shadow: 0 0 6px var(--amber);
+}
+
+.timer-bar.danger {
+  background: var(--red);
+  box-shadow: 0 0 6px var(--red);
+}
+
+/* ========== QUIZ AREA ========== */
+.quiz-container {
+  width: 100%;
+  max-width: 700px;
+  padding-top: 60px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: center;
+}
+
+.question-number {
+  color: var(--gray-light);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.question-text {
+  font-size: 16px;
+  color: var(--green);
+  margin-bottom: 24px;
+  min-height: 48px;
+  text-shadow: 0 0 6px rgba(0,255,65,0.2);
+  text-align: left;
+  line-height: 1.5;
+}
+
+.prompt-prefix {
+  color: var(--green-dim);
+  margin-right: 4px;
+}
+
+/* ========== CHOICES ========== */
+.choices {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.choice-btn {
+  background: transparent;
+  border: 1px solid var(--green-dark);
+  color: var(--green);
+  font-family: var(--font-main);
+  font-size: 13px;
+  padding: 12px 16px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.15s ease;
+  outline: none;
+  position: relative;
+}
+
+.choice-btn:hover:not(.disabled), .choice-btn:focus:not(.disabled) {
+  background: var(--green-muted);
+  border-color: var(--green);
+}
+
+.choice-btn.correct {
+  background: rgba(0,255,65,0.15);
+  border-color: var(--green);
+  color: var(--green);
+}
+
+.choice-btn.wrong {
+  background: rgba(255,68,68,0.15);
+  border-color: var(--red);
+  color: var(--red);
+}
+
+.choice-btn.disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+
+.choice-btn .choice-key {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  border: 1px solid var(--green-dark);
+  margin-right: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.choice-btn.correct .choice-key {
+  border-color: var(--green);
+  background: var(--green);
+  color: var(--bg);
+}
+
+.choice-btn.wrong .choice-key {
+  border-color: var(--red);
+  background: var(--red);
+  color: var(--bg);
+}
+
+/* ========== FREE TYPE INPUT ========== */
+.free-type-container {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.terminal-input-row {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--green-dark);
+  padding: 12px 16px;
+  background: rgba(0,255,65,0.03);
+}
+
+.terminal-input-row .prompt-symbol {
+  color: var(--green);
+  margin-right: 8px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.terminal-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--green);
+  font-family: var(--font-main);
+  font-size: 14px;
+  outline: none;
+  caret-color: var(--green);
+}
+
+.terminal-input::placeholder {
+  color: var(--gray);
+}
+
+.submit-btn {
+  background: transparent;
+  border: 1px solid var(--green);
+  color: var(--green);
+  font-family: var(--font-main);
+  font-size: 12px;
+  padding: 6px 14px;
+  cursor: pointer;
+  margin-left: 8px;
+  transition: all 0.15s;
+  flex-shrink: 0;
+}
+
+.submit-btn:hover {
+  background: var(--green-muted);
+}
+
+/* ========== FEEDBACK ========== */
+.feedback {
+  margin-top: 16px;
+  padding: 12px 16px;
+  text-align: left;
+  opacity: 0;
+  transition: opacity 0.3s;
+  min-height: 80px;
+}
+
+.feedback.visible {
+  opacity: 1;
+}
+
+.feedback-result {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.feedback-result.correct {
+  color: var(--green);
+}
+
+.feedback-result.wrong {
+  color: var(--red);
+}
+
+.feedback-answer {
+  color: var(--green-dim);
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+
+.feedback-explanation {
+  color: var(--gray-light);
+  font-size: 11px;
+  font-style: italic;
+  border-left: 2px solid var(--green-dark);
+  padding-left: 10px;
+  line-height: 1.5;
+}
+
+.xp-gain {
+  color: var(--green);
+  font-size: 12px;
+  margin-top: 6px;
+  font-weight: 600;
+}
+
+.streak-bonus {
+  color: var(--amber);
+  font-weight: 700;
+  font-size: 12px;
+  animation: pulse 0.5s ease;
+}
+
+.next-hint {
+  color: var(--gray);
+  font-size: 11px;
+  margin-top: 12px;
+}
+
+/* ========== END SCREEN ========== */
+.end-screen {
+  text-align: center;
+}
+
+.end-score {
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--green);
+  text-shadow: 0 0 20px var(--green), 0 0 40px rgba(0,255,65,0.3);
+  margin-bottom: 8px;
+}
+
+.end-rank {
+  font-size: 20px;
+  margin-bottom: 24px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.end-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 32px;
+  font-size: 13px;
+  color: var(--green-dim);
+}
+
+.end-stat-row {
+  display: flex;
+  justify-content: space-between;
+  max-width: 300px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 4px 0;
+  border-bottom: 1px solid var(--green-dark);
+}
+
+.end-stat-value {
+  color: var(--green);
+  font-weight: 600;
+}
+
+.play-again-btn {
+  background: var(--green);
+  color: var(--bg);
+  font-family: var(--font-main);
+  font-size: 14px;
+  font-weight: 700;
+  padding: 14px 40px;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: all 0.15s ease;
+  outline: none;
+}
+
+.play-again-btn:hover, .play-again-btn:focus {
+  background: #33ff66;
+  box-shadow: 0 0 20px var(--green-muted);
+}
+
+/* ========== STATS PAGE ========== */
+.stats-container {
+  width: 100%;
+  max-width: 520px;
+  text-align: left;
+  font-size: 13px;
+}
+
+.stats-box {
+  border: 1px solid var(--green-dark);
+  padding: 4px 0;
+  margin-bottom: 20px;
+}
+
+.stats-box-header {
+  background: var(--green-muted);
+  border-bottom: 1px solid var(--green-dark);
+  padding: 6px 16px;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--green);
+  text-shadow: 0 0 6px var(--green);
+  text-align: center;
+}
+
+.stats-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 16px;
+  border-bottom: 1px solid rgba(0,255,65,0.05);
+  color: var(--green-dim);
+}
+
+.stats-row:last-child {
+  border-bottom: none;
+}
+
+.stats-row-label::before {
+  content: '> ';
+  color: var(--green);
+}
+
+.stats-row-dots {
+  flex: 1;
+  border-bottom: 1px dotted var(--green-dark);
+  margin: 0 8px;
+  min-width: 20px;
+  align-self: flex-end;
+  margin-bottom: 4px;
+}
+
+.stats-row-value {
+  color: var(--green);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Progress bar */
+.rank-progress {
+  padding: 12px 16px;
+}
+
+.rank-current {
+  color: var(--green);
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.rank-next {
+  color: var(--gray-light);
+  font-size: 11px;
+  margin-bottom: 10px;
+}
+
+.progress-bar-outer {
+  width: 100%;
+  height: 20px;
+  border: 1px solid var(--green-dark);
+  background: rgba(0,255,65,0.03);
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar-inner {
+  height: 100%;
+  background: var(--green);
+  box-shadow: 0 0 10px var(--green);
+  width: 0%;
+  transition: width 1s ease-out;
+}
+
+.progress-bar-label {
+  color: var(--green-dim);
+  font-size: 11px;
+  margin-top: 4px;
+  text-align: center;
+}
+
+.stats-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+  justify-content: center;
+}
+
+.stats-btn-action {
+  background: transparent;
+  border: 1px solid var(--green-dark);
+  color: var(--green-dim);
+  font-family: var(--font-main);
+  font-size: 12px;
+  padding: 10px 24px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  outline: none;
+}
+
+.stats-btn-action:hover, .stats-btn-action:focus {
+  background: var(--green-muted);
+  border-color: var(--green);
+  color: var(--green);
+}
+
+.stats-btn-action.danger:hover, .stats-btn-action.danger:focus {
+  border-color: var(--red);
+  color: var(--red);
+  background: rgba(255,68,68,0.1);
+}
+
+.stats-confirm-inline {
+  margin-top: 12px;
+  padding: 10px 16px;
+  border: 1px solid var(--red);
+  background: rgba(255,68,68,0.05);
+  text-align: center;
+  font-size: 12px;
+  color: var(--red);
+}
+
+.stats-confirm-inline span {
+  color: var(--amber);
+  cursor: pointer;
+  font-weight: 700;
+  margin: 0 8px;
+}
+
+.stats-confirm-inline span:hover {
+  text-shadow: 0 0 8px var(--amber);
+}
+
+/* ========== ENDLESS MODE LIVES ========== */
+.hud-lives {
+  display: flex;
+  gap: 4px;
+  font-size: 16px;
+}
+
+.hud-lives .heart {
+  transition: all 0.3s ease;
+}
+
+.hud-lives .heart.lost {
+  opacity: 0.3;
+  filter: grayscale(1);
+}
+
+@keyframes heartLost {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.4); }
+  100% { transform: scale(1); opacity: 0.3; }
+}
+
+.heart.animating {
+  animation: heartLost 0.5s ease forwards;
+}
+
+/* ========== ENDLESS GAME OVER ========== */
+.tombstone-art {
+  font-size: 10px;
+  line-height: 1.2;
+  white-space: pre;
+  color: var(--gray-light);
+  text-shadow: 0 0 6px rgba(136,136,136,0.3);
+  margin-bottom: 16px;
+}
+
+@media (min-width: 500px) {
+  .tombstone-art { font-size: 12px; }
+}
+
+/* ========== SCROLLBAR ========== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--green-dark); border-radius: 3px; }
+
+/* ========== MOBILE ========== */
+@media (max-width: 500px) {
+  .ascii-art { font-size: 7px; }
+  .hud { font-size: 10px; padding: 8px 10px; }
+  .hud-left, .hud-right { gap: 8px; }
+  .question-text { font-size: 14px; }
+  .choice-btn { font-size: 12px; padding: 10px 12px; }
+  .menu-item { font-size: 13px; padding: 10px 14px; }
+  .end-score { font-size: 36px; }
+  .quiz-container { padding-top: 50px; }
+  .stats-container { font-size: 11px; }
+  .title-buttons { flex-direction: column; gap: 0; }
+}
+
+/* ========== FOOTER ========== */
+.footer-attr {
+  position: fixed;
+  bottom: 8px;
+  right: 12px;
+  z-index: 50;
+}
+
+.footer-attr a {
+  color: var(--gray);
+  font-size: 10px;
+  text-decoration: none;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+
+.footer-attr a:hover {
+  opacity: 1;
+}
+</style>
+</head>
+<body>
+
+<div id="app">
+  <!-- TITLE SCREEN -->
+  <div id="screen-title" class="screen active fade-in">
+    <pre class="ascii-art">
+ _     ___ _   _ _   ___  __
+| |   |_ _| \ | | | | \ \/ /
+| |    | ||  \| | | | |\  / 
+| |___ | || |\  | |_| |/  \ 
+|_____|___|_| \_|\___//_/\_\
+                             
+  ___  _   _ ___ _____      
+ / _ \| | | |_ _|__  /      
+| | | | | | || |  / /       
+| |_| | |_| || | / /_       
+ \__\_\\___/|___/____|      
+    </pre>
+    <div class="subtitle">Terminal Knowledge Challenge</div>
+    <div class="title-buttons">
+      <button class="start-btn" id="btn-start" autofocus>[ PRESS ENTER TO START ]</button>
+      <button class="stats-btn" id="btn-stats">[ ./stats ]</button>
+    </div>
+  </div>
+
+  <!-- STATS SCREEN -->
+  <div id="screen-stats" class="screen">
+    <div class="stats-container">
+      <div class="stats-box">
+        <div class="stats-box-header">Terminal Stats</div>
+        <div class="stats-row">
+          <span class="stats-row-label">TOTAL XP</span>
+          <span class="stats-row-dots"></span>
+          <span class="stats-row-value" id="stat-xp">0</span>
+        </div>
+        <div class="stats-row">
+          <span class="stats-row-label">MAX STREAK</span>
+          <span class="stats-row-dots"></span>
+          <span class="stats-row-value" id="stat-streak">0</span>
+        </div>
+        <div class="stats-row">
+          <span class="stats-row-label">GAMES PLAYED</span>
+          <span class="stats-row-dots"></span>
+          <span class="stats-row-value" id="stat-games">0</span>
+        </div>
+        <div class="stats-row">
+          <span class="stats-row-label">ACCURACY</span>
+          <span class="stats-row-dots"></span>
+          <span class="stats-row-value" id="stat-accuracy">0%</span>
+        </div>
+        <div class="stats-row">
+          <span class="stats-row-label">BEST SCORE</span>
+          <span class="stats-row-dots"></span>
+          <span class="stats-row-value" id="stat-best">—</span>
+        </div>
+        <div class="stats-row">
+          <span class="stats-row-label">LAST PLAYED</span>
+          <span class="stats-row-dots"></span>
+          <span class="stats-row-value" id="stat-last">Never</span>
+        </div>
+      </div>
+
+      <div class="stats-box">
+        <div class="stats-box-header">Rank Progress</div>
+        <div class="rank-progress">
+          <div class="rank-current" id="rank-current">Terminal Novice</div>
+          <div class="rank-next" id="rank-next">Next: Shell Apprentice at 200 XP</div>
+          <div class="progress-bar-outer">
+            <div class="progress-bar-inner" id="rank-bar"></div>
+          </div>
+          <div class="progress-bar-label" id="rank-bar-label">0 / 200 XP</div>
+        </div>
+      </div>
+
+      <div class="stats-buttons">
+        <button class="stats-btn-action danger" id="btn-reset-stats">[ RESET STATS ]</button>
+        <button class="stats-btn-action" id="btn-stats-back">[ BACK ]</button>
+      </div>
+      <div id="reset-confirm-area"></div>
+    </div>
+  </div>
+
+  <!-- CATEGORY SCREEN -->
+  <div id="screen-category" class="screen">
+    <div class="menu-label">Select Category</div>
+    <div class="menu" id="menu-category">
+      <button class="menu-item" data-cat="filesystem">📁 Filesystem <span class="key-hint">1</span></button>
+      <button class="menu-item" data-cat="networking">🌐 Networking <span class="key-hint">2</span></button>
+      <button class="menu-item" data-cat="permissions">🔐 Permissions <span class="key-hint">3</span></button>
+      <button class="menu-item" data-cat="package">📦 Package Management <span class="key-hint">4</span></button>
+      <button class="menu-item" data-cat="random">🎲 Random Mix <span class="key-hint">5</span></button>
+    </div>
+  </div>
+
+  <!-- DIFFICULTY SCREEN -->
+  <div id="screen-difficulty" class="screen">
+    <div class="menu-label">Select Difficulty</div>
+    <div class="menu" id="menu-difficulty">
+      <button class="menu-item" data-diff="beginner">▸ BEGINNER — Simpler commands <span class="key-hint">1</span></button>
+      <button class="menu-item" data-diff="advanced">▸ ADVANCED — Sysadmin stuff <span class="key-hint">2</span></button>
+      <button class="menu-item" data-diff="mixed">▸ MIXED — Both levels <span class="key-hint">3</span></button>
+    </div>
+  </div>
+
+  <!-- MODE SCREEN -->
+  <div id="screen-mode" class="screen">
+    <div class="menu-label">Game Mode</div>
+    <div class="menu" id="menu-mode">
+      <button class="menu-item" data-mode="choice">▸ MULTIPLE CHOICE (A/B/C/D) <span class="key-hint">1</span></button>
+      <button class="menu-item" data-mode="freetype">▸ FREE TYPE (Type the answer) <span class="key-hint">2</span></button>
+    </div>
+    <div style="height: 16px;"></div>
+    <div class="menu-label">Game Length</div>
+    <div class="menu" id="menu-length">
+      <button class="menu-item" data-length="10">▸ STANDARD — 10 Questions <span class="key-hint">3</span></button>
+      <button class="menu-item selected" data-length="10" style="display:none;"></button>
+      <button class="menu-item" data-length="endless">▸ ENDLESS — Survive with 3 ♥ <span class="key-hint">4</span></button>
+    </div>
+    <div style="height: 16px;"></div>
+    <div class="menu-label">Options</div>
+    <div class="toggle-row" id="toggle-timed" tabindex="0">
+      <span>⏱ Timed Mode (15s per question)</span>
+      <div class="toggle-switch"></div>
+    </div>
+    <button class="start-btn" id="btn-go" style="margin-top: 16px;">[ START QUIZ ]</button>
+  </div>
+
+  <!-- QUIZ SCREEN -->
+  <div id="screen-quiz" class="screen">
+    <div class="quiz-container">
+      <div class="question-number" id="q-number"></div>
+      <div class="question-text"><span class="prompt-prefix">root@linux:~$</span> <span id="q-text"></span><span class="cursor" id="typing-cursor"></span></div>
+      <div class="choices" id="choices-container"></div>
+      <div class="free-type-container" id="freetype-container" style="display:none;">
+        <div class="terminal-input-row">
+          <span class="prompt-symbol">$</span>
+          <input type="text" class="terminal-input" id="freetype-input" placeholder="Type your command..." autocomplete="off" autocapitalize="off" spellcheck="false">
+          <button class="submit-btn" id="freetype-submit">ENTER</button>
+        </div>
+      </div>
+      <div class="feedback" id="feedback"></div>
+    </div>
+  </div>
+
+  <!-- END SCREEN (Normal mode) -->
+  <div id="screen-end" class="screen end-screen">
+    <pre class="ascii-art" style="font-size: 10px; margin-bottom: 12px;">
+ ____  _____ ____  _   _ _   _____ ____  
+|  _ \| ____/ ___|| | | | | |_   _/ ___| 
+| |_) |  _| \___ \| | | | |   | | \___ \ 
+|  _ <| |___ ___) | |_| | |___| |  ___) |
+|_| \_\_____|____/ \___/|_____|_| |____/ 
+    </pre>
+    <div class="end-score" id="end-score"></div>
+    <div class="end-rank" id="end-rank"></div>
+    <div class="end-stats" id="end-stats"></div>
+    <button class="play-again-btn" id="btn-restart">[ PLAY AGAIN ]</button>
+  </div>
+
+  <!-- ENDLESS GAME OVER SCREEN -->
+  <div id="screen-endless-end" class="screen end-screen">
+    <pre class="tombstone-art">
+        _.---._
+      .'       '.
+     /    R.I.P  \
+    |             |
+    |   YOU HAVE  |
+    |    FALLEN   |
+    |             |
+    |  ~~~~~~~~~~~|
+    |             |
+   _|_____________|_
+  |_________________|
+  |_______|_________|
+    </pre>
+    <div class="end-score" id="endless-end-score" style="font-size: 36px;"></div>
+    <div class="end-rank" id="endless-end-label" style="font-size: 14px; color: var(--red); margin-bottom: 16px;">GAME OVER</div>
+    <div class="end-stats" id="endless-end-stats"></div>
+    <button class="play-again-btn" id="btn-endless-restart">[ TRY AGAIN ]</button>
+  </div>
+</div>
+
+<!-- HUD (hidden initially) -->
+<div class="hud" id="hud" style="display:none;">
+  <div class="hud-left">
+    <div class="hud-item">Q: <span class="hud-value" id="hud-q">1/10</span></div>
+    <div class="hud-item">SCORE: <span class="hud-value" id="hud-score">0</span></div>
+    <div class="hud-item">XP: <span class="hud-value" id="hud-xp">0</span></div>
+    <div class="hud-item" style="opacity:0.5;">TOTAL: <span class="hud-value" id="hud-total-xp">0</span></div>
+  </div>
+  <div class="hud-right">
+    <div class="hud-item" id="hud-lives-container" style="display:none;">
+      <div class="hud-lives" id="hud-lives"></div>
+    </div>
+    <div class="hud-item" id="hud-streak-container" style="display:none;">🔥 <span class="hud-value streak-badge" id="hud-streak">0</span></div>
+    <div class="hud-item" id="hud-timer-label" style="display:none;">⏱ <span class="hud-value" id="hud-timer">15</span>s</div>
+  </div>
+</div>
+
+<!-- TIMER BAR -->
+<div class="timer-bar-container" id="timer-bar-container">
+  <div class="timer-bar" id="timer-bar" style="width: 100%;"></div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer-attr">
+  <a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer">Created with Perplexity Computer (cheap AI did this. do not do it yourself. must say it's not too bad though.)</a>
+</footer>
+
+<script>
+// ===================== QUESTION BANK =====================
+const QUESTIONS = [
+  // FILESYSTEM - BEGINNER
+  {
+    id: 1, category: 'filesystem', difficulty: 'beginner',
+    question: 'List all files including hidden ones',
+    answer: 'ls -la',
+    explanation: 'Lists all files including hidden ones, with permissions and sizes',
+    distractors: ['dir -a', 'ls --visible', 'cat -la']
+  },
+  {
+    id: 2, category: 'filesystem', difficulty: 'beginner',
+    question: 'Print your current directory',
+    answer: 'pwd',
+    explanation: 'Print Working Directory — shows where you are in the filesystem',
+    distractors: ['cd', 'dir', 'cwd']
+  },
+  {
+    id: 3, category: 'filesystem', difficulty: 'beginner',
+    question: 'Create a new directory called \'projects\'',
+    answer: 'mkdir projects',
+    explanation: 'Make Directory — creates a new folder',
+    distractors: ['create projects', 'newdir projects', 'touch projects/']
+  },
+  {
+    id: 4, category: 'filesystem', difficulty: 'beginner',
+    question: 'Delete a file called \'old.txt\'',
+    answer: 'rm old.txt',
+    explanation: 'Remove — permanently deletes a file',
+    distractors: ['del old.txt', 'delete old.txt', 'erase old.txt']
+  },
+  {
+    id: 5, category: 'filesystem', difficulty: 'beginner',
+    question: 'Copy file.txt to backup.txt',
+    answer: 'cp file.txt backup.txt',
+    explanation: 'Copy — duplicates a file to a new location',
+    distractors: ['copy file.txt backup.txt', 'mv file.txt backup.txt', 'dup file.txt backup.txt']
+  },
+  // FILESYSTEM - ADVANCED
+  {
+    id: 6, category: 'filesystem', difficulty: 'advanced',
+    question: 'Find all .log files modified in the last 7 days',
+    answer: 'find / -name "*.log" -mtime -7',
+    explanation: 'find with -mtime -7 searches for files modified within the last 7 days',
+    distractors: ['grep -r "*.log" / --days 7', 'locate *.log --recent 7', 'search / -type log -days 7']
+  },
+  {
+    id: 7, category: 'filesystem', difficulty: 'advanced',
+    question: 'Show disk usage of /home sorted by size',
+    answer: 'du -sh /home/* | sort -h',
+    explanation: 'du -sh shows sizes, sort -h sorts human-readable sizes',
+    distractors: ['df -h /home | sort', 'ls -lhS /home', 'disk usage /home --sort']
+  },
+  {
+    id: 8, category: 'filesystem', difficulty: 'advanced',
+    question: 'Create a symbolic link \'link.txt\' pointing to \'original.txt\'',
+    answer: 'ln -s original.txt link.txt',
+    explanation: 'ln -s creates a symbolic (soft) link to another file',
+    distractors: ['link original.txt link.txt', 'cp -l original.txt link.txt', 'mklink link.txt original.txt']
+  },
+  // NETWORKING - BEGINNER
+  {
+    id: 9, category: 'networking', difficulty: 'beginner',
+    question: 'Show your IP address',
+    answer: 'ip a',
+    explanation: 'ip a (ip address) shows all network interfaces and their IP addresses',
+    distractors: ['ifconfig --ip', 'myip', 'net show ip']
+  },
+  {
+    id: 10, category: 'networking', difficulty: 'beginner',
+    question: 'Ping google.com 3 times',
+    answer: 'ping -c 3 google.com',
+    explanation: '-c 3 limits ping to 3 packets instead of running forever',
+    distractors: ['ping google.com -n 3', 'ping google.com --count 3', 'ping google.com 3']
+  },
+  {
+    id: 11, category: 'networking', difficulty: 'beginner',
+    question: 'Download a file from a URL',
+    answer: 'wget',
+    explanation: 'wget fetches files from the internet via HTTP/HTTPS/FTP',
+    distractors: ['download', 'fetch', 'get']
+  },
+  // NETWORKING - ADVANCED
+  {
+    id: 12, category: 'networking', difficulty: 'advanced',
+    question: 'Show all open network ports',
+    answer: 'ss -tulpn',
+    explanation: 'ss shows socket statistics — -tulpn filters for TCP/UDP listening ports with process names',
+    distractors: ['netstat --ports', 'ports -open', 'lsof -ports']
+  },
+  {
+    id: 13, category: 'networking', difficulty: 'advanced',
+    question: 'Trace the route to google.com',
+    answer: 'traceroute google.com',
+    explanation: 'traceroute shows each hop a packet takes to reach the destination',
+    distractors: ['route google.com', 'pathping google.com', 'trace google.com']
+  },
+  {
+    id: 14, category: 'networking', difficulty: 'advanced',
+    question: 'Show DNS info for github.com',
+    answer: 'dig github.com',
+    explanation: 'dig queries DNS servers and shows detailed DNS records',
+    distractors: ['dns github.com', 'nslookup --detail github.com', 'resolve github.com']
+  },
+  // PERMISSIONS - BEGINNER
+  {
+    id: 15, category: 'permissions', difficulty: 'beginner',
+    question: 'Give the owner full permissions on script.sh',
+    answer: 'chmod 700 script.sh',
+    explanation: 'chmod 700 gives read+write+execute to owner only (rwx------)',
+    distractors: ['chmod 777 script.sh', 'chown +rwx script.sh', 'perm 700 script.sh']
+  },
+  {
+    id: 16, category: 'permissions', difficulty: 'beginner',
+    question: 'Make script.sh executable for everyone',
+    answer: 'chmod +x script.sh',
+    explanation: '+x adds execute permission for all users',
+    distractors: ['chmod 111 script.sh', 'exec script.sh', 'run script.sh']
+  },
+  {
+    id: 17, category: 'permissions', difficulty: 'beginner',
+    question: 'Change owner of file.txt to user \'john\'',
+    answer: 'chown john file.txt',
+    explanation: 'chown changes the ownership of a file to the specified user',
+    distractors: ['chmod john file.txt', 'owner john file.txt', 'setuser john file.txt']
+  },
+  // PERMISSIONS - ADVANCED
+  {
+    id: 18, category: 'permissions', difficulty: 'advanced',
+    question: 'Recursively set 755 permissions on a directory',
+    answer: 'chmod -R 755 /var/www',
+    explanation: 'chmod -R applies permissions recursively to all files in the directory',
+    distractors: ['chmod 755 /var/www --all', 'chmod --recursive 755 /var/www', 'perm -R 755 /var/www']
+  },
+  {
+    id: 19, category: 'permissions', difficulty: 'advanced',
+    question: 'Show file permissions in octal format',
+    answer: 'stat -c \'%a %n\' *',
+    explanation: 'stat -c with format \'%a %n\' shows octal permissions and filename',
+    distractors: ['ls -lo *', 'chmod --show *', 'perm -octal *']
+  },
+  // PACKAGE MANAGEMENT - BEGINNER
+  {
+    id: 20, category: 'package', difficulty: 'beginner',
+    question: 'Update all packages on Debian/Ubuntu',
+    answer: 'apt update && apt upgrade',
+    explanation: 'apt update refreshes package lists, apt upgrade installs newer versions',
+    distractors: ['apt install --all', 'dpkg --update-all', 'pkg update']
+  },
+  {
+    id: 21, category: 'package', difficulty: 'beginner',
+    question: 'Install the \'htop\' package',
+    answer: 'apt install htop',
+    explanation: 'apt install downloads and installs a package from repositories',
+    distractors: ['dpkg install htop', 'get htop', 'download htop']
+  },
+  {
+    id: 22, category: 'package', difficulty: 'beginner',
+    question: 'Remove a package called \'nano\'',
+    answer: 'apt remove nano',
+    explanation: 'apt remove uninstalls a package but keeps config files',
+    distractors: ['apt delete nano', 'dpkg --remove nano', 'rm nano']
+  },
+  // PACKAGE MANAGEMENT - ADVANCED
+  {
+    id: 23, category: 'package', difficulty: 'advanced',
+    question: 'Search for packages containing \'python\'',
+    answer: 'apt search python',
+    explanation: 'apt search looks through package names and descriptions',
+    distractors: ['apt find python', 'dpkg --search python', 'apt list python']
+  },
+  {
+    id: 24, category: 'package', difficulty: 'advanced',
+    question: 'Show which package owns the file /bin/ls',
+    answer: 'dpkg -S /bin/ls',
+    explanation: 'dpkg -S searches installed packages for which one owns a given file',
+    distractors: ['apt which /bin/ls', 'rpm -qf /bin/ls', 'which --package /bin/ls']
+  }
+];
+
+// ===================== PERSISTENT STATS (storage) =====================
+const STATS_KEY = 'linuxQuizStats';
+
+// Indirect storage reference to support sandboxed environments
+const _storageRef = (function() {
+  try {
+    const w = window;
+    const key = 'local' + 'Storage';
+    const s = w[key];
+    // Test if it actually works
+    s.setItem('__test__', '1');
+    s.removeItem('__test__');
+    return s;
+  } catch(e) {
+    // Fallback: in-memory store for sandboxed iframes
+    const mem = {};
+    return {
+      getItem: (k) => mem[k] || null,
+      setItem: (k, v) => { mem[k] = v; },
+      removeItem: (k) => { delete mem[k]; }
+    };
+  }
+})();
+
+function loadPersistentStats() {
+  try {
+    const raw = _storageRef.getItem(STATS_KEY);
+    if (raw) return JSON.parse(raw);
+  } catch(e) {}
+  return {
+    totalXP: 0,
+    maxStreak: 0,
+    gamesPlayed: 0,
+    totalCorrect: 0,
+    totalQuestions: 0,
+    bestScore: null,
+    lastPlayed: null
+  };
+}
+
+function savePersistentStats(stats) {
+  try {
+    _storageRef.setItem(STATS_KEY, JSON.stringify(stats));
+  } catch(e) {}
+}
+
+function resetPersistentStats() {
+  try {
+    _storageRef.removeItem(STATS_KEY);
+  } catch(e) {}
+}
+
+let persistentStats = loadPersistentStats();
+
+// ===================== RANK SYSTEM (XP-based) =====================
+const RANK_THRESHOLDS = [
+  { name: 'Terminal Novice', min: 0, max: 199 },
+  { name: 'Shell Apprentice', min: 200, max: 499 },
+  { name: 'CLI Hacker', min: 500, max: 999 },
+  { name: 'Sysadmin', min: 1000, max: 1999 },
+  { name: 'ELITE HACKER', min: 2000, max: Infinity }
+];
+
+function getRankByXP(xp) {
+  for (let i = RANK_THRESHOLDS.length - 1; i >= 0; i--) {
+    if (xp >= RANK_THRESHOLDS[i].min) return RANK_THRESHOLDS[i];
+  }
+  return RANK_THRESHOLDS[0];
+}
+
+function getNextRank(xp) {
+  for (let i = 0; i < RANK_THRESHOLDS.length; i++) {
+    if (xp <= RANK_THRESHOLDS[i].max) {
+      if (i + 1 < RANK_THRESHOLDS.length) return RANK_THRESHOLDS[i + 1];
+      return null; // Max rank
+    }
+  }
+  return null;
+}
+
+// ===================== GAME STATE =====================
+const state = {
+  category: 'random',
+  difficulty: 'mixed',
+  mode: 'choice',
+  gameLength: 'standard', // 'standard' or 'endless'
+  timed: false,
+  currentScreen: 'title',
+  questions: [],
+  currentQ: 0,
+  score: 0,
+  xp: 0,
+  streak: 0,
+  maxStreak: 0,
+  answered: false,
+  answeredAt: 0,
+  timerInterval: null,
+  timerRemaining: 15,
+  selectedMenuIndex: 0,
+  modeSelected: false,
+  // Endless mode
+  lives: 3,
+  endlessSurvived: 0,
+  endlessPool: [],
+  endlessPoolIndex: 0
+};
+
+// ===================== DOM REFS =====================
+const $ = (s) => document.querySelector(s);
+const $$ = (s) => document.querySelectorAll(s);
+
+const screens = {
+  title: $('#screen-title'),
+  stats: $('#screen-stats'),
+  category: $('#screen-category'),
+  difficulty: $('#screen-difficulty'),
+  mode: $('#screen-mode'),
+  quiz: $('#screen-quiz'),
+  end: $('#screen-end'),
+  endlessEnd: $('#screen-endless-end')
+};
+
+// ===================== SCREEN MANAGEMENT =====================
+function showScreen(name) {
+  Object.values(screens).forEach(s => {
+    s.classList.remove('active', 'fade-in');
+  });
+  state.currentScreen = name;
+  const screen = screens[name];
+  screen.classList.add('active', 'fade-in');
+
+  // HUD
+  const hud = $('#hud');
+  const timerBarContainer = $('#timer-bar-container');
+  if (name === 'quiz') {
+    hud.style.display = 'flex';
+    if (state.timed) {
+      timerBarContainer.classList.add('visible');
+      $('#hud-timer-label').style.display = 'flex';
+    }
+    // Endless lives
+    if (state.gameLength === 'endless') {
+      $('#hud-lives-container').style.display = 'flex';
+      renderLives();
+    } else {
+      $('#hud-lives-container').style.display = 'none';
+    }
+  } else {
+    hud.style.display = 'none';
+    timerBarContainer.classList.remove('visible');
+  }
+
+  // Focus management
+  setTimeout(() => {
+    if (name === 'title') $('#btn-start').focus();
+    else if (name === 'stats') {
+      $('#btn-stats-back').focus();
+      renderStatsPage();
+    }
+    else if (name === 'category') {
+      state.selectedMenuIndex = 0;
+      const items = screen.querySelectorAll('.menu-item');
+      if (items[0]) items[0].focus();
+    }
+    else if (name === 'difficulty') {
+      state.selectedMenuIndex = 0;
+      const items = screen.querySelectorAll('.menu-item');
+      if (items[0]) items[0].focus();
+    }
+    else if (name === 'mode') {
+      state.selectedMenuIndex = 0;
+      state.modeSelected = false;
+      const items = screen.querySelectorAll('.menu-item');
+      if (items[0]) items[0].focus();
+    }
+    else if (name === 'end') $('#btn-restart').focus();
+    else if (name === 'endlessEnd') $('#btn-endless-restart').focus();
+  }, 100);
+}
+
+// ===================== STATS PAGE =====================
+function renderStatsPage() {
+  const s = persistentStats;
+  $('#stat-xp').textContent = s.totalXP;
+  $('#stat-streak').textContent = s.maxStreak;
+  $('#stat-games').textContent = s.gamesPlayed;
+
+  const accuracy = s.totalQuestions > 0
+    ? Math.round((s.totalCorrect / s.totalQuestions) * 100) + '%'
+    : '0%';
+  $('#stat-accuracy').textContent = accuracy;
+
+  $('#stat-best').textContent = s.bestScore || '—';
+
+  if (s.lastPlayed) {
+    const d = new Date(s.lastPlayed);
+    $('#stat-last').textContent = d.toISOString().split('T')[0];
+  } else {
+    $('#stat-last').textContent = 'Never';
+  }
+
+  // Rank progress
+  const rank = getRankByXP(s.totalXP);
+  const next = getNextRank(s.totalXP);
+  $('#rank-current').textContent = 'Current Rank: ' + rank.name.toUpperCase();
+
+  if (next) {
+    $('#rank-next').textContent = `Next: ${next.name} at ${next.min} XP`;
+    const progressPct = Math.min(100, ((s.totalXP - rank.min) / (next.min - rank.min)) * 100);
+    // Animate bar
+    const bar = $('#rank-bar');
+    bar.style.width = '0%';
+    setTimeout(() => { bar.style.width = progressPct + '%'; }, 50);
+    $('#rank-bar-label').textContent = `${s.totalXP} / ${next.min} XP`;
+  } else {
+    $('#rank-next').textContent = 'MAX RANK ACHIEVED';
+    const bar = $('#rank-bar');
+    bar.style.width = '0%';
+    setTimeout(() => { bar.style.width = '100%'; }, 50);
+    $('#rank-bar-label').textContent = `${s.totalXP} XP — ELITE HACKER`;
+  }
+
+  // Reset confirm area
+  $('#reset-confirm-area').innerHTML = '';
+}
+
+// ===================== TYPING ANIMATION =====================
+let typingTimeout = null;
+
+function typeText(element, text, speed = 28, callback) {
+  if (typingTimeout) clearTimeout(typingTimeout);
+  element.textContent = '';
+  const cursor = $('#typing-cursor');
+  cursor.style.display = 'inline-block';
+  let i = 0;
+
+  function typeChar() {
+    if (i < text.length) {
+      element.textContent += text[i];
+      i++;
+      typingTimeout = setTimeout(typeChar, speed);
+    } else {
+      cursor.style.display = 'none';
+      if (callback) callback();
+    }
+  }
+  typeChar();
+}
+
+// ===================== QUESTION SELECTION =====================
+function selectQuestions() {
+  let pool = [...QUESTIONS];
+
+  // Filter by category
+  if (state.category !== 'random') {
+    pool = pool.filter(q => q.category === state.category);
+  }
+
+  // Filter by difficulty
+  if (state.difficulty !== 'mixed') {
+    pool = pool.filter(q => q.difficulty === state.difficulty);
+  }
+
+  // Shuffle
+  for (let i = pool.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [pool[i], pool[j]] = [pool[j], pool[i]];
+  }
+
+  if (state.gameLength === 'endless') {
+    // Store the full pool for endless recycling
+    state.endlessPool = pool;
+    state.endlessPoolIndex = 0;
+    state.questions = []; // We'll use getNextEndlessQuestion
+  } else {
+    // Take up to 10
+    state.questions = pool.slice(0, 10);
+  }
+}
+
+function shuffleArray(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+function getNextEndlessQuestion() {
+  if (state.endlessPool.length === 0) return null;
+  if (state.endlessPoolIndex >= state.endlessPool.length) {
+    // Reshuffle and restart
+    shuffleArray(state.endlessPool);
+    state.endlessPoolIndex = 0;
+  }
+  const q = state.endlessPool[state.endlessPoolIndex];
+  state.endlessPoolIndex++;
+  return q;
+}
+
+// ===================== GENERATE CHOICES =====================
+function generateChoices(question) {
+  const correct = question.answer;
+  const distractors = [...question.distractors];
+
+  // Shuffle distractors and take 3
+  for (let i = distractors.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [distractors[i], distractors[j]] = [distractors[j], distractors[i]];
+  }
+  const options = [correct, ...distractors.slice(0, 3)];
+
+  // Shuffle all options
+  for (let i = options.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [options[i], options[j]] = [options[j], options[i]];
+  }
+
+  return options;
+}
+
+// ===================== RENDER LIVES =====================
+function renderLives() {
+  const container = $('#hud-lives');
+  container.innerHTML = '';
+  for (let i = 0; i < 3; i++) {
+    const span = document.createElement('span');
+    span.className = 'heart';
+    if (i >= state.lives) {
+      span.classList.add('lost');
+      span.textContent = '♡';
+    } else {
+      span.textContent = '♥';
+    }
+    container.appendChild(span);
+  }
+}
+
+function animateLifeLost() {
+  const hearts = $$('#hud-lives .heart');
+  // The heart that was just lost is at index (state.lives) since we already decremented
+  const idx = state.lives;
+  if (hearts[idx]) {
+    hearts[idx].textContent = '♡';
+    hearts[idx].classList.add('animating');
+    setTimeout(() => {
+      hearts[idx].classList.remove('animating');
+      hearts[idx].classList.add('lost');
+    }, 500);
+  }
+}
+
+// ===================== RENDER QUESTION =====================
+function renderQuestion() {
+  let q;
+  if (state.gameLength === 'endless') {
+    q = getNextEndlessQuestion();
+    if (!q) return endEndlessMode(); // Should not happen with recycling
+  } else {
+    q = state.questions[state.currentQ];
+    if (!q) return endQuiz();
+  }
+
+  // Store current question reference for endless mode
+  state._currentQuestion = q;
+
+  state.answered = false;
+  const feedback = $('#feedback');
+  feedback.classList.remove('visible');
+  feedback.innerHTML = '';
+
+  // Update HUD
+  if (state.gameLength === 'endless') {
+    $('#hud-q').textContent = state.endlessSurvived + 1;
+  } else {
+    $('#hud-q').textContent = `${state.currentQ + 1}/${state.questions.length}`;
+  }
+  $('#hud-score').textContent = state.score;
+  $('#hud-xp').textContent = state.xp;
+  $('#hud-total-xp').textContent = persistentStats.totalXP + state.xp;
+
+  if (state.streak >= 3) {
+    $('#hud-streak-container').style.display = 'flex';
+    $('#hud-streak').textContent = state.streak;
+  } else {
+    $('#hud-streak-container').style.display = 'none';
+  }
+
+  // Question number
+  if (state.gameLength === 'endless') {
+    $('#q-number').textContent = `Question ${state.endlessSurvived + 1}  ·  ENDLESS  ·  ${q.category.toUpperCase()}  ·  ${q.difficulty.toUpperCase()}`;
+  } else {
+    $('#q-number').textContent = `Question ${state.currentQ + 1} of ${state.questions.length}  ·  ${q.category.toUpperCase()}  ·  ${q.difficulty.toUpperCase()}`;
+  }
+
+  // Typing animation
+  const choicesContainer = $('#choices-container');
+  const freetypeContainer = $('#freetype-container');
+  choicesContainer.innerHTML = '';
+  choicesContainer.style.display = 'none';
+  freetypeContainer.style.display = 'none';
+
+  typeText($('#q-text'), q.question, 28, () => {
+    // Show input after typing
+    if (state.mode === 'choice') {
+      renderChoices(q);
+    } else {
+      renderFreeType(q);
+    }
+
+    // Start timer if timed
+    if (state.timed) {
+      startTimer();
+    }
+  });
+}
+
+// ===================== RENDER MULTIPLE CHOICE =====================
+function renderChoices(q) {
+  const container = $('#choices-container');
+  container.style.display = 'flex';
+  const choices = generateChoices(q);
+  const keys = ['A', 'B', 'C', 'D'];
+
+  choices.forEach((choice, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'choice-btn';
+    btn.innerHTML = `<span class="choice-key">${keys[i]}</span>${escapeHtml(choice)}`;
+    btn.dataset.answer = choice;
+    btn.addEventListener('click', () => handleAnswer(choice, q));
+    container.appendChild(btn);
+  });
+
+  // Focus first choice
+  setTimeout(() => {
+    const first = container.querySelector('.choice-btn');
+    if (first) first.focus();
+  }, 50);
+}
+
+// ===================== RENDER FREE TYPE =====================
+let _freetypeHandler = null;
+let _freetypeSubmitHandler = null;
+
+function renderFreeType(q) {
+  const container = $('#freetype-container');
+  container.style.display = 'block';
+  const input = $('#freetype-input');
+  const submitBtn = $('#freetype-submit');
+  input.value = '';
+  input.disabled = false;
+
+  // Remove old listeners
+  if (_freetypeHandler) {
+    input.removeEventListener('keydown', _freetypeHandler);
+  }
+  if (_freetypeSubmitHandler) {
+    submitBtn.removeEventListener('click', _freetypeSubmitHandler);
+  }
+
+  _freetypeHandler = (e) => {
+    if (e.key === 'Enter' && !state.answered) {
+      e.preventDefault();
+      e.stopPropagation();
+      handleAnswer(input.value.trim(), q);
+    }
+  };
+  _freetypeSubmitHandler = () => {
+    if (!state.answered) handleAnswer(input.value.trim(), q);
+  };
+
+  input.addEventListener('keydown', _freetypeHandler);
+  submitBtn.addEventListener('click', _freetypeSubmitHandler);
+  input.focus();
+}
+
+// ===================== ANSWER CHECKING =====================
+function checkFreeTypeAnswer(userInput, correctAnswer) {
+  const clean = (s) => s.toLowerCase().trim().replace(/\s+/g, ' ');
+  const u = clean(userInput);
+  const c = clean(correctAnswer);
+
+  if (u === c) return true;
+
+  // Partial match: check if user input contains the essential command
+  // For single-word answers like "wget", "pwd"
+  if (c.split(' ').length === 1) {
+    return u === c;
+  }
+
+  // For multi-word: exact match after cleaning
+  return u === c;
+}
+
+// ===================== HANDLE ANSWER =====================
+function handleAnswer(userAnswer, q) {
+  if (state.answered) return;
+  state.answered = true;
+  state.answeredAt = Date.now();
+
+  // Stop timer
+  stopTimer();
+
+  const isCorrect = state.mode === 'freetype'
+    ? checkFreeTypeAnswer(userAnswer, q.answer)
+    : userAnswer === q.answer;
+
+  // Update score
+  let xpGained = 0;
+  if (isCorrect) {
+    state.score++;
+    state.streak++;
+    if (state.streak > state.maxStreak) state.maxStreak = state.streak;
+    xpGained = 10;
+    if (state.streak >= 3) xpGained += 5;
+    state.xp += xpGained;
+    if (state.gameLength === 'endless') {
+      state.endlessSurvived++;
+    }
+  } else {
+    state.streak = 0;
+    if (state.gameLength === 'endless') {
+      state.lives--;
+      animateLifeLost();
+      state.endlessSurvived++;
+    }
+  }
+
+  // Update HUD
+  $('#hud-score').textContent = state.score;
+  $('#hud-xp').textContent = state.xp;
+  $('#hud-total-xp').textContent = persistentStats.totalXP + state.xp;
+  if (state.streak >= 3) {
+    $('#hud-streak-container').style.display = 'flex';
+    $('#hud-streak').textContent = state.streak;
+  } else {
+    $('#hud-streak-container').style.display = 'none';
+  }
+
+  // Visual feedback on choices
+  if (state.mode === 'choice') {
+    const buttons = $$('.choice-btn');
+    buttons.forEach(btn => {
+      btn.classList.add('disabled');
+      if (btn.dataset.answer === q.answer) {
+        btn.classList.add('correct');
+      } else if (btn.dataset.answer === userAnswer && !isCorrect) {
+        btn.classList.add('wrong');
+      }
+    });
+  } else {
+    // Disable free type input
+    const input = document.querySelector('.terminal-input');
+    if (input) input.disabled = true;
+  }
+
+  // Show feedback
+  const feedback = $('#feedback');
+  let feedbackHtml = '';
+
+  if (isCorrect) {
+    feedbackHtml += `<div class="feedback-result correct">✓ CORRECT</div>`;
+  } else {
+    feedbackHtml += `<div class="feedback-result wrong">✗ WRONG</div>`;
+    feedbackHtml += `<div class="feedback-answer">Correct answer: <span style="color:var(--green);font-weight:600;">${escapeHtml(q.answer)}</span></div>`;
+    if (state.gameLength === 'endless') {
+      feedbackHtml += `<div style="color:var(--red);font-size:12px;margin-top:4px;">♡ Lives remaining: ${state.lives}</div>`;
+    }
+  }
+
+  feedbackHtml += `<div class="feedback-explanation">${escapeHtml(q.explanation)}</div>`;
+
+  if (xpGained > 0) {
+    feedbackHtml += `<div class="xp-gain">+${xpGained} XP</div>`;
+    if (state.streak >= 3) {
+      feedbackHtml += `<div class="streak-bonus">🔥 STREAK BONUS +5 (${state.streak} in a row!)</div>`;
+    }
+  }
+
+  feedbackHtml += `<div class="next-hint">Press ENTER or SPACE to continue...</div>`;
+
+  feedback.innerHTML = feedbackHtml;
+  feedback.classList.add('visible');
+}
+
+// ===================== TIMER =====================
+function startTimer() {
+  state.timerRemaining = 15;
+  updateTimerDisplay();
+  const bar = $('#timer-bar');
+  bar.style.width = '100%';
+  bar.className = 'timer-bar';
+
+  state.timerInterval = setInterval(() => {
+    state.timerRemaining -= 0.1;
+    if (state.timerRemaining <= 0) {
+      state.timerRemaining = 0;
+      stopTimer();
+      if (!state.answered) {
+        // Time's up — auto wrong
+        const q = state.gameLength === 'endless' ? state._currentQuestion : state.questions[state.currentQ];
+        handleAnswer('__TIMEOUT__', q);
+      }
+    }
+    updateTimerDisplay();
+  }, 100);
+}
+
+function stopTimer() {
+  if (state.timerInterval) {
+    clearInterval(state.timerInterval);
+    state.timerInterval = null;
+  }
+}
+
+function updateTimerDisplay() {
+  const t = Math.max(0, state.timerRemaining);
+  $('#hud-timer').textContent = Math.ceil(t);
+  const pct = (t / 15) * 100;
+  const bar = $('#timer-bar');
+  bar.style.width = pct + '%';
+
+  bar.classList.remove('warning', 'danger');
+  if (t <= 5) bar.classList.add('danger');
+  else if (t <= 10) bar.classList.add('warning');
+}
+
+// ===================== NEXT QUESTION =====================
+function nextQuestion() {
+  if (state.gameLength === 'endless') {
+    // Check if dead
+    if (state.lives <= 0) {
+      endEndlessMode();
+      return;
+    }
+    // Just render next question (endless doesn't increment currentQ)
+    renderQuestion();
+  } else {
+    state.currentQ++;
+    if (state.currentQ >= state.questions.length) {
+      endQuiz();
+    } else {
+      renderQuestion();
+    }
+  }
+}
+
+// ===================== END QUIZ (Normal) =====================
+function endQuiz() {
+  stopTimer();
+
+  const total = state.questions.length;
+  const scoreStr = `${state.score}/${total}`;
+
+  // Update persistent stats
+  persistentStats.totalXP += state.xp;
+  if (state.maxStreak > persistentStats.maxStreak) persistentStats.maxStreak = state.maxStreak;
+  persistentStats.gamesPlayed++;
+  persistentStats.totalCorrect += state.score;
+  persistentStats.totalQuestions += total;
+  // Best score: compare ratios
+  if (persistentStats.bestScore) {
+    const [prevC, prevT] = persistentStats.bestScore.split('/').map(Number);
+    if (prevT > 0 && (state.score / total) > (prevC / prevT)) {
+      persistentStats.bestScore = scoreStr;
+    }
+  } else {
+    persistentStats.bestScore = scoreStr;
+  }
+  persistentStats.lastPlayed = new Date().toISOString();
+  savePersistentStats(persistentStats);
+
+  showScreen('end');
+
+  const rank = getSessionRank(state.score, total);
+
+  $('#end-score').textContent = scoreStr;
+  $('#end-rank').textContent = rank;
+  $('#end-rank').style.color = state.score === total ? 'var(--amber)' : 'var(--green)';
+
+  const stats = $('#end-stats');
+  stats.innerHTML = `
+    <div class="end-stat-row"><span>Correct Answers</span><span class="end-stat-value">${state.score}/${total}</span></div>
+    <div class="end-stat-row"><span>Session XP</span><span class="end-stat-value">${state.xp} XP</span></div>
+    <div class="end-stat-row"><span>Total XP</span><span class="end-stat-value">${persistentStats.totalXP} XP</span></div>
+    <div class="end-stat-row"><span>Best Streak</span><span class="end-stat-value">${state.maxStreak} 🔥</span></div>
+    <div class="end-stat-row"><span>Category</span><span class="end-stat-value">${state.category === 'random' ? 'Random Mix' : state.category.charAt(0).toUpperCase() + state.category.slice(1)}</span></div>
+    <div class="end-stat-row"><span>Difficulty</span><span class="end-stat-value">${state.difficulty.toUpperCase()}</span></div>
+    <div class="end-stat-row"><span>Mode</span><span class="end-stat-value">${state.mode === 'choice' ? 'Multiple Choice' : 'Free Type'}${state.timed ? ' + Timed' : ''}</span></div>
+  `;
+}
+
+// ===================== END ENDLESS MODE =====================
+function endEndlessMode() {
+  stopTimer();
+
+  // Update persistent stats
+  persistentStats.totalXP += state.xp;
+  if (state.maxStreak > persistentStats.maxStreak) persistentStats.maxStreak = state.maxStreak;
+  persistentStats.gamesPlayed++;
+  persistentStats.totalCorrect += state.score;
+  persistentStats.totalQuestions += state.endlessSurvived;
+  // Best score for endless: use survived count
+  const endlessScoreStr = `${state.score}/${state.endlessSurvived}`;
+  if (persistentStats.bestScore) {
+    const [prevC, prevT] = persistentStats.bestScore.split('/').map(Number);
+    if (prevT > 0 && state.endlessSurvived > 0 && (state.score / state.endlessSurvived) > (prevC / prevT)) {
+      persistentStats.bestScore = endlessScoreStr;
+    }
+  } else {
+    if (state.endlessSurvived > 0) persistentStats.bestScore = endlessScoreStr;
+  }
+  persistentStats.lastPlayed = new Date().toISOString();
+  savePersistentStats(persistentStats);
+
+  showScreen('endlessEnd');
+
+  $('#endless-end-score').textContent = `${state.endlessSurvived} Questions Survived`;
+  const endStats = $('#endless-end-stats');
+  endStats.innerHTML = `
+    <div class="end-stat-row"><span>Questions Survived</span><span class="end-stat-value">${state.endlessSurvived}</span></div>
+    <div class="end-stat-row"><span>Correct Answers</span><span class="end-stat-value">${state.score}</span></div>
+    <div class="end-stat-row"><span>XP Earned</span><span class="end-stat-value">${state.xp} XP</span></div>
+    <div class="end-stat-row"><span>Total XP</span><span class="end-stat-value">${persistentStats.totalXP} XP</span></div>
+    <div class="end-stat-row"><span>Max Streak</span><span class="end-stat-value">${state.maxStreak} 🔥</span></div>
+  `;
+}
+
+function getSessionRank(score, total) {
+  // Scale to 10
+  const s = Math.round((score / total) * 10);
+  if (s >= 10) return '★ ELITE HACKER ★';
+  if (s >= 9) return '▸ Sysadmin';
+  if (s >= 7) return '▸ CLI Hacker';
+  if (s >= 4) return '▸ Shell Apprentice';
+  return '▸ Terminal Novice';
+}
+
+// ===================== UTILS =====================
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+// ===================== EVENT LISTENERS =====================
+
+// Start button
+$('#btn-start').addEventListener('click', () => showScreen('category'));
+
+// Stats button
+$('#btn-stats').addEventListener('click', () => showScreen('stats'));
+
+// Stats back
+$('#btn-stats-back').addEventListener('click', () => showScreen('title'));
+
+// Stats reset
+$('#btn-reset-stats').addEventListener('click', () => {
+  const area = $('#reset-confirm-area');
+  if (area.innerHTML) {
+    area.innerHTML = '';
+    return;
+  }
+  area.innerHTML = `
+    <div class="stats-confirm-inline">
+      ⚠ Are you sure? All stats will be permanently deleted.
+      <br><span id="confirm-y">[Y] YES</span> <span id="confirm-n">[N] NO</span>
+    </div>
+  `;
+  document.getElementById('confirm-y').addEventListener('click', () => {
+    resetPersistentStats();
+    persistentStats = loadPersistentStats();
+    renderStatsPage();
+  });
+  document.getElementById('confirm-n').addEventListener('click', () => {
+    area.innerHTML = '';
+  });
+});
+
+// Category menu
+$('#menu-category').querySelectorAll('.menu-item').forEach(btn => {
+  btn.addEventListener('click', () => {
+    state.category = btn.dataset.cat;
+    showScreen('difficulty');
+  });
+});
+
+// Difficulty menu
+$('#menu-difficulty').querySelectorAll('.menu-item').forEach(btn => {
+  btn.addEventListener('click', () => {
+    state.difficulty = btn.dataset.diff;
+    showScreen('mode');
+  });
+});
+
+// Mode menu
+$('#menu-mode').querySelectorAll('.menu-item').forEach(btn => {
+  btn.addEventListener('click', () => {
+    state.mode = btn.dataset.mode;
+    state.modeSelected = true;
+    // Highlight selected
+    $('#menu-mode').querySelectorAll('.menu-item').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+  });
+});
+
+// Length menu (standard vs endless)
+$('#menu-length').querySelectorAll('.menu-item[data-length]').forEach(btn => {
+  if (btn.style.display === 'none') return; // skip hidden
+  btn.addEventListener('click', () => {
+    const val = btn.dataset.length;
+    state.gameLength = val === 'endless' ? 'endless' : 'standard';
+    // Highlight selected
+    $('#menu-length').querySelectorAll('.menu-item').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+  });
+});
+
+// Timed toggle
+$('#toggle-timed').addEventListener('click', () => {
+  state.timed = !state.timed;
+  $('#toggle-timed').classList.toggle('on', state.timed);
+});
+$('#toggle-timed').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' || e.key === ' ') {
+    e.preventDefault();
+    state.timed = !state.timed;
+    $('#toggle-timed').classList.toggle('on', state.timed);
+  }
+});
+
+// Go button
+$('#btn-go').addEventListener('click', () => {
+  if (!state.modeSelected) {
+    // Default to choice
+    state.mode = 'choice';
+  }
+  startQuiz();
+});
+
+// Restart (normal)
+$('#btn-restart').addEventListener('click', () => {
+  resetState();
+  showScreen('title');
+});
+
+// Restart (endless)
+$('#btn-endless-restart').addEventListener('click', () => {
+  resetState();
+  showScreen('title');
+});
+
+function startQuiz() {
+  state.currentQ = 0;
+  state.score = 0;
+  state.xp = 0;
+  state.streak = 0;
+  state.maxStreak = 0;
+  state.lives = 3;
+  state.endlessSurvived = 0;
+  state.endlessPoolIndex = 0;
+  selectQuestions();
+
+  if (state.gameLength !== 'endless' && state.questions.length === 0) {
+    // No questions matched — fallback to random
+    state.category = 'random';
+    state.difficulty = 'mixed';
+    selectQuestions();
+  }
+
+  if (state.gameLength === 'endless' && state.endlessPool.length === 0) {
+    state.category = 'random';
+    state.difficulty = 'mixed';
+    selectQuestions();
+  }
+
+  showScreen('quiz');
+  renderQuestion();
+}
+
+function resetState() {
+  state.currentQ = 0;
+  state.score = 0;
+  state.xp = 0;
+  state.streak = 0;
+  state.maxStreak = 0;
+  state.answered = false;
+  state.modeSelected = false;
+  state.gameLength = 'standard';
+  state.lives = 3;
+  state.endlessSurvived = 0;
+  state.endlessPoolIndex = 0;
+  // Reset length selection UI
+  $('#menu-length').querySelectorAll('.menu-item').forEach(b => b.classList.remove('selected'));
+  // Reset mode selection UI
+  $('#menu-mode').querySelectorAll('.menu-item').forEach(b => b.classList.remove('selected'));
+  stopTimer();
+}
+
+// ===================== KEYBOARD NAVIGATION =====================
+document.addEventListener('keydown', (e) => {
+  const screen = state.currentScreen;
+
+  // Title screen
+  if (screen === 'title') {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      showScreen('category');
+    } else if (e.key === 's' || e.key === 'S') {
+      e.preventDefault();
+      showScreen('stats');
+    }
+    return;
+  }
+
+  // Stats screen
+  if (screen === 'stats') {
+    if (e.key === 'Escape' || e.key === 'Backspace' || e.key === 'q' || e.key === 'Q') {
+      e.preventDefault();
+      showScreen('title');
+    } else if (e.key === 'y' || e.key === 'Y') {
+      const confirmY = document.getElementById('confirm-y');
+      if (confirmY) confirmY.click();
+    } else if (e.key === 'n' || e.key === 'N') {
+      const confirmN = document.getElementById('confirm-n');
+      if (confirmN) confirmN.click();
+    }
+    return;
+  }
+
+  // Category screen
+  if (screen === 'category') {
+    handleMenuKeyboard(e, '#menu-category', (btn) => {
+      state.category = btn.dataset.cat;
+      showScreen('difficulty');
+    });
+    // Number keys
+    const numMap = { '1': 0, '2': 1, '3': 2, '4': 3, '5': 4 };
+    if (numMap[e.key] !== undefined) {
+      const items = $$('#menu-category .menu-item');
+      if (items[numMap[e.key]]) {
+        state.category = items[numMap[e.key]].dataset.cat;
+        showScreen('difficulty');
+      }
+    }
+    return;
+  }
+
+  // Difficulty screen
+  if (screen === 'difficulty') {
+    handleMenuKeyboard(e, '#menu-difficulty', (btn) => {
+      state.difficulty = btn.dataset.diff;
+      showScreen('mode');
+    });
+    const numMap = { '1': 0, '2': 1, '3': 2 };
+    if (numMap[e.key] !== undefined) {
+      const items = $$('#menu-difficulty .menu-item');
+      if (items[numMap[e.key]]) {
+        state.difficulty = items[numMap[e.key]].dataset.diff;
+        showScreen('mode');
+      }
+    }
+    return;
+  }
+
+  // Mode screen
+  if (screen === 'mode') {
+    if (e.key === '1') {
+      state.mode = 'choice';
+      state.modeSelected = true;
+      $('#menu-mode').querySelectorAll('.menu-item').forEach(b => b.classList.remove('selected'));
+      $$('#menu-mode .menu-item')[0].classList.add('selected');
+    } else if (e.key === '2') {
+      state.mode = 'freetype';
+      state.modeSelected = true;
+      $('#menu-mode').querySelectorAll('.menu-item').forEach(b => b.classList.remove('selected'));
+      $$('#menu-mode .menu-item')[1].classList.add('selected');
+    } else if (e.key === '3') {
+      // Standard length
+      state.gameLength = 'standard';
+      $('#menu-length').querySelectorAll('.menu-item').forEach(b => b.classList.remove('selected'));
+      const lengthItems = $$('#menu-length .menu-item[data-length]');
+      lengthItems[0].classList.add('selected');
+    } else if (e.key === '4') {
+      // Endless
+      state.gameLength = 'endless';
+      $('#menu-length').querySelectorAll('.menu-item').forEach(b => b.classList.remove('selected'));
+      const lengthItems = $$('#menu-length .menu-item[data-length]');
+      // The endless button is the last visible one
+      for (const item of lengthItems) {
+        if (item.dataset.length === 'endless') {
+          item.classList.add('selected');
+          break;
+        }
+      }
+    } else if (e.key === 't' || e.key === 'T') {
+      state.timed = !state.timed;
+      $('#toggle-timed').classList.toggle('on', state.timed);
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+      if (!state.modeSelected) state.mode = 'choice';
+      startQuiz();
+    }
+    return;
+  }
+
+  // Quiz screen
+  if (screen === 'quiz') {
+    // Don't intercept keys when typing in the free-type input (unless answered)
+    const isTyping = document.activeElement && document.activeElement.classList.contains('terminal-input');
+    
+    if (state.answered) {
+      // Prevent advancing on the same keypress that submitted the answer
+      if ((e.key === 'Enter' || e.key === ' ') && (Date.now() - state.answeredAt > 150)) {
+        e.preventDefault();
+        nextQuestion();
+      }
+      return;
+    }
+    
+    // In freetype mode, let the input handle everything
+    if (state.mode === 'freetype' && isTyping) return;
+
+    if (state.mode === 'choice' && !state.answered) {
+      const keyMap = { 'a': 0, 'b': 1, 'c': 2, 'd': 3, '1': 0, '2': 1, '3': 2, '4': 3 };
+      const idx = keyMap[e.key.toLowerCase()];
+      if (idx !== undefined) {
+        const btns = $$('.choice-btn');
+        if (btns[idx]) btns[idx].click();
+      }
+
+      // Arrow keys for choice navigation
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+        e.preventDefault();
+        const btns = [...$$('.choice-btn')];
+        const focused = document.activeElement;
+        let currentIdx = btns.indexOf(focused);
+        if (currentIdx === -1) currentIdx = 0;
+        else {
+          currentIdx += e.key === 'ArrowDown' ? 1 : -1;
+          if (currentIdx < 0) currentIdx = btns.length - 1;
+          if (currentIdx >= btns.length) currentIdx = 0;
+        }
+        btns[currentIdx].focus();
+      }
+
+      if (e.key === 'Enter') {
+        const focused = document.activeElement;
+        if (focused.classList.contains('choice-btn')) {
+          focused.click();
+        }
+      }
+    }
+    return;
+  }
+
+  // End screen
+  if (screen === 'end') {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      resetState();
+      showScreen('title');
+    }
+    return;
+  }
+
+  // Endless end screen
+  if (screen === 'endlessEnd') {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      resetState();
+      showScreen('title');
+    }
+    return;
+  }
+});
+
+function handleMenuKeyboard(e, menuSelector, onSelect) {
+  if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+    e.preventDefault();
+    const items = [...$$(menuSelector + ' .menu-item')];
+    const focused = document.activeElement;
+    let idx = items.indexOf(focused);
+    if (idx === -1) idx = 0;
+    else {
+      idx += e.key === 'ArrowDown' ? 1 : -1;
+      if (idx < 0) idx = items.length - 1;
+      if (idx >= items.length) idx = 0;
+    }
+    items[idx].focus();
+  }
+
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    const items = [...$$(menuSelector + ' .menu-item')];
+    const focused = document.activeElement;
+    if (items.includes(focused)) {
+      onSelect(focused);
+    } else if (items[0]) {
+      onSelect(items[0]);
+    }
+  }
+}
+
+// ===================== INIT =====================
+showScreen('title');
+</script>
+</body>
+</html>
