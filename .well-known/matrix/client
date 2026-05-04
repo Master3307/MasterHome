@@ -1,1 +1,13 @@
-{"m.homeserver":{"base_url":"https://matrix.master3307.org"}}
+{
+    "m.homeserver": {
+        "base_url": "https://matrix.master3307.org"
+    },
+    "org.matrix.msc4143.rtc_foci": [
+        {
+        "type": "livekit",
+        "livekit_service_url": "wss://ba5f536216d10c01af5510d8efd2442a.rtc.live.cloudflare.com"
+        }
+    ]
+
+
+}
