@@ -6,7 +6,7 @@ const WebSocket = require('ws');
 
 // ENVIRONMENT VARIABLEN:
 // Diese sollten über GitHub Secrets gesetzt werden, NICHT direkt im Code!
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+const GITHUB_TOKEN = process.env.TOKEN;
 const SUPABASE_KEY = process.env.SUPABASE_KEY;
 
 // Supabase URL
