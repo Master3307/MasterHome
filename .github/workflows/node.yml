@@ -62,8 +62,9 @@ jobs:
         run: node ./update-supabase-changelog.js # Stelle sicher, dass dieser Pfad korrekt ist
         working-directory: . # Führe das Skript vom Repository-Root aus
         env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }} # Dein GitHub PAT für Supabase-Zugriff
+          TOKEN: ${{ secrets.TOKEN }} # Dein GitHub PAT für Supabase-Zugriff
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }} # Dein Supabase Service Role Key!
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
 
       - name: Commit and push changes
         run: |
