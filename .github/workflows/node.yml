@@ -30,6 +30,9 @@ jobs:
         run: npm install # Install project dependencies, including 'sharp'
         working-directory: ./assets/ # Run npm install in the ./assets directory
 
+      - name: Install ws
+        run: npm install ws
+
       - name: Install Supabase client library
         run: npm install @supabase/supabase-js # Nur Supabase Client Bibliothek, da fetch nativ ist
         # Da `update-supabase-changelog.js` im Root-Verzeichnis ausgeführt wird,
