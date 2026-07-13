@@ -2,21 +2,21 @@
 // Dieses Skript ruft GitHub-Commits ab und aktualisiert die Supabase-Tabelle 'changelog'.
 
 const { createClient } = require('@supabase/supabase-js');
-// const fetch = require('node-fetch'); // ENTFERNT: fetch ist in Node.js v18+ global verfügbar
+const WebSocket = require('ws');
 
 // ENVIRONMENT VARIABLEN:
 // Diese sollten über GitHub Secrets gesetzt werden, NICHT direkt im Code!
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN; // Dein GitHub Personal Access Token mit 'repo'-Rechten
-const SUPABASE_KEY = process.env.SUPABASE_KEY; // Dein Supabase Service Role Key (wird über Environment Variable geladen)!
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+const SUPABASE_KEY = process.env.SUPABASE_KEY;
 
-// Supabase URL (Direkt im Code, wie von dir gewünscht)
+// Supabase URL
 const SUPABASE_URL = 'https://joeygiadleywsruuwgyv.supabase.co';
 
-// GitHub Repository Konfiguration (kann hier hartkodiert oder auch als Env-Variable sein)
+// GitHub Repository Konfiguration
 const GITHUB_REPO_OWNER = 'Master3307';
 const GITHUB_REPO_NAME = 'MasterHome';
 const GITHUB_BRANCH = 'main';
-const GITHUB_PER_PAGE = 100; // Maximale Commits pro Seite für GitHub API
+const GITHUB_PER_PAGE = 100;
 
 // Supabase Client initialisieren
 let supabase;
@@ -24,14 +24,16 @@ try {
   if (!SUPABASE_URL || !SUPABASE_KEY) {
     throw new Error('Supabase URL oder SUPABASE_KEY Umgebungsvariablen fehlen!');
   }
-  // Initialisiere Supabase mit dem Service Role Key (SUPABASE_KEY).
-  // Der Service Role Key hat administrative Rechte und umgeht RLS,
-  // daher ist KEINE explizite Anmeldung wie signInAnonymously() erforderlich.
+
   supabase = createClient(SUPABASE_URL, SUPABASE_KEY, {
     auth: {
-      persistSession: false // Wichtig für Server/Workflows, um keine Sessions zu speichern
+      persistSession: false
+    },
+    realtime: {
+      transport: WebSocket
     }
   });
+
   console.log('Supabase Client mit Service Role Key initialisiert.');
 } catch (error) {
   console.error('Fehler beim Initialisieren des Supabase Clients:', error.message);
@@ -42,16 +44,19 @@ try {
 async function fetchPaginatedData(url, headers) {
   let allData = [];
   let nextUrl = url;
+
   while (nextUrl) {
-    // 'fetch' wird hier direkt verwendet, da es in Node.js 20 global ist.
     console.log(`Fetching: ${nextUrl}`);
     const res = await fetch(nextUrl, { headers });
+
     if (!res.ok) {
       const errorBody = await res.text();
       throw new Error(`GitHub API Fehler: ${res.status} ${res.statusText}\nBody: ${errorBody}`);
     }
+
     const data = await res.json();
     allData = allData.concat(data);
+
     const link = res.headers.get('link');
     if (link && link.includes('rel="next"')) {
       const match = link.match(/<([^>]+)>;\s*rel="next"/);
@@ -60,6 +65,7 @@ async function fetchPaginatedData(url, headers) {
       nextUrl = null;
     }
   }
+
   return allData;
 }
 
@@ -68,10 +74,12 @@ async function fetchCommitDetails(sha, headers) {
   const url = `https://api.github.com/repos/${GITHUB_REPO_OWNER}/${GITHUB_REPO_NAME}/commits/${sha}`;
   console.log(`Fetching commit details for ${sha}: ${url}`);
   const res = await fetch(url, { headers });
+
   if (!res.ok) {
     const errorBody = await res.text();
     throw new Error(`GitHub API Fehler beim Abrufen von Commit ${sha}: ${res.status} ${res.statusText}\nBody: ${errorBody}`);
   }
+
   return res.json();
 }
 
@@ -81,8 +89,6 @@ async function fetchCommitDetails(sha, headers) {
       throw new Error('GITHUB_TOKEN Umgebungsvariable fehlt.');
     }
 
-    // Da der Service Role Key (SUPABASE_KEY) verwendet wird, ist keine explizite Authentifizierungsmethode
-    // (wie signInAnonymously) nötig, da der Client bereits mit den nötigen administrativen Rechten initialisiert wurde.
     console.log('Supabase: Verwende Service Role Key für direkten Datenbankzugriff. Keine explizite Anmeldung erforderlich.');
 
     const githubHeaders = {
@@ -98,14 +104,15 @@ async function fetchCommitDetails(sha, headers) {
     );
     console.log(`Abgerufen: ${commitsSummary.length} Commits-Zusammenfassungen.`);
 
-    // NEU: Vorhandene SHAs aus Supabase abrufen
     console.log('Checking existing SHAs...');
     const { data: existingRows, error: fetchShaError } = await supabase
       .from('changelog')
       .select('sha');
+
     if (fetchShaError) {
       throw fetchShaError;
     }
+
     const existingShas = new Set((existingRows || []).map(row => row.sha));
     console.log(`Gefundene vorhandene SHAs: ${existingShas.size}`);
 
@@ -113,19 +120,21 @@ async function fetchCommitDetails(sha, headers) {
 
     console.log('2. Details für jeden Commit abrufen und vorbereiten...');
     for (const commitSummary of commitsSummary) {
-      // Nur neue SHAs verarbeiten
       if (existingShas.has(commitSummary.sha)) {
         continue;
       }
+
       try {
         const commitDetails = await fetchCommitDetails(commitSummary.sha, githubHeaders);
 
-        const filesChanged = commitDetails.files ? commitDetails.files.map(file => ({
-          filename: file.filename,
-          status: file.status,
-          additions: file.additions,
-          deletions: file.deletions
-        })) : [];
+        const filesChanged = commitDetails.files
+          ? commitDetails.files.map(file => ({
+              filename: file.filename,
+              status: file.status,
+              additions: file.additions,
+              deletions: file.deletions
+            }))
+          : [];
 
         commitsToUpsert.push({
           sha: commitDetails.sha,
@@ -136,7 +145,7 @@ async function fetchCommitDetails(sha, headers) {
         });
       } catch (detailError) {
         console.error(`Fehler beim Abrufen der Details für Commit ${commitSummary.sha}:`, detailError);
-        // Falls Details nicht abgerufen werden können, füge den Commit trotzdem mit leeren Dateidetails hinzu
+
         commitsToUpsert.push({
           sha: commitSummary.sha,
           date: commitSummary.commit.author.date,
@@ -149,10 +158,8 @@ async function fetchCommitDetails(sha, headers) {
 
     console.log(`Bereit zum Speichern/Aktualisieren von ${commitsToUpsert.length} Commits in Supabase.`);
 
-    // 3. Daten in Supabase einfügen/aktualisieren (upsert)
-    // `onConflict` verwendet den Primärschlüssel 'sha' um Konflikte zu lösen
-    const { data, error: supabaseError } = await supabase
-      .from('changelog') // Der Tabellenname ist 'changelog'
+    const { error: supabaseError } = await supabase
+      .from('changelog')
       .upsert(commitsToUpsert, { onConflict: 'sha' });
 
     if (supabaseError) {
@@ -160,9 +167,8 @@ async function fetchCommitDetails(sha, headers) {
     }
 
     console.log(`Erfolgreich ${commitsToUpsert.length} Commits in Supabase Tabelle 'changelog' gespeichert/aktualisiert!`);
-
   } catch (err) {
     console.error('Kritischer Fehler im Skript:', err);
-    process.exit(1); // Beende den Workflow mit einem Fehlercode
+    process.exit(1);
   }
 })();
