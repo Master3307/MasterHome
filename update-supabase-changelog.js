@@ -10,7 +10,7 @@ const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const SUPABASE_KEY = process.env.SUPABASE_KEY;
 
 // Supabase URL
-const SUPABASE_URL = 'https://joeygiadleywsruuwgyv.supabase.co';
+const SUPABASE_URL = process.env.SUPABASE_URL || 'https://rywbhwhagjwhepkgeqax.supabase.co';
 
 // GitHub Repository Konfiguration
 const GITHUB_REPO_OWNER = 'Master3307';
