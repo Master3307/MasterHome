@@ -6,7 +6,7 @@ const WebSocket = require('ws');
 
 // ENVIRONMENT VARIABLEN:
 // Diese sollten über GitHub Secrets gesetzt werden, NICHT direkt im Code!
-const GITHUB_TOKEN = process.env.TOKEN;
+const TOKEN = process.env.TOKEN;
 const SUPABASE_KEY = process.env.SUPABASE_KEY;
 
 // Supabase URL
@@ -85,14 +85,14 @@ async function fetchCommitDetails(sha, headers) {
 
 (async () => {
   try {
-    if (!GITHUB_TOKEN) {
-      throw new Error('GITHUB_TOKEN Umgebungsvariable fehlt.');
+    if (!TOKEN) {
+      throw new Error('TOKEN Umgebungsvariable fehlt.');
     }
 
     console.log('Supabase: Verwende Service Role Key für direkten Datenbankzugriff. Keine explizite Anmeldung erforderlich.');
 
     const githubHeaders = {
-      'Authorization': `token ${GITHUB_TOKEN}`,
+      'Authorization': `token ${TOKEN}`,
       'User-Agent': 'supabase-github-actions-updater',
       'Accept': 'application/vnd.github.v3+json'
     };
