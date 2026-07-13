@@ -37,11 +37,11 @@ jobs:
         # Wenn deine `package.json` im Root ist, kannst du `working-directory` hier weglassen oder auf '.' setzen.
 
       - name: Run WebP Converter script
-        run: node ./assets/Media/webp-converter.js # Ensure this path is correct relative to the repo root
+        run: node ./assets/media/webp-converter.js # Ensure this path is correct relative to the repo root
         working-directory: . # Run script from repository root
 
       - name: Run Thumbnail Generator script
-        run: node ./assets/Media/generate-thumb.js # Ensure this path is correct relative to the repo root
+        run: node ./assets/media/generate-thumb.js # Ensure this path is correct relative to the repo root
         working-directory: . # Run script from repository root
 
       - name: Run Assets JSON Generator script
