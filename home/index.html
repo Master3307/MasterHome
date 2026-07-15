@@ -427,56 +427,62 @@
   </div>
   <main>
     <section class="what">
-      <img src="../assets/media/M437.webp" alt="Master-Tech-Logo" />
+      <img src="../assets/media/MrKoby07animated.gif" alt="Master-Tech-Logo" />
       <br />
       <br />
       <div class="what-text">
         <h2>What is this?</h2>
 
         <p>
-          Here, I present to you my little project ideas and prototypes.
-          <br />
+          Here, I present to you my little project ideas and prototypes.<br />
           Also old Ideas and stuff. It is kind of like an archive. <br />
           As you can see, there are already a few projects here! <br />
           More coming soon! <br />
           <br />
+          Now though, it is an old website. View my new <strong><u><a href="https://home.master3307.org">HomeSite</a></u></strong>!<br />
         </p>
       </div>
       <br />
     </section>
     <section class="button-container">
       <div class="button-item">
-        <button class="button" onclick="location.href='../master-tech-services/home/'">
+        <button class="button" onclick="location.href='../master-tech-services/home/'" onmousemove="tiltCard(event)" onmouseleave="resetCard(event)">
+          <img src="../assets/media/Home.webp" alt="HomeSite" class="button-image" />
+          <span class="button-text">HomeSite</span>
+        </button>
+      </div>
+      <div class="button-item">
+        <button class="button" onclick="location.href='../master-tech-services/home/'" onmousemove="tiltCard(event)" onmouseleave="resetCard(event)">
           <img src="../assets/media/MasterTech.webp" alt="Master-Tech-Services" class="button-image" />
           <span class="button-text">Master-Tech-Services</span>
         </button>
       </div>
       <div class="button-item">
-        <button class="button" onclick="location.href='../quellen/'">
+        <button class="button" onclick="location.href='../quellen/'" onmousemove="tiltCard(event)" onmouseleave="resetCard(event)">
           <img src="../assets/media/Quellen.webp" alt="Sources" class="button-image" />
           <span class="button-text">Sources</span>
         </button>
       </div>
       <div class="button-item">
-        <button class="button" onclick="location.href='../linktree/'">
+        <button class="button" onclick="location.href='../linktree/'" onmousemove="tiltCard(event)" onmouseleave="resetCard(event)">
           <img src="../assets/media/Linktree.webp" alt="Linktree" class="button-image" />
           <span class="button-text">Linktree</span>
         </button>
       </div>
       <div class="button-item">
-        <button class="button" onclick="location.href='../shrug/shrug.html'">
+        <button class="button" onclick="location.href='../shrug/shrug.html'" onmousemove="tiltCard(event)" onmouseleave="resetCard(event)">
           <img src="../assets/media/Shrug.webp" alt="Shrug" class="button-image" />
           <span class="button-text">Shrug (Old Project)</span>
         </button>
       </div>
       <div class="button-item">
-        <button class="button" onclick="location.href='../cursor-test/'">
+        <button class="button" onclick="location.href='../cursor-test/'" onmousemove="tiltCard(event)" onmouseleave="resetCard(event)">
           <img src="../assets/media/CursorTest.webp" alt="Cursor Test" class="button-image" />
           <span class="button-text">Cursor Test</span>
         </button>
       </div>
       <div class="button-item">
-        <button class="button" onclick="location.href='../assets/'">
+        <button class="button" onclick="location.href='../assets/'" onmousemove="tiltCard(event)" onmouseleave="resetCard(event)">
           <img src="../assets/media/Assets.webp" alt="Assets Viewer" class="button-image" />
           <span class="button-text">Assets Viewer</span>
         </button>
@@ -489,18 +495,20 @@
       </div> -->
 
       <!-- Linux Quiz Glitch Tile -->
-      <div class="button-item" id="glitch-tile-wrapper">
-        <a id="glitch-quiz-btn" href="../ai-slop/" target="_blank">
-          <canvas id="glitch-matrix-canvas"></canvas>
-          <div id="glitch-scanlines"></div>
-          <div id="glitch-flicker-border"></div>
-          <div id="glitch-content">
-            <span id="glitch-prompt">root@master3307:~$</span>
-            <span id="glitch-title">LINUX_QUIZ</span>
-            <span id="glitch-subtitle">./start_game.sh</span>
-          </div>
-          <div id="glitch-label-bar">Linux Quiz <span id="glitch-tag">[GLITCHED]</span></div>
-        </a>
+       <div  onmousemove="tiltCard(event)" onmouseleave="resetCard(event)">
+        <div class="button-item" id="glitch-tile-wrapper" >
+          <a id="glitch-quiz-btn" href="../ai-slop/" target="_blank">
+            <canvas id="glitch-matrix-canvas"></canvas>
+            <div id="glitch-scanlines"></div>
+            <div id="glitch-flicker-border"></div>
+            <div id="glitch-content">
+              <span id="glitch-prompt">root@master3307:~$</span>
+              <span id="glitch-title">LINUX_QUIZ</span>
+              <span id="glitch-subtitle">./start_game.sh</span>
+            </div>
+            <div id="glitch-label-bar">Linux Quiz <span id="glitch-tag">[GLITCHED]</span></div>
+          </a>
+        </div>
       </div>
 
     </section>

@@ -376,43 +376,37 @@ document.addEventListener("DOMContentLoaded", () => {
   handleUnavailableService("professional", true);
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-  const buttons = document.querySelectorAll(".button");
+// card tilt. kinda stolen lol
+// check out https://stormxxboy.com/card/
+function tiltCard(event) {
+  const card = event.currentTarget
+  if (!card) return
 
-  buttons.forEach((button) => {
-    let animationFrameId = null; // To store the requestAnimationFrame ID
+  const cardRect = card.getBoundingClientRect()
 
-    button.addEventListener("mousemove", (e) => {
-      // Clear any pending animation frame to ensure only the latest one runs
-      if (animationFrameId) {
-        cancelAnimationFrame(animationFrameId);
-      }
+  const cardCenterX = cardRect.left + cardRect.width / 2
+  const cardCenterY = cardRect.top + cardRect.height / 2
 
-      
-      animationFrameId = requestAnimationFrame(() => {
-        const rect = button.getBoundingClientRect();
-        const x = e.clientX - rect.left; // Mouse X position relative to button
-        const y = e.clientY - rect.top; // Mouse Y position relative to button
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
+  const mouseX = event.clientX
+  const mouseY = event.clientY
 
-        const rotateX = ((y - centerY) / centerY) * 10; // Tilt based on Y-axis
-        const rotateY = ((x - centerX) / centerX) * -10; // Tilt based on X-axis
+  const rotateX = (mouseY - cardCenterY) / 13
+  const rotateY = (mouseX - cardCenterX) / 13
 
-        button.style.transform = `perspective(500px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-      });
-    });
+  card.style.transition = 'transform 0.05s ease'
+  card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${-rotateY}deg)`
+}
 
-    button.addEventListener("mouseleave", () => {
-      // Clear any pending animation frame when mouse leaves
-      if (animationFrameId) {
-        cancelAnimationFrame(animationFrameId);
-      }
-      button.style.transform = "perspective(500px) rotateX(0deg) rotateY(0deg)";
-    });
-  });
-});
+function resetCard(event) {
+  const card = event.currentTarget
+  if (!card) return
 
+  card.style.transition = 'transform 0.5s ease'
+  card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)'
+}
+
+window.tiltCard = tiltCard
+window.resetCard = resetCard
 
 
 // Replace all occurrences of --main-bg-modal-img and --main-bg-modal-scrollbar with --main-bg-modal-img-scrollbar if you use them in JS-injected styles or CSS-in-JS.
