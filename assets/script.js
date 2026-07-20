@@ -390,8 +390,8 @@ function tiltCard(event) {
   const mouseX = event.clientX
   const mouseY = event.clientY
 
-  const rotateX = (mouseY - cardCenterY) / 13
-  const rotateY = (mouseX - cardCenterX) / 13
+  const rotateX = (mouseY - cardCenterY) / 6.13
+  const rotateY = (mouseX - cardCenterX) / 7.13
 
   card.style.transition = 'transform 0.05s ease'
   card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${-rotateY}deg)`

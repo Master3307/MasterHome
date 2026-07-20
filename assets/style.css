@@ -21,11 +21,11 @@
   --main-footer-gradient: linear-gradient(90deg, #000000, #000000);
   --main-footer-alt-gradient: #141414;
 
-  --button-pulse1: orange;
-  --button-pulse2: orangered;
+  --button-pulse1: #FF4500;
+  --button-pulse2: rgb(95, 25, 0);
 
-  --button-pulse3: purple;
-  --button-pulse4: indigo;
+  --button-pulse3: rgb(172, 0, 172);
+  --button-pulse4: #37035C;
 
 
   --main-header-color: orangered;
@@ -46,7 +46,7 @@ body[data-theme="light"] {
 
 /* Keep only text color override if needed */
 body[data-theme="light"] {
-  --main-text: #232323;
+  --main-text: #000000;
 }
 body[data-theme="dark"] {
   --main-text: #e4e4e7;
@@ -106,16 +106,13 @@ footer {
   aspect-ratio: 3 / 2;
   padding: 0;
   margin: 20px auto;
-  background: var(--main-bg-accent);
-  border: 2px solid transparent;
-  border-radius: 20px;
-  position: r
+  background: rgb(0, 0, 0);
   border: 5px solid transparent;
   border-radius: 20px;
-  position: relative;elative;
+  position: relative;
   overflow: hidden;
   cursor: pointer;
-  box-shadow: 0 0 10px orangered;
+  box-shadow: 0 0 15px var(--button-pulse1);
   transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
 
@@ -141,14 +138,14 @@ footer {
   position: relative;
   overflow: hidden;
   cursor: pointer;
-  box-shadow: 0 0 15px rgb(152, 0, 152);
+  box-shadow: 0 0 15px var(--button-pulse3);
   transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
 
 .alt:hover {
   transform: translate3d(10px, -10px, 10px);
-  box-shadow: 0 0 40px indigo, 0 0 40px purple;
-  border: purple;
+  box-shadow: 0 0 40px var(--button-pulse4), 0 0 40px var(--button-pulse3);
+  border: var(--button-pulse3);
   animation: pulse-purple 2s infinite alternate ease-in-out;
 }
 
@@ -228,31 +225,31 @@ footer {
 }
 
 @media (max-width: 768px) {
-  .button {
+  .button .alt {
     max-width: 90%;
   }
 }
 
 @media (max-width: 480px) {
-  .button {
+  .button .alt {
     max-width: 100%;
   }
 }
 
-.button-container .button {
+.button-container .button .alt {
   max-width: 400px;
   aspect-ratio: 3 / 2;
   margin: 15px auto;
 }
 
 @media (max-width: 768px) {
-  .button-container .button {
+  .button-container .button .alt {
     max-width: 80%;
   }
 }
 
 @media (max-width: 480px) {
-  .button-container .button {
+  .button-container .button .alt {
     max-width: 90%;
   }
 }
@@ -392,7 +389,7 @@ a:hover {
   gap: 1rem;
 }
 
-.button {
+.button .alt {
   width: 250px;
   aspect-ratio: 3 / 2;
   margin: 0 auto;
