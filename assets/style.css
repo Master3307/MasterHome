@@ -24,6 +24,10 @@
   --button-pulse1: orange;
   --button-pulse2: orangered;
 
+  --button-pulse3: purple;
+  --button-pulse4: indigo;
+
+
   --main-header-color: orangered;
   --close-button: red !important;
   --main-text: #e4e4e7;
@@ -105,7 +109,10 @@ footer {
   background: var(--main-bg-accent);
   border: 2px solid transparent;
   border-radius: 20px;
-  position: relative;
+  position: r
+  border: 5px solid transparent;
+  border-radius: 20px;
+  position: relative;elative;
   overflow: hidden;
   cursor: pointer;
   box-shadow: 0 0 10px orangered;
@@ -117,6 +124,32 @@ footer {
   box-shadow: 0 0 15px orangered, 0 0 15px orange;
   border: orange;
   animation: pulse-orange 2s infinite alternate ease-in-out;
+}
+
+.alt {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  max-width: 450px;
+  aspect-ratio: 3 / 2;
+  padding: 0;
+  margin: 20px auto;
+  background: rgb(55, 3, 92);
+  border: 5px solid transparent;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgb(152, 0, 152);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.alt:hover {
+  transform: translate3d(10px, -10px, 10px);
+  box-shadow: 0 0 40px indigo, 0 0 40px purple;
+  border: purple;
+  animation: pulse-purple 2s infinite alternate ease-in-out;
 }
 
 @keyframes pulse-orange {
@@ -132,7 +165,32 @@ footer {
   }
 }
 
+@keyframes pulse-purple {
+  0% {
+    color: var(--button-pulse3);
+    box-shadow: 0 0 10px var(--button-pulse3), 0 0 14px var(--button-pulse4);
+    border-color: var(--button-pulse3);
+  }
+  100% {
+    color: var(--button-pulse2);
+    box-shadow: 0 0 15px var(--button-pulse4), 0 0 14px var(--button-pulse3);
+    border-color: var(--button-pulse4);
+  }
+}
+
 .button-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 110%;
+  height: auto;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+
+.alt-image {
   position: absolute;
   top: 50%;
   left: 50%;
