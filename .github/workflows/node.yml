@@ -22,7 +22,7 @@ jobs:
           fetch-depth: 0 # Hinzugefügt: Wichtig, um alle Commits für die GitHub API abrufen zu können.
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: '20' # Use a suitable Node.js version
 
