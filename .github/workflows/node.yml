@@ -24,7 +24,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20' # Use a suitable Node.js version
+          node-version: '26' # Use a suitable Node.js version
 
       - name: Install general dependencies
         run: npm install # Install project dependencies, including 'sharp'
